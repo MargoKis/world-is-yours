@@ -4,7 +4,14 @@ module.exports = {
     "./src/**/*.{js,jsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        'gray-dark': '#2D2D2D',
+      },
+      fontFamily: {
+        inter: ['Inter', 'sans'], // 'CustomFont' - название шрифта, 'sans' - системный шрифт по умолчанию
+      },
+    },
   },
   plugins: [],
 }
