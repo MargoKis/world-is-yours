@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      dropShadow: {
+        '5xl': '0 4px 4px rgba(0, 0, 0, 0.25)',
+      },
       colors:{
         custom: {
           black: '#2D2D2D',

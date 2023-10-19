@@ -1,31 +1,32 @@
 import React from 'react';
-import LogoWorldIsYours from '../assets/icons/logo.svg'
-import SearchIcon from '../assets/icons/icon-search.svg'
-import CartIcon from '../assets/icons/icon-cart.svg'
-import HeartIcon from '../assets/icons/icon-heart.svg'
-import ArrowIcon from '../assets/icons/icon-arrow.svg'
-import ProfileIcon from '../assets/icons/icon-profile.svg'
-import ChatIcon from '../assets/icons/button_chat.svg'
-import {Link, NavLink} from "react-router-dom";
-import NavBar from "./NavBar";
+import LogoWorldIsYoursDark from "../assets/icons/dark/logo-dark.svg";
+import SearchIconDark from "../assets/icons/dark/icon-search-dark.svg";
+import {NavLink} from "react-router-dom";
+import CartIconDark from "../assets/icons/dark/icon-cart-dark.svg";
+import HeartIconDark from "../assets/icons/dark/icon-heart-dark.svg";
+import ProfileIconDark from "../assets/icons/dark/icon-profile-dark.svg";
 
-function Header() {
+function Header ({isCategoriesOpen, setIsCategoriesOpen}) {
     return (
-        <div className='h-screen bg-header bg-cover bg-no-repeat bg-bottom text-white'>
-            <div className='h-1/3'>
-                <div className='bg-custom-black py-2 mx-auto px-10'>
-                    <p className='text-center'><Link to={'/'}>Приєднатися до збору коштів</Link></p>
+        <div className='flex justify-between items-center px-10 bg-white text-custom-black drop-shadow-5xl'>
+            <div className='flex justify-between items-center'>
+                <img src={LogoWorldIsYoursDark} alt="World Is Yours"/>
+                <div className='mx-10 text-center'>
+                    <div className='text-custom-black/30'>ENG</div>
+                    <div className='underline'>UA</div>
                 </div>
-                <NavBar/>
+                <img src={SearchIconDark} alt='Search'/>
             </div>
-            <div className='flex flex-col justify-center items-center h-1/3 px-10'>
-                <p className='text-center text-4xl mb-10'>Ваша пригода починається з нами</p>
-                <img src={ArrowIcon} alt="Arrow Down"/>
+            <ul className='flex justify-between items-center'>
+                <li className='mr-10'>ГОЛОВНА</li>
+                <li onClick={() => setIsCategoriesOpen(!isCategoriesOpen)} className='mr-10'>КАТАЛОГ</li>
+                <li>КОНТАКТИ</li>
+            </ul>
+            <div className='flex justify-between items-center '>
+                <NavLink className='mr-10' to={'/'}><img className='text-red-400' src={CartIconDark} alt="Profile"/></NavLink>
+                <NavLink className='mr-10' to={'/'}><img src={HeartIconDark} alt="Favorites"/></NavLink>
+                <NavLink to={'/'}><img src={ProfileIconDark} alt="Cart"/></NavLink>
             </div>
-            <div className='flex flex-row-reverse items-center h-1/3 px-10'>
-                <img className='scale-75' src={ChatIcon} alt="Arrow Down"/>
-            </div>
-
         </div>
     );
 }
