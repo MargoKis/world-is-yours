@@ -1,0 +1,69 @@
+.img {
+  width: 100%;
+  height: 140vh;
+  display: block;
+  object-fit: cover;
+}
+
+.wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.parallax {
+  position: relative;
+  perspective: 1px;
+  height: 100vh;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.parallax-layer {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+}
+
+.parallax-image {
+  transform: translateZ(0);
+  object-fit: cover;
+
+  img {
+    @media (max-width: 768px) {
+      height: calc(100% + 300px);
+      object-fit: cover;
+    }
+  }
+}
+
+.parallax-image::before {
+  content: "";
+  position: absolute;
+  height: 140vh;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Цвет фона и прозрачность */
+}
+
+.parallax-text {
+  font-family: "Inter";
+  font-size: 46px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  color: #fdffff;
+  padding-top: 10%;
+
+  transform: translateZ(-2px) translateX(100px) translateY(300px) scale(3);
+
+  @media (max-width: 768px) {
+    font-size: 36px;
+    transform: translateZ(-2px) translateX(20px) translateY(300px) scale(3);
+  }
+}
+
+.author {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  margin-right: 10%;
+}
