@@ -12,6 +12,7 @@ __pycache__
 # ide configs
 /.vscode/
 /.idea/
+.idea
 
 # emacs cache and backup files
 \#*\#
