@@ -10,17 +10,17 @@ function Header ({isCategoriesOpen, setIsCategoriesOpen}) {
     return (
         <div className='flex justify-between items-center px-10 bg-white text-custom-black drop-shadow-5xl'>
             <div className='flex justify-between items-center'>
-                <img src={LogoWorldIsYoursDark} alt="World Is Yours"/>
+                <NavLink to={'/'}><img src={LogoWorldIsYoursDark} alt="World Is Yours"/></NavLink>
                 <div className='mx-10 text-center'>
-                    <div className='text-custom-black/30'>ENG</div>
-                    <div className='underline'>UA</div>
+                    <div className='text-custom-black/30 cursor-pointer'>ENG</div>
+                    <div className='underline cursor-pointer'>UA</div>
                 </div>
-                <img src={SearchIconDark} alt='Search'/>
+                <img className='cursor-pointer' src={SearchIconDark} alt='Search'/>
             </div>
             <ul className='flex justify-between items-center'>
-                <li className='mr-10'>ГОЛОВНА</li>
-                <li onClick={() => setIsCategoriesOpen(!isCategoriesOpen)} className='mr-10'>КАТАЛОГ</li>
-                <li>КОНТАКТИ</li>
+                <li className='mr-10 cursor-pointer'>ГОЛОВНА</li>
+                <li onClick={() => setIsCategoriesOpen(!isCategoriesOpen)} className='mr-10 cursor-pointer'>КАТАЛОГ</li>
+                <li className='cursor-pointer'>КОНТАКТИ</li>
             </ul>
             <div className='flex justify-between items-center '>
                 <NavLink className='mr-10' to={'/'}><img className='text-red-400' src={CartIconDark} alt="Profile"/></NavLink>

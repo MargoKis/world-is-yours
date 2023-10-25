@@ -10,7 +10,7 @@ module.exports = {
       },
       colors:{
         custom: {
-          black: '#2D2D2D',
+          black: '#202020',
         }
       },
       backgroundImage:{
