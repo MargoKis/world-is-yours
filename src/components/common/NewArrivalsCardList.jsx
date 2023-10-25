@@ -23,11 +23,11 @@ const NewArrivalsCardList = () => {
         ))}
         {visibleCards < cardData.length && (
           <div
-            className="flex items-center justify-center w-80 max-w-200 m-4 border-2 border-gray-light rounded-lg relative"
+            className="flex items-cengitter justify-center w-80 max-w-200 m-4 border-2 border-gray-light rounded-lg relative"
             onClick={loadMoreCards}
           >
             <p className="text-center font-inter py-2 px-4 rounded text-custom-black">
-              Посмотреть еще
+              Дивитися ще
             </p>
           </div>
         )}
