@@ -1,24 +1,3 @@
-// import React from "react";
-// import Card from "./Card";
-// import cardData from "../../data";
-
-// const CardList = () => {
-//   return (
-//     <div>
-//         <h1 className="flex items-center justify-center mt-10 mb-10 font-raleway ">
-//             Наші фаворити
-//         </h1>
-//       <div className="flex flex-wrap justify-around">
-//         {cardData.map((item, index) => (
-//           <Card data={item} key={index} />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default CardList
-
 import React, { useState } from "react";
 import Card from "./Card";
 import cardData from "../../data";
@@ -35,7 +14,7 @@ const CardList = () => {
 
   return (
     <div>
-      <h1 className="flex items-center justify-center mt-10 mb-10 font-raleway">
+      <h1 className="flex items-center justify-center mt-20 mb-10 font-raleway">
         Новинки
       </h1>
       <div className="flex flex-wrap justify-around mb-20">

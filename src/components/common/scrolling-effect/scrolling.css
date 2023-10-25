@@ -1,0 +1,11 @@
+.changing-wrap {
+  height: 90vh;
+  padding: 0 clamp(4rem, 10vw, 20rem);
+  display: grid;
+  place-content: center;
+}
+
+.reveal-type {
+  font-size: 0 clamp(4rem, 10vw, 20rem);
+  font-size: 66px;
+}

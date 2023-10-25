@@ -2,7 +2,7 @@ import React from 'react'
 import Footer from './components/common/Footer';
 import CardList from './components/common/CardList';
 import SeasonSelect  from './components/common/SeasonSelect';
-import { ParallaxBlock } from './components/common/parallax-effect/ParallaxBlock';
+import ScrollingText from './components/common/scrolling-effect/ScrollingText';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
     для зручного відображення у браузері */}
     <SeasonSelect/>
     <CardList/>
-    <ParallaxBlock/>
+    <ScrollingText/>
     <CardList/>
     <Footer/>
     </>
