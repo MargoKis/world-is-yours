@@ -1,5 +1,5 @@
 import React from "react";
-import LogoWorldIsYours from "../../assets/icons/logo.svg";
+import LogoWorldIsYours from "../../assets/icons/light/logo-light.svg";
 import { mediaIcons } from "../../assets/icons/media-icons/mediaIcons";
 import IconCopyright from "../../assets/icons/icon-copyright.svg";
 import IconChat from "../../assets/icons/icon-chat.svg";
