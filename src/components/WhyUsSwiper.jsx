@@ -47,7 +47,7 @@ const whyUsItems = [
 function WhyUsSwiper() {
     return (
         <Swiper
-            //autoplay={{delay: 4000, disableOnInteraction: false,}}
+            autoplay={{delay: 4000, disableOnInteraction: false,}}
             spaceBetween={50}
             pagination={false}
             loop={true}

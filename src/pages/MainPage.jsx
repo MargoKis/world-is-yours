@@ -5,6 +5,10 @@ import Categories from "../components/Categories";
 import DonateBanner from "../components/DonateBanner";
 import Header from "../components/Header";
 import WhyUs from "../components/WhyUs";
+import SeasonSelect from "../components/common/SeasonSelect";
+import CardList from "../components/common/CardList";
+import ScrollingText from "../components/common/scrolling-effect/ScrollingText";
+import Footer from "../components/common/Footer";
 
 function MainPage() {
 
@@ -28,7 +32,12 @@ function MainPage() {
                      <img className='scale-75' src={ChatIcon} alt="Arrow Down"/>
                  </div>
              </div>
+             <SeasonSelect/>
+             <CardList/>
+             <ScrollingText/>
+             <CardList/>
              <WhyUs/>
+             <Footer/>
          </div>
 
     );
