@@ -6,7 +6,8 @@ import DonateBanner from "../components/DonateBanner";
 import Header from "../components/Header";
 import WhyUs from "../components/WhyUs";
 import SeasonSelect from "../components/common/SeasonSelect";
-import CardList from "../components/common/CardList";
+import FavouritesCardList from "../components/common/FavouritesCardList";
+import NewArrivalsCardList from '../components/common/NewArrivalsCardList';
 import ScrollingText from "../components/common/scrolling-effect/ScrollingText";
 import Footer from "../components/common/Footer";
 
@@ -33,9 +34,9 @@ function MainPage() {
                  </div>
              </div>
              <SeasonSelect/>
-             <CardList/>
+             <FavouritesCardList/>
              <ScrollingText/>
-             <CardList/>
+             <NewArrivalsCardList/>
              <WhyUs/>
              <Footer/>
          </div>
