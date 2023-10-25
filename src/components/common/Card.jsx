@@ -13,10 +13,10 @@ const Card = ({ data }) => {
       <div className="absolute top-3 right-3 m-2">
         <img src={HeartIcon} alt="heart icon" width="26" />
       </div>
-      <div className="p-5">
-        <p>{data.name}</p>
-        <p>{data.price}</p>
-        <p>{data.colors.join(", ")}</p>
+      <div className="p-5 ">
+        <p className='text-custom-black'>{data.name}</p>
+        <p className='text-custom-black'>{data.price}</p>
+        <p className='text-custom-black'>{data.colors.join(", ")}</p>
       </div>
     </div>
   );

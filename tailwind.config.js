@@ -1,30 +1,36 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx}",
-  ],
+  content: ["./src/**/*.{js,jsx}"],
   theme: {
     extend: {
       dropShadow: {
-        '5xl': '0 4px 4px rgba(0, 0, 0, 0.25)',
+        "5xl": "0 4px 4px rgba(0, 0, 0, 0.25)",
       },
-      colors:{
+      colors: {
         custom: {
-          black: '#202020',
+          black: "#202020",
         },
-          'gray-light': '#C2C1C1',
+        grayLight: "#C2C1C1",
       },
-      backgroundImage:{
-        'header': "url('./assets/img/bg-header.png')",
+      backgroundImage: {
+        header: "url('./assets/img/bg-header.png')",
       },
       backgroundColor: {
-        'gray-dark': '#202020',
+        "gray-dark": "#202020",
       },
       fontFamily: {
-        inter: ['Inter', 'sans'], 
-        raleway: ['Raleway', 'sans']
+        inter: ["Inter", "sans"],
+        raleway: ["Raleway", "sans"],
+      },
+      fontSize: { // щоб застосувати треба прописати в className = 'text-18px'
+        '18px': '18px',
+        '20px': '20px',
+        '25px': '25px',
+        '30px': '30px',
+        '40px': '40px',
+        '50px': '50px',
       },
     },
   },
   plugins: [],
-}
+};

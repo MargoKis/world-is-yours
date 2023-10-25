@@ -2,7 +2,6 @@
 import React, { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from "@studio-freight/lenis";
 import "./scrolling.css";
 
 function ScrollingText() {
@@ -42,18 +41,6 @@ function ScrollingText() {
       );
     });
 
-    const lenis = new Lenis();
-
-    lenis.on("scroll", (e) => {
-      console.log(e);
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
   }, []);
 
   return (

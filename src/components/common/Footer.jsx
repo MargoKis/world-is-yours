@@ -8,8 +8,8 @@ import IconArrowRight from "../../assets/icons/icon-arrow-right.svg";
 const Footer = () => {
   return (
     <>
-      <footer className="flex flex-row flex-wrap bg-gray-dark justify-around pt-20 pb-10">
-        <div className="social-media-block ">
+      <footer className="flex flex-row flex-wrap bg-gray-dark justify-between pt-20 pb-10">
+        <div className="social-media-block ml-10">
           <h1 className="text-white mb-5 font-inter">
             Ваша пригода починається тут
           </h1>
@@ -67,7 +67,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="mailing-list">
+        <div className="mailing-list mr-10">
           <h2 className="text-white mb-4 font-inter mb-0">
             Підпішиться на розсилку
           </h2>
