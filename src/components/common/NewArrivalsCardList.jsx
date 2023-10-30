@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Card from "./Card";
 import cardData from "../../data";
+import ArrowRight from '../../assets/icons/dark/icon-arrow-right.svg'
 
 const NewArrivalsCardList = () => {
   const initialVisibleCards = 7;
@@ -23,12 +24,15 @@ const NewArrivalsCardList = () => {
         ))}
         {visibleCards < cardData.length && (
           <div
-            className="flex items-cengitter justify-center w-80 max-w-200 m-4 border-2 border-gray-light rounded-lg relative"
+            className="flex justify-center w-80 m-4 border-2 border-gray-light rounded-lg relative"
             onClick={loadMoreCards}
           >
-            <p className="text-center font-inter py-2 px-4 rounded text-custom-black">
+            <div className="flex flex-col justify-center justify-items-center mb-10">
+            <p className="font-inter py-2 px-4 rounded text-custom-black">
               Дивитися ще
             </p>
+            <img src={ArrowRight} alt="icon arrow right" className="text-custom-black w-8 ml-12" />
+            </div>
           </div>
         )}
       </div>

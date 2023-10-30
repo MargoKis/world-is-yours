@@ -1,15 +1,15 @@
 import React from "react";
-import Summer from "../../assets/images/summer-main.png";
-import Winter from "../../assets/images/winter-main.png";
+import Summer from "../../assets/icons/icon-sun.svg";
+import Winter from "../../assets/icons/icon-snow.svg";
 
 const SeasonSelect = () => {
   return (
-    <div className="flex flex-row flex-wrap gap-28 mt-20 max-w-100 justify-around">
-      <div className="max-w-[630px]">
-        <img src={Summer} alt="summer equipment" />
+    <div className="flex flex-row flex-wrap mt-20 gap-14 ml-10">
+      <div>
+        <button className="text-custom-black border border-black rounded-2xl py-10 px-64 flex flex-row font-raleway font-600 text-40px gap-6"><img src={Summer} alt='summer equipment' className=""/>Літо</button>
       </div>
-      <div className="max-w-[630px]">
-        <img src={Winter} alt="winter equipment" />
+      <div>
+        <button className="text-custom-black border border-black rounded-2xl py-10 px-64 flex flex-row font-raleway font-600 text-40px gap-6"><img src={Winter} alt='winter equipment' className=""/>Зима</button>
       </div>
     </div>
   );
