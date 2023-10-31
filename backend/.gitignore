@@ -5,6 +5,7 @@
 /.env/
 /venv/
 /env/
+/store/venv/
 
 # python byte-compiled
 __pycache__
