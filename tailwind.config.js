@@ -11,6 +11,8 @@ module.exports = {
           black: "#202020",
         },
         grayLight: "#C2C1C1",
+        grayDark: "#202020",
+        gray: '#646464',
       },
       backgroundImage: {
         header: "url('./assets/img/bg-header.png')",
@@ -22,11 +24,13 @@ module.exports = {
         inter: ["Inter", "sans"],
         raleway: ["Raleway", "sans"],
       },
-      fontSize: { // щоб застосувати треба прописати в className = 'text-18px'
+      fontSize: { 
         '18px': '18px',
         '20px': '20px',
+        '21px': '21px',
         '25px': '25px',
         '30px': '30px',
+        '35px': '35px',
         '40px': '40px',
         '50px': '50px',
       },

@@ -1,0 +1,182 @@
+// import React, { useState } from "react";
+// import ArrowDown from "../../assets/icons/icon-arrow-right.svg";
+
+// const DropDownList = ({ options, label }) => {
+//   const [isOpen, setIsOpen] = useState(false);
+//   const [selectedOption, setSelectedOption] = useState(null);
+
+//   const handleSelect = (option) => {
+//     setSelectedOption(option);
+//     setIsOpen(false);
+//   };
+
+//   const toggleSelect = () => {
+//     setIsOpen(!isOpen);
+//   };
+
+//   if (!options || options.length === 0) {
+//     return null;
+//   }
+
+//   return (
+//     <div
+//       className={`select ${
+//         isOpen ? "active" : ""
+//       } text-custom-black border rounded-2xl max-w-md p-3 mb-10`}
+//     >
+//       <div
+//         className="select-styled text-custom-black flex flex-row justify-between max-w-md"
+//         onClick={toggleSelect}
+//       >
+//         {selectedOption ? selectedOption.label : label}
+//         <img
+//           src={ArrowDown}
+//           alt="arrow down"
+//           className="text-custom-black transform rotate-90"
+//         />
+//       </div>
+//       <ul
+//         className="select-options text-gray absolute z-50 bg-white mt-5 "
+//         style={{ display: isOpen ? "block" : "none" }}
+//       >
+//         {options.map((option) => (
+//           <li
+//             key={option.value}
+//             onClick={() => handleSelect(option)}
+//             className={
+//               selectedOption === option ? "is-selected border p-2 rounded-2xl mt-2 px-36 " : " border p-2 rounded-2xl mt-2 px-36"
+//             }
+//           >
+//             {option.label}
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// };
+
+// export default DropDownList;
+
+import React, { useState, useEffect, useRef } from "react";
+import ArrowDown from "../../assets/icons/arrow-up.svg";
+
+const DropDownList = ({ options, label }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
+  const dropdownRef = useRef(null);
+
+  const handleSelect = (option) => {
+    setSelectedOption(option);
+    setIsOpen(false);
+  };
+
+  const toggleSelect = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+  if (!options || options.length === 0) {
+    return null;
+  }
+
+  return (
+    <div
+      ref={dropdownRef}
+      className={`select ${
+        isOpen ? "active" : ""
+      } text-custom-black border rounded-2xl max-w-md p-3 mb-10`}
+    >
+      <div
+        className="select-styled text-custom-black flex flex-row justify-between max-w-md"
+        onClick={toggleSelect}
+      >
+        {selectedOption ? selectedOption.label : label}
+        <img
+          src={ArrowDown}
+          alt="arrow down"
+          className={`text-custom-black w-4 mr-2 transform ${
+            isOpen ? "rotate-0" : "rotate-180"
+          } transition-transform`}
+        />
+      </div>
+      <ul
+        className="select-options text-gray absolute z-50 bg-white mt-4 px-16"
+        style={{ display: isOpen ? "block" : "none" }}
+      >
+        {options.map((option) => (
+          <li
+            key={option.value}
+            onClick={() => handleSelect(option)}
+            className={
+              selectedOption === option
+                ? "is-selected border p-2 rounded-2xl mt-2 "
+                : "border p-2 rounded-2xl mt-2 w-60"
+            }
+          >
+            {option.label}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default DropDownList;
+
+
+
+
+
+// import React, { useState } from "react";
+
+// const Dropdown = ({ options, title }) => {
+//   const [isOpen, setIsOpen] = useState(false);
+//   const [selectedOption, setSelectedOption] = useState(null);
+
+//   const toggleDropdown = () => {
+//     setIsOpen(!isOpen);
+//   };
+
+//   const handleOptionClick = (option) => {
+//     setSelectedOption(option);
+//     setIsOpen(false);
+//   };
+
+//   return (
+//     <div className="relative inline-block text-custom-black">
+//       <button
+//         onClick={toggleDropdown}
+//         className="px-4 py-2 border bg-white cursor-pointer text-custom-black"
+//       >
+//         {selectedOption ? selectedOption.label : title}
+//       </button>
+//       {isOpen && (
+//         <ul className="absolute z-50 bg-white border text-custom-black">
+//           {options.map((option) => (
+//             <li
+//               key={option.value}
+//               onClick={() => handleOptionClick(option)}
+//               className="px-4 py-2 cursor-pointer text-custom-black"
+//             >
+//               {option.label}
+//             </li>
+//           ))}
+//         </ul>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default Dropdown

@@ -4,11 +4,11 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import {Scrollbar, Autoplay, Pagination,} from "swiper/modules";
-import whyUsImage1 from '../assets/img/why-us-image-1.png'
-import whyUsImage2 from '../assets/img/why-us-image-2.png'
-import whyUsImage3 from '../assets/img/why-us-image-3.png'
-import whyUsImage4 from '../assets/img/why-us-image-4.png'
-import whyUsImage5 from '../assets/img/why-us-image-5.png'
+import whyUsImage1 from '../../assets/img/why-us-image-1.png'
+import whyUsImage2 from '../../assets/img/why-us-image-2.png'
+import whyUsImage3 from '../../assets/img/why-us-image-3.png'
+import whyUsImage4 from '../../assets/img/why-us-image-4.png'
+import whyUsImage5 from '../../assets/img/why-us-image-5.png'
 
 
 const whyUsItems = [
