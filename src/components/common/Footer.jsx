@@ -3,7 +3,7 @@ import LogoWorldIsYours from "../../assets/icons/light/logo-light.svg";
 import { mediaIcons } from "../../assets/icons/media-icons/mediaIcons";
 import IconCopyright from "../../assets/icons/icon-copyright.svg";
 import IconChat from "../../assets/icons/icon-chat.svg";
-import IconArrowRight from "../../assets/icons/icon-arrow-right.svg";
+import IconArrowRight from "../../assets/icons/arrow-up.svg";
 
 const Footer = () => {
   return (
@@ -84,7 +84,7 @@ const Footer = () => {
               <img
                 src={IconArrowRight}
                 alt="arrow right"
-                className="h-5 w-5 text-white transition-transform transform scale-100 hover:scale-210"
+                className="text-red bg-red"
               />
             </div>
           </div>

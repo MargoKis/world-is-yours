@@ -1,10 +1,10 @@
 import React from 'react';
-import LogoWorldIsYoursDark from "../assets/icons/dark/logo-dark.svg";
-import SearchIconDark from "../assets/icons/dark/icon-search-dark.svg";
+import LogoWorldIsYoursDark from "../../assets/icons/dark/logo-dark.svg";
+import SearchIconDark from "../../assets/icons/dark/icon-search-dark.svg";
 import {NavLink} from "react-router-dom";
-import CartIconDark from "../assets/icons/dark/icon-cart-dark.svg";
-import HeartIconDark from "../assets/icons/dark/icon-heart-dark.svg";
-import ProfileIconDark from "../assets/icons/dark/icon-profile-dark.svg";
+import CartIconDark from "../../assets/icons/dark/icon-cart-dark.svg";
+import HeartIconDark from "../../assets/icons/dark/icon-heart-dark.svg";
+import ProfileIconDark from "../../assets/icons/dark/icon-profile-dark.svg";
 
 function Header ({isCategoriesOpen, setIsCategoriesOpen}) {
     return (

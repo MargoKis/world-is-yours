@@ -1,15 +1,20 @@
 import React, {useState} from 'react';
 import ArrowIcon from '../assets/icons/icon-arrow.svg'
 import ChatIcon from '../assets/icons/button_chat.svg'
-import Categories from "../components/Categories";
-import DonateBanner from "../components/DonateBanner";
-import Header from "../components/Header";
-import WhyUs from "../components/WhyUs";
-import SeasonSelect from "../components/common/SeasonSelect";
-import FavouritesCardList from "../components/common/FavouritesCardList";
-import NewArrivalsCardList from '../components/common/NewArrivalsCardList';
-import ScrollingText from "../components/common/scrolling-effect/ScrollingText";
+import Categories from "../components/common/Categories";
+import DonateBanner from "../components/common/DonateBanner";
+import Header from "../components/common/Header";
+import WhyUs from "../components/main-page/WhyUs";
+import SeasonSelect from "../components/main-page/SeasonSelect";
+import FavouritesCardList from "../components/main-page/FavouritesCardList";
+import NewArrivalsCardList from '../components/main-page/NewArrivalsCardList';
+import ScrollingText from "../components/scrolling-effect/ScrollingText";
 import Footer from "../components/common/Footer";
+// import DeliveryInfo from '../components/payment-page/DeliveryInfo';
+// import ContactInfo from '../components/payment-page/ContactInfo';
+
+
+
 
 function MainPage() {
 
@@ -33,6 +38,9 @@ function MainPage() {
                      <img className='scale-75' src={ChatIcon} alt="Arrow Down"/>
                  </div>
              </div>
+             {/*    в процесі розробки, будуть на іншій сторінці
+             <DeliveryInfo />
+             <ContactInfo/> */}
              <SeasonSelect/>
              <FavouritesCardList/>
              <ScrollingText/>
