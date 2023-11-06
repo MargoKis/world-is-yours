@@ -38,3 +38,18 @@ class UserCreateSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         validated_data.pop('confirm_password')
         return UserModel.objects.create_user(**validated_data)
+
+
+class UserUpdateSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(required=True)
+    password = serializers.CharField(write_only=True)
+
+    class Meta:
+        model = UserModel
+        fields = ["id", "username", "first_name", "last_name", "email", 'password']
+
+    def validate_email(self, value):
+        instance = self.instance
+        if instance and instance.email != value and UserModel.objects.filter(email=value).exists():
+            raise serializers.ValidationError("This email is already in use.")
+        return value
