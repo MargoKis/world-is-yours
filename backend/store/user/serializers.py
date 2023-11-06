@@ -43,10 +43,11 @@ class UserCreateSerializer(serializers.ModelSerializer):
 class UserUpdateSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required=True)
     password = serializers.CharField(write_only=True)
+    image = serializers.ImageField()
 
     class Meta:
         model = UserModel
-        fields = ["id", "username", "first_name", "last_name", "email", 'password']
+        fields = ["id", "username", "first_name", "last_name", "email", "image", "password"]
 
     def validate_email(self, value):
         instance = self.instance
