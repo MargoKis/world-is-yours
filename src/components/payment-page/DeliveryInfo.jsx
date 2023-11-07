@@ -1,7 +1,7 @@
 import React from "react";
 import DropDownList from "./DropDownList";
 import Button from "../common/Button";
-import Dropdown from './DropDownList'
+import Dropdown from "./DropDownList";
 
 const deliveryOptions = [
   { label: "Нова пошта", value: "Нова пошта" },
@@ -12,30 +12,42 @@ const paymentOptions = [
   { label: "Накладний платіж", value: "Накладний платіж" },
 ];
 
-const DeliveryInfo = ({handleDeliveryClick, handleContactInfoClick}) => {
+const DeliveryInfo = ({ handleDeliveryClick, handleContactInfoClick }) => {
   return (
     <div className="flex flex-col">
       <h1 className="text-grayDark font-inter font-semibold text-35px mb-10">
         Оформлення замовлення
       </h1>
-      <div className="flex flex-row gap-28 mb-10">
-        <p className="text-gray font-inter font-semibold text-21px" onClick={handleContactInfoClick}>
+      <div className="flex flex-row justify-between mb-10">
+        <p
+          className="text-gray font-inter font-semibold text-20px"
+          onClick={handleContactInfoClick}
+        >
           Контактна інформація
         </p>
-        <p className="text-grayDark font-inter font-semibold text-21px" onClick={handleDeliveryClick}>
+        <p
+          className="font-inter font-semibold text-20px  text-blue"
+          onClick={handleDeliveryClick}
+        >
           Доставка
         </p>
       </div>
       {/* компоненти випадаючого списку */}
-      <DropDownList options={deliveryOptions} label="Спосіб доставки"/>
-      <DropDownList options={paymentOptions} label="Спосіб оплати"/>
+      <DropDownList options={deliveryOptions} label="Спосіб доставки" />
+      <DropDownList options={paymentOptions} label="Спосіб оплати" />
 
       <textarea
         className="max-w-md px-3 py-2 border rounded-md text-gray resize-none"
         style={{ height: "120px" }}
         placeholder="Введіть додаткову інформацію до замовлення..."
       ></textarea>
-      <Button classNameBtn='max-w-md bg-gray-dark mt-10 p-4 border rounded-2xl font-raleway font-700 text-18px text-white' nameBtn='submitForm' valueBtn='submit'>Оплатити</Button>
+      <Button
+        classNameBtn="max-w-md bg-gray-dark mt-10 p-4 border rounded-2xl font-raleway font-700 text-18px text-white"
+        nameBtn="submitForm"
+        valueBtn="submit"
+      >
+        Оплатити
+      </Button>
     </div>
   );
 };
