@@ -2,17 +2,19 @@ import React from "react";
 import Button from "../common/Button";
 import Input from "../common/Input";
 
-const ContactInfo = () => {
+
+const ContactInfo = ({handleDeliveryClick, handleContactInfoClick}) => {
+
   return (
     <div className="flex flex-col">
       <h1 className="text-grayDark font-inter font-semibold text-35px mb-10">
         Оформлення замовлення
       </h1>
       <div className="flex flex-row gap-28 mb-10">
-        <p className="text-grayDark font-inter font-semibold text-21px">
+        <p className="text-grayDark font-inter font-semibold text-20px text-blue" onClick={handleContactInfoClick}>
           Контактна інформація
         </p>
-        <p className="text-gray font-inter font-semibold text-21px">Доставка</p>
+        <p className="text-gray font-inter font-semibold text-20px text-blue" onClick={handleDeliveryClick}>Доставка</p>
       </div>
       <div className="flex flex-row gap-8">
         <Input
@@ -65,7 +67,7 @@ const ContactInfo = () => {
         </div>
       </div>
       <Button
-        classNameBtn="max-w-md bg-gray-dark mt-10 p-3 border rounded-2xl font-raleway font-700 text-18px"
+        classNameBtn="max-w-md bg-gray-dark mt-10 p-3 border rounded-2xl font-raleway font-700 text-18px text-white"
         nameBtn="submitForm"
         valueBtn="submit"
       >
@@ -76,3 +78,6 @@ const ContactInfo = () => {
 };
 
 export default ContactInfo;
+
+
+
