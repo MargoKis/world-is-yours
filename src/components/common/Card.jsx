@@ -1,5 +1,5 @@
 import React from "react";
-import TentImg from "../../assets/images/tent.png";
+import TentImg from "../../assets/temporary-img/tent.png";
 import HeartIcon from "../../assets/icons/icon-heart.svg";
 
 const Card = ({ data }) => {

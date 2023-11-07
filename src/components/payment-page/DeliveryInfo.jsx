@@ -12,17 +12,17 @@ const paymentOptions = [
   { label: "Накладний платіж", value: "Накладний платіж" },
 ];
 
-const DeliveryInfo = () => {
+const DeliveryInfo = ({handleDeliveryClick, handleContactInfoClick}) => {
   return (
     <div className="flex flex-col">
       <h1 className="text-grayDark font-inter font-semibold text-35px mb-10">
         Оформлення замовлення
       </h1>
       <div className="flex flex-row gap-28 mb-10">
-        <p className="text-gray font-inter font-semibold text-21px">
+        <p className="text-gray font-inter font-semibold text-21px" onClick={handleContactInfoClick}>
           Контактна інформація
         </p>
-        <p className="text-grayDark font-inter font-semibold text-21px">
+        <p className="text-grayDark font-inter font-semibold text-21px" onClick={handleDeliveryClick}>
           Доставка
         </p>
       </div>
@@ -35,7 +35,7 @@ const DeliveryInfo = () => {
         style={{ height: "120px" }}
         placeholder="Введіть додаткову інформацію до замовлення..."
       ></textarea>
-      <Button classNameBtn='max-w-md bg-gray-dark mt-10 p-4 border rounded-2xl font-raleway font-700 text-18px' nameBtn='submitForm' valueBtn='submit'>Оплатити</Button>
+      <Button classNameBtn='max-w-md bg-gray-dark mt-10 p-4 border rounded-2xl font-raleway font-700 text-18px text-white' nameBtn='submitForm' valueBtn='submit'>Оплатити</Button>
     </div>
   );
 };

@@ -10,7 +10,7 @@ const Footer = () => {
     <>
       <footer className="flex flex-row flex-wrap bg-gray-dark justify-between pt-20 pb-10">
         <div className="social-media-block ml-10">
-          <h1 className="text-white mb-5 font-inter">
+          <h1 className="text-white mb-5 font-inter text-20px">
             Ваша пригода починається тут
           </h1>
           <img src={LogoWorldIsYours} alt="logo" />
@@ -37,30 +37,34 @@ const Footer = () => {
           </p>
         </div>
         <div className="reference-and-payments">
-          <h2 className="text-white mb-4 font-inter">Потрібна допомога?</h2>
+          <h2 className="text-white mb-4 font-inter text-20px">
+            Потрібна допомога?
+          </h2>
           <div className="flex flex-row gap-8 mb-4">
-            <p className="flex flex-row text-white gap-2">
-              <img src={IconChat} alt="icon chat" />
-              Розпочни чат
-            </p>
-            <p className="text-white text-opacity-30">не працює</p>
+            <a href="#">
+              <p className="flex flex-row text-white gap-2 text-16px">
+                <img src={IconChat} alt="icon chat" />
+                Зв’яжись з нами
+              </p>
+            </a>
+            <a href="#payment"><p className="text-white text-opacity-30 text-16px">не працює</p></a>
           </div>
-          <hr className="mb-4" />
+          <hr className="mb-4 text-white" />
           <ul className="reference flex flex-col gap-3">
-            <li className="text-white font-inter font-600">
+            <li className="text-white font-inter font-600 text-20px">
               Довідка
             </li>
-            <li className="text-white font-inter font-400">
+            <li className="text-white font-inter font-400 text-16px">
               <a href="#payment" className="">
                 Оплата
               </a>
             </li>
-            <li className="text-white font-inter">
+            <li className="text-white font-inter text-16px">
               <a href="#delivery" className="">
                 Доставка
               </a>
             </li>
-            <li className="text-white font-inter">
+            <li className="text-white font-inter text-16px">
               <a href="#returns" className="">
                 Повернення та обмін
               </a>
@@ -68,16 +72,16 @@ const Footer = () => {
           </ul>
         </div>
         <div className="mailing-list mr-10">
-          <h2 className="text-white mb-4 font-inter mb-0">
+          <h2 className="text-white mb-4 font-inter mb-0 text-20px">
             Підпішиться на розсилку
           </h2>
-          <p className="text-white text-opacity-30 font-inter mt-1 mb-10">
+          <p className="text-white text-opacity-30 font-inter mt-1 mb-10 text-16px">
             Щоб першим дізнаватися про новинки та знижки
           </p>
           <div className="relative">
             <input
               type="text"
-              className="bg-gray-dark p-3 text-white-500 border-2 border-white-500 rounded-lg w-full"
+              className="bg-gray-dark p-3 text-white-500 border-2 border-white-500 rounded-lg w-full text-16px text-white"
               placeholder="Введіть ел.пошту"
             />
             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">

@@ -13,6 +13,7 @@ module.exports = {
         grayLight: "#C2C1C1",
         grayDark: "#202020",
         gray: '#646464',
+        blue: '#135CFB',
       },
       backgroundImage: {
         header: "url('./assets/img/bg-header.png')",
@@ -25,6 +26,7 @@ module.exports = {
         raleway: ["Raleway", "sans"],
       },
       fontSize: { 
+        '16px': '16px',
         '18px': '18px',
         '20px': '20px',
         '21px': '21px',
