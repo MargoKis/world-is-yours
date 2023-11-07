@@ -73,7 +73,7 @@ const Footer = () => {
         </div>
         <div className="mailing-list mr-10">
           <h2 className="text-white mb-4 font-inter mb-0 text-20px">
-            Підпішиться на розсилку
+            Підпишиться на розсилку
           </h2>
           <p className="text-white text-opacity-30 font-inter mt-1 mb-10 text-16px">
             Щоб першим дізнаватися про новинки та знижки

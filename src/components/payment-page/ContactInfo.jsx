@@ -7,14 +7,14 @@ const ContactInfo = ({handleDeliveryClick, handleContactInfoClick}) => {
 
   return (
     <div className="flex flex-col">
-      <h1 className="text-grayDark font-inter font-semibold text-35px mb-10">
+      <h1 className="font-inter font-semibold text-35px mb-10">
         Оформлення замовлення
       </h1>
-      <div className="flex flex-row gap-28 mb-10">
-        <p className="text-grayDark font-inter font-semibold text-20px text-blue" onClick={handleContactInfoClick}>
+      <div className="flex flex-row justify-between mb-10">
+        <p className="font-inter font-semibold text-20px text-blue" onClick={handleContactInfoClick}>
           Контактна інформація
         </p>
-        <p className="text-gray font-inter font-semibold text-20px text-blue" onClick={handleDeliveryClick}>Доставка</p>
+        <p className="text-gray font-inter font-semibold text-20px" onClick={handleDeliveryClick}>Доставка</p>
       </div>
       <div className="flex flex-row gap-8">
         <Input
@@ -70,6 +70,7 @@ const ContactInfo = ({handleDeliveryClick, handleContactInfoClick}) => {
         classNameBtn="max-w-md bg-gray-dark mt-10 p-3 border rounded-2xl font-raleway font-700 text-18px text-white"
         nameBtn="submitForm"
         valueBtn="submit"
+        onClickBtn={handleDeliveryClick}
       >
         Обрати спосіб доставки
       </Button>
