@@ -2,6 +2,11 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 from rest_framework.permissions import SAFE_METHODS
 from rest_framework.permissions import IsAuthenticated
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
+from user.models import EmailVerification
 from user.permissions import IsOwnerOrReadOnly
 from user.serializers import UserModel, UserSerializer, UserCreateSerializer, UserUpdateSerializer
 
@@ -39,3 +44,20 @@ class UserDetailAPIView(RetrieveUpdateDestroyAPIView):
             user.save()
         else:
             serializer.save()
+
+#
+# class EmailVerificationView(APIView):
+#     def get(self, request, email, code):
+#         try:
+#             verification = EmailVerification.objects.get(user__email=email, code=code)
+#             if not verification.is_expired():
+#                 # Позначте аккаунт як підтверджений
+#                 verification.user.is_verified = True
+#                 verification.user.save()
+#                 verification.delete()
+#                 return Response({'message': 'Your account has been verified successfully.'}, status=status.HTTP_200_OK)
+#             else:
+#                 verification.delete()
+#                 return Response({'error': 'Verification link has expired.'}, status=status.HTTP_400_BAD_REQUEST)
+#         except EmailVerification.DoesNotExist:
+#             return Response({'error': 'Invalid verification link.'}, status=status.HTTP_400_BAD_REQUEST)

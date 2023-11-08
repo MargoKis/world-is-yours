@@ -54,3 +54,8 @@ class UserUpdateSerializer(serializers.ModelSerializer):
         if instance and instance.email != value and UserModel.objects.filter(email=value).exists():
             raise serializers.ValidationError("This email is already in use.")
         return value
+
+#
+# class EmailVerificationSerializer(serializers.Serializer):
+#     email = serializers.EmailField()
+#     code = serializers.UUIDField()

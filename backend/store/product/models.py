@@ -19,7 +19,8 @@ class Product(models.Model):
     name = models.CharField(max_length=256)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     quantity = models.PositiveIntegerField(default=0)
-    image = models.ImageField(upload_to='products_images')
+    image = models.ImageField(upload_to='products_images',
+                              default="products_images/default_image.jpg")
     category = models.ForeignKey(to=ProductCategory, on_delete=models.PROTECT)
     description = models.TextField()
 
@@ -35,6 +36,10 @@ class ProductSpecs(models.Model):
     name = models.CharField(max_length=256)
     value = models.CharField(max_length=256)
     product_id = models.ForeignKey(to=Product, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'ProductSpecs'
+        verbose_name_plural = 'ProductSpecs'
 
 
 class ProductReview(models.Model):
