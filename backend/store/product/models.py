@@ -40,12 +40,13 @@ class ProductSpecs(models.Model):
     class Meta:
         verbose_name = 'ProductSpecs'
         verbose_name_plural = 'ProductSpecs'
+        unique_together = "name", "product_id"
 
 
 class ProductReview(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.PROTECT)
-    rating = models.PositiveIntegerField(default=1, validators=[MaxValueValidator(5)])
+    rating = models.PositiveIntegerField(validators=[MaxValueValidator(5)])
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 

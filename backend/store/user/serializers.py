@@ -55,7 +55,6 @@ class UserUpdateSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("This email is already in use.")
         return value
 
-#
-# class EmailVerificationSerializer(serializers.Serializer):
-#     email = serializers.EmailField()
-#     code = serializers.UUIDField()
+
+class EmailVerificationSerializer(serializers.Serializer):
+    ...  # TODO
