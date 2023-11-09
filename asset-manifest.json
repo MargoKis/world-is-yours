@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/world-is-yours/static/css/main.774a96f5.css",
+    "main.js": "/world-is-yours/static/js/main.668b26d3.js",
+    "static/media/bg-header.png": "/world-is-yours/static/media/bg-header.3aff1de4797995cc02da.png",
+    "static/media/why-us-image-4.png": "/world-is-yours/static/media/why-us-image-4.b4a1aacbd3ac3516a61a.png",
+    "static/media/why-us-image-2.png": "/world-is-yours/static/media/why-us-image-2.1f8490b9b845e695c948.png",
+    "static/media/why-us-image-1.png": "/world-is-yours/static/media/why-us-image-1.c3fab7877948c17f01bb.png",
+    "static/media/why-us-image-5.png": "/world-is-yours/static/media/why-us-image-5.e9b8dfa31c9f18cc6fab.png",
+    "static/media/why-us-image-3.png": "/world-is-yours/static/media/why-us-image-3.88d2d30ff48e3c8a11ba.png",
+    "static/media/tent.png": "/world-is-yours/static/media/tent.24bdc1e8502cfd01aa9d.png",
+    "static/media/logo-light.svg": "/world-is-yours/static/media/logo-light.def72f63ba311399336c3e6d3d52628d.svg",
+    "static/media/logo-dark.svg": "/world-is-yours/static/media/logo-dark.f64da53225336c0b421cc39ddc86bdff.svg",
+    "static/media/icon-instagram.svg": "/world-is-yours/static/media/icon-instagram.301d9940d081b515036d207cdb454a5e.svg",
+    "static/media/icon-telegram.svg": "/world-is-yours/static/media/icon-telegram.46d45d2802a8c8bd268765cf5eb731cc.svg",
+    "static/media/button_chat.svg": "/world-is-yours/static/media/button_chat.0ddd7497c5115287da8b0082bfa72ab7.svg",
+    "static/media/icon-copyright.svg": "/world-is-yours/static/media/icon-copyright.9431ab776ae6be1135f3cf6bf318d23d.svg",
+    "index.html": "/world-is-yours/index.html",
+    "static/media/icon-youtube.svg": "/world-is-yours/static/media/icon-youtube.d3bd837f5ee092c78d0f62512b890a5a.svg",
+    "static/media/icon-heart.svg": "/world-is-yours/static/media/icon-heart.95c5825533a5fb7b264bb298dc8690ab.svg",
+    "static/media/icon-cart-dark.svg": "/world-is-yours/static/media/icon-cart-dark.d215dbdf63ddb12ea698d94841085146.svg",
+    "static/media/icon-heart-dark.svg": "/world-is-yours/static/media/icon-heart-dark.96543ac05d6b9a8b3f1053e33dfeaf06.svg",
+    "static/media/icon-sun.svg": "/world-is-yours/static/media/icon-sun.3c3bbc702d96fd3e905bec780255e052.svg",
+    "static/media/icon-tiktok.svg": "/world-is-yours/static/media/icon-tiktok.c91307ca433a7ddfdb89f4df82a78db1.svg",
+    "static/media/icon-profile-dark.svg": "/world-is-yours/static/media/icon-profile-dark.52cdfa638b79a7bfd5210d0fcde20092.svg",
+    "static/media/icon-facebook.svg": "/world-is-yours/static/media/icon-facebook.22c5222368767fbfaef015d71d59f508.svg",
+    "static/media/icon-chat.svg": "/world-is-yours/static/media/icon-chat.3e2802f4145673aea99a79181e6031e4.svg",
+    "static/media/icon-search-dark.svg": "/world-is-yours/static/media/icon-search-dark.f6fdbc2b9cc4bc20af4427dcf0da9775.svg",
+    "static/media/icon-snow.svg": "/world-is-yours/static/media/icon-snow.41f5bcf6b0f1e8c0f15f6272da0990f2.svg",
+    "static/media/arrow-up.svg": "/world-is-yours/static/media/arrow-up.3cc622e9119a37b2ca86e2c3792ca9bf.svg",
+    "static/media/icon-arrow.svg": "/world-is-yours/static/media/icon-arrow.472cc0a10a31a768c908da66aad3f36d.svg",
+    "main.774a96f5.css.map": "/world-is-yours/static/css/main.774a96f5.css.map",
+    "main.668b26d3.js.map": "/world-is-yours/static/js/main.668b26d3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.774a96f5.css",
+    "static/js/main.668b26d3.js"
+  ]
+}
