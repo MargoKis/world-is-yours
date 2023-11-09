@@ -15,6 +15,9 @@ module.exports = {
         gray: '#646464',
         blue: '#135CFB',
       },
+      width: {
+        '49': '49%', // Пример собственной ширины
+      },
       backgroundImage: {
         header: "url('./assets/img/bg-header.png')",
       },
