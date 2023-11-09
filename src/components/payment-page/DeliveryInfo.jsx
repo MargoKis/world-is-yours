@@ -1,7 +1,6 @@
 import React from "react";
 import DropDownList from "./DropDownList";
 import Button from "../common/Button";
-import Dropdown from "./DropDownList";
 
 const deliveryOptions = [
   { label: "Нова пошта", value: "Нова пошта" },
