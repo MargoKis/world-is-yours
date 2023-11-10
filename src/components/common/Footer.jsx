@@ -8,8 +8,8 @@ import IconArrowRight from "../../assets/icons/arrow-up.svg";
 const Footer = () => {
   return (
     <>
-      <footer className="flex flex-row flex-wrap bg-gray-dark justify-between pt-20 pb-10 ">
-        <div className="social-media-block ml-10 ">
+      <footer className="flex flex-row flex-wrap bg-gray-dark justify-between pt-20 pb-10">
+        <div className="social-media-block ml-10">
           <h1 className="text-white mb-5 font-inter text-20px">
             Ваша пригода починається тут
           </h1>
@@ -47,9 +47,7 @@ const Footer = () => {
                 Зв’яжись з нами
               </p>
             </a>
-            <a href="#payment">
-              <p className="text-white text-opacity-30 text-16px">не працює</p>
-            </a>
+            <a href="#payment"><p className="text-white text-opacity-30 text-16px">не працює</p></a>
           </div>
           <hr className="mb-4 text-white" />
           <ul className="reference flex flex-col gap-3">
