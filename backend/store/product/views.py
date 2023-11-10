@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from product import serializers
 from product.permissions import CanChangeReview
-from product.models import Product, ProductCategory, ProductReview, ProductSpecs, Wishlist
+from product.models import Product, ProductCategory, ProductReview, ProductSpecs, Wishlist, Basket
 
 
 class ProductViewSet(ModelViewSet):
@@ -102,3 +102,23 @@ class WishlistAPIDeleteView(DestroyAPIView):
         if self.request.user.id == self.get_object().user.id:
             return super().delete(request, *args, **kwargs)
         return Response({'error': 'You can only delete your wishlist.'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class BasketViewSet(ModelViewSet):
+    serializer_class = serializers.BasketSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Basket.objects.filter(user_id=self.request.user.id)
+
+    def update(self, request, *args, **kwargs):
+        if set(request.data.keys()) == {'quantity'}:
+            kwargs['partial'] = True
+            return super().update(request, *args, **kwargs)
+        else:
+            return Response({'error': 'You can only update the quantity field.'}, status=status.HTTP_400_BAD_REQUEST)
+
+    def create(self, request, *args, **kwargs):
+        user = self.request.user.id
+        request.data["user"] = user
+        return super().create(request, *args, **kwargs)

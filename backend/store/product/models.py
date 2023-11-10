@@ -72,7 +72,7 @@ class BasketQuerySet(models.QuerySet):
 class Basket(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     product = models.ForeignKey(to=Product, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField(default=0)
+    quantity = models.PositiveIntegerField(default=1)
     created_timestamp = models.DateTimeField(auto_now_add=True)
 
     objects = BasketQuerySet.as_manager()

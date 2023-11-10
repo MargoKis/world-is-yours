@@ -10,6 +10,7 @@ router = SimpleRouter()
 router.register('products/category', views.ProductCategoryViewSet, 'product_category')
 router.register('products/reviews', views.ProductReviewViewSet, 'product_review')
 router.register('products', views.ProductViewSet, 'product')
+router.register('baskets', views.BasketViewSet, 'basket')
 
 urlpatterns = [
     path('', include(router.urls)),
