@@ -53,7 +53,7 @@ const DropDownList = ({ options, label }) => {
         />
       </div>
       <ul
-        className="select-options text-gray absolute z-50 bg-white mt-4 px-16"
+        className="select-options text-gray z-50 mt-4 bg-white" //absolute
         style={{ display: isOpen ? "block" : "none" }}
       >
         {options.map((option) => (
@@ -63,7 +63,7 @@ const DropDownList = ({ options, label }) => {
             className={
               selectedOption === option
                 ? "is-selected border p-2 rounded-2xl mt-2 "
-                : "border p-2 rounded-2xl mt-2 w-60"
+                : "border p-2 rounded-2xl mt-2 w-1/2"
             }
           >
             {option.label}

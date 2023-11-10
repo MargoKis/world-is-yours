@@ -3,9 +3,54 @@
   padding: 0 clamp(4rem, 10vw, 20rem);
   display: grid;
   place-content: center;
+  text-align: left;
 }
 
 .reveal-type {
   font-size: 0 clamp(4rem, 10vw, 20rem);
   font-size: 62px;
 }
+
+
+@media screen and (max-width: 1024px) {
+  .changing-wrap {
+    height: 80vh;
+    padding: 0 clamp(4rem, 2vw, 20rem);
+  }
+  .reveal-type {
+    font-size: 58px;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .changing-wrap {
+    height: 70vh;
+    padding: 0 clamp(4rem, 2vw, 20rem);
+  }
+  .reveal-type {
+    font-size: 54px;
+  }
+
+}
+
+@media screen and (max-width: 640px) {
+  .changing-wrap {
+    padding: 0 clamp(4rem, 2vw, 20rem);
+    text-align: center;
+  }
+  .reveal-type {
+    font-size: 44px;
+  }
+}
+
+ @media screen and (max-width: 440px) {
+  .changing-wrap {
+    height: 80vh;
+    padding: 0 clamp(4rem, 2vw, 20rem);
+  }
+  .reveal-type {
+    font-size: 0 clamp(4rem, 10vw, 20rem);
+    font-size: 34px;
+  }
+} 
