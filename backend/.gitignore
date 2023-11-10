@@ -6,6 +6,7 @@
 /venv/
 /env/
 /store/venv/
+/store/media/
 
 # python byte-compiled
 __pycache__
