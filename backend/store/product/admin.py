@@ -1,23 +1,28 @@
 from django.contrib import admin
-from product.models import Product, ProductCategory, ProductSpecs, ProductReview
+from product.models import Product, ProductCategory, ProductSpecs, ProductReview, Wishlist
 
 
 @admin.register(Product)
-class TaskModelAdmin(admin.ModelAdmin):
+class ProductModelAdmin(admin.ModelAdmin):
     ...
 
 
 @admin.register(ProductCategory)
-class TaskModelAdmin(admin.ModelAdmin):
+class CategoryModelAdmin(admin.ModelAdmin):
     ...
 
 
 @admin.register(ProductSpecs)
-class TaskModelAdmin(admin.ModelAdmin):
+class SpecsModelAdmin(admin.ModelAdmin):
     ...
 
 
 @admin.register(ProductReview)
-class TaskModelAdmin(admin.ModelAdmin):
+class ReviewModelAdmin(admin.ModelAdmin):
+    ...
+
+
+@admin.register(Wishlist)
+class WishlistModelAdmin(admin.ModelAdmin):
     ...
 

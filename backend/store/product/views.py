@@ -2,13 +2,13 @@ from rest_framework import status
 from rest_framework.permissions import SAFE_METHODS
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, DestroyAPIView
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 
 from product import serializers
 from product.permissions import CanChangeReview
-from product.models import Product, ProductCategory, ProductReview, ProductSpecs
+from product.models import Product, ProductCategory, ProductReview, ProductSpecs, Wishlist
 
 
 class ProductViewSet(ModelViewSet):
@@ -74,3 +74,31 @@ class ProductSpecListAPIView(ListCreateAPIView):
         product_id = self.kwargs.get('product_id')
         request.data["product_id"] = product_id
         return super().create(request, *args, **kwargs)
+
+
+class WishlistAPIListView(ListCreateAPIView):
+    serializer_class = serializers.WishlistSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user.id
+        return Wishlist.objects.filter(user=user)
+
+    def create(self, request, *args, **kwargs):
+        user = self.request.user.id
+        request.data["user"] = user
+        return super().create(request, *args, **kwargs)
+
+
+class WishlistAPIDeleteView(DestroyAPIView):
+    lookup_field = "id"
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user.id
+        return Wishlist.objects.filter(user=user)
+
+    def delete(self, request, *args, **kwargs):
+        if self.request.user.id == self.get_object().user.id:
+            return super().delete(request, *args, **kwargs)
+        return Response({'error': 'You can only delete your wishlist.'}, status=status.HTTP_400_BAD_REQUEST)

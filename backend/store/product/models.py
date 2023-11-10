@@ -92,3 +92,13 @@ class Basket(models.Model):
         }
         return basket_item
 
+
+class Wishlist(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    product = models.ForeignKey(to=Product, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'Wishlist for {self.user.username} | Product: {self.product.name}'
+
+    class Meta:
+        unique_together = "user", "product"
