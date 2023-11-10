@@ -1,42 +1,74 @@
+from rest_framework import status
 from rest_framework.permissions import SAFE_METHODS
+from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
-from product.serializers import ProductSerializer, \
-                                ProductCategorySerializer, \
-                                ProductReviewSerializer, \
-                                ProductSpecSerializer
+
+from product import serializers
+from product.permissions import CanChangeReview
 from product.models import Product, ProductCategory, ProductReview, ProductSpecs
 
 
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
-    serializer_class = ProductSerializer
+    serializer_class = serializers.ProductSerializer
+
+    def get_permissions(self):
+        if self.request.method not in SAFE_METHODS:
+            self.permission_classes = [IsAdminUser]
+        return super().get_permissions()
 
 
 class ProductCategoryViewSet(ModelViewSet):
     queryset = ProductCategory.objects.all()
-    serializer_class = ProductCategorySerializer
+    serializer_class = serializers.ProductCategorySerializer
+
+    def get_permissions(self):
+        if self.request.method not in SAFE_METHODS:
+            self.permission_classes = [IsAdminUser]
+        return super().get_permissions()
 
 
 class ProductReviewViewSet(ModelViewSet):
     queryset = ProductReview.objects.all()
-    serializer_class = ProductReviewSerializer
+    serializer_class = serializers.ProductReviewSerializer
+    permission_classes = [IsAuthenticated, CanChangeReview]
+
+    def create(self, request, *args, **kwargs):
+        user = request.user.id
+        request.data["user"] = user
+        return super().create(request, *args, **kwargs)
+
+    def update(self, request, *args, **kwargs):
+        if set(request.data.keys()) == {'comment'}:
+            # Встановлюємо partial=True для оновлення частково
+            kwargs['partial'] = True
+            return super().update(request, *args, **kwargs)
+        else:
+            return Response({'error': 'You can only update the comment field.'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class ProductSpecDetailAPIView(RetrieveUpdateDestroyAPIView):
     queryset = ProductSpecs
-    serializer_class = ProductSpecSerializer
+    serializer_class = serializers.ProductSpecSerializer
     lookup_field = "id"
+    permission_classes = [IsAdminUser]
 
 
 class ProductSpecListAPIView(ListCreateAPIView):
-    serializer_class = ProductSpecSerializer
+    serializer_class = serializers.ProductSpecSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         product_id = self.kwargs.get('product_id')
         return ProductSpecs.objects.filter(product_id=product_id)
+
+    def get_permissions(self):
+        if self.request.method not in SAFE_METHODS:
+            self.permission_classes = [IsAdminUser]
+        return super().get_permissions()
 
     def create(self, request, *args, **kwargs):
         product_id = self.kwargs.get('product_id')
