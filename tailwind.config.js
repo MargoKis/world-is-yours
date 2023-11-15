@@ -12,11 +12,12 @@ module.exports = {
         },
         grayLight: "#C2C1C1",
         grayDark: "#202020",
-        gray: '#646464',
+        gray: '#88888',
         blue: '#135CFB',
       },
       width: {
         '49': '49%', 
+        '21': '21rem',
       },
       backgroundImage: {
         header: "url('./assets/img/bg-header.png')",

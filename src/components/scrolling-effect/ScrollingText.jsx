@@ -45,7 +45,7 @@ function ScrollingText() {
 
   return (
     <div className="changing-wrap">
-      <p className="reveal-type" data-bg-color="gray" data-fg-color="#000">
+      <p className="reveal-type font-raleway font-600" data-bg-color="gray" data-fg-color="#000">
         Забудьте про незручності в дорозі! <br/> 
         Тут є великий вибір товарів для автобудинку, які роблять кожну подорож
         комфортною та приємною.
