@@ -53,7 +53,7 @@ const DropDownList = ({ options, label }) => {
         />
       </div>
       <ul
-        className="select-options text-gray  z-50 mt-4 bg-white" //absolute
+        className="select-options text-gray z-50 mt-4 bg-white" //absolute
         style={{ display: isOpen ? "block" : "none" }}
       >
         {options.map((option) => (
@@ -75,88 +75,3 @@ const DropDownList = ({ options, label }) => {
 };
 
 export default DropDownList;
-
-
-
-
-
-
-
-
-// import React, { useState } from "react";
-// import ArrowDown from "../../assets/icons/arrow-up.svg";
-
-// const DropDownList = ({ label, options }) => {
-//   const [isOpen, setIsOpen] = useState(false);
-//   const [selectedOption, setSelectedOption] = useState(null);
-
-//   const toggleSelect = () => {
-//     setIsOpen(!isOpen);
-//   };
-
-//   const handleSelect = (option) => {
-//     setSelectedOption(option.label);
-//     setIsOpen(false);
-//   };
-
-//   return (
-//     <div className="space-y-4 relative">
-//       <div className={`relative w-full ${isOpen ? "z-50" : ""}`}>
-//         <div
-//           onClick={toggleSelect}
-//           className="relative flex items-center w-full bg-white border border-gray-300 rounded p-2 cursor-pointer"
-//         >
-//           {selectedOption ? (
-//             <div className="text-custom-black px-2">{selectedOption}</div>
-//           ) : (
-//             <div className="text-gray-500 px-2">{label}</div>
-//           )}
-//           <img
-//             src={ArrowDown}
-//             alt="arrow down"
-//             className={`text-custom-black w-4 h-4 ml-2 transform absolute right-2 top-2 ${
-//               isOpen ? "rotate-0" : "rotate-180"
-//             } transition-transform`}
-//           />
-//         </div>
-//         <ul
-//           className={`select-options text-gray absolute w-full bg-white border border-gray-300 rounded p-2 mt-2 px-2 ${
-//             isOpen ? "block" : "hidden"
-//           }`}
-//         >
-//           {options.map((option) => (
-//             <li
-//               key={option.value}
-//               onClick={() => handleSelect(option)}
-//               className={
-//                 selectedOption === option.label
-//                   ? "is-selected cursor-pointer"
-//                   : "cursor-pointer"
-//               }
-//             >
-//               {option.label}
-//             </li>
-//           ))}
-//         </ul>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default DropDownList;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

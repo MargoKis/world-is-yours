@@ -18,7 +18,7 @@ const NewArrivalsCardList = () => {
       <h1 className="flex items-center justify-center mt-20 mb-10 font-raleway text-custom-black text-30px">
         Новинки
       </h1>
-      <div className="flex flex-wrap justify-around mb-20 ml-3 mr-3">
+      <div className="flex flex-wrap justify-around mb-20 mx-6">
         {cardData.slice(0, visibleCards).map((item, name) => (
           <Card data={item} key={name} />
         ))}
