@@ -54,5 +54,3 @@ API works on [localhost:8000](http://localhost:8000/)
 
 * api/wishlist/: List&Create wishlists
 * api/wishlist/<int:wishlist_id>/: DESTROY current wishlist
-
-
