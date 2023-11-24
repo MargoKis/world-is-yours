@@ -15,3 +15,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+::-webkit-scrollbar {
+  width: 0; /* Убирает ширину скроллбара */
+  height: 0; /* Убирает высоту скроллбара */
+}
+
+/* Скрывает скроллбар для Firefox */
+/* В Firefox нужно использовать overflow и стилизацию через scrollbar-width и scrollbar-color */
+/* Это позволит убрать скроллбар и при этом сохранить его функциональность */
+/* Необходимо применять к контейнеру, в котором вы хотите убрать скроллбар */
+.scrolnan {
+  overflow: auto;
+  scrollbar-width: none; /* Убирает ширину скроллбара */
+  scrollbar-color: transparent transparent; /* Убирает цвет скроллбара */
+}
+
+/* Указывает цвет полосы скролла */
+.scrolnan::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}

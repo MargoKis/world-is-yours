@@ -14,18 +14,18 @@ const paymentOptions = [
 const DeliveryInfo = ({ handleDeliveryClick, handleContactInfoClick }) => {
   return (
     <div className="flex flex-col">
-      <h1 className="text-grayDark font-inter font-semibold text-35px mb-10">
+      <h1 className="text-grayDark font-raleway font-semibold text-35px mb-10">
         Оформлення замовлення
       </h1>
       <div className="flex flex-row justify-between mb-10">
         <p
-          className="text-gray font-inter font-semibold text-20px"
+          className="text-gray font-raleway font-semibold text-20px"
           onClick={handleContactInfoClick}
         >
           Контактна інформація
         </p>
         <p
-          className="font-inter font-semibold text-20px  text-blue"
+          className="font-raleway font-semibold text-20px text-blue"
           onClick={handleDeliveryClick}
         >
           Доставка

@@ -9,6 +9,7 @@ import PlaycingAnOrder from "../components/payment-page/PlacingAnOrder";
 import PreviousPage from "../components/common/PreviousPage";
 
 const PaymentPage = () => {
+  
   return (
     <>
       <DonateBanner />

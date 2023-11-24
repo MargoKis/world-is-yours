@@ -12,7 +12,7 @@ module.exports = {
         },
         grayLight: "#C2C1C1",
         grayDark: "#202020",
-        gray: '#88888',
+        gray: '#888888',
         blue: '#135CFB',
       },
       width: {

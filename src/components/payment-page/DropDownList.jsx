@@ -62,8 +62,8 @@ const DropDownList = ({ options, label }) => {
             onClick={() => handleSelect(option)}
             className={
               selectedOption === option
-                ? "is-selected border p-2 rounded-2xl mt-2 "
-                : "border p-2 rounded-2xl mt-2 w-1/2"
+                ? "is-selected border p-2 rounded-2xl mt-2 w-1/2"
+                : "border p-2 rounded-2xl mt-2 "
             }
           >
             {option.label}

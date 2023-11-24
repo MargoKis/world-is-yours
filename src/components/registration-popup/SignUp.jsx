@@ -4,8 +4,9 @@ import { useEffect } from "react";
 import styles from "./signup.module.css";
 import Input from "../common/Input";
 import Button from "../common/Button";
+import LogIn from "./LogIn";
 
-const SignUp = ({ isOpen, onClose }) => {
+const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
@@ -24,16 +25,29 @@ const SignUp = ({ isOpen, onClose }) => {
     setPasswordError("");
   };
 
+  // const phoneRegex = /^(\+?38)?\s*(\d{3}\s?){2}\d{2}\s?\d{2}$/;
+
+  const validateEmail = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const nameSurnameRegex = /^[^\d\s]{3,16}$/;
+
   const validateSignUpForm = () => {
     resetErrors();
 
-    if (name === "") {
-      setNameError("Name can't be blank");
+    if (!nameSurnameRegex.test(name)) {
+      setNameError(
+        "Name should be 3-16 characters long and should not contain numbers"
+      );
       return false;
     }
 
-    if (surname === "" ) {
-      setSurnameError("Surname can't be blank");
+    if (!nameSurnameRegex.test(surname)) {
+      setSurnameError(
+        "Surname should be 3-16 characters long and should not contain numbers"
+      );
       return false;
     }
 
@@ -42,17 +56,17 @@ const SignUp = ({ isOpen, onClose }) => {
       return false;
     }
 
-    if (password.length < 6) {
-      setPasswordError("Password must be at least 6 characters");
+    // if (!phoneRegex.test(tel)) {
+    //   setTelError("Invalid phone number. Please use format XXX XXX XX XX");
+    //   return false;
+    // }
+
+    if (password.length < 8) {
+      setPasswordError("Password must be at least 8 characters");
       return false;
     }
 
     return true;
-  };
-
-  const validateEmail = (email) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
   };
 
   useEffect(() => {
@@ -80,7 +94,7 @@ const SignUp = ({ isOpen, onClose }) => {
               className={styles.form}
               onSubmit={(e) => e.preventDefault() || validateSignUpForm()}
             >
-              <label for="name"></label>
+              <label htmlFor="name"></label>
               <Input
                 classNameInput={styles.input}
                 typeInput="text"
@@ -93,9 +107,9 @@ const SignUp = ({ isOpen, onClose }) => {
               />
               <div className={styles.error}>{nameError}</div>
 
-              <label for="surname"></label>
+              <label htmlFor="surname"></label>
               <Input
-               classNameInput={styles.input}
+                classNameInput={styles.input}
                 typeInput="text"
                 id="surname"
                 nameInput="surname"
@@ -106,9 +120,9 @@ const SignUp = ({ isOpen, onClose }) => {
               />
               <div className={styles.error}>{surnameError}</div>
 
-              <label for="tel"></label>
+              <label htmlFor="tel"></label>
               <Input
-               classNameInput={styles.input}
+                classNameInput={styles.input}
                 typeInput="tel"
                 id="tel"
                 nameInput="tel"
@@ -119,9 +133,9 @@ const SignUp = ({ isOpen, onClose }) => {
               />
               <div className={styles.error}>{telError}</div>
 
-              <label for="email"></label>
+              <label htmlFor="email"></label>
               <Input
-               classNameInput={styles.input}
+                classNameInput={styles.input}
                 typeInput="email"
                 id="email"
                 nameInput="email"
@@ -132,9 +146,9 @@ const SignUp = ({ isOpen, onClose }) => {
               />
               <div className={styles.error}>{emailError}</div>
 
-              <label for="password"></label>
+              <label htmlFor="password"></label>
               <Input
-               classNameInput={styles.input}
+                classNameInput={styles.input}
                 typeInput="password"
                 id="password"
                 nameInput="password"
@@ -144,12 +158,26 @@ const SignUp = ({ isOpen, onClose }) => {
                 required
               />
               <div className={styles.error}>{passwordError}</div>
-              
-              <p className={styles.remindPas}>Нагадати пароль</p>
+
+              <p className={styles.remindPas} onClick={openRemindPass}>
+                Нагадати пароль
+              </p>
               <Button classNameBtn={styles.btn} type="submit">
                 Зареєструватися
               </Button>
-              <p style={{color: '#202020'}}>Вже є акаунт? <span style={{textDecoration: 'underline', color: '#888888'}}>Увійдіть</span></p>
+              <p style={{ color: "#202020" }}>
+                Вже є акаунт?{" "}
+                <span
+                  style={{
+                    textDecoration: "underline",
+                    color: "#888888",
+                    cursor: "pointer",
+                  }}
+                  onClick={openLogin}
+                >
+                  Увійдіть
+                </span>
+              </p>
             </form>
           </div>
         </div>
