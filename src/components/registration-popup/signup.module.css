@@ -27,6 +27,22 @@
   font-weight: 600;
   margin-bottom: 10%;
 }
+
+.titleWrap {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: center;
+}
+
+.closeIcon {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  margin-top: -3px;
+  cursor: pointer;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -62,7 +78,7 @@
   left: 90px;
 }
 
-.btn {
+.btn, .remind {
   color: rgb(255, 255, 255);
   box-sizing: border-box;
   border: 1px solid #202020;
@@ -75,4 +91,8 @@
   font-weight: 700;
   width: 86%;
   margin-bottom: 10%;
+}
+
+.remind {
+  margin-bottom: 30%;
 }

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import styles from "./signup.module.css";
 import Input from "../common/Input";
 import Button from "../common/Button";
-import LogIn from "./LogIn";
+import closeIcon from "../../assets/icons/icon-close.svg";
 
 const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
   const [name, setName] = useState("");
@@ -21,11 +21,15 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
   const resetErrors = () => {
     setNameError("");
     setSurnameError("");
+    setTelError("");
     setEmailError("");
     setPasswordError("");
   };
 
-  // const phoneRegex = /^(\+?38)?\s*(\d{3}\s?){2}\d{2}\s?\d{2}$/;
+  const validatePhone = (tel) => {
+    const regex = /^\d{10,12}$/;
+    return regex.test(tel);
+  };
 
   const validateEmail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -56,10 +60,11 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
       return false;
     }
 
-    // if (!phoneRegex.test(tel)) {
-    //   setTelError("Invalid phone number. Please use format XXX XXX XX XX");
-    //   return false;
-    // }
+   
+    if (!validatePhone(tel)) {
+      setTelError("Invalid phone number. Please use format XXX XXX XX XX");
+      return false;
+    }
 
     if (password.length < 8) {
       setPasswordError("Password must be at least 8 characters");
@@ -68,6 +73,7 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
 
     return true;
   };
+
 
   useEffect(() => {
     if (isOpen) {
@@ -89,7 +95,10 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
             className={`${styles.popup} ${isOpen ? styles.open : ""}`}
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 className={styles.title}>Реєстрація</h2>
+            <div className={styles.titleWrap}>
+              <h2 className={styles.title}>Реєстрація</h2>
+              <img className={styles.closeIcon} src={closeIcon} alt="close icon" onClick={onClose}/>
+            </div>
             <form
               className={styles.form}
               onSubmit={(e) => e.preventDefault() || validateSignUpForm()}
@@ -102,7 +111,10 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
                 nameInput="name"
                 valueInput={name}
                 placeholderInput="Ім'я"
-                onChangeInput={(e) => setName(e.target.value)}
+                onChangeInput={(e) => {
+                  setName(e.target.value);
+                  validateSignUpForm(); // Викликати функцію валідації при зміні значення
+                }}
                 required
               />
               <div className={styles.error}>{nameError}</div>
@@ -115,7 +127,10 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
                 nameInput="surname"
                 valueInput={surname}
                 placeholderInput="Прізвище"
-                onChangeInput={(e) => setSurname(e.target.value)}
+                onChangeInput={(e) => {
+                  setSurname(e.target.value);
+                  validateSignUpForm(); // Викликати функцію валідації при зміні значення
+                }}
                 required
               />
               <div className={styles.error}>{surnameError}</div>
@@ -128,7 +143,10 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
                 nameInput="tel"
                 valueInput={tel}
                 placeholderInput="Номер телефону"
-                onChangeInput={(e) => setTel(e.target.value)}
+                onChangeInput={(e) => {
+                  setTel(e.target.value);
+                  validateSignUpForm(); // Викликати функцію валідації при зміні значення
+                }}
                 required
               />
               <div className={styles.error}>{telError}</div>
@@ -141,7 +159,10 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
                 nameInput="email"
                 value={email}
                 placeholderInput="Ел.пошта"
-                onChangeInput={(e) => setEmail(e.target.value)}
+                onChangeInput={(e) => {
+                  setEmail(e.target.value);
+                  validateSignUpForm(); // Викликати функцію валідації при зміні значення
+                }}
                 required
               />
               <div className={styles.error}>{emailError}</div>
@@ -154,7 +175,10 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
                 nameInput="password"
                 value={password}
                 placeholderInput="Пароль"
-                onChangeInput={(e) => setPassword(e.target.value)}
+                onChangeInput={(e) => {
+                  setPassword(e.target.value);
+                  validateSignUpForm(); // Викликати функцію валідації при зміні значення
+                }}
                 required
               />
               <div className={styles.error}>{passwordError}</div>

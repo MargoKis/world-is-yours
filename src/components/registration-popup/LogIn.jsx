@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import styles from "./signup.module.css";
 import Input from "../common/Input";
 import Button from "../common/Button";
-import SignUp from "./SignUp";
+import closeIcon from "../../assets/icons/icon-close.svg";
 
 const LogIn = ({ isOpen, onClose, openSignUp, openRemindPass }) => {
   const [email, setEmail] = useState("");
@@ -57,7 +57,10 @@ const LogIn = ({ isOpen, onClose, openSignUp, openRemindPass }) => {
             className={`${styles.popup} ${isOpen ? styles.open : ""}`}
             onClick={(e) => e.stopPropagation()}
           >
+             <div className={styles.titleWrap}>
             <h2 className={styles.title}>Вхід</h2>
+            <img className={styles.closeIcon} src={closeIcon} alt="close icon" onClick={onClose}/>
+            </div>
             <form
               className={styles.form}
               onSubmit={(e) => e.preventDefault() || validateSignUpForm()}

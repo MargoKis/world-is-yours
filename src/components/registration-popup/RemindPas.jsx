@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import styles from "./signup.module.css";
 import Input from "../common/Input";
 import Button from "../common/Button";
+import closeIcon from "../../assets/icons/icon-close.svg";
 
 const RemindPas = ({ isOpen, onClose, openLogin }) => {
   const [email, setEmail] = useState("");
@@ -48,7 +49,10 @@ const RemindPas = ({ isOpen, onClose, openLogin }) => {
             className={`${styles.popup} ${isOpen ? styles.open : ""}`}
             onClick={(e) => e.stopPropagation()}
           >
+             <div className={styles.titleWrap}>
             <h2 className={styles.title}>Нагадати пароль</h2>
+            <img className={styles.closeIcon} src={closeIcon} alt="close icon" onClick={onClose}/>
+            </div>
             <form
               className={styles.form}
               onSubmit={(e) => e.preventDefault() || validateSignUpForm()}
@@ -65,9 +69,7 @@ const RemindPas = ({ isOpen, onClose, openLogin }) => {
                 required
               />
               <div className={styles.error}>{emailError}</div>
-
-              <p className={styles.remindPas}>Нагадати пароль</p>
-              <Button classNameBtn={styles.btn} type="submit">
+              <Button classNameBtn={styles.remind} type="submit">
                 Надіслати код
               </Button>
               <p style={{ color: "#202020" }}>
