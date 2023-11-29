@@ -37,6 +37,9 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Endpoint:** `/api/auth/`
 - **Method:** `POST`
 - **Description:** Authorization with username and password. Accepts username and password, returns a token.
+- **Parameters:**
+  - username (string)
+  - password (string)
 
 ## 3. Users
 ### 3.1 List Users
