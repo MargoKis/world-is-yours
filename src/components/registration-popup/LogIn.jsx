@@ -4,6 +4,11 @@ import styles from "./signup.module.css";
 import Input from "../common/Input";
 import Button from "../common/Button";
 import closeIcon from "../../assets/icons/icon-close.svg";
+import Facebook from "../../assets/icons/media-icons/facebook-color.svg";
+import Google from "../../assets/icons/media-icons/google-color.svg";
+import Apple from "../../assets/icons/media-icons/apple-color.svg";
+import {auth, facebookProvider, googleProvider} from './config'
+import { signInWithPopup } from "firebase/auth";
 
 const LogIn = ({ isOpen, onClose, openSignUp, openRemindPass }) => {
   const [email, setEmail] = useState("");
@@ -95,6 +100,30 @@ const LogIn = ({ isOpen, onClose, openSignUp, openRemindPass }) => {
               <Button classNameBtn={styles.btn} type="submit">
                 Увійти
               </Button>
+              <div className="flex flex-row justify-between">
+                <hr className={styles.line} />
+                <p className="text-center text-gray">або за допомогою</p>
+                <hr className={styles.line} />
+              </div>
+              <div className="flex flex-row gap-6 mt-6 mb-6">
+                <img
+                  src={Facebook}
+                  className={styles.mediaIcons}
+                  alt="icon facebook"
+                  // onClick={signUpWithFacebook }
+                />
+                <img
+                  src={Google}
+                  className={styles.mediaIcons}
+                  alt="icon google"
+                  // onClick={signUpWithGoogle}
+                />
+                <img
+                  src={Apple}
+                  className={styles.mediaIcons}
+                  alt="icon apple"
+                />
+              </div>
               <p style={{ color: "#202020" }}>
                 Ще немає акаунту?{" "}
                 <span

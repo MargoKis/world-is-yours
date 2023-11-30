@@ -1,12 +1,40 @@
-// SignUp.js
 import React, { useState } from "react";
 import { useEffect } from "react";
 import styles from "./signup.module.css";
 import Input from "../common/Input";
 import Button from "../common/Button";
 import closeIcon from "../../assets/icons/icon-close.svg";
+import Facebook from "../../assets/icons/media-icons/facebook-color.svg";
+import Google from "../../assets/icons/media-icons/google-color.svg";
+import Apple from "../../assets/icons/media-icons/apple-color.svg";
+import {auth } from './config'
+import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
+
+
+  const signInWithFacebook = () => {
+    const provider =  new FacebookAuthProvider();
+    signInWithPopup(auth, provider)
+    .then((re) => {
+      console.log(re)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  };
+
+  const signInWithGoogle = () => {
+    const provider =  new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+    .then((re) => {
+      console.log(re)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  };
+
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
@@ -60,7 +88,6 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
       return false;
     }
 
-   
     if (!validatePhone(tel)) {
       setTelError("Invalid phone number. Please use format XXX XXX XX XX");
       return false;
@@ -73,7 +100,6 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
 
     return true;
   };
-
 
   useEffect(() => {
     if (isOpen) {
@@ -97,7 +123,12 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
           >
             <div className={styles.titleWrap}>
               <h2 className={styles.title}>Реєстрація</h2>
-              <img className={styles.closeIcon} src={closeIcon} alt="close icon" onClick={onClose}/>
+              <img
+                className={styles.closeIcon}
+                src={closeIcon}
+                alt="close icon"
+                onClick={onClose}
+              />
             </div>
             <form
               className={styles.form}
@@ -189,6 +220,32 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
               <Button classNameBtn={styles.btn} type="submit">
                 Зареєструватися
               </Button>
+
+              <div className="flex flex-row justify-between">
+                <hr className={styles.line} />
+                <p className="text-center text-gray">або за допомогою</p>
+                <hr className={styles.line} />
+              </div>
+              <div className="flex flex-row gap-6 mt-6 mb-6">
+                <img
+                  src={Facebook}
+                  className={styles.mediaIcons}
+                  alt="icon facebook"
+                  onClick={signInWithFacebook }
+                />
+                <img
+                  src={Google}
+                  className={styles.mediaIcons}
+                  alt="icon google"
+                  onClick={signInWithGoogle}
+                />
+                <img
+                  src={Apple}
+                  className={styles.mediaIcons}
+                  alt="icon apple"
+                />
+              </div>
+
               <p style={{ color: "#202020" }}>
                 Вже є акаунт?{" "}
                 <span

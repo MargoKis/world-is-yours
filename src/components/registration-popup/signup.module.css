@@ -96,3 +96,15 @@
 .remind {
   margin-bottom: 30%;
 }
+
+.mediaIcons {
+  width: 50px;
+  cursor: pointer;
+}
+
+.line {
+  width: 80px;
+  color: gray;
+  height: 1px;
+  margin-top: 13px;
+}
