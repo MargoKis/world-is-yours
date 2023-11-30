@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../common/Card";
 import cardData from "../../data";
+import axios from 'axios'
 
 const FavoritesCardList = () => {
   const favoriteCards = cardData.slice(0, 8);
+
+  const [products, setProducts] = useState();
+
+  useEffect(() => {
+    const API = 'http://localhost:8000/api/products/'
+    axios
+      .get(API)
+      .then((response) => {
+        const favourites = response.data;
+        setProducts(favourites)
+      }, [setProducts])
+  })
 
   return (
     <div className="text-grayLight">
