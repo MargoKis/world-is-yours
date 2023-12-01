@@ -25,6 +25,7 @@ module.exports = {
       },
       backgroundImage: {
         header: "url('./assets/img/bg-header.png')",
+        page404: "url('./assets/icons/notFound404.png')"
       },
       backgroundColor: {
         "gray-dark": "#202020",
