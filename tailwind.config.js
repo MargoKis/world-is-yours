@@ -14,6 +14,10 @@ module.exports = {
         grayDark: "#202020",
         gray: '#888888',
         blue: '#135CFB',
+        textLight: '#515151',
+      },
+      borderColor: {
+        'black': "#202020", 
       },
       width: {
         '49': '49%', 
@@ -26,8 +30,13 @@ module.exports = {
         "gray-dark": "#202020",
       },
       fontFamily: {
-        inter: ["Inter", "sans"],
+        // inter: ["Inter", "sans"],
         raleway: ["Raleway", "sans"],
+      },
+      fontWeight: {
+        light: 300, 
+        normal: 400,
+        bold: 700,
       },
       fontSize: { 
         '16px': '16px',

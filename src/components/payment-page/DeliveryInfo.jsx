@@ -19,7 +19,7 @@ const DeliveryInfo = ({ handleDeliveryClick, handleContactInfoClick }) => {
       </h1>
       <div className="flex flex-row justify-between mb-10">
         <p
-          className="text-gray font-raleway font-semibold text-20px"
+          className="text-gray font-raleway font-semibold text-20px cursor-pointer"
           onClick={handleContactInfoClick}
         >
           Контактна інформація
@@ -36,12 +36,12 @@ const DeliveryInfo = ({ handleDeliveryClick, handleContactInfoClick }) => {
       <DropDownList options={paymentOptions} label="Спосіб оплати" />
 
       <textarea
-        className="max-w-md px-3 py-2 border rounded-md text-gray resize-none"
-        style={{ height: "120px" }}
+        className="max-w-md px-3 py-2 border rounded-md resize-none mt-4 "
+        style={{ height: "160px" }}
         placeholder="Введіть додаткову інформацію до замовлення..."
       ></textarea>
       <Button
-        classNameBtn="max-w-md bg-gray-dark mt-10 p-4 border rounded-2xl font-raleway font-700 text-18px text-white"
+        classNameBtn="max-w-md bg-gray-dark mt-10 p-4 border rounded-xl font-raleway font-700 text-18px text-white border-black"
         nameBtn="submitForm"
         valueBtn="submit"
       >

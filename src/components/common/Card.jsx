@@ -52,10 +52,10 @@ const Card = ({ data }) => {
       <div className="flex flex-col p-5 justify-between flex-grow">
         <div>
           <p className="text-custom-black font-semibold">{data.name}</p>
-          <p className="text-grayLight">{data.mass}</p>
+          <p className="text-custom-black ">{data.price}</p>
         </div>
         <div className="flex justify-between items-center">
-          <p className="text-custom-black">{data.gender}</p>
+          <p className="text-custom-black">{data.description}</p>
           <div className="flex items-center">
             {Array.isArray(data.colors) &&
               data.colors.map((color, index) => (

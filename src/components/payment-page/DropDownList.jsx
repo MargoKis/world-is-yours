@@ -37,23 +37,24 @@ const DropDownList = ({ options, label }) => {
       ref={dropdownRef}
       className={`select ${
         isOpen ? "active" : ""
-      } text-custom-black border rounded-2xl max-w-md p-3 mb-10`}
+      } font-light border rounded-xl max-w-md p-3 border-black mb-4`}
     >
       <div
-        className="select-styled text-custom-black flex flex-row justify-between max-w-md"
+        className="select-styled font-light flex flex-row justify-between max-w-md "
         onClick={toggleSelect}
       >
         {selectedOption ? selectedOption.label : label}
         <img
           src={ArrowDown}
           alt="arrow down"
-          className={`text-custom-black w-4 mr-2 transform ${
+          className={`font-light w-4 mr-2 transform cursor-pointer ${
             isOpen ? "rotate-0" : "rotate-180"
           } transition-transform`}
+          
         />
       </div>
       <ul
-        className="select-options text-gray z-50 mt-4 bg-white" //absolute
+        className="select-options font-light z-50 mt-4 bg-white" //absolute
         style={{ display: isOpen ? "block" : "none" }}
       >
         {options.map((option) => (
@@ -62,8 +63,8 @@ const DropDownList = ({ options, label }) => {
             onClick={() => handleSelect(option)}
             className={
               selectedOption === option
-                ? "is-selected border p-2 rounded-2xl mt-2 w-1/2"
-                : "border p-2 rounded-2xl mt-2 "
+                ? "is-selected border p-2 rounded-xl mt-2 w-1/2 border-black cursor-pointer border-bold"
+                : "border p-2 rounded-xl mt-2 border-black cursor-pointer"
             }
           >
             {option.label}

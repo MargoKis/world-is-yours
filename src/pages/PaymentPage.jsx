@@ -15,7 +15,7 @@ const PaymentPage = () => {
       <DonateBanner />
       <Header />
       <PreviousPage>Кошик</PreviousPage>
-       <div className="flex flex-row justify-center gap-32 mt-20 mb-20"> 
+       <div className="flex flex-row flex-wrap justify-center gap-36 mt-14 mb-20"> 
         <PlaycingAnOrder />
         <UserOrder />
       </div> 

@@ -44,7 +44,6 @@ const ContactInfo = ({ handleDeliveryClick, handleContactInfoClick }) => {
       setPhoneError("Phone number field is required");
       return false;
     }
-    // Add your phone number validation logic here
     setPhoneError("");
     return true;
   };
@@ -54,7 +53,6 @@ const ContactInfo = ({ handleDeliveryClick, handleContactInfoClick }) => {
       setEmailError("Email field is required");
       return false;
     }
-    // Add your email validation logic here
     setEmailError("");
     return true;
   };
@@ -87,43 +85,44 @@ const ContactInfo = ({ handleDeliveryClick, handleContactInfoClick }) => {
           Контактна інформація
         </p>
         <p
-          className="text-gray font-raleway font-semibold text-20px"
+          className="text-gray font-raleway font-semibold text-20px cursor-pointer"
           onClick={handleDeliveryClick}
         >
           Доставка
         </p>
       </div>
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-row gap-8">
+        <div className="flex flex-row justify-between">
           <div className="flex flex-col">
             <Input
-              classNameInput="text-custom-black border rounded-2xl max-w-md p-3 font-raleway font-300"
+              classNameInput="font-light text-textLight border rounded-xl p-3 w-52 border-black" // font-raleway
               typeInput="text"
               placeholderInput="Ім’я"
               value={name}
               onChangeInput={(e) => setName(e.target.value)}
+              className="font-light"
             />
             {nameError && (
-              <p className="text-red-400 text-xs w-1/2">{nameError}</p>
+              <p className="text-red-400 text-xs w-1/2 ml-2">{nameError}</p>
             )}
           </div>
           <div className="flex flex-col">
             <Input
-              classNameInput="text-custom-black border rounded-2xl max-w-md p-3 font-raleway font-300"
+              classNameInput="text-textLight border rounded-xl p-3 font-light w-52  border-black"
               typeInput="text"
               placeholderInput="Прізвище"
               value={surname}
               onChangeInput={(e) => setSurname(e.target.value)}
             />
             {surnameError && (
-              <p className="text-red-400 text-xs w-1/2">{surnameError}</p>
+              <p className="text-red-400 text-xs w-1/2 ml-2">{surnameError}</p>
             )}
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 mt-10">
+        <div className="flex flex-col mt-8">
           <Input
-            classNameInput="text-custom-black border rounded-2xl max-w-md p-3 font-raleway font-300"
+            classNameInput="text-textLight border rounded-xl max-w-md p-3 mb-3 font-light w-full  border-black"
             typeInput="tel"
             placeholderInput="Номер телефону"
             value={phone}
@@ -131,36 +130,38 @@ const ContactInfo = ({ handleDeliveryClick, handleContactInfoClick }) => {
           />
           {phoneError && <p className="text-red-500 text-xs">{phoneError}</p>}
           <Input
-            classNameInput="text-custom-black border rounded-2xl max-w-md p-3 font-raleway font-300"
+            classNameInput="text-textLight border rounded-xl max-w-md p-3 font-light"
             typeInput="email"
             placeholderInput="Електрона пошта"
             value={email}
             onChangeInput={(e) => setEmail(e.target.value)}
           />
-          {emailError && <p className="text-red-500 text-xs">{emailError}</p>}
+          {emailError && (
+            <p className="text-red-500 text-xs ml-2">{emailError}</p>
+          )}
         </div>
 
-        <div className="flex flex-row gap-8 mt-10">
-          <div className="flex flex-col gap-4">
+        <div className="flex flex-row mt-8 justify-between">
+          <div className="flex flex-col gap-3">
             <Input
-              classNameInput="text-custom-black border rounded-2xl max-w-md p-3 font-raleway font-300"
+              classNameInput="text-textLight border rounded-xl max-w-md p-3 font-light w-52  border-black"
               typeInput="text"
               placeholderInput="Країна"
             />
             <Input
-              classNameInput="text-custom-black border rounded-2xl max-w-md p-3 font-raleway font-300"
+              classNameInput="text-textLight border rounded-xl max-w-md p-3 font-light w-52  border-black"
               typeInput="text"
               placeholderInput="Адреса"
             />
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-3">
             <Input
-              classNameInput="text-custom-black border rounded-2xl max-w-md p-3 font-raleway font-300"
+              classNameInput="text-textLight border rounded-xl max-w-md p-3 font-light w-52  border-black"
               typeInput="text"
               placeholderInput="Населений пункт"
             />
             <Input
-              classNameInput="text-custom-black border rounded-2xl max-w-md p-3 font-raleway font-300"
+              classNameInput="text-textLight border rounded-xl max-w-md p-3 font-light w-52  border-black"
               typeInput="text"
               placeholderInput="Поштовий індекс"
             />
@@ -168,14 +169,14 @@ const ContactInfo = ({ handleDeliveryClick, handleContactInfoClick }) => {
         </div>
 
         <Button
-          classNameBtn="w-full bg-gray-dark mt-10 p-3 border rounded-2xl font-raleway font-700 text-18px text-white"
+          classNameBtn="w-full bg-gray-dark mt-10 p-4 border rounded-xl font-bold text-18px text-white"
           nameBtn="submitForm"
           valueBtn="submit"
           type="submit"
         >
           Обрати спосіб доставки
         </Button>
-        {formError && <p className="text-red-500">{formError}</p>}
+        {formError && <p className="text-red-500 ml-2">{formError}</p>}
       </form>
     </div>
   );
