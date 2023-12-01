@@ -7,33 +7,16 @@ import closeIcon from "../../assets/icons/icon-close.svg";
 import Facebook from "../../assets/icons/media-icons/facebook-color.svg";
 import Google from "../../assets/icons/media-icons/google-color.svg";
 import Apple from "../../assets/icons/media-icons/apple-color.svg";
-import {auth } from './config'
-import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { facebookProvider, googleProvider } from "./firebase/provider";
+import socialMediaAuth from "./firebase/auth";
+// import {auth } from './firebase/config'
+// import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
 
-
-  const signInWithFacebook = () => {
-    const provider =  new FacebookAuthProvider();
-    signInWithPopup(auth, provider)
-    .then((re) => {
-      console.log(re)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  };
-
-  const signInWithGoogle = () => {
-    const provider =  new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-    .then((re) => {
-      console.log(re)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  };
+  const handleOnClick = async (provider) => {
+    const res = await socialMediaAuth(provider)
+  }
 
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -231,13 +214,13 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
                   src={Facebook}
                   className={styles.mediaIcons}
                   alt="icon facebook"
-                  onClick={signInWithFacebook }
+                  onClick={() => handleOnClick(facebookProvider)}
                 />
                 <img
                   src={Google}
                   className={styles.mediaIcons}
                   alt="icon google"
-                  onClick={signInWithGoogle}
+                  onClick={() => handleOnClick(googleProvider)}
                 />
                 <img
                   src={Apple}

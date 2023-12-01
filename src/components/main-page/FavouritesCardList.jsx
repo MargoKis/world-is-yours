@@ -6,18 +6,6 @@
 // const FavoritesCardList = () => {
 //   const favoriteCards = cardData.slice(0, 8);
 
-//   const [products, setProducts] = useState();
-
-//   useEffect(() => {
-//     const API = 'http://localhost:8000/api/products/'
-//     axios
-//       .get(API)
-//       .then((response) => {
-//         const favourites = response.data;
-//         setProducts(favourites)
-//       }, [setProducts])
-//   })
-
 //   return (
 //     <div className="text-grayLight">
 //       <h1 className="flex items-center justify-center mt-20 mb-10 font-raleway text-custom-black text-30px">Наші фаворити</h1>
@@ -48,11 +36,11 @@ const FavoritesCardList = () => {
     // const API = 'https://swapi.dev/api/people/';
 
     const API = 'http://localhost:8000/api/products/'
-
+    console.log(API)
     axios.get(API)
       .then((response) => {
-        const favourites = response.data; // Получаем только массив results
-        setProducts(favourites); // Устанавливаем массив results в products
+        const favourites = response.data; 
+        setProducts(favourites); 
       })
       .catch((error) => {
         console.error('Помилка при отриманні даних:', error);
@@ -65,7 +53,7 @@ const FavoritesCardList = () => {
       <div className="flex flex-wrap justify-around mb-20 mx-6">
         {products.map((item, index) => (
           <Card
-            key={index} // Используйте уникальный ключ, например, index
+            key={index} 
             data={item}
           />
         ))}

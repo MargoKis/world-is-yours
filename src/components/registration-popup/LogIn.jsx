@@ -7,8 +7,8 @@ import closeIcon from "../../assets/icons/icon-close.svg";
 import Facebook from "../../assets/icons/media-icons/facebook-color.svg";
 import Google from "../../assets/icons/media-icons/google-color.svg";
 import Apple from "../../assets/icons/media-icons/apple-color.svg";
-import {auth, facebookProvider, googleProvider} from './config'
-import { signInWithPopup } from "firebase/auth";
+// import {auth, facebookProvider, googleProvider} from './config'
+// import { signInWithPopup } from "firebase/auth";
 
 const LogIn = ({ isOpen, onClose, openSignUp, openRemindPass }) => {
   const [email, setEmail] = useState("");
