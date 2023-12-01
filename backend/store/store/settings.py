@@ -95,7 +95,7 @@ DATABASES = {
         'NAME': 'world_is_yours',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'localhost',  # db
+        'HOST': 'db',
         'PORT': '5432',
     }
 }
