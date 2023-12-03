@@ -1,0 +1,230 @@
+[
+  {
+    "model": "product.product",
+    "pk": 1,
+    "fields": {
+      "name": "Валіза TravelPro",
+      "price": "120.99",
+      "quantity": 50,
+      "image": "products_images/default_image.jpg",
+      "category": 1,
+      "description": "Простора та міцна валіза для подорожей."
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 2,
+    "fields": {
+      "name": "Палатка North Face",
+      "price": "199.99",
+      "quantity": 30,
+      "image": "products_images/default_image.jpg",
+      "category": 2,
+      "description": "Легка та надійна палатка для відпочинку в природі."
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 3,
+    "fields": {
+      "name": "Туристичні черевики Salomon",
+      "price": "89.99",
+      "quantity": 100,
+      "image": "products_images/default_image.jpg",
+      "category": 3,
+      "description": "Зручні та високоякісні черевики для активного відпочинку."
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 4,
+    "fields": {
+      "name": "Спальник Columbia",
+      "price": "79.99",
+      "quantity": 40,
+      "image": "products_images/default_image.jpg",
+      "category": 2,
+      "description": "Теплий та комфортний спальник для ночівлі в поході."
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 5,
+    "fields": {
+      "name": "Шолом для велосипедистів",
+      "price": "39.99",
+      "quantity": 60,
+      "image": "products_images/default_image.jpg",
+      "category": 5,
+      "description": "Безпечний та стильний шолом для велосипедистів."
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 6,
+    "fields": {
+      "name": "Комплект для кемпінгу Coleman",
+      "price": "149.99",
+      "quantity": 20,
+      "image": "products_images/default_image.jpg",
+      "category": 6,
+      "description": "Все необхідне для комфортного кемпінгу на природі."
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 7,
+    "fields": {
+      "name": "Пляжний намет",
+      "price": "59.99",
+      "quantity": 25,
+      "image": "products_images/default_image.jpg",
+      "category": 7,
+      "description": "Легкий та просторий намет для відпочинку на пляжі."
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 8,
+    "fields": {
+      "name": "Туристичний комплект одягу",
+      "price": "129.99",
+      "quantity": 15,
+      "image": "products_images/default_image.jpg",
+      "category": 8,
+      "description": "Функціональний та зручний одяг для подорожей."
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 9,
+    "fields": {
+      "name": "GPS навігатор Garmin",
+      "price": "199.99",
+      "quantity": 35,
+      "image": "products_images/default_image.jpg",
+      "category": 9,
+      "description": "Сучасний GPS навігатор для точного орієнтування."
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 10,
+    "fields": {
+      "name": "Дрон DJI Mavic Air",
+      "price": "899.99",
+      "quantity": 10,
+      "image": "products_images/default_image.jpg",
+      "category": 10,
+      "description": "Компактний та потужний дрон для фото- та відеозйомки."
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 11,
+    "fields": {
+      "name": "Гамак ENO",
+      "price": "79.99",
+      "quantity": 40,
+      "image": "products_images/default_image.jpg",
+      "category": 6,
+      "description": "Комфортний гамак для відпочинку в полі або на кемпінгу."
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 12,
+    "fields": {
+      "name": "Сонячна батарея Anker",
+      "price": "49.99",
+      "quantity": 30,
+      "image": "products_images/default_image.jpg",
+      "category": 6,
+      "description": "Портативна сонячна батарея для заряджання електроніки."
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 13,
+    "fields": {
+      "name": "Пляжний наматрацник",
+      "price": "29.99",
+      "quantity": 50,
+      "image": "products_images/default_image.jpg",
+      "category": 7,
+      "description": "Зручний та легкий наматрацник для відпочинку на пляжі."
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 14,
+    "fields": {
+      "name": "Комплект термобілизни",
+      "price": "69.99",
+      "quantity": 20,
+      "image": "products_images/default_image.jpg",
+      "category": 8,
+      "description": "Теплий та зручний комплект для холодної погоди."
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 15,
+    "fields": {
+      "name": "Фонарик-ліхтарик Black Diamond",
+      "price": "34.99",
+      "quantity": 40,
+      "image": "products_images/default_image.jpg",
+      "category": 4,
+      "description": "Якісний фонарик для освітлення в поході або в палатці."
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 16,
+    "fields": {
+      "name": "Велокомп'ютер Cateye",
+      "price": "49.99",
+      "quantity": 25,
+      "image": "products_images/default_image.jpg",
+      "category": 5,
+      "description": "Сучасний велокомп'ютер для велосипедистів."
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 17,
+    "fields": {
+      "name": "Ліхтар-ручка Maglite",
+      "price": "19.99",
+      "quantity": 35,
+      "image": "products_images/default_image.jpg",
+      "category": 4,
+      "description": "Надійний ліхтар для різних ситуацій."
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 18,
+    "fields": {
+      "name": "Маска для занурення",
+      "price": "59.99",
+      "quantity": 15,
+      "image": "products_images/default_image.jpg",
+      "category": 7,
+      "description": "Комфортна та надійна маска для підводного плавання."
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 19,
+    "fields": {
+      "name": "Куртка Columbia Omni-Heat",
+      "price": "129.99",
+      "quantity": 20,
+      "image": "products_images/default_image.jpg",
+      "category": 7,
+      "description": "Комфортна та надійна куртка."
+    }
+  }
+]

@@ -1,0 +1,152 @@
+[
+    {
+        "model": "product.basket",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "product": 1,
+            "quantity": 2,
+            "created_timestamp": "2023-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "product.basket",
+        "pk": 2,
+        "fields": {
+            "user": 1,
+            "product": 3,
+            "quantity": 1,
+            "created_timestamp": "2023-02-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "product.basket",
+        "pk": 3,
+        "fields": {
+            "user": 1,
+            "product": 5,
+            "quantity": 3,
+            "created_timestamp": "2023-03-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "product.basket",
+        "pk": 4,
+        "fields": {
+            "user": 2,
+            "product": 2,
+            "quantity": 1,
+            "created_timestamp": "2023-04-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "product.basket",
+        "pk": 5,
+        "fields": {
+            "user": 2,
+            "product": 4,
+            "quantity": 2,
+            "created_timestamp": "2023-05-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "product.basket",
+        "pk": 6,
+        "fields": {
+            "user": 2,
+            "product": 6,
+            "quantity": 1,
+            "created_timestamp": "2023-06-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "product.basket",
+        "pk": 7,
+        "fields": {
+            "user": 3,
+            "product": 3,
+            "quantity": 3,
+            "created_timestamp": "2023-07-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "product.basket",
+        "pk": 8,
+        "fields": {
+            "user": 3,
+            "product": 5,
+            "quantity": 2,
+            "created_timestamp": "2023-08-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "product.basket",
+        "pk": 9,
+        "fields": {
+            "user": 3,
+            "product": 7,
+            "quantity": 1,
+            "created_timestamp": "2023-09-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "product.basket",
+        "pk": 10,
+        "fields": {
+            "user": 4,
+            "product": 4,
+            "quantity": 2,
+            "created_timestamp": "2023-10-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "product.basket",
+        "pk": 11,
+        "fields": {
+            "user": 4,
+            "product": 6,
+            "quantity": 1,
+            "created_timestamp": "2023-11-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "product.basket",
+        "pk": 12,
+        "fields": {
+            "user": 4,
+            "product": 8,
+            "quantity": 3,
+            "created_timestamp": "2023-12-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "product.basket",
+        "pk": 13,
+        "fields": {
+            "user": 5,
+            "product": 1,
+            "quantity": 1,
+            "created_timestamp": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "product.basket",
+        "pk": 14,
+        "fields": {
+            "user": 5,
+            "product": 3,
+            "quantity": 2,
+            "created_timestamp": "2024-02-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "product.basket",
+        "pk": 15,
+        "fields": {
+            "user": 5,
+            "product": 5,
+            "quantity": 3,
+            "created_timestamp": "2024-03-01T12:00:00Z"
+        }
+    }
+]

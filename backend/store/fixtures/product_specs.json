@@ -1,0 +1,317 @@
+[
+    {
+        "model": "product.productspecs",
+        "pk": 1,
+        "fields": {
+            "name": "Color",
+            "value": "Blue",
+            "product_id": 1
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 2,
+        "fields": {
+            "name": "Size",
+            "value": "Large",
+            "product_id": 1
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 3,
+        "fields": {
+            "name": "Material",
+            "value": "Cotton",
+            "product_id": 1
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 4,
+        "fields": {
+            "name": "Gender",
+            "value": "Male",
+            "product_id": 1
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 5,
+        "fields": {
+            "name": "Weight",
+            "value": "0.5 kg",
+            "product_id": 1
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 6,
+        "fields": {
+            "name": "Color",
+            "value": "Red",
+            "product_id": 2
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 7,
+        "fields": {
+            "name": "Size",
+            "value": "Medium",
+            "product_id": 2
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 8,
+        "fields": {
+            "name": "Material",
+            "value": "Leather",
+            "product_id": 2
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 9,
+        "fields": {
+            "name": "Gender",
+            "value": "Female",
+            "product_id": 2
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 10,
+        "fields": {
+            "name": "Weight",
+            "value": "0.7 kg",
+            "product_id": 2
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 11,
+        "fields": {
+            "name": "Color",
+            "value": "Green",
+            "product_id": 3
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 12,
+        "fields": {
+            "name": "Size",
+            "value": "Small",
+            "product_id": 3
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 13,
+        "fields": {
+            "name": "Material",
+            "value": "Polyester",
+            "product_id": 3
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 14,
+        "fields": {
+            "name": "Gender",
+            "value": "Unisex",
+            "product_id": 3
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 15,
+        "fields": {
+            "name": "Weight",
+            "value": "0.6 kg",
+            "product_id": 3
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 16,
+        "fields": {
+            "name": "Color",
+            "value": "Black",
+            "product_id": 4
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 17,
+        "fields": {
+            "name": "Size",
+            "value": "XL",
+            "product_id": 4
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 18,
+        "fields": {
+            "name": "Material",
+            "value": "Silk",
+            "product_id": 4
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 19,
+        "fields": {
+            "name": "Gender",
+            "value": "Male",
+            "product_id": 4
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 20,
+        "fields": {
+            "name": "Weight",
+            "value": "0.8 kg",
+            "product_id": 4
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 21,
+        "fields": {
+            "name": "Color",
+            "value": "White",
+            "product_id": 5
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 22,
+        "fields": {
+            "name": "Size",
+            "value": "Large",
+            "product_id": 5
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 23,
+        "fields": {
+            "name": "Material",
+            "value": "Wool",
+            "product_id": 5
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 24,
+        "fields": {
+            "name": "Gender",
+            "value": "Female",
+            "product_id": 5
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 25,
+        "fields": {
+            "name": "Weight",
+            "value": "0.9 kg",
+            "product_id": 5
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 26,
+        "fields": {
+            "name": "Color",
+            "value": "Brown",
+            "product_id": 6
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 27,
+        "fields": {
+            "name": "Size",
+            "value": "Medium",
+            "product_id": 6
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 28,
+        "fields": {
+            "name": "Material",
+            "value": "Canvas",
+            "product_id": 6
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 29,
+        "fields": {
+            "name": "Gender",
+            "value": "Unisex",
+            "product_id": 6
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 30,
+        "fields": {
+            "name": "Weight",
+            "value": "0.7 kg",
+            "product_id": 6
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 31,
+        "fields": {
+            "name": "Color",
+            "value": "Gray",
+            "product_id": 7
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 32,
+        "fields": {
+            "name": "Size",
+            "value": "Small",
+            "product_id": 7
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 33,
+        "fields": {
+            "name": "Material",
+            "value": "Nylon",
+            "product_id": 7
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 34,
+        "fields": {
+            "name": "Gender",
+            "value": "Male",
+            "product_id": 7
+        }
+    },
+    {
+        "model": "product.productspecs",
+        "pk": 35,
+        "fields": {
+            "name": "Weight",
+            "value": "0.6 kg",
+            "product_id": 7
+        }
+    }
+]

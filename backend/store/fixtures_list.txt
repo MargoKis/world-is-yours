@@ -1,0 +1,8 @@
+fixtures/user_user.json
+fixtures/product_category.json
+fixtures/product_product.json
+fixtures/product_specs.json
+fixtures/product_wishlist.json
+fixtures/product_basket.json
+fixtures/product_review.json
+fixtures/order_order.json

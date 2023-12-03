@@ -1,0 +1,50 @@
+[
+    {
+        "model": "order.order",
+        "pk": 1,
+        "fields": {
+            "first_name": "John",
+            "last_name": "Doe",
+            "address": "123 Main St, City",
+            "basket_history": {
+                "product_1": 2,
+                "product_3": 1
+            },
+            "created": "2023-01-01T12:00:00Z",
+            "status": 1,
+            "initiator": 1
+        }
+    },
+    {
+        "model": "order.order",
+        "pk": 2,
+        "fields": {
+            "first_name": "Jane",
+            "last_name": "Smith",
+            "address": "456 Oak St, Town",
+            "basket_history": {
+                "product_2": 1,
+                "product_4": 3
+            },
+            "created": "2023-02-01T12:00:00Z",
+            "status": 2,
+            "initiator": 2
+        }
+    },
+    {
+        "model": "order.order",
+        "pk": 3,
+        "fields": {
+            "first_name": "Bob",
+            "last_name": "Johnson",
+            "address": "789 Pine St, Village",
+            "basket_history": {
+                "product_5": 2,
+                "product_6": 1
+            },
+            "created": "2023-03-01T12:00:00Z",
+            "status": 3,
+            "initiator": 3
+        }
+    }
+]

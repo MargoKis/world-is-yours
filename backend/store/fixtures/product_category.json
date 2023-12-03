@@ -1,0 +1,82 @@
+[
+  {
+    "model": "product.productcategory",
+    "pk": 1,
+    "fields": {
+      "name": "Багаж та Валізи",
+      "description": "Все необхідне для зручного та безпечного перевезення ваших речей."
+    }
+  },
+  {
+    "model": "product.productcategory",
+    "pk": 2,
+    "fields": {
+      "name": "Палатки та Спальні мішки",
+      "description": "Все для комфортного ночівля на природі."
+    }
+  },
+  {
+    "model": "product.productcategory",
+    "pk": 3,
+    "fields": {
+      "name": "Туристичне взуття",
+      "description": "Зручне та надійне взуття для активного відпочинку."
+    }
+  },
+  {
+    "model": "product.productcategory",
+    "pk": 4,
+    "fields": {
+      "name": "Спорядження для походів",
+      "description": "Все необхідне для безпечного та комфортного походу."
+    }
+  },
+  {
+    "model": "product.productcategory",
+    "pk": 5,
+    "fields": {
+      "name": "Спорядження для велотуризму",
+      "description": "Аксесуари для велоподорожей та велосипедного туризму."
+    }
+  },
+  {
+    "model": "product.productcategory",
+    "pk": 6,
+    "fields": {
+      "name": "Спорядження для кемпінгу",
+      "description": "Товари для комфортного проживання в полі або на кемпінгу."
+    }
+  },
+  {
+    "model": "product.productcategory",
+    "pk": 7,
+    "fields": {
+      "name": "Товари для пляжу",
+      "description": "Пляжні аксесуари та засоби для відпочинку на березі моря."
+    }
+  },
+  {
+    "model": "product.productcategory",
+    "pk": 8,
+    "fields": {
+      "name": "Одяг для подорожей",
+      "description": "Легкий та функціональний одяг для активного відпочинку."
+    }
+  },
+  {
+    "model": "product.productcategory",
+    "pk": 9,
+    "fields": {
+      "name": "Аксесуари для навігації",
+      "description": "Електроніка та інструменти для правильного орієнтування."
+    }
+  },
+  {
+    "model": "product.productcategory",
+    "pk": 10,
+    "fields": {
+      "name": "Фото- та відеозйомка",
+      "description": "Камери, дрони та аксесуари для запам'ятовування вашого подорожі."
+    }
+  }
+]
