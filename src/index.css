@@ -35,3 +35,8 @@ code {
 .scrolnan::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
+
+
+ol {
+  list-style-type: decimal; /* Устанавливает цифры для нумерованного списка */
+}
