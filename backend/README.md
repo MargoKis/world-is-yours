@@ -14,11 +14,6 @@ Important! You must be in the directory with the docker files
 docker-compose up
 ```
 
-At the first startup, you need to run the command in the terminal of the django-backend container
-```
-python store/manage.py migrate
-```
-
 At the end  you can stop the containers with the command:
 ```
 docker-compose down
