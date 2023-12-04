@@ -28,9 +28,9 @@ services:
   backend:
     build: ./
     container_name: django-backend
-    command: ["python", "store/manage.py", "runserver", "0.0.0.0:8000"]
+    command: bash -c "python manage.py migrate && python manage.py runscript load_all_fixtures && python manage.py runserver 0.0.0.0:8000"
     volumes:
-      - .:/app
+      - ./store:/app
     ports:
       - "8000:8000"
     depends_on:
