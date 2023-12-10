@@ -60,14 +60,36 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Description:** Get, update, or delete information for the specified user.
 - **Protection:** IsAuthenticated, IsOwnerOrReadOnly
 
-## 4. Products
-### 4.1 List Products
+## 4. Product Categories
+### 4.1 List Categories
+- **Endpoint:** `/api/products/category/`
+- **Method:** `GET`
+- **Description:** List all product categories.
+- **Protection:** IsAdminUser
+
+### 4.2 Create Category
+- **Endpoint:** `/api/products/category/`
+- **Method:** `POST`
+- **Description:** Create a new product category.
+- **Protection:** IsAdminUser
+- **Parameters:**
+  - name (string)
+  - description (string)
+
+### 4.3 Get, Update, Destroy Category
+- **Endpoint:** `/api/products/category/<int:category_id>/`
+- **Method:** `GET` (Get), `PUT` or `PATCH` (Update), `DELETE` (Destroy)
+- **Description:** Get, update, or delete information for the specified category.
+- **Protection:** IsAdminUser
+
+## 5. Products
+### 5.1 List Products
 - **Endpoint:** `/api/products/`
 - **Method:** `GET`
 - **Description:** List all products.
 - **Protection:** IsAdminUser
 
-### 4.2 Create Product
+### 5.2 Create Product
 - **Endpoint:** `/api/products/`
 - **Method:** `POST`
 - **Description:** Create a new product.
@@ -78,42 +100,42 @@ API works on [localhost:8000](http://localhost:8000/)
   - description (string)
   - category (integer)
 
-### 4.3 Get, Update, Destroy Product
+### 5.3 Get, Update, Destroy Product
 - **Endpoint:** `/api/products/<int:prod_id>/`
 - **Method:** `GET` (Get), `PUT` or `PATCH` (Update), `DELETE` (Destroy)
 - **Description:** Get, update, or delete information for the specified product.
 - **Protection:** IsAdminUser
 
-## 5. Product Categories
-### 5.1 List Categories
-- **Endpoint:** `/api/products/category/`
+## 6. Product Specs
+### 6.1 List Specs
+- **Endpoint:** `/api/products/<int:prod_id>/specs/`
 - **Method:** `GET`
-- **Description:** List all product categories.
-- **Protection:** IsAdminUser
+- **Description:** List all product specs for a specific product.
+- **Protection:** IsAuthenticated
 
-### 5.2 Create Category
-- **Endpoint:** `/api/products/category/`
+### 6.2 Create Spec
+- **Endpoint:** `/api/products/<int:prod_id>/specs/`
 - **Method:** `POST`
-- **Description:** Create a new product category.
-- **Protection:** IsAdminUser
+- **Description:** Create a new product spec.
+- **Protection:** IsAuthenticated
 - **Parameters:**
   - name (string)
-  - description (string)
+  - value (string)
 
-### 5.3 Get, Update, Destroy Category
-- **Endpoint:** `/api/products/category/<int:category_id>/`
+### 6.3 Get, Update, Destroy Spec
+- **Endpoint:** `/api/products/specs/<int:spec_id>/`
 - **Method:** `GET` (Get), `PUT` or `PATCH` (Update), `DELETE` (Destroy)
-- **Description:** Get, update, or delete information for the specified category.
+- **Description:** Get, update, or delete information for the specified spec.
 - **Protection:** IsAdminUser
 
-## 6. Product Reviews
-### 6.1 List Reviews
+## 7. Product Reviews
+### 7.1 List Reviews
 - **Endpoint:** `/api/products/reviews/`
 - **Method:** `GET`
 - **Description:** List all product reviews.
 - **Protection:** IsAuthenticated
 
-### 6.2 Create Review
+### 7.2 Create Review
 - **Endpoint:** `/api/products/reviews/`
 - **Method:** `POST`
 - **Description:** Create a new product review.
@@ -123,33 +145,11 @@ API works on [localhost:8000](http://localhost:8000/)
   - comment (string)
   - product (integer)
 
-### 6.3 Get, Update, Destroy Review
+### 7.3 Get, Update, Destroy Review
 - **Endpoint:** `/api/products/reviews/<int:review_id>/`
 - **Method:** `GET` (Get), `PUT` or `PATCH` (Update), `DELETE` (Destroy)
 - **Description:** Get, update, or delete information for the specified review.
 - **Protection:** IsAuthenticated, CanChangeReview (If the logged-in user is the author)
-
-## 7. Product Specs
-### 7.1 List Specs
-- **Endpoint:** `/api/products/<int:prod_id>/specs/`
-- **Method:** `GET`
-- **Description:** List all product specs for a specific product.
-- **Protection:** IsAuthenticated
-
-### 7.2 Create Spec
-- **Endpoint:** `/api/products/<int:prod_id>/specs/`
-- **Method:** `POST`
-- **Description:** Create a new product spec.
-- **Protection:** IsAuthenticated
-- **Parameters:**
-  - name (string)
-  - value (string)
-
-### 7.3 Get, Update, Destroy Spec
-- **Endpoint:** `/api/products/specs/<int:spec_id>/`
-- **Method:** `GET` (Get), `PUT` or `PATCH` (Update), `DELETE` (Destroy)
-- **Description:** Get, update, or delete information for the specified spec.
-- **Protection:** IsAdminUser
 
 ## 8. Orders
 ### 8.1 List Orders
@@ -213,7 +213,7 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Protection:** IsAuthenticated
 
 ## Authentication and Authorization
-- **Authentication:** Token-based.
+- **Authentication:** Token-based (OAuth 2.0).
 - **Authorization:** Different user types have different access rights.
 
 ## Data Formats
