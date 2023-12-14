@@ -37,6 +37,11 @@ code {
 }
 
 
-ol {
+ul, ol, li {
+  text-decoration: none;
   list-style-type: decimal; /* Устанавливает цифры для нумерованного списка */
+}
+
+a {
+  text-decoration: none;
 }

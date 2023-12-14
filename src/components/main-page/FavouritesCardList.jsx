@@ -33,7 +33,6 @@ const FavoritesCardList = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // const API = 'https://swapi.dev/api/people/';
 
     const API = 'http://localhost:8000/api/products/'
     console.log(API)
