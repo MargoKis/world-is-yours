@@ -7,10 +7,16 @@ import closeIcon from "../../assets/icons/icon-close.svg";
 import Facebook from "../../assets/icons/media-icons/facebook-color.svg";
 import Google from "../../assets/icons/media-icons/google-color.svg";
 import Apple from "../../assets/icons/media-icons/apple-color.svg";
+import { facebookProvider, googleProvider } from "./firebase/provider";
+import socialMediaAuth from "./firebase/auth";
 // import {auth, facebookProvider, googleProvider} from './config'
 // import { signInWithPopup } from "firebase/auth";
 
 const LogIn = ({ isOpen, onClose, openSignUp, openRemindPass }) => {
+  const handleOnClick = async (provider) => {
+    const res = await socialMediaAuth(provider)
+  }
+ 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -110,13 +116,13 @@ const LogIn = ({ isOpen, onClose, openSignUp, openRemindPass }) => {
                   src={Facebook}
                   className={styles.mediaIcons}
                   alt="icon facebook"
-                  // onClick={signUpWithFacebook }
+                  onClick={() => handleOnClick(facebookProvider)}
                 />
                 <img
                   src={Google}
                   className={styles.mediaIcons}
                   alt="icon google"
-                  // onClick={signUpWithGoogle}
+                  onClick={() => handleOnClick(googleProvider)}
                 />
                 <img
                   src={Apple}

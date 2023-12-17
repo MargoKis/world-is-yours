@@ -35,27 +35,26 @@ import React from "react";
 import HeartIcon from "../../assets/icons/icon-heart.svg";
 import Button from "./Button";
 import Cart from '../../assets/icons/dark/icon-cart-dark.svg';
+import Image from '../../assets/temporary-img/tent.png'
 
 const Card = ({ data }) => {
   return (
-    <div className="m-3 border-2 border-gray-light rounded-lg relative flex flex-col">
-      <div className="relative">
+    <>
+    <div className=" m-3 border-2 border-gray-light rounded-lg relative w-80">
         <img
-          src={data.image} 
+          src={Image} 
           alt=""
-          className="w-72 max-w-200 rounded-lg"
+          className="w-80 max-w-200 rounded-lg"
         />
         <div className="absolute top-3 right-3 m-2">
-          <img src={HeartIcon} alt="heart icon" width="26" />
+          <img src={HeartIcon} alt="heart icon" width="26" className='cursor-pointer'/>
         </div>
-      </div>
-      <div className="flex flex-col p-5 justify-between flex-grow">
-        <div>
+    
+        <div className="flex flex-col">
+        <div className="p-5 ">
           <p className="text-custom-black font-semibold">{data.name}</p>
           <p className="text-custom-black ">{data.price}</p>
-        </div>
-        <div className="flex justify-between items-center">
-          <p className="text-custom-black">{data.description}</p>
+          <p className="text-custom-black ">{data.description}</p>
           <div className="flex items-center">
             {Array.isArray(data.colors) &&
               data.colors.map((color, index) => (
@@ -67,11 +66,13 @@ const Card = ({ data }) => {
               ))}
           </div>
         </div>
-      </div>
-      <Button classNameBtn='flex border rounded-md items-center py-3 px-3 mr-2'>
+        <Button classNameBtn='flex justify-center border rounded-md items-center py-3 px-3'>
         <img src={Cart} alt="cart"/>
       </Button>
-    </div>
+      </div>
+   
+      </div>
+    </>
   );
 };
 
