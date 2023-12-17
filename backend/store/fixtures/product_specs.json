@@ -4,7 +4,7 @@
         "pk": 1,
         "fields": {
             "name": "Color",
-            "value": "Blue",
+            "value": "Red",
             "product_id": 1
         }
     },
@@ -31,7 +31,7 @@
         "pk": 4,
         "fields": {
             "name": "Gender",
-            "value": "Male",
+            "value": "Unisex",
             "product_id": 1
         }
     },
@@ -49,7 +49,7 @@
         "pk": 6,
         "fields": {
             "name": "Color",
-            "value": "Red",
+            "value": "Green",
             "product_id": 2
         }
     },
@@ -76,7 +76,7 @@
         "pk": 9,
         "fields": {
             "name": "Gender",
-            "value": "Female",
+            "value": "Unisex",
             "product_id": 2
         }
     },
@@ -94,7 +94,7 @@
         "pk": 11,
         "fields": {
             "name": "Color",
-            "value": "Green",
+            "value": "White",
             "product_id": 3
         }
     },
@@ -139,7 +139,7 @@
         "pk": 16,
         "fields": {
             "name": "Color",
-            "value": "Black",
+            "value": "White",
             "product_id": 4
         }
     },
@@ -166,7 +166,7 @@
         "pk": 19,
         "fields": {
             "name": "Gender",
-            "value": "Male",
+            "value": "Unisex",
             "product_id": 4
         }
     },

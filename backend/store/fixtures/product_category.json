@@ -1,82 +1,98 @@
 [
   {
-    "model": "product.productcategory",
+    "model": "products.productcategory",
     "pk": 1,
     "fields": {
-      "name": "Багаж та Валізи",
-      "description": "Все необхідне для зручного та безпечного перевезення ваших речей."
+      "name": "Наші фаворити",
+      "description": "Вибрані продукти наших клієнтів."
     }
   },
   {
-    "model": "product.productcategory",
+    "model": "products.productcategory",
     "pk": 2,
     "fields": {
-      "name": "Палатки та Спальні мішки",
-      "description": "Все для комфортного ночівля на природі."
+      "name": "Новинки",
+      "description": "Останні поступлення в асортименті."
     }
   },
   {
-    "model": "product.productcategory",
+    "model": "products.productcategory",
     "pk": 3,
     "fields": {
-      "name": "Туристичне взуття",
-      "description": "Зручне та надійне взуття для активного відпочинку."
+      "name": "Одяг",
+      "description": "Одяг для подорожей та активного відпочинку."
     }
   },
   {
-    "model": "product.productcategory",
+    "model": "products.productcategory",
     "pk": 4,
     "fields": {
-      "name": "Спорядження для походів",
-      "description": "Все необхідне для безпечного та комфортного походу."
+      "name": "Взуття",
+      "description": "Різноманітні взуття для різних видів відпочинку."
     }
   },
   {
-    "model": "product.productcategory",
+    "model": "products.productcategory",
     "pk": 5,
     "fields": {
-      "name": "Спорядження для велотуризму",
-      "description": "Аксесуари для велоподорожей та велосипедного туризму."
+      "name": "Аксесуари",
+      "description": "Додаткові товари для зручності та комфорту."
     }
   },
   {
-    "model": "product.productcategory",
+    "model": "products.productcategory",
     "pk": 6,
     "fields": {
-      "name": "Спорядження для кемпінгу",
-      "description": "Товари для комфортного проживання в полі або на кемпінгу."
+      "name": "Технічна підтримка автодому",
+      "description": "Технічне обладнання для вашого автодому."
     }
   },
   {
-    "model": "product.productcategory",
+    "model": "products.productcategory",
     "pk": 7,
     "fields": {
-      "name": "Товари для пляжу",
-      "description": "Пляжні аксесуари та засоби для відпочинку на березі моря."
+      "name": "Устаткування для кемпінгу",
+      "description": "Необхідне устаткування для приготування їжі та комфортного проживання в полі."
     }
   },
   {
-    "model": "product.productcategory",
+    "model": "products.productcategory",
     "pk": 8,
     "fields": {
-      "name": "Одяг для подорожей",
-      "description": "Легкий та функціональний одяг для активного відпочинку."
+      "name": "Кухонне обладнання",
+      "description": "Все для вашої кухні в дорозі."
     }
   },
   {
-    "model": "product.productcategory",
+    "model": "products.productcategory",
     "pk": 9,
     "fields": {
-      "name": "Аксесуари для навігації",
-      "description": "Електроніка та інструменти для правильного орієнтування."
+      "name": "Автодомові аксесуари",
+      "description": "Аксесуари для вашого автодому."
     }
   },
   {
-    "model": "product.productcategory",
+    "model": "products.productcategory",
     "pk": 10,
     "fields": {
-      "name": "Фото- та відеозйомка",
-      "description": "Камери, дрони та аксесуари для запам'ятовування вашого подорожі."
+      "name": "Комфорт та зручності",
+      "description": "Товари, що забезпечують комфорт та зручність."
+    }
+  },
+  {
+    "model": "products.productcategory",
+    "pk": 11,
+    "fields": {
+      "name": "Подорожні товари",
+      "description": "Все необхідне для вашої подорожі."
+    }
+  },
+  {
+    "model": "products.productcategory",
+    "pk": 12,
+    "fields": {
+      "name": "Активний відпочинок",
+      "description": "Товари для активного та спортивного відпочинку."
     }
   }
 ]

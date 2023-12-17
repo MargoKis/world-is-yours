@@ -1,230 +1,302 @@
 [
   {
-    "model": "product.product",
+    "model": "products.product",
     "pk": 1,
     "fields": {
-      "name": "Валіза TravelPro",
-      "price": "120.99",
-      "quantity": 50,
-      "image": "products_images/default_image.jpg",
+      "name": "Backpack",
+      "price": "59.99",
+      "quantity": 10,
+      "image": "products_images/backpack.jpg",
       "category": 1,
-      "description": "Простора та міцна валіза для подорожей."
+      "description": "A durable backpack for outdoor adventures."
     }
   },
   {
-    "model": "product.product",
+    "model": "products.product",
     "pk": 2,
     "fields": {
-      "name": "Палатка North Face",
-      "price": "199.99",
-      "quantity": 30,
-      "image": "products_images/default_image.jpg",
-      "category": 2,
-      "description": "Легка та надійна палатка для відпочинку в природі."
+      "name": "Basin",
+      "price": "12.99",
+      "quantity": 20,
+      "image": "products_images/basin.jpg",
+      "category": 1,
+      "description": "A lightweight basin for camping."
     }
   },
   {
-    "model": "product.product",
+    "model": "products.product",
     "pk": 3,
     "fields": {
-      "name": "Туристичні черевики Salomon",
-      "price": "89.99",
-      "quantity": 100,
-      "image": "products_images/default_image.jpg",
-      "category": 3,
-      "description": "Зручні та високоякісні черевики для активного відпочинку."
+      "name": "Electric Stove 1",
+      "price": "39.99",
+      "quantity": 15,
+      "image": "products_images/electric_stove1.jpg",
+      "category": 2,
+      "description": "Portable electric stove for cooking."
     }
   },
   {
-    "model": "product.product",
+    "model": "products.product",
     "pk": 4,
     "fields": {
-      "name": "Спальник Columbia",
-      "price": "79.99",
-      "quantity": 40,
-      "image": "products_images/default_image.jpg",
+      "name": "Electric Stove 2",
+      "price": "49.99",
+      "quantity": 12,
+      "image": "products_images/electric_stove2.jpg",
       "category": 2,
-      "description": "Теплий та комфортний спальник для ночівлі в поході."
+      "description": "Another version of portable electric stove."
     }
   },
   {
-    "model": "product.product",
+    "model": "products.product",
     "pk": 5,
     "fields": {
-      "name": "Шолом для велосипедистів",
-      "price": "39.99",
-      "quantity": 60,
-      "image": "products_images/default_image.jpg",
-      "category": 5,
-      "description": "Безпечний та стильний шолом для велосипедистів."
+      "name": "Hat",
+      "price": "14.99",
+      "quantity": 30,
+      "image": "products_images/hat.jpg",
+      "category": 1,
+      "description": "Stylish hat for any occasion."
     }
   },
   {
-    "model": "product.product",
+    "model": "products.product",
     "pk": 6,
     "fields": {
-      "name": "Комплект для кемпінгу Coleman",
-      "price": "149.99",
-      "quantity": 20,
-      "image": "products_images/default_image.jpg",
-      "category": 6,
-      "description": "Все необхідне для комфортного кемпінгу на природі."
+      "name": "Lamp",
+      "price": "29.99",
+      "quantity": 12,
+      "image": "products_images/lamp.jpg",
+      "category": 2,
+      "description": "Portable lamp for camping."
     }
   },
   {
-    "model": "product.product",
+    "model": "products.product",
     "pk": 7,
     "fields": {
-      "name": "Пляжний намет",
-      "price": "59.99",
+      "name": "Mug",
+      "price": "9.99",
       "quantity": 25,
-      "image": "products_images/default_image.jpg",
-      "category": 7,
-      "description": "Легкий та просторий намет для відпочинку на пляжі."
+      "image": "products_images/mug.jpg",
+      "category": 2,
+      "description": "Durable mug for hot or cold beverages."
     }
   },
   {
-    "model": "product.product",
+    "model": "products.product",
     "pk": 8,
     "fields": {
-      "name": "Туристичний комплект одягу",
-      "price": "129.99",
-      "quantity": 15,
-      "image": "products_images/default_image.jpg",
-      "category": 8,
-      "description": "Функціональний та зручний одяг для подорожей."
+      "name": "Pants",
+      "price": "49.99",
+      "quantity": 18,
+      "image": "products_images/pants.jpg",
+      "category": 3,
+      "description": "Comfortable pants for outdoor activities."
     }
   },
   {
-    "model": "product.product",
+    "model": "products.product",
     "pk": 9,
     "fields": {
-      "name": "GPS навігатор Garmin",
-      "price": "199.99",
-      "quantity": 35,
-      "image": "products_images/default_image.jpg",
-      "category": 9,
-      "description": "Сучасний GPS навігатор для точного орієнтування."
+      "name": "Sandals",
+      "price": "19.99",
+      "quantity": 22,
+      "image": "products_images/sandals.jpg",
+      "category": 4,
+      "description": "Stylish and comfortable sandals."
     }
   },
   {
-    "model": "product.product",
+    "model": "products.product",
     "pk": 10,
     "fields": {
-      "name": "Дрон DJI Mavic Air",
-      "price": "899.99",
-      "quantity": 10,
-      "image": "products_images/default_image.jpg",
-      "category": 10,
-      "description": "Компактний та потужний дрон для фото- та відеозйомки."
+      "name": "Shoes 1",
+      "price": "34.99",
+      "quantity": 16,
+      "image": "products_images/shoes1.jpg",
+      "category": 2,
+      "description": "Durable shoes for any terrain."
     }
   },
   {
-    "model": "product.product",
+    "model": "products.product",
     "pk": 11,
     "fields": {
-      "name": "Гамак ENO",
-      "price": "79.99",
-      "quantity": 40,
-      "image": "products_images/default_image.jpg",
-      "category": 6,
-      "description": "Комфортний гамак для відпочинку в полі або на кемпінгу."
+      "name": "Shoes 2",
+      "price": "34.99",
+      "quantity": 16,
+      "image": "products_images/shoes2.jpg",
+      "category": 4,
+      "description": "Comfortable shoes for hiking."
     }
   },
   {
-    "model": "product.product",
+    "model": "products.product",
     "pk": 12,
     "fields": {
-      "name": "Сонячна батарея Anker",
-      "price": "49.99",
-      "quantity": 30,
-      "image": "products_images/default_image.jpg",
-      "category": 6,
-      "description": "Портативна сонячна батарея для заряджання електроніки."
+      "name": "Sleeping Bag",
+      "price": "79.99",
+      "quantity": 8,
+      "image": "products_images/sleeping_bag.jpg",
+      "category": 1,
+      "description": "Warm and cozy sleeping bag for camping."
     }
   },
   {
-    "model": "product.product",
+    "model": "products.product",
     "pk": 13,
     "fields": {
-      "name": "Пляжний наматрацник",
-      "price": "29.99",
-      "quantity": 50,
-      "image": "products_images/default_image.jpg",
-      "category": 7,
-      "description": "Зручний та легкий наматрацник для відпочинку на пляжі."
+      "name": "Sneakers",
+      "price": "39.99",
+      "quantity": 20,
+      "image": "products_images/sneakers.jpg",
+      "category": 4,
+      "description": "Sporty sneakers for everyday use."
     }
   },
   {
-    "model": "product.product",
+    "model": "products.product",
     "pk": 14,
     "fields": {
-      "name": "Комплект термобілизни",
-      "price": "69.99",
-      "quantity": 20,
-      "image": "products_images/default_image.jpg",
-      "category": 8,
-      "description": "Теплий та зручний комплект для холодної погоди."
+      "name": "Sweater 1",
+      "price": "24.99",
+      "quantity": 15,
+      "image": "products_images/sweater1.jpg",
+      "category": 3,
+      "description": "Warm and stylish sweater."
     }
   },
   {
-    "model": "product.product",
+    "model": "products.product",
     "pk": 15,
     "fields": {
-      "name": "Фонарик-ліхтарик Black Diamond",
-      "price": "34.99",
-      "quantity": 40,
-      "image": "products_images/default_image.jpg",
-      "category": 4,
-      "description": "Якісний фонарик для освітлення в поході або в палатці."
+      "name": "Sweater 2",
+      "price": "29.99",
+      "quantity": 10,
+      "image": "products_images/sweater2.jpg",
+      "category": 1,
+      "description": "Cozy sweater for chilly days."
     }
   },
   {
-    "model": "product.product",
+    "model": "products.product",
     "pk": 16,
     "fields": {
-      "name": "Велокомп'ютер Cateye",
-      "price": "49.99",
-      "quantity": 25,
-      "image": "products_images/default_image.jpg",
-      "category": 5,
-      "description": "Сучасний велокомп'ютер для велосипедистів."
+      "name": "Tent 1 White",
+      "price": "129.99",
+      "quantity": 5,
+      "image": "products_images/tent1_white.jpg",
+      "category": 1,
+      "description": "Spacious white tent for camping."
     }
   },
   {
-    "model": "product.product",
+    "model": "products.product",
     "pk": 17,
     "fields": {
-      "name": "Ліхтар-ручка Maglite",
-      "price": "19.99",
-      "quantity": 35,
-      "image": "products_images/default_image.jpg",
-      "category": 4,
-      "description": "Надійний ліхтар для різних ситуацій."
+      "name": "Tent 2 White",
+      "price": "149.99",
+      "quantity": 3,
+      "image": "products_images/tent2_white.jpg",
+      "category": 12,
+      "description": "Premium white tent with extra features."
     }
   },
   {
-    "model": "product.product",
+    "model": "products.product",
     "pk": 18,
     "fields": {
-      "name": "Маска для занурення",
-      "price": "59.99",
-      "quantity": 15,
-      "image": "products_images/default_image.jpg",
-      "category": 7,
-      "description": "Комфортна та надійна маска для підводного плавання."
+      "name": "Tent Green",
+      "price": "119.99",
+      "quantity": 7,
+      "image": "products_images/tent_green.jpg",
+      "category": 12,
+      "description": "Green tent for nature lovers."
     }
   },
   {
-    "model": "product.product",
+    "model": "products.product",
     "pk": 19,
     "fields": {
-      "name": "Куртка Columbia Omni-Heat",
-      "price": "129.99",
+      "name": "Tent Red",
+      "price": "119.99",
+      "quantity": 7,
+      "image": "products_images/tent_red.jpg",
+      "category": 2,
+      "description": "Red tent for a bold camping experience."
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 20,
+    "fields": {
+      "name": "Termos 1",
+      "price": "24.99",
+      "quantity": 15,
+      "image": "products_images/termos_1.jpg",
+      "category": 1,
+      "description": "Stainless steel thermos for hot drinks."
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 21,
+    "fields": {
+      "name": "Termos 2",
+      "price": "29.99",
+      "quantity": 12,
+      "image": "products_images/termos_2.jpg",
+      "category": 8,
+      "description": "Large capacity thermos for outdoor enthusiasts."
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 22,
+    "fields": {
+      "name": "Tracksuit",
+      "price": "54.99",
+      "quantity": 8,
+      "image": "products_images/tracksuit.jpg",
+      "category": 2,
+      "description": "Comfortable tracksuit for leisure."
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 23,
+    "fields": {
+      "name": "Trekking Shoes",
+      "price": "69.99",
+      "quantity": 6,
+      "image": "products_images/trekking_shoes.jpg",
+      "category": 4,
+      "description": "Sturdy trekking shoes for challenging trails."
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 24,
+    "fields": {
+      "name": "T-shirt 1",
+      "price": "19.99",
+      "quantity": 25,
+      "image": "products_images/t-shirt1.jpg",
+      "category": 1,
+      "description": "Casual and stylish t-shirt for everyday wear."
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 25,
+    "fields": {
+      "name": "T-shirt 2",
+      "price": "22.99",
       "quantity": 20,
-      "image": "products_images/default_image.jpg",
-      "category": 7,
-      "description": "Комфортна та надійна куртка."
+      "image": "products_images/t-shirt2.jpg",
+      "category": 3,
+      "description": "Graphic print t-shirt for a trendy look."
     }
   }
 ]
