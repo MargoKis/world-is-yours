@@ -1,6 +1,6 @@
 [
   {
-    "model": "products.productcategory",
+    "model": "product.productcategory",
     "pk": 1,
     "fields": {
       "name": "Наші фаворити",
@@ -8,7 +8,7 @@
     }
   },
   {
-    "model": "products.productcategory",
+    "model": "product.productcategory",
     "pk": 2,
     "fields": {
       "name": "Новинки",
@@ -16,7 +16,7 @@
     }
   },
   {
-    "model": "products.productcategory",
+    "model": "product.productcategory",
     "pk": 3,
     "fields": {
       "name": "Одяг",
@@ -24,7 +24,7 @@
     }
   },
   {
-    "model": "products.productcategory",
+    "model": "product.productcategory",
     "pk": 4,
     "fields": {
       "name": "Взуття",
@@ -32,7 +32,7 @@
     }
   },
   {
-    "model": "products.productcategory",
+    "model": "product.productcategory",
     "pk": 5,
     "fields": {
       "name": "Аксесуари",
@@ -40,7 +40,7 @@
     }
   },
   {
-    "model": "products.productcategory",
+    "model": "product.productcategory",
     "pk": 6,
     "fields": {
       "name": "Технічна підтримка автодому",
@@ -48,7 +48,7 @@
     }
   },
   {
-    "model": "products.productcategory",
+    "model": "product.productcategory",
     "pk": 7,
     "fields": {
       "name": "Устаткування для кемпінгу",
@@ -56,7 +56,7 @@
     }
   },
   {
-    "model": "products.productcategory",
+    "model": "product.productcategory",
     "pk": 8,
     "fields": {
       "name": "Кухонне обладнання",
@@ -64,7 +64,7 @@
     }
   },
   {
-    "model": "products.productcategory",
+    "model": "product.productcategory",
     "pk": 9,
     "fields": {
       "name": "Автодомові аксесуари",
@@ -72,7 +72,7 @@
     }
   },
   {
-    "model": "products.productcategory",
+    "model": "product.productcategory",
     "pk": 10,
     "fields": {
       "name": "Комфорт та зручності",
@@ -80,7 +80,7 @@
     }
   },
   {
-    "model": "products.productcategory",
+    "model": "product.productcategory",
     "pk": 11,
     "fields": {
       "name": "Подорожні товари",
@@ -88,7 +88,7 @@
     }
   },
   {
-    "model": "products.productcategory",
+    "model": "product.productcategory",
     "pk": 12,
     "fields": {
       "name": "Активний відпочинок",

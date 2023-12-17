@@ -1,6 +1,6 @@
 [
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 1,
     "fields": {
       "name": "Backpack",
@@ -12,7 +12,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 2,
     "fields": {
       "name": "Basin",
@@ -24,7 +24,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 3,
     "fields": {
       "name": "Electric Stove 1",
@@ -36,7 +36,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 4,
     "fields": {
       "name": "Electric Stove 2",
@@ -48,7 +48,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 5,
     "fields": {
       "name": "Hat",
@@ -60,7 +60,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 6,
     "fields": {
       "name": "Lamp",
@@ -72,7 +72,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 7,
     "fields": {
       "name": "Mug",
@@ -84,7 +84,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 8,
     "fields": {
       "name": "Pants",
@@ -96,7 +96,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 9,
     "fields": {
       "name": "Sandals",
@@ -108,7 +108,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 10,
     "fields": {
       "name": "Shoes 1",
@@ -120,7 +120,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 11,
     "fields": {
       "name": "Shoes 2",
@@ -132,7 +132,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 12,
     "fields": {
       "name": "Sleeping Bag",
@@ -144,7 +144,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 13,
     "fields": {
       "name": "Sneakers",
@@ -156,7 +156,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 14,
     "fields": {
       "name": "Sweater 1",
@@ -168,7 +168,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 15,
     "fields": {
       "name": "Sweater 2",
@@ -180,7 +180,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 16,
     "fields": {
       "name": "Tent 1 White",
@@ -192,7 +192,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 17,
     "fields": {
       "name": "Tent 2 White",
@@ -204,7 +204,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 18,
     "fields": {
       "name": "Tent Green",
@@ -216,7 +216,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 19,
     "fields": {
       "name": "Tent Red",
@@ -228,7 +228,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 20,
     "fields": {
       "name": "Termos 1",
@@ -240,7 +240,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 21,
     "fields": {
       "name": "Termos 2",
@@ -252,7 +252,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 22,
     "fields": {
       "name": "Tracksuit",
@@ -264,7 +264,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 23,
     "fields": {
       "name": "Trekking Shoes",
@@ -276,7 +276,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 24,
     "fields": {
       "name": "T-shirt 1",
@@ -288,7 +288,7 @@
     }
   },
   {
-    "model": "products.product",
+    "model": "product.product",
     "pk": 25,
     "fields": {
       "name": "T-shirt 2",
