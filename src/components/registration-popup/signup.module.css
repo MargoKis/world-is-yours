@@ -108,3 +108,12 @@
   height: 1px;
   margin-top: 13px;
 }
+
+.btnWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 40px;
+}

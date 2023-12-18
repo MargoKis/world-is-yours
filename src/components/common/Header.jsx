@@ -38,13 +38,13 @@ function Header({ isCategoriesOpen, setIsCategoriesOpen, openSignUpPopup }) {
         <li className="cursor-pointer">КОНТАКТИ</li>
       </ul>
       <div className="flex justify-between items-center ">
-        <NavLink className="mr-10" to={"/"}>
+        <NavLink className="mr-10" to={"#"}>
           <img className="text-red-400" src={CartIconDark} alt="Cart" />
         </NavLink>
-        <NavLink className="mr-10" to={"/"}>
+        <NavLink className="mr-10" to={"#"}>
           <img src={HeartIconDark} alt="Favorites" />
         </NavLink>
-        <NavLink to={"/"} onClick={openSignUpPopup}>
+        <NavLink to={"#"} onClick={openSignUpPopup}>
           <img src={ProfileIconDark} alt="Profile" />
         </NavLink>
       </div>

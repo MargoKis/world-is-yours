@@ -143,7 +143,7 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
                 placeholderInput="Прізвище"
                 onChangeInput={(e) => {
                   setSurname(e.target.value);
-                  validateSignUpForm(); // Викликати функцію валідації при зміні значення
+                  validateSignUpForm();
                 }}
                 required
               />
@@ -159,7 +159,7 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
                 placeholderInput="Номер телефону"
                 onChangeInput={(e) => {
                   setTel(e.target.value);
-                  validateSignUpForm(); // Викликати функцію валідації при зміні значення
+                  validateSignUpForm(); 
                 }}
                 required
               />
@@ -175,7 +175,7 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
                 placeholderInput="Ел.пошта"
                 onChangeInput={(e) => {
                   setEmail(e.target.value);
-                  validateSignUpForm(); // Викликати функцію валідації при зміні значення
+                  validateSignUpForm(); 
                 }}
                 required
               />
@@ -191,7 +191,7 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
                 placeholderInput="Пароль"
                 onChangeInput={(e) => {
                   setPassword(e.target.value);
-                  validateSignUpForm(); // Викликати функцію валідації при зміні значення
+                  validateSignUpForm(); 
                 }}
                 required
               />

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./signup.module.css";
 import Input from "../common/Input";
 import Button from "../common/Button";
 import closeIcon from "../../assets/icons/icon-close.svg";
+import SuccessMes from "./SuccessMes"; 
 
-const RemindPas = ({ isOpen, onClose, openLogin }) => {
+const RemindPas = ({ isOpen, onClose, openLogin, openSuccess }) => {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
 
@@ -35,11 +35,16 @@ const RemindPas = ({ isOpen, onClose, openLogin }) => {
     } else {
       document.body.style.overflow = "auto";
     }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
+    resetErrors();
   }, [isOpen]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateSignUpForm()) {
+      onClose();
+      openSuccess(); 
+    }
+  };
 
   return (
     <>
@@ -49,14 +54,11 @@ const RemindPas = ({ isOpen, onClose, openLogin }) => {
             className={`${styles.popup} ${isOpen ? styles.open : ""}`}
             onClick={(e) => e.stopPropagation()}
           >
-             <div className={styles.titleWrap}>
-            <h2 className={styles.title}>Нагадати пароль</h2>
-            <img className={styles.closeIcon} src={closeIcon} alt="close icon" onClick={onClose}/>
+            <div className={styles.titleWrap}>
+              <h2 className={styles.title}>Відновлення паролю</h2>
+              <img className={styles.closeIcon} src={closeIcon} alt="close icon" onClick={onClose} />
             </div>
-            <form
-              className={styles.form}
-              onSubmit={(e) => e.preventDefault() || validateSignUpForm()}
-            >
+            <form className={styles.form} onSubmit={handleSubmit}>
               <label htmlFor="email"></label>
               <Input
                 classNameInput={styles.input}
@@ -70,12 +72,12 @@ const RemindPas = ({ isOpen, onClose, openLogin }) => {
               />
               <div className={styles.error}>{emailError}</div>
               <Button classNameBtn={styles.remind} type="submit">
-                Надіслати код
+                Надіслати лист
               </Button>
               <p style={{ color: "#202020" }}>
-                 Згадали пароль?{" "}
+                Згадали пароль?{" "}
                 <span
-                  style={{ textDecoration: "underline", color: "#888888", cursor: 'pointer' }}
+                  style={{ textDecoration: "underline", color: "#888888", cursor: "pointer" }}
                   onClick={openLogin}
                 >
                   Увійдіть

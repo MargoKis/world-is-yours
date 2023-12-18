@@ -39,9 +39,10 @@ code {
 
 ul, ol, li {
   text-decoration: none;
-  list-style-type: decimal; /* Устанавливает цифры для нумерованного списка */
+  list-style: none;
 }
 
 a {
+  
   text-decoration: none;
 }

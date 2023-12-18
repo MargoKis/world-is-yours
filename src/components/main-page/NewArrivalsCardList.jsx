@@ -40,7 +40,7 @@ const NewArrivalsCardList = () => {
         ))}
         {visibleCards < cardData.length && (
           <div
-            className="flex justify-center w-80 m-4 border-2 border-gray-light rounded-lg relative"
+            className="flex justify-center w-80 m-4 border-2 border-gray-light rounded-lg relative cursor-pointer"
             onClick={loadMoreCards}
           >
             {" "}

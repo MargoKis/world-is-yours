@@ -13,12 +13,14 @@ import Footer from "../components/common/Footer";
 import SignUp from "../components/registration-popup/SignUp";
 import LogIn from "../components/registration-popup/LogIn";
 import RemindPas from "../components/registration-popup/RemindPas";
+import SuccessMes from "../components/registration-popup/SuccessMes";
 
 function MainPage() {
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRemindPassOpen, setIsRemindPassOpen] = useState(false);
+  const [isSuccessMesOpen, setIsSuccessMesOpen] = useState(false);
 
   const openSignUpPopup = () => {
     setIsSignUpOpen(true);
@@ -28,24 +30,35 @@ function MainPage() {
     setIsSignUpOpen(true);
     setIsLoginOpen(false);
     setIsRemindPassOpen(false);
+    setIsSuccessMesOpen(false);
   };
 
   const openRemindPass = () => {
     setIsSignUpOpen(false);
     setIsRemindPassOpen(true);
     setIsLoginOpen(false);
+    setIsSuccessMesOpen(false);
   };
 
   const openLogin = () => {
     setIsLoginOpen(true);
     setIsSignUpOpen(false);
     setIsRemindPassOpen(false);
+    setIsSuccessMesOpen(false);
   };
 
   const closePopups = () => {
     setIsSignUpOpen(false);
     setIsLoginOpen(false);
     setIsRemindPassOpen(false);
+    setIsSuccessMesOpen(false);
+  };
+
+  const openSuccess = () => {
+    setIsSignUpOpen(false);
+    setIsLoginOpen(false);
+    setIsRemindPassOpen(false);
+    setIsSuccessMesOpen(true);
   };
 
   return (
@@ -69,16 +82,24 @@ function MainPage() {
           openLogin={openLogin}
           openRemindPass={openRemindPass}
         />
-         <RemindPas
+        <RemindPas
           isOpen={isRemindPassOpen}
           onClose={closePopups}
           openLogin={openLogin}
+          openSuccess={openSuccess}
         />
         <LogIn
           isOpen={isLoginOpen}
           onClose={closePopups}
           openSignUp={openSignUp}
           openRemindPass={openRemindPass}
+          
+        />
+        <SuccessMes
+          isOpen={isSuccessMesOpen}
+          onClose={closePopups}
+          openLogin={openLogin}
+          openSuccess={openSuccess}
         />
         {isCategoriesOpen && <Categories />}
         <div
