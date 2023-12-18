@@ -9,7 +9,7 @@ const Card = ({ data }) => {
     <>
     <div className=" m-3 border-2 border-gray-light rounded-lg relative w-80 items-center">
         <img
-          src={Image} 
+          src={data.image} 
           alt=""
           className="w-80 max-w-200 rounded-lg"
         />
