@@ -110,7 +110,9 @@ function MainPage() {
           <p className="text-center text-4xl mb-10">
             Ваша пригода починається тут
           </p>
-          <img className="cursor-pointer" src={ArrowIcon} alt="Arrow Down" />
+          <a href="#sectionFav">
+            <img  className="cursor-pointer" src={ArrowIcon} alt="Arrow Down" />
+          </a>
         </div>
         <div
           className={`flex flex-row-reverse h-1/5 items-center px-10 ${

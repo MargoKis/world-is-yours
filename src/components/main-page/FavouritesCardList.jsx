@@ -22,7 +22,7 @@ const FavoritesCardList = () => {
   }, []); 
 
   return (
-    <div className="text-grayLight">
+    <div className="text-grayLight" id="sectionFav">
       <h1 className="flex items-center justify-center mt-20 mb-10 font-raleway text-custom-black text-30px">Наші фаворити</h1>
       <div className="flex flex-wrap justify-around mb-20 mx-6">
         {products.map((item, index) => (
