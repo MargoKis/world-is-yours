@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/world-is-yours/static/css/main.bdabdda3.css",
-    "main.js": "/world-is-yours/static/js/main.548dd97e.js",
+    "main.css": "/world-is-yours/static/css/main.38606cdd.css",
+    "main.js": "/world-is-yours/static/js/main.f114d03e.js",
     "static/media/notFound404.png": "/world-is-yours/static/media/notFound404.83fa292795310bb5ae5e.png",
     "static/media/bg-header.png": "/world-is-yours/static/media/bg-header.3aff1de4797995cc02da.png",
     "static/media/why-us-image-4.png": "/world-is-yours/static/media/why-us-image-4.b4a1aacbd3ac3516a61a.png",
@@ -34,11 +34,11 @@
     "static/media/icon-close.svg": "/world-is-yours/static/media/icon-close.bf6a57e35598526e2805059679f17520.svg",
     "static/media/arrow-up.svg": "/world-is-yours/static/media/arrow-up.f6cd42112c71a1a38160a6fb483a48f3.svg",
     "static/media/icon-arrow.svg": "/world-is-yours/static/media/icon-arrow.472cc0a10a31a768c908da66aad3f36d.svg",
-    "main.bdabdda3.css.map": "/world-is-yours/static/css/main.bdabdda3.css.map",
-    "main.548dd97e.js.map": "/world-is-yours/static/js/main.548dd97e.js.map"
+    "main.38606cdd.css.map": "/world-is-yours/static/css/main.38606cdd.css.map",
+    "main.f114d03e.js.map": "/world-is-yours/static/js/main.f114d03e.js.map"
   },
   "entrypoints": [
-    "static/css/main.bdabdda3.css",
-    "static/js/main.548dd97e.js"
+    "static/css/main.38606cdd.css",
+    "static/js/main.f114d03e.js"
   ]
 }
