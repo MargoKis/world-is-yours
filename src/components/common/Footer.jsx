@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import LogoWorldIsYours from "../../assets/icons/light/logo-light.svg";
 import { mediaIcons } from "../../assets/icons/media-icons/mediaIcons";
 import IconCopyright from "../../assets/icons/icon-copyright.svg";
@@ -6,10 +7,10 @@ import IconChat from "../../assets/icons/icon-chat.svg";
 import IconArrowRight from "../../assets/icons/arrow-up.svg";
 
 const Footer = () => {
-  
+
   return (
     <>
-        <footer className="flex flex-row flex-wrap bg-gray-dark justify-between pt-16 pb-5 ">
+      <footer className="flex flex-row flex-wrap bg-gray-dark justify-between pt-16 pb-5 ">
         <div className="social-media-block ml-10 ">
           <h1 className="text-white mb-5 font-inter text-20px">
             Ваша пригода починається тут
@@ -53,25 +54,29 @@ const Footer = () => {
             </a>
           </div>
           <hr className="mb-4 text-white" />
-          <ul className="reference flex flex-col gap-3">
-            <li className="text-white font-raleway font-600 text-20px">
-              Довідка
-            </li>
-            <li className="text-white font-raleway font-400 text-16px">
-              <a href="#payment" className="">
-                Оплата
-              </a>
-            </li>
-            <li className="text-white font-raleway text-16px">
-              <a href="#delivery" className="">
+          <p className="text-white font-raleway font-600 text-20px">Довідка</p>
+          <ul className="reference flex flex-col gap-3 mt-4">
+            <NavLink
+              to="/info-help?component=payment"
+              className="text-white font-raleway font-400 text-16px"
+              activeClassName="active-link"
+            >
+              Оплата
+            </NavLink>
+              <NavLink
+                to="/info-help?component=delivery"
+                className="text-white font-raleway font-400 text-16px"
+                activeClassName="active-link"
+              >
                 Доставка
-              </a>
-            </li>
-            <li className="text-white font-raleway text-16px">
-              <a href="#returns" className="">
+              </NavLink>
+              <NavLink
+                to="/info-help?component=return"
+                className="text-white font-raleway font-400 text-16px"
+                activeClassName="active-link"
+              >
                 Повернення та обмін
-              </a>
-            </li>
+              </NavLink>
           </ul>
         </div>
         <div className="mailing-list mr-10">

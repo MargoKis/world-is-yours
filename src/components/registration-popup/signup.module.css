@@ -4,8 +4,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.2); /* Задний фон с прозрачностью */
-  backdrop-filter: blur(3px); /* Эффект размытия заднего фона */
+  background: rgba(0, 0, 0, 0.2); 
+  backdrop-filter: blur(3px); 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,8 +15,8 @@
   background-color: rgb(255, 255, 255);
   padding: 20px;
   border-radius: 10px;
-  position: fixed;
-  width: 30%;
+  position: relative;
+  width: 400px;
 }
 
 .title {
@@ -27,6 +27,22 @@
   font-weight: 600;
   margin-bottom: 10%;
 }
+
+.titleWrap {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: center;
+}
+
+.closeIcon {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  margin-top: -3px;
+  cursor: pointer;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -34,8 +50,6 @@
   align-items: center;
 }
 
-label {
-}
 
 .input {
   padding: 10px;
@@ -48,19 +62,23 @@ label {
 }
 
 .error {
-  margin-right: 30%;
+  /* margin-right: 30%; */
   color: red;
-  font-size: 14px;
+  font-size: 13px;
   margin-bottom: 16px;
+  max-width: 80%;
 }
 
 .remindPas {
   color: #202020;
   font-size: 16px;
   margin-bottom: 8%;
+  cursor: pointer;
+  position: relative;
+  left: 90px;
 }
 
-.btn {
+.btn, .remind {
   color: rgb(255, 255, 255);
   box-sizing: border-box;
   border: 1px solid #202020;
@@ -73,4 +91,29 @@ label {
   font-weight: 700;
   width: 86%;
   margin-bottom: 10%;
+}
+
+.remind {
+  margin-bottom: 30%;
+}
+
+.mediaIcons {
+  width: 50px;
+  cursor: pointer;
+}
+
+.line {
+  width: 80px;
+  color: gray;
+  height: 1px;
+  margin-top: 13px;
+}
+
+.btnWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 40px;
 }
