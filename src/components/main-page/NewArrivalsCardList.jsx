@@ -1,11 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "../common/Card";
 import cardData from "../../data";
 import ArrowRight from "../../assets/icons/arrow-up.svg";
+import axios from 'axios'
 
 const NewArrivalsCardList = () => {
+  const [arrivals, setArrivals] = useState([]);
   const initialVisibleCards = 7;
   const [visibleCards, setVisibleCards] = useState(initialVisibleCards);
+
+  useEffect(() => {
+    const API = 'http://localhost:8000/api/products/'
+    console.log(API)
+    axios.get(API)
+      .then((response) => {
+        const visibleCards = response.data; 
+        setArrivals(visibleCards); 
+      })
+      .catch((error) => {
+        console.error('Помилка при отриманні даних:', error);
+      });
+  }, []); 
+
 
   const loadMoreCards = () => {
     setVisibleCards(
@@ -19,12 +35,12 @@ const NewArrivalsCardList = () => {
         Новинки
       </h1>
       <div className="flex flex-wrap justify-around mb-20 mx-6">
-        {cardData.slice(0, visibleCards).map((item, name) => (
+        {arrivals.slice(0, visibleCards).map((item, name) => (
           <Card data={item} key={name} />
         ))}
         {visibleCards < cardData.length && (
           <div
-            className="flex justify-center w-80 m-4 border-2 border-gray-light rounded-lg relative"
+            className="flex justify-center w-80 m-4 border-2 border-gray-light rounded-lg relative cursor-pointer"
             onClick={loadMoreCards}
           >
             {" "}

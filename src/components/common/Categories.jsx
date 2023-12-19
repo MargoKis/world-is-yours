@@ -24,7 +24,6 @@ function Categories() {
                     <p className='text-base font-light pb-2'>Додаткове</p>
                     <ul>
                         <li className='mb-6'>Подорожні товари</li>
-                        <li className='mb-6'>Дитячі товари</li>
                         <li>Активний відпочинок</li>
                     </ul>
                 </div>

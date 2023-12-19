@@ -12,8 +12,12 @@ module.exports = {
         },
         grayLight: "#C2C1C1",
         grayDark: "#202020",
-        gray: '#88888',
+        gray: '#888888',
         blue: '#135CFB',
+        textLight: '#515151',
+      },
+      borderColor: {
+        'black': "#202020", 
       },
       width: {
         '49': '49%', 
@@ -21,13 +25,19 @@ module.exports = {
       },
       backgroundImage: {
         header: "url('./assets/img/bg-header.png')",
+        page404: "url('./assets/icons/notFound404.png')"
       },
       backgroundColor: {
         "gray-dark": "#202020",
       },
       fontFamily: {
-        inter: ["Inter", "sans"],
+        // inter: ["Inter", "sans"],
         raleway: ["Raleway", "sans"],
+      },
+      fontWeight: {
+        light: 300, 
+        normal: 400,
+        bold: 700,
       },
       fontSize: { 
         '16px': '16px',
