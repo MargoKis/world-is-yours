@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from product import serializers
 from product.permissions import CanChangeReview
-from product.models import Product, ProductCategory, ProductReview, ProductSpecs, Wishlist, Basket
+from product.models import Product, ProductCategory, ProductSubCategory, ProductReview, ProductSpecs, Wishlist, Basket
 
 
 class ProductViewSet(ModelViewSet):
@@ -24,6 +24,16 @@ class ProductViewSet(ModelViewSet):
 class ProductCategoryViewSet(ModelViewSet):
     queryset = ProductCategory.objects.all()
     serializer_class = serializers.ProductCategorySerializer
+
+    def get_permissions(self):
+        if self.request.method not in SAFE_METHODS:
+            self.permission_classes = [IsAdminUser]
+        return super().get_permissions()
+
+
+class ProductSubCategoryViewSet(ModelViewSet):
+    queryset = ProductSubCategory.objects.all()
+    serializer_class = serializers.ProductSubCategorySerializer
 
     def get_permissions(self):
         if self.request.method not in SAFE_METHODS:

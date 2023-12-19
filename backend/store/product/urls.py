@@ -8,6 +8,7 @@ app_name = 'product'
 router = SimpleRouter()
 
 router.register('products/category', views.ProductCategoryViewSet, 'product_category')
+router.register('products/subcategory', views.ProductSubCategoryViewSet, 'product_subcategory')
 router.register('products/reviews', views.ProductReviewViewSet, 'product_review')
 router.register('products', views.ProductViewSet, 'product')
 router.register('baskets', views.BasketViewSet, 'basket')

@@ -1,5 +1,6 @@
 fixtures/user_user.json
 fixtures/product_category.json
+fixtures/product_subcategory.json
 fixtures/product_product.json
 fixtures/product_specs.json
 fixtures/product_wishlist.json

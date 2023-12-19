@@ -28,6 +28,7 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Method:** `GET`
 - **Description:** Access the admin panel with all models.
 
+
 ## 2. Authorization
 - **Endpoint:** `/api/auth/`
 - **Method:** `POST`
@@ -35,6 +36,7 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Parameters:**
   - username (string)
   - password (string)
+
 
 ## 3. Users
 ### 3.1 List Users
@@ -60,12 +62,13 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Description:** Get, update, or delete information for the specified user.
 - **Protection:** IsAuthenticated, IsOwnerOrReadOnly
 
+
 ## 4. Product Categories
 ### 4.1 List Categories
 - **Endpoint:** `/api/products/category/`
 - **Method:** `GET`
 - **Description:** List all product categories.
-- **Protection:** IsAdminUser
+- **Protection:** None
 
 ### 4.2 Create Category
 - **Endpoint:** `/api/products/category/`
@@ -82,60 +85,83 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Description:** Get, update, or delete information for the specified category.
 - **Protection:** IsAdminUser
 
-## 5. Products
-### 5.1 List Products
-- **Endpoint:** `/api/products/`
-- **Method:** `GET`
-- **Description:** List all products.
-- **Protection:** IsAdminUser
 
-### 5.2 Create Product
-- **Endpoint:** `/api/products/`
+## 5. Product SubCategories
+### 5.1 List Subcategories
+- **Endpoint:** `/api/products/subcategory/`
+- **Method:** `GET`
+- **Description:** List all product subcategories.
+- **Protection:** None
+
+### 5.2 Create Subcategory
+- **Endpoint:** `/api/products/subcategory/`
 - **Method:** `POST`
-- **Description:** Create a new product.
+- **Description:** Create a new product subcategory.
 - **Protection:** IsAdminUser
 - **Parameters:**
   - name (string)
+  - description (string)
+
+### 5.3 Get, Update, Destroy Subategory
+- **Endpoint:** `/api/products/subcategory/<int:category_id>/`
+- **Method:** `GET` (Get), `PUT` or `PATCH` (Update), `DELETE` (Destroy)
+- **Description:** Get, update, or delete information for the specified subcategory.
+- **Protection:** IsAdminUser
+
+## 6. Products
+### 6.1 List Products
+- **Endpoint:** `/api/products/`
+- **Method:** `GET`
+- **Description:** List all products.
+- **Protection:** Non7
+
+###76.2 Create Product
+- **Endpoint:** `/api/products/`
+- **Method:** `POST`
+- **Description:** Create a new product.
+- **Protection:** Is8dminUser
+- **Parameters:**
+  87name (string)
   - price (decimal)
   - description (string)
   - category (integer)
 
-### 5.3 Get, Update, Destroy Product
-- **Endpoint:** `/api/products/<int:prod_id>/`
+### 6.3 Get, Update, Destroy Product
+- 8*Endpoint:** `/api/products/<int:prod_id>/`
 - **Method:** `GET` (Get), `PUT` or `PATCH` (Update), `DELETE` (Destroy)
 - **Description:** Get, update, or delete information for the specified product.
 - **Protection:** IsAdminUser
 
-## 6. Product Specs
-### 6.1 List Specs
+## 7. Product Specs
+### 7.1 List Specs
 - **Endpoint:** `/api/products/<int:prod_id>/specs/`
 - **Method:** `GET`
 - **Description:** List all product specs for a specific product.
-- **Protection:** IsAuthenticated
+- **Protection:** IsAuthenticate8
 
-### 6.2 Create Spec
+###87.2 Create Spec
 - **Endpoint:** `/api/products/<int:prod_id>/specs/`
 - **Method:** `POST`
 - **Description:** Create a new product spec.
-- **Protection:** IsAuthenticated
+- **Protection:** IsAdminUser
 - **Parameters:**
-  - name (string)
+  -8name (string)
   - value (string)
 
-### 6.3 Get, Update, Destroy Spec
+### 7.3 Get, Update, Destroy Spec
 - **Endpoint:** `/api/products/specs/<int:spec_id>/`
 - **Method:** `GET` (Get), `PUT` or `PATCH` (Update), `DELETE` (Destroy)
 - **Description:** Get, update, or delete information for the specified spec.
 - **Protection:** IsAdminUser
 
-## 7. Product Reviews
-### 7.1 List Reviews
+## 8. Product Reviews
+### 8.1 List Reviews
 - **Endpoint:** `/api/products/reviews/`
 - **Method:** `GET`
 - **Description:** List all product reviews.
 - **Protection:** IsAuthenticated
 
-### 7.2 Create Review
+### 8.2 Create Review
 - **Endpoint:** `/api/products/reviews/`
 - **Method:** `POST`
 - **Description:** Create a new product review.
@@ -145,39 +171,39 @@ API works on [localhost:8000](http://localhost:8000/)
   - comment (string)
   - product (integer)
 
-### 7.3 Get, Update, Destroy Review
+### 8.3 Get, Update, Destroy Review
 - **Endpoint:** `/api/products/reviews/<int:review_id>/`
 - **Method:** `GET` (Get), `PUT` or `PATCH` (Update), `DELETE` (Destroy)
 - **Description:** Get, update, or delete information for the specified review.
 - **Protection:** IsAuthenticated, CanChangeReview (If the logged-in user is the author)
 
-## 8. Orders
-### 8.1 List Orders
+## 9. Orders
+### 9.1 List Orders
 - **Endpoint:** `/api/orders/`
 - **Method:** `GET`
 - **Description:** List all orders for the logged-in user.
 - **Protection:** IsAuthenticated
 
-### 8.2 Create Order
+### 9.2 Create Order
 - **Endpoint:** `/api/orders/`
 - **Method:** `POST`
 - **Description:** Create a new order.
 - **Protection:** IsAuthenticated
 
-### 8.3 Get, Destroy Order
+### 9.3 Get, Destroy Order
 - **Endpoint:** `/api/orders/<int:order_id>/`
 - **Method:** `GET` (Get), `DELETE` (Destroy)
 - **Description:** Get or delete information for the specified order.
 - **Protection:** IsAuthenticated
 
-## 9. Baskets
-### 9.1 List Baskets
+## 10. Baskets
+### 10.1 List Baskets
 - **Endpoint:** `/api/baskets/`
 - **Method:** `GET`
 - **Description:** List all baskets for the logged-in user.
 - **Protection:** IsAuthenticated
 
-### 9.2 Create Basket
+### 10.2 Create Basket
 - **Endpoint:** `/api/baskets/`
 - **Method:** `POST`
 - **Description:** Create a new basket.
@@ -185,20 +211,20 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Parameters:**
   - product (integer)
 
-### 9.3 Get, Update, Destroy Basket
+### 10.3 Get, Update, Destroy Basket
 - **Endpoint:** `/api/baskets/<int:basket_id>/`
 - **Method:** `GET` (Get), `PUT` (Update: You can only update the quantity field), `DELETE` (Destroy)
 - **Description:** Get, update, or delete information for the specified basket.
 - **Protection:** IsAuthenticated
 
-## 10. Wishlist
-### 10.1 List Wishlists
+## 11. Wishlist
+### 11.1 List Wishlists
 - **Endpoint:** `/api/wishlist/`
 - **Method:** `GET`
 - **Description:** List all wishlists for the logged-in user.
 - **Protection:** IsAuthenticated
 
-### 10.2 Create Wishlist
+### 11.2 Create Wishlist
 - **Endpoint:** `/api/wishlist/`
 - **Method:** `POST`
 - **Description:** Create a new wishlist.
@@ -206,7 +232,7 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Parameters:**
   - product (integer)
 
-### 10.3 Destroy Wishlist
+### 11.3 Destroy Wishlist
 - **Endpoint:** `/api/wishlist/<int:wishlist_id>/`
 - **Method:** `DELETE`
 - **Description:** Delete the specified wishlist.

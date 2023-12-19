@@ -3,96 +3,28 @@
     "model": "product.productcategory",
     "pk": 1,
     "fields": {
-      "name": "Наші фаворити",
-      "description": "Вибрані продукти наших клієнтів."
+      "name": "Для вас"
     }
   },
   {
     "model": "product.productcategory",
     "pk": 2,
     "fields": {
-      "name": "Новинки",
-      "description": "Останні поступлення в асортименті."
+      "name": "Для автодому"
     }
   },
   {
     "model": "product.productcategory",
     "pk": 3,
     "fields": {
-      "name": "Одяг",
-      "description": "Одяг для подорожей та активного відпочинку."
+      "name": "Додадкове"
     }
   },
   {
     "model": "product.productcategory",
     "pk": 4,
     "fields": {
-      "name": "Взуття",
-      "description": "Різноманітні взуття для різних видів відпочинку."
-    }
-  },
-  {
-    "model": "product.productcategory",
-    "pk": 5,
-    "fields": {
-      "name": "Аксесуари",
-      "description": "Додаткові товари для зручності та комфорту."
-    }
-  },
-  {
-    "model": "product.productcategory",
-    "pk": 6,
-    "fields": {
-      "name": "Технічна підтримка автодому",
-      "description": "Технічне обладнання для вашого автодому."
-    }
-  },
-  {
-    "model": "product.productcategory",
-    "pk": 7,
-    "fields": {
-      "name": "Устаткування для кемпінгу",
-      "description": "Необхідне устаткування для приготування їжі та комфортного проживання в полі."
-    }
-  },
-  {
-    "model": "product.productcategory",
-    "pk": 8,
-    "fields": {
-      "name": "Кухонне обладнання",
-      "description": "Все для вашої кухні в дорозі."
-    }
-  },
-  {
-    "model": "product.productcategory",
-    "pk": 9,
-    "fields": {
-      "name": "Автодомові аксесуари",
-      "description": "Аксесуари для вашого автодому."
-    }
-  },
-  {
-    "model": "product.productcategory",
-    "pk": 10,
-    "fields": {
-      "name": "Комфорт та зручності",
-      "description": "Товари, що забезпечують комфорт та зручність."
-    }
-  },
-  {
-    "model": "product.productcategory",
-    "pk": 11,
-    "fields": {
-      "name": "Подорожні товари",
-      "description": "Все необхідне для вашої подорожі."
-    }
-  },
-  {
-    "model": "product.productcategory",
-    "pk": 12,
-    "fields": {
-      "name": "Активний відпочинок",
-      "description": "Товари для активного та спортивного відпочинку."
+      "name": "Спеціальні пропозиції"
     }
   }
 ]

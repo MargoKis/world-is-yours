@@ -5,7 +5,7 @@ from user.models import User
 
 class ProductCategory(models.Model):
     name = models.CharField(max_length=128, unique=True)
-    description = models.TextField(null=True, blank=True, )
+    description = models.TextField(null=True, blank=True)
 
     class Meta:
         verbose_name = 'Category'
@@ -15,13 +15,26 @@ class ProductCategory(models.Model):
         return self.name
 
 
+class ProductSubCategory(models.Model):
+    category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, related_name='subcategories')
+    name = models.CharField(max_length=128, unique=True)
+    description = models.TextField(null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'SubCategory'
+        verbose_name_plural = 'SubCategories'
+
+    def __str__(self):
+        return f"{self.category.name} - {self.name}"
+
+
 class Product(models.Model):
     name = models.CharField(max_length=256)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     quantity = models.PositiveIntegerField(default=0)
     image = models.ImageField(upload_to='products_images',
                               default="products_images/default_image.jpg")
-    category = models.ForeignKey(to=ProductCategory, on_delete=models.PROTECT)
+    category = models.ForeignKey(to=ProductSubCategory, on_delete=models.PROTECT)
     description = models.TextField()
 
     class Meta:

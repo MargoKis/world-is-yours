@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from product.models import Product, ProductCategory, ProductReview, ProductSpecs, Wishlist, Basket
+from product.models import Product, ProductCategory, ProductSubCategory, ProductReview, ProductSpecs, Wishlist, Basket
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -12,6 +12,12 @@ class ProductSerializer(serializers.ModelSerializer):
 class ProductCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductCategory
+        fields = "__all__"
+
+
+class ProductSubCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductSubCategory
         fields = "__all__"
 
 
