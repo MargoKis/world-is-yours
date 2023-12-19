@@ -5,6 +5,7 @@ import Cart from '../../assets/icons/dark/icon-cart-dark.svg';
 import Image from '../../assets/temporary-img/tent.png'
 
 const Card = ({ data }) => {
+  console.log(data.image)
   return (
     <>
     <div className=" m-3 border-2 border-gray-light rounded-lg relative w-80 items-center">
@@ -13,6 +14,7 @@ const Card = ({ data }) => {
           alt=""
           className="w-80 max-w-200 rounded-lg"
         />
+       
         <div className="absolute top-3 right-3 m-2">
           <img src={HeartIcon} alt="heart icon" width="26" className='cursor-pointer'/>
         </div>
