@@ -31,6 +31,7 @@ class ProductSubCategory(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=256)
     price = models.DecimalField(max_digits=8, decimal_places=2)
+    old_price = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
     quantity = models.PositiveIntegerField(default=0)
     image = models.ImageField(upload_to='products_images',
                               default="products_images/default_image.jpg")

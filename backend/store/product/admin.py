@@ -1,5 +1,5 @@
 from django.contrib import admin
-from product.models import Product, ProductCategory, ProductSpecs, ProductReview, Wishlist, Basket
+from product.models import Product, ProductCategory, ProductSubCategory, ProductSpecs, ProductReview, Wishlist, Basket
 
 
 @admin.register(Product)
@@ -9,6 +9,11 @@ class ProductModelAdmin(admin.ModelAdmin):
 
 @admin.register(ProductCategory)
 class CategoryModelAdmin(admin.ModelAdmin):
+    ...
+
+
+@admin.register(ProductSubCategory)
+class SubCategoryModelAdmin(admin.ModelAdmin):
     ...
 
 
