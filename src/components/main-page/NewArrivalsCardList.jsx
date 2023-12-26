@@ -10,18 +10,18 @@ const NewArrivalsCardList = () => {
   const [visibleCards, setVisibleCards] = useState(initialVisibleCards);
 
   useEffect(() => {
-    const API = 'http://localhost:8000/api/products/'
-    console.log(API)
+    const API = 'http://localhost:8000/api/products/';
+
     axios.get(API)
       .then((response) => {
-        const visibleCards = response.data; 
-        setArrivals(visibleCards); 
+        const allProducts = response.data;
+        const categoryTwoArrivals = allProducts.filter(item => item.category === 2); // Фильтрация по категории 2
+        setArrivals(categoryTwoArrivals);
       })
       .catch((error) => {
-        console.error('Помилка при отриманні даних:', error);
+        console.error('Ошибка при получении данных:', error);
       });
   }, []); 
-
 
   const loadMoreCards = () => {
     setVisibleCards(
