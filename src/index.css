@@ -36,6 +36,9 @@ code {
   background-color: transparent;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 ul, ol, li {
   text-decoration: none;

@@ -8,11 +8,11 @@ const Card = ({ data }) => {
   console.log(data.image)
   return (
     <>
-    <div className=" m-3 border-2 border-gray-light rounded-lg relative w-80 items-center">
+    <div className=" m-3 border-2 border-gray-light rounded-lg relative w-90 items-center">
         <img
           src={data.image} 
           alt=""
-          className="w-80 max-w-200 rounded-lg"
+          className="w-80 h-96 object-cover max-w-200 rounded-lg"
         />
        
         <div className="absolute top-3 right-3 m-2">

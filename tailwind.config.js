@@ -50,6 +50,27 @@ module.exports = {
         '40px': '40px',
         '50px': '50px',
       },
+      screens: {
+        sm: '480px',
+        md: '768px',
+        xl: '1280px',
+        xxl: '1752px',
+  
+        smOnly: { max: '767.98px' },
+        mdOnly: { min: '768px', max: '1279.98px' },
+        notXl: { max: '1279.98px' },
+        mediaHover: { raw: '(hover: hover)' },
+      },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '1.5rem',
+          sm: '1.5rem',
+          md: '5.25rem',
+          xl: '2rem',
+          xxl: '2rem',
+        },
+      },
     },
   },
   plugins: [],
