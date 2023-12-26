@@ -14,6 +14,7 @@ import SignUp from "../components/registration-popup/SignUp";
 import LogIn from "../components/registration-popup/LogIn";
 import RemindPas from "../components/registration-popup/RemindPas";
 import SuccessMes from "../components/registration-popup/SuccessMes";
+import t from "../locale/locales";
 
 function MainPage() {
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
@@ -108,7 +109,8 @@ function MainPage() {
           }`}
         >
           <p className="text-center text-4xl mb-10">
-            Ваша пригода починається тут
+            {/* Ваша пригода починається тут */}
+            {t('Your adventure starts here')}
           </p>
           <a href="#sectionFav">
             <img  className="cursor-pointer" src={ArrowIcon} alt="Arrow Down" />

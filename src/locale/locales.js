@@ -1,6 +1,6 @@
 
-import en from './en.json';
-import uk from './uk.json';
+import en from './en';
+import uk from './uk';
 
 const t = (key) => {
   let jsonData;
