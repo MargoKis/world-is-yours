@@ -45,19 +45,18 @@ class UserDetailAPIView(RetrieveUpdateDestroyAPIView):
         else:
             serializer.save()
 
-#
-# class EmailVerificationView(APIView):
-#     def get(self, request, email, code):
-#         try:
-#             verification = EmailVerification.objects.get(user__email=email, code=code)
-#             if not verification.is_expired():
-#                 # Позначте аккаунт як підтверджений
-#                 verification.user.is_verified = True
-#                 verification.user.save()
-#                 verification.delete()
-#                 return Response({'message': 'Your account has been verified successfully.'}, status=status.HTTP_200_OK)
-#             else:
-#                 verification.delete()
-#                 return Response({'error': 'Verification link has expired.'}, status=status.HTTP_400_BAD_REQUEST)
-#         except EmailVerification.DoesNotExist:
-#             return Response({'error': 'Invalid verification link.'}, status=status.HTTP_400_BAD_REQUEST)
+
+class EmailVerificationView(APIView):
+    def get(self, request, email, code):
+        try:
+            verification = EmailVerification.objects.get(user__email=email, code=code)
+            if not verification.is_expired():
+                verification.user.is_verified_email = True
+                verification.user.save()
+                verification.delete()
+                return Response({'message': 'Your account has been verified successfully.'}, status=status.HTTP_200_OK)
+            else:
+                verification.delete()
+                return Response({'error': 'Verification link has expired.'}, status=status.HTTP_400_BAD_REQUEST)
+        except EmailVerification.DoesNotExist:
+            return Response({'error': 'Invalid verification link.'}, status=status.HTTP_400_BAD_REQUEST)

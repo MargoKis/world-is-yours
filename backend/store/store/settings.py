@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
 
+DOMAIN_NAME = 'http://localhost:8000'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 
     'django_extensions',
+    'django_celery_results',
     'corsheaders',
 
     'user',
@@ -148,6 +151,21 @@ APPEND_SLASH = False
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Celery
+CELERY_BROKER_URL = 'redis://redis_server:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis_server:6379/0'
+
+# Email
+
+# Настройки для отправки электронных писем
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'email.for.parsers.pages@gmail.com'
+EMAIL_HOST_PASSWORD = 'wiip xfel sxbk cngw'
+
 
 if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True

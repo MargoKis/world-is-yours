@@ -1,6 +1,8 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
+from user.tasks import send_email_verification
+
 UserModel = get_user_model()
 
 
@@ -38,6 +40,11 @@ class UserCreateSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         validated_data.pop('confirm_password')
         return UserModel.objects.create_user(**validated_data)
+
+    def save(self, **kwargs):
+        user = super(UserCreateSerializer, self).save(**kwargs)
+        send_email_verification.delay(user_id=user.id)
+        return user
 
 
 class UserUpdateSerializer(serializers.ModelSerializer):
