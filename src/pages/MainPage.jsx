@@ -14,9 +14,22 @@ import SignUp from "../components/registration-popup/SignUp";
 import LogIn from "../components/registration-popup/LogIn";
 import RemindPas from "../components/registration-popup/RemindPas";
 import SuccessMes from "../components/registration-popup/SuccessMes";
-import t from "../locale/locales";
+import useTranslation  from "../locale/locales";
+
 
 function MainPage() {
+  const t = useTranslation();
+
+  
+
+
+ 
+  
+
+
+
+
+
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -61,6 +74,9 @@ function MainPage() {
     setIsRemindPassOpen(false);
     setIsSuccessMesOpen(true);
   };
+
+
+
 
   return (
     <div className="h-screen bg-header bg-cover bg-no-repeat bg-bottom text-white">

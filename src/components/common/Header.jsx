@@ -6,8 +6,15 @@ import CartIconDark from "../../assets/icons/dark/icon-cart-dark.svg";
 import HeartIconDark from "../../assets/icons/dark/icon-heart-dark.svg";
 import ProfileIconDark from "../../assets/icons/dark/icon-profile-dark.svg";
 import ArrowDown from "../../assets/icons/arrow-up.svg";
+import { useDispatch } from "react-redux";
+import { setLocale } from "../../redux/localeSlice";
 
 function Header({ isCategoriesOpen, setIsCategoriesOpen, openSignUpPopup }) {
+  const dispatch = useDispatch();
+  
+  
+
+
   return (
     <div className="flex justify-between items-center px-10 bg-white text-custom-black drop-shadow-5xl ">
       <div className="flex justify-between items-center">
@@ -15,8 +22,8 @@ function Header({ isCategoriesOpen, setIsCategoriesOpen, openSignUpPopup }) {
           <img src={LogoWorldIsYoursDark} alt="World Is Yours" />
         </NavLink>
         <div className="mx-10 text-center">
-          <div className="text-custom-black/30 cursor-pointer">ENG</div>
-          <div className="underline cursor-pointer">UA</div>
+          <div className="text-custom-black/30 cursor-pointer" onClick={() => dispatch(setLocale({ locale: 'en' }))}>ENG</div>
+          <div className="underline cursor-pointer" onClick={() => dispatch(setLocale({ locale: 'uk' }))}>UA</div>
         </div>
         <img className="cursor-pointer" src={SearchIconDark} alt="Search" />
       </div>
@@ -27,9 +34,8 @@ function Header({ isCategoriesOpen, setIsCategoriesOpen, openSignUpPopup }) {
           className="mr-10 cursor-pointer flex flex-row"
         >
           <img
-            className={` w-3 mr-2 ${
-              isCategoriesOpen ? "rotate-0" : "rotate-180"
-            }`}
+            className={` w-3 mr-2 ${isCategoriesOpen ? "rotate-0" : "rotate-180"
+              }`}
             src={ArrowDown}
             alt="arrow down"
           />
