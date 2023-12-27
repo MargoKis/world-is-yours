@@ -6,13 +6,15 @@ import CartIconDark from "../../assets/icons/dark/icon-cart-dark.svg";
 import HeartIconDark from "../../assets/icons/dark/icon-heart-dark.svg";
 import ProfileIconDark from "../../assets/icons/dark/icon-profile-dark.svg";
 import ArrowDown from "../../assets/icons/arrow-up.svg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLocale } from "../../redux/localeSlice";
 
 function Header({ isCategoriesOpen, setIsCategoriesOpen, openSignUpPopup }) {
   const dispatch = useDispatch();
-  
-  
+  const locale = useSelector((state) => state.locale.locale);
+
+
+
 
 
   return (
@@ -22,8 +24,17 @@ function Header({ isCategoriesOpen, setIsCategoriesOpen, openSignUpPopup }) {
           <img src={LogoWorldIsYoursDark} alt="World Is Yours" />
         </NavLink>
         <div className="mx-10 text-center">
-          <div className="text-custom-black/30 cursor-pointer" onClick={() => dispatch(setLocale({ locale: 'en' }))}>ENG</div>
-          <div className="underline cursor-pointer" onClick={() => dispatch(setLocale({ locale: 'uk' }))}>UA</div>
+          {/* <div className="text-custom-black/30 cursor-pointer" onClick={() => dispatch(setLocale({ locale: 'en' }))}>ENG</div> */}
+          <div className={`cursor-pointer ${locale === 'en' ? ' underline' : 'text-custom-black/30'}`} onClick={() => dispatch(setLocale({ locale: 'en' }))}>
+            ENG
+          </div>
+
+          {/* <div className="underline cursor-pointer" onClick={() => dispatch(setLocale({ locale: 'uk' }))}>UA</div> */}
+          <div className={`cursor-pointer ${locale === 'uk' ? ' underline' : 'text-custom-black/30'}`} onClick={() => dispatch(setLocale({ locale: 'uk' }))}>
+          UA
+          </div>
+
+
         </div>
         <img className="cursor-pointer" src={SearchIconDark} alt="Search" />
       </div>
