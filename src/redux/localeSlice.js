@@ -8,7 +8,6 @@ export const localeSlice = createSlice({
   },
   reducers: {
     setLocale: (state, action) => {
-      console.log("locale"+action.payload.locale );
       state.locale = action.payload.locale;
     },
   },

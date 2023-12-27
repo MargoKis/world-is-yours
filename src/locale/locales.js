@@ -1,23 +1,20 @@
-// src/locale/useTranslation.js
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import en from './en';
-import uk from './uk';
+import api from '../api/api';
+import { useState } from 'react';
 
 const useTranslation = () => {
+  const [language, setLanguage] = useState('en');
   const locale = useSelector((state) => state.locale.locale);
 
+  useEffect(() => {
+    api.getLanguage(locale)
+      .then(data => setLanguage(data))
+      .catch(error => console.error('Error in useTranslation:', error));
+  }, [locale]);
+
   const t = (key) => {
-    let jsonData;
-
-    if (locale === 'en') {
-      jsonData = en;
-    } else if (locale === 'uk') {
-      jsonData = uk;
-    } else {
-      jsonData = en;
-    }
-
-    const value = jsonData[key];
+    const value = language[key];
 
     if (value !== undefined && value !== null) {
       return value;
