@@ -6,6 +6,10 @@ Clone the repository
 ```
 git clone https://github.com/MargoKis/world-is-yours.git
 ```
+Switch branch
+```
+git checkout kravchenko-backend
+```
 Install [Docker for Desktop](https://docs.docker.com/desktop/install/windows-install/)
 
 Run docker-compose in terminal
@@ -237,6 +241,12 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Method:** `DELETE`
 - **Description:** Delete the specified wishlist.
 - **Protection:** IsAuthenticated
+
+### 12 Language Switcher
+- **Endpoint:** `/api/language/<str:language>/`
+- **Method:** `GET`
+- - **Description:** Switch content language. Available languages - 'uk', 'en'.
+- **Protection:** None
 
 ## Authentication and Authorization
 - **Authentication:** Token-based (OAuth 2.0).
