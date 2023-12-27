@@ -52,6 +52,14 @@ services:
       - default
     restart: unless-stopped
 
+  celery:
+    build: ./
+    command: celery -A store worker -l info
+    volumes:
+      - .:/store
+    depends_on:
+      - redis_server
+
 networks:
   default:
     driver: bridge

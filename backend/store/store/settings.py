@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -44,10 +43,12 @@ INSTALLED_APPS = [
 
     'django_extensions',
     'django_celery_results',
+    'modeltranslation',
     'corsheaders',
 
     'user',
     'product',
+    'translation',
     'order',
 ]
 
@@ -60,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'store.urls'
@@ -82,13 +84,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'store.wsgi.application'
 
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ]
 }
-
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -103,7 +103,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -127,7 +126,18 @@ AUTH_USER_MODEL = "user.User"
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+
+# Настройки для django-modeltranslation
+LANGUAGE_CODE = 'en'
+
+gettext = lambda s: s
+
+LANGUAGES = (
+    ('uk', gettext('Ukrainian')),
+    ('en', gettext('English')),
+)
+MODELTRANSLATION_LANGUAGES = ('uk', 'en')
 
 TIME_ZONE = 'UTC'
 
@@ -136,7 +146,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -165,7 +174,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'email.for.parsers.pages@gmail.com'
 EMAIL_HOST_PASSWORD = 'wiip xfel sxbk cngw'
-
 
 if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True

@@ -23,6 +23,7 @@ urlpatterns = [
     path('api/', include('user.urls', namespace='user')),
     path('api/', include('product.urls', namespace='product')),
     path('api/', include('order.urls', namespace='order')),
+    path('api/', include('translation.urls', namespace='translation')),
 ]
 
 if settings.DEBUG:
