@@ -24,12 +24,11 @@ function Header({ isCategoriesOpen, setIsCategoriesOpen, openSignUpPopup }) {
           <img src={LogoWorldIsYoursDark} alt="World Is Yours" />
         </NavLink>
         <div className="mx-10 text-center">
-          {/* <div className="text-custom-black/30 cursor-pointer" onClick={() => dispatch(setLocale({ locale: 'en' }))}>ENG</div> */}
+
           <div className={`cursor-pointer ${locale === 'en' ? ' underline' : 'text-custom-black/30'}`} onClick={() => dispatch(setLocale({ locale: 'en' }))}>
             ENG
           </div>
 
-          {/* <div className="underline cursor-pointer" onClick={() => dispatch(setLocale({ locale: 'uk' }))}>UA</div> */}
           <div className={`cursor-pointer ${locale === 'uk' ? ' underline' : 'text-custom-black/30'}`} onClick={() => dispatch(setLocale({ locale: 'uk' }))}>
           UA
           </div>
