@@ -1,18 +1,24 @@
-// src/features/localeSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 export const localeSlice = createSlice({
   name: 'locale',
   initialState: {
+    language: '', 
     locale: 'uk',
   },
   reducers: {
     setLocale: (state, action) => {
       state.locale = action.payload.locale;
     },
+    setLanguage: (state, action) => {
+      if (action.payload && action.payload.language) {
+        console.log("here");
+        state.language = action.payload.language;
+      }
+    },
   },
 });
 
-export const { setLocale } = localeSlice.actions;
-
+// Експорт екшенів та редюсера
+export const { setLocale, setLanguage } = localeSlice.actions;
 export default localeSlice.reducer;

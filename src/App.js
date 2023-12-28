@@ -4,8 +4,9 @@ import MainPage from "./pages/MainPage";
 import PaymentPage from "./pages/PaymentPage";
 import NotFound404 from "./pages/NotFound404";
 import InfoPayment from "./pages/InfoHelp";
-import { useDispatch } from "react-redux";
-import { setLocale } from "./redux/localeSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setLocale,setLanguage } from "./redux/localeSlice";
+import api from "./api/api";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,16 @@ function App() {
 
     dispatch(setLocale({ locale: selectedLanguage }));
   }, [availableLanguages, dispatch]);
+
+  const locale = useSelector((state) => state.locale.locale);
+  
+  useEffect(() => {
+    
+    api.getLanguage(locale)
+      .then(data =>  dispatch(setLanguage({ language: data })))
+      .catch(error => console.error('Error in useTranslation:', error));
+  }, [locale,dispatch]);
+
 
 
 
