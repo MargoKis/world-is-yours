@@ -8,10 +8,15 @@ import ProfileIconDark from "../../assets/icons/dark/icon-profile-dark.svg";
 import ArrowDown from "../../assets/icons/arrow-up.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { setLocale } from "../../redux/localeSlice";
+import useTranslation from "../../locale/locales";
 
 function Header({ isCategoriesOpen, setIsCategoriesOpen, openSignUpPopup }) {
   const dispatch = useDispatch();
+
+  const t = useTranslation();
+
   const locale = useSelector((state) => state.locale.locale);
+
 
 
 
@@ -30,7 +35,7 @@ function Header({ isCategoriesOpen, setIsCategoriesOpen, openSignUpPopup }) {
           </div>
 
           <div className={`cursor-pointer ${locale === 'uk' ? ' underline' : 'text-custom-black/30'}`} onClick={() => dispatch(setLocale({ locale: 'uk' }))}>
-          UA
+            UA
           </div>
 
 
@@ -38,7 +43,7 @@ function Header({ isCategoriesOpen, setIsCategoriesOpen, openSignUpPopup }) {
         <img className="cursor-pointer" src={SearchIconDark} alt="Search" />
       </div>
       <ul className="flex justify-between items-center">
-        <li className="mr-10 cursor-pointer">ГОЛОВНА</li>
+        <li className="mr-10 cursor-pointer">{t("HOME")}</li>
         <li
           onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
           className="mr-10 cursor-pointer flex flex-row"
@@ -49,9 +54,9 @@ function Header({ isCategoriesOpen, setIsCategoriesOpen, openSignUpPopup }) {
             src={ArrowDown}
             alt="arrow down"
           />
-          КАТАЛОГ
+          {t("CATALOGUE")}
         </li>
-        <li className="cursor-pointer">КОНТАКТИ</li>
+        <li className="cursor-pointer">{t("CONTACTS")}</li>
       </ul>
       <div className="flex justify-between items-center ">
         <NavLink className="mr-10" to={"#"}>

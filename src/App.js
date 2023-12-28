@@ -17,7 +17,6 @@ function App() {
 
   useEffect(() => {
     const userLanguages = navigator.languages || [navigator.language || navigator.userLanguage];
-
     const preferredLanguage = userLanguages.find(language => availableLanguages.includes(language));
 
     const selectedLanguage = preferredLanguage || 'en'; //default
