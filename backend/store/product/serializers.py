@@ -6,19 +6,19 @@ from product.models import Product, ProductCategory, ProductSubCategory, Product
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = "__all__"
+        fields = "name", "description", "price", "old_price", "quantity", "image", "category"
 
 
 class ProductCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductCategory
-        fields = "__all__"
+        fields = "name", "description"
 
 
 class ProductSubCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductSubCategory
-        fields = "__all__"
+        fields = "name", "description"
 
 
 class ProductReviewSerializer(serializers.ModelSerializer):
@@ -30,7 +30,7 @@ class ProductReviewSerializer(serializers.ModelSerializer):
 class ProductSpecSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductSpecs
-        fields = "__all__"
+        fields = "product_id", "name", "value"
 
 
 class WishlistSerializer(serializers.ModelSerializer):
