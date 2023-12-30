@@ -12,7 +12,6 @@ export const localeSlice = createSlice({
     },
     setLanguage: (state, action) => {
       if (action.payload && action.payload.language) {
-        console.log("here");
         state.language = action.payload.language;
       }
     },

@@ -8,16 +8,22 @@ import ProfileIconDark from "../../assets/icons/dark/icon-profile-dark.svg";
 import ArrowDown from "../../assets/icons/arrow-up.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { setLocale } from "../../redux/localeSlice";
+import { setIsCategoriesOpen } from "../../redux/headerSlice";
 import useTranslation from "../../locale/locales";
 import Categories from "./Categories";
+import SignUp from "../registration-popup/SignUp";
 
-function Header({ openSignUpPopup }) {
+function Header() {
   const dispatch = useDispatch();
 
   const t = useTranslation();
-  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  // const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  const [isOpenSignUpPopup, setOpenSignUpPopup] = useState(false);
 
   const locale = useSelector((state) => state.locale.locale);
+  const isCategoriesOpen = useSelector((state) => state.header.isCategoriesOpen);
+
+
 
 
 
@@ -48,17 +54,10 @@ function Header({ openSignUpPopup }) {
           </div>
           <ul className="flex justify-between items-center">
             <li className="mr-10 cursor-pointer">{t("HOME")}</li>
-            <li
-              onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
-              className="mr-10 cursor-pointer flex flex-row"
-            >
+            <li onClick={() => dispatch(setIsCategoriesOpen({ isCategoriesOpen: !isCategoriesOpen }))} className="mr-10 cursor-pointer flex flex-row">
               <img
-                className={` w-3 mr-2 ${isCategoriesOpen ? "rotate-0" : "rotate-180"
-                  }`}
-                src={ArrowDown}
-                alt="arrow down"
-              />
-              {t("CATALOGUE")}
+                className={` w-3 mr-2 ${isCategoriesOpen ? "rotate-0" : "rotate-180"}`} src={ArrowDown} alt="arrow down" />
+                {t("CATALOGUE")}
             </li>
             <li className="cursor-pointer">{t("CONTACTS")}</li>
           </ul>
@@ -69,17 +68,20 @@ function Header({ openSignUpPopup }) {
             <NavLink className="mr-10" to={"#"}>
               <img src={HeartIconDark} alt="Favorites" />
             </NavLink>
-            <NavLink to={"#"} onClick={openSignUpPopup}>
+            <NavLink to="#" onClick={() => setOpenSignUpPopup(true)}>
               <img src={ProfileIconDark} alt="Profile" />
             </NavLink>
           </div>
         </div>
 
       </div>
-      <div class="flex justify-center">
+      <div className="flex justify-center">
         {isCategoriesOpen && <Categories />}
       </div>
-
+      {isOpenSignUpPopup &&   <SignUp 
+        onClose={()=>setOpenSignUpPopup(false)}
+      /> }
+    
     </>
   );
 }

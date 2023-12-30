@@ -29,7 +29,7 @@ function Categories() {
                 </div>
             </div>
             <svg className='mb-6' width="287" height="1" viewBox="0 0 287 1" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <line y1="0.75" x2="287" y2="0.75" stroke="#646464" stroke-width="0.5"/>
+                <line y1="0.75" x2="287" y2="0.75" stroke="#646464" strokeWidth="0.5"/>
             </svg>
             <ul>
                 <li className='mb-6'>Автодомові аксесуари</li>

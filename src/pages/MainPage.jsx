@@ -10,45 +10,36 @@ import FavouritesCardList from "../components/main-page/FavouritesCardList";
 import NewArrivalsCardList from "../components/main-page/NewArrivalsCardList";
 import ScrollingText from "../components/scrolling-effect/ScrollingText";
 
-import SignUp from "../components/registration-popup/SignUp";
+// import SignUp from "../components/registration-popup/SignUp";
 import LogIn from "../components/registration-popup/LogIn";
 import RemindPas from "../components/registration-popup/RemindPas";
 import SuccessMes from "../components/registration-popup/SuccessMes";
 import useTranslation from "../locale/locales";
+import { useSelector } from "react-redux";
 
 
 function MainPage() {
   const t = useTranslation();
 
+  // catalog stage
+  const isCategoriesOpen = useSelector((state) => state.header.isCategoriesOpen);
 
 
 
-
-
-
-
-
-
-
-  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
-  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRemindPassOpen, setIsRemindPassOpen] = useState(false);
   const [isSuccessMesOpen, setIsSuccessMesOpen] = useState(false);
 
-  const openSignUpPopup = () => {
-    setIsSignUpOpen(true);
-  };
+
 
   const openSignUp = () => {
-    setIsSignUpOpen(true);
+
     setIsLoginOpen(false);
     setIsRemindPassOpen(false);
     setIsSuccessMesOpen(false);
   };
 
   const openRemindPass = () => {
-    setIsSignUpOpen(false);
     setIsRemindPassOpen(true);
     setIsLoginOpen(false);
     setIsSuccessMesOpen(false);
@@ -56,20 +47,17 @@ function MainPage() {
 
   const openLogin = () => {
     setIsLoginOpen(true);
-    setIsSignUpOpen(false);
     setIsRemindPassOpen(false);
     setIsSuccessMesOpen(false);
   };
 
   const closePopups = () => {
-    setIsSignUpOpen(false);
     setIsLoginOpen(false);
     setIsRemindPassOpen(false);
     setIsSuccessMesOpen(false);
   };
 
   const openSuccess = () => {
-    setIsSignUpOpen(false);
     setIsLoginOpen(false);
     setIsRemindPassOpen(false);
     setIsSuccessMesOpen(true);
@@ -86,16 +74,8 @@ function MainPage() {
         
 
    
-            <Header
-              openSignUpPopup={openSignUpPopup}
-            />
+            <Header />
 
-          <SignUp
-            isOpen={isSignUpOpen}
-            onClose={closePopups}
-            openLogin={openLogin}
-            openRemindPass={openRemindPass}
-          />
           <RemindPas
             isOpen={isRemindPassOpen}
             onClose={closePopups}
