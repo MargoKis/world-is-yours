@@ -3,8 +3,10 @@
     "model": "product.productsubcategory",
     "pk": 1,
     "fields": {
-      "name": "Наші фаворити",
-      "description": "Вибрані продукти наших клієнтів.",
+      "name": "Our Favorites",
+      "name_uk": "Наші фаворити",
+      "description": "Selected products of our customers.",
+      "description_uk": "Вибрані продукти наших клієнтів.",
       "category": 4
     }
   },
@@ -12,8 +14,10 @@
     "model": "product.productsubcategory",
     "pk": 2,
     "fields": {
-      "name": "Новинки",
-      "description": "Останні поступлення в асортименті.",
+      "name": "New Arrivals",
+      "name_uk": "Новинки",
+      "description": "Latest additions to the assortment.",
+      "description_uk": "Останні поступлення в асортименті.",
       "category": 4
     }
   },
@@ -21,8 +25,10 @@
     "model": "product.productsubcategory",
     "pk": 3,
     "fields": {
-      "name": "Одяг",
-      "description": "Одяг для подорожей та активного відпочинку.",
+      "name": "Clothing",
+      "name_uk": "Одяг",
+      "description": "Clothing for travel and active leisure.",
+      "description_uk": "Одяг для подорожей та активного відпочинку.",
       "category": 1
     }
   },
@@ -30,8 +36,10 @@
     "model": "product.productsubcategory",
     "pk": 4,
     "fields": {
-      "name": "Взуття",
-      "description": "Різноманітні взуття для різних видів відпочинку.",
+      "name": "Footwear",
+      "name_uk": "Взуття",
+      "description": "Various footwear for different types of leisure.",
+      "description_uk": "Різноманітні взуття для різних видів відпочинку.",
       "category": 1
     }
   },
@@ -39,8 +47,10 @@
     "model": "product.productsubcategory",
     "pk": 5,
     "fields": {
-      "name": "Аксесуари",
-      "description": "Додаткові товари для зручності та комфорту.",
+      "name": "Accessories",
+      "name_uk": "Аксесуари",
+      "description": "Additional goods for convenience and comfort.",
+      "description_uk": "Додаткові товари для зручності та комфорту.",
       "category": 1
     }
   },
@@ -48,8 +58,10 @@
     "model": "product.productsubcategory",
     "pk": 6,
     "fields": {
-      "name": "Технічна підтримка автодому",
-      "description": "Технічне обладнання для вашого автодому.",
+      "name": "Technical Support for Motorhomes",
+      "name_uk": "Технічна підтримка автодому",
+      "description": "Technical equipment for your motorhome.",
+      "description_uk": "Технічне обладнання для вашого автодому.",
       "category": 2
     }
   },
@@ -57,8 +69,10 @@
     "model": "product.productsubcategory",
     "pk": 7,
     "fields": {
-      "name": "Устаткування для кемпінгу",
-      "description": "Необхідне устаткування для приготування їжі та комфортного проживання в полі.",
+      "name": "Camping Equipment",
+      "name_uk": "Устаткування для кемпінгу",
+      "description": "Essential equipment for cooking and comfortable living in the field.",
+      "description_uk": "Необхідне устаткування для приготування їжі та комфортного проживання в полі.",
       "category": 2
     }
   },
@@ -66,8 +80,10 @@
     "model": "product.productsubcategory",
     "pk": 8,
     "fields": {
-      "name": "Кухонне обладнання",
-      "description": "Все для вашої кухні в дорозі.",
+      "name": "Kitchen Equipment",
+      "name_uk": "Кухонне обладнання",
+      "description": "Everything for your kitchen on the road.",
+      "description_uk": "Все для вашої кухні в дорозі.",
       "category": 2
     }
   },
@@ -75,8 +91,10 @@
     "model": "product.productsubcategory",
     "pk": 9,
     "fields": {
-      "name": "Автодомові аксесуари",
-      "description": "Аксесуари для вашого автодому.",
+      "name": "Motorhome Accessories",
+      "name_uk": "Автодомові аксесуари",
+      "description": "Accessories for your motorhome.",
+      "description_uk": "Аксесуари для вашого автодому.",
       "category": 2
     }
   },
@@ -84,8 +102,10 @@
     "model": "product.productsubcategory",
     "pk": 10,
     "fields": {
-      "name": "Комфорт та зручності",
-      "description": "Товари, що забезпечують комфорт та зручність.",
+      "name": "Comfort and Convenience",
+      "name_uk": "Комфорт та зручності",
+      "description": "Goods that provide comfort and convenience.",
+      "description_uk": "Товари, що забезпечують комфорт та зручність.",
       "category": 2
     }
   },
@@ -93,8 +113,10 @@
     "model": "product.productsubcategory",
     "pk": 11,
     "fields": {
-      "name": "Подорожні товари",
-      "description": "Все необхідне для вашої подорожі.",
+      "name": "Travel Goods",
+      "name_uk": "Подорожні товари",
+      "description": "Everything you need for your journey.",
+      "description_uk": "Все необхідне для вашої подорожі.",
       "category": 3
     }
   },
@@ -102,8 +124,10 @@
     "model": "product.productsubcategory",
     "pk": 12,
     "fields": {
-      "name": "Активний відпочинок",
-      "description": "Товари для активного та спортивного відпочинку.",
+      "name": "Active Leisure",
+      "name_uk": "Активний відпочинок",
+      "description": "Goods for active and sports leisure.",
+      "description_uk": "Товари для активного та спортивного відпочинку.",
       "category": 3
     }
   }

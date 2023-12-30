@@ -3,28 +3,32 @@
     "model": "product.productcategory",
     "pk": 1,
     "fields": {
-      "name": "Для вас"
+      "name": "For you",
+      "name_uk": "Для вас"
     }
   },
   {
     "model": "product.productcategory",
     "pk": 2,
     "fields": {
-      "name": "Для автодому"
+      "name": "For the motorhome",
+      "name_uk": "Для автодому"
     }
   },
   {
     "model": "product.productcategory",
     "pk": 3,
     "fields": {
-      "name": "Додадкове"
+      "name": "Additional",
+      "name_uk": "Додадкове"
     }
   },
   {
     "model": "product.productcategory",
     "pk": 4,
     "fields": {
-      "name": "Спеціальні пропозиції"
+      "name": "Special deals",
+      "name_uk": "Спеціальні пропозиції"
     }
   }
 ]

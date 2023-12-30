@@ -4,11 +4,13 @@
     "pk": 1,
     "fields": {
       "name": "Backpack",
+      "name_uk": "Рюкзак",
       "price": "59.99",
       "quantity": 10,
       "image": "products_images/backpack.jpg",
       "category": 1,
-      "description": "A durable backpack for outdoor adventures."
+      "description": "A durable backpack for outdoor adventures.",
+      "description_uk": "Міцний рюкзак для пригод на природі."
     }
   },
   {
@@ -16,11 +18,13 @@
     "pk": 2,
     "fields": {
       "name": "Basin",
+      "name_uk": "Щось",
       "price": "12.99",
       "quantity": 20,
       "image": "products_images/basin.jpg",
       "category": 1,
-      "description": "A lightweight basin for camping."
+      "description": "A lightweight basin for camping.",
+      "description_uk": "Легкий щось для кемпінгу."
     }
   },
   {
@@ -28,11 +32,13 @@
     "pk": 3,
     "fields": {
       "name": "Electric Stove 1",
+      "name_uk": "Електроплита 1",
       "price": "39.99",
       "quantity": 15,
       "image": "products_images/electric_stove1.jpg",
       "category": 2,
-      "description": "Portable electric stove for cooking."
+      "description": "Portable electric stove for cooking.",
+      "description_uk": "Портативна електроплита для готування"
     }
   },
   {
@@ -40,11 +46,13 @@
     "pk": 4,
     "fields": {
       "name": "Electric Stove 2",
+      "name_uk": "Електроплита 2",
       "price": "49.99",
       "quantity": 12,
       "image": "products_images/electric_stove2.jpg",
       "category": 2,
-      "description": "Another version of portable electric stove."
+      "description": "Another version of portable electric stove.",
+      "description_uk": "Інша портативна плита"
     }
   },
   {
@@ -52,11 +60,13 @@
     "pk": 5,
     "fields": {
       "name": "Hat",
+      "name_uk": "Шапка",
       "price": "14.99",
       "quantity": 30,
       "image": "products_images/hat.jpg",
       "category": 1,
-      "description": "Stylish hat for any occasion."
+      "description": "Stylish hat for any occasion.",
+      "description_uk": "Стильна шапка на будь-який випадок"
     }
   },
   {
@@ -64,11 +74,13 @@
     "pk": 6,
     "fields": {
       "name": "Lamp",
+      "name_uk": "Лампа",
       "price": "29.99",
       "quantity": 12,
       "image": "products_images/lamp.jpg",
       "category": 2,
-      "description": "Portable lamp for camping."
+      "description": "Portable lamp for camping.",
+      "description_uk": "Портативна лампа для кемпінгу"
     }
   },
   {
@@ -76,11 +88,13 @@
     "pk": 7,
     "fields": {
       "name": "Mug",
+      "name_uk": "Чашка",
       "price": "9.99",
       "quantity": 25,
       "image": "products_images/mug.jpg",
       "category": 2,
-      "description": "Durable mug for hot or cold beverages."
+      "description": "Durable mug for hot or cold beverages.",
+      "description_uk": "Міцна чашка для гарячих або холодних напоїв."
     }
   },
   {
@@ -88,11 +102,13 @@
     "pk": 8,
     "fields": {
       "name": "Pants",
+      "name_uk": "Штани",
       "price": "49.99",
       "quantity": 18,
       "image": "products_images/pants.jpg",
       "category": 3,
-      "description": "Comfortable pants for outdoor activities."
+      "description": "Comfortable pants for outdoor activities.",
+      "description_uk": "Зручні штани для активного відпочинку"
     }
   },
   {
@@ -100,11 +116,13 @@
     "pk": 9,
     "fields": {
       "name": "Sandals",
+      "name_uk": "Босоніжки",
       "price": "19.99",
       "quantity": 22,
       "image": "products_images/sandals.jpg",
       "category": 4,
-      "description": "Stylish and comfortable sandals."
+      "description": "Stylish and comfortable sandals.",
+      "description_uk": "Стильні та зручні босоніжки"
     }
   },
   {
@@ -112,11 +130,13 @@
     "pk": 10,
     "fields": {
       "name": "Shoes 1",
+      "name_uk": "Взуття 1",
       "price": "34.99",
       "quantity": 16,
       "image": "products_images/shoes1.jpg",
       "category": 2,
-      "description": "Durable shoes for any terrain."
+      "description": "Durable shoes for any terrain.",
+      "description_uk": "Міцне взуття для будь-якої місцевості."
     }
   },
   {
@@ -124,11 +144,13 @@
     "pk": 11,
     "fields": {
       "name": "Shoes 2",
+      "name_uk": "Взуття 2",
       "price": "34.99",
       "quantity": 16,
       "image": "products_images/shoes2.jpg",
       "category": 4,
-      "description": "Comfortable shoes for hiking."
+      "description": "Comfortable shoes for hiking.",
+      "description_uk": "Зручне взуття для походів."
     }
   },
   {
@@ -136,11 +158,13 @@
     "pk": 12,
     "fields": {
       "name": "Sleeping Bag",
+      "name_uk": "Спальний мішок",
       "price": "79.99",
       "quantity": 8,
       "image": "products_images/sleeping_bag.jpg",
       "category": 1,
-      "description": "Warm and cozy sleeping bag for camping."
+      "description": "Warm and cozy sleeping bag for camping.",
+      "description_uk": "Теплий і затишний спальник для кемпінгу."
     }
   },
   {
@@ -148,11 +172,13 @@
     "pk": 13,
     "fields": {
       "name": "Sneakers",
+      "name_uk": "Кросівки",
       "price": "39.99",
       "quantity": 20,
       "image": "products_images/sneakers.jpg",
       "category": 4,
-      "description": "Sporty sneakers for everyday use."
+      "description": "Sporty sneakers for everyday use.",
+      "description_uk": "Спортивні кросівки на кожен день."
     }
   },
   {
@@ -160,11 +186,13 @@
     "pk": 14,
     "fields": {
       "name": "Sweater 1",
+      "name_uk": "Світер 1",
       "price": "24.99",
       "quantity": 15,
       "image": "products_images/sweater1.jpg",
       "category": 3,
-      "description": "Warm and stylish sweater."
+      "description": "Warm and stylish sweater.",
+      "description_uk": "Теплий та стильний світер."
     }
   },
   {
@@ -172,11 +200,13 @@
     "pk": 15,
     "fields": {
       "name": "Sweater 2",
+      "name_uk": "Світер 2",
       "price": "29.99",
       "quantity": 10,
       "image": "products_images/sweater2.jpg",
       "category": 1,
-      "description": "Cozy sweater for chilly days."
+      "description": "Cozy sweater for chilly days.",
+      "description_uk": "Затишний светр для прохолодних днів."
     }
   },
   {
@@ -184,11 +214,13 @@
     "pk": 16,
     "fields": {
       "name": "Tent 1 White",
+      "name_uk": "Намет білий 1",
       "price": "129.99",
       "quantity": 5,
       "image": "products_images/tent1_white.jpg",
       "category": 1,
-      "description": "Spacious white tent for camping."
+      "description": "Spacious white tent for camping.",
+      "description_uk": "Просторий білий намет для кемпінгу"
     }
   },
   {
@@ -196,11 +228,13 @@
     "pk": 17,
     "fields": {
       "name": "Tent 2 White",
+      "name_uk": "Намет білий 2",
       "price": "149.99",
       "quantity": 3,
       "image": "products_images/tent2_white.jpg",
       "category": 12,
-      "description": "Premium white tent with extra features."
+      "description": "Premium white tent with extra features.",
+      "description_uk": "Білий намет преміум-класу з додатковими функціями."
     }
   },
   {
@@ -208,11 +242,13 @@
     "pk": 18,
     "fields": {
       "name": "Tent Green",
+      "name_uk": "Намет зелений",
       "price": "119.99",
       "quantity": 7,
       "image": "products_images/tent_green.jpg",
       "category": 12,
-      "description": "Green tent for nature lovers."
+      "description": "Green tent for nature lovers.",
+      "description_uk": "Зелений намет для любителів природи."
     }
   },
   {
@@ -220,11 +256,13 @@
     "pk": 19,
     "fields": {
       "name": "Tent Red",
+      "name_uk": "Намет червоний",
       "price": "119.99",
       "quantity": 7,
       "image": "products_images/tent_red.jpg",
       "category": 2,
-      "description": "Red tent for a bold camping experience."
+      "description": "Red tent for a bold camping experience.",
+      "description_uk": "Червоний намет для сміливих походів."
     }
   },
   {
@@ -232,11 +270,13 @@
     "pk": 20,
     "fields": {
       "name": "Termos 1",
+      "name_uk": "Термос 1",
       "price": "24.99",
       "quantity": 15,
       "image": "products_images/termos_1.jpg",
       "category": 1,
-      "description": "Stainless steel thermos for hot drinks."
+      "description": "Stainless steel thermos for hot drinks.",
+      "description_uk": "Термос з нержавіючої сталі для гарячих напоїв."
     }
   },
   {
@@ -244,11 +284,13 @@
     "pk": 21,
     "fields": {
       "name": "Termos 2",
+      "name_uk": "Термос 2",
       "price": "29.99",
       "quantity": 12,
       "image": "products_images/termos_2.jpg",
       "category": 8,
-      "description": "Large capacity thermos for outdoor enthusiasts."
+      "description": "Large capacity thermos for outdoor enthusiasts.",
+      "description_uk": "Термос великої місткості для любителів активного відпочинку."
     }
   },
   {
@@ -256,11 +298,13 @@
     "pk": 22,
     "fields": {
       "name": "Tracksuit",
+      "name_uk": "Спортивний костюм",
       "price": "54.99",
       "quantity": 8,
       "image": "products_images/tracksuit.jpg",
       "category": 2,
-      "description": "Comfortable tracksuit for leisure."
+      "description": "Comfortable tracksuit for leisure.",
+      "description_uk": "Зручний спортивний костюм для відпочинку."
     }
   },
   {
@@ -268,11 +312,13 @@
     "pk": 23,
     "fields": {
       "name": "Trekking Shoes",
+      "name_uk": "Трекінгові черевики",
       "price": "69.99",
       "quantity": 6,
       "image": "products_images/trekking_shoes.jpg",
       "category": 4,
-      "description": "Sturdy trekking shoes for challenging trails."
+      "description": "Sturdy trekking shoes for challenging trails.",
+      "description_uk": "Міцні трекінгові черевики для складних маршрутів."
     }
   },
   {
@@ -280,11 +326,13 @@
     "pk": 24,
     "fields": {
       "name": "T-shirt 1",
+      "name_uk": "Футболка 1",
       "price": "19.99",
       "quantity": 25,
       "image": "products_images/t-shirt1.jpg",
       "category": 1,
-      "description": "Casual and stylish t-shirt for everyday wear."
+      "description": "Casual and stylish t-shirt for everyday wear.",
+      "description_uk": "Стильна футболка для повсякденного носіння."
     }
   },
   {
@@ -292,11 +340,13 @@
     "pk": 25,
     "fields": {
       "name": "T-shirt 2",
+      "name_uk": "Футболка 2",
       "price": "22.99",
       "quantity": 20,
       "image": "products_images/t-shirt2.jpg",
       "category": 3,
-      "description": "Graphic print t-shirt for a trendy look."
+      "description": "Graphic print t-shirt for a trendy look.",
+      "description_uk": "Футболка з графічним принтом для трендового образу."
     }
   }
 ]

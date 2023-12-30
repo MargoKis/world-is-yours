@@ -5,7 +5,9 @@
         "fields": {
             "name": "Color",
             "value": "Red",
-            "product_id": 1
+            "product_id": 1,
+            "name_uk": "Колір",
+            "value_uk": "Червоний"
         }
     },
     {
@@ -14,7 +16,9 @@
         "fields": {
             "name": "Size",
             "value": "Large",
-            "product_id": 1
+            "product_id": 1,
+            "name_uk": "Розмір",
+            "value_uk": "Великий"
         }
     },
     {
@@ -23,7 +27,9 @@
         "fields": {
             "name": "Material",
             "value": "Cotton",
-            "product_id": 1
+            "product_id": 1,
+            "name_uk": "Матеріал",
+            "value_uk": "Бавовна"
         }
     },
     {
@@ -32,7 +38,9 @@
         "fields": {
             "name": "Gender",
             "value": "Unisex",
-            "product_id": 1
+            "product_id": 1,
+            "name_uk": "Стать",
+            "value_uk": "Унісекс"
         }
     },
     {
@@ -41,7 +49,9 @@
         "fields": {
             "name": "Weight",
             "value": "0.5 kg",
-            "product_id": 1
+            "product_id": 1,
+            "name_uk": "Вага",
+            "value_uk": "0.5 кг"
         }
     },
     {
@@ -50,7 +60,9 @@
         "fields": {
             "name": "Color",
             "value": "Green",
-            "product_id": 2
+            "product_id": 2,
+            "name_uk": "Колір",
+            "value_uk": "Зелений"
         }
     },
     {
@@ -59,7 +71,9 @@
         "fields": {
             "name": "Size",
             "value": "Medium",
-            "product_id": 2
+            "product_id": 2,
+            "name_uk": "Розмір",
+            "value_uk": "Середній"
         }
     },
     {
@@ -68,7 +82,9 @@
         "fields": {
             "name": "Material",
             "value": "Leather",
-            "product_id": 2
+            "product_id": 2,
+            "name_uk": "Матеріал",
+            "value_uk": "Шкіра"
         }
     },
     {
@@ -77,7 +93,9 @@
         "fields": {
             "name": "Gender",
             "value": "Unisex",
-            "product_id": 2
+            "product_id": 2,
+            "name_uk": "Стать",
+            "value_uk": "Унісекс"
         }
     },
     {
@@ -86,7 +104,9 @@
         "fields": {
             "name": "Weight",
             "value": "0.7 kg",
-            "product_id": 2
+            "product_id": 2,
+            "name_uk": "Вага",
+            "value_uk": "0.7 кг"
         }
     },
     {
@@ -95,7 +115,9 @@
         "fields": {
             "name": "Color",
             "value": "White",
-            "product_id": 3
+            "product_id": 3,
+            "name_uk": "Колір",
+            "value_uk": "Білий"
         }
     },
     {
@@ -104,7 +126,9 @@
         "fields": {
             "name": "Size",
             "value": "Small",
-            "product_id": 3
+            "product_id": 3,
+            "name_uk": "Розмір",
+            "value_uk": "Малий"
         }
     },
     {
@@ -113,7 +137,9 @@
         "fields": {
             "name": "Material",
             "value": "Polyester",
-            "product_id": 3
+            "product_id": 3,
+            "name_uk": "Матеріал",
+            "value_uk": "Поліестер"
         }
     },
     {
@@ -122,7 +148,9 @@
         "fields": {
             "name": "Gender",
             "value": "Unisex",
-            "product_id": 3
+            "product_id": 3,
+            "name_uk": "Стать",
+            "value_uk": "Унісекс"
         }
     },
     {
@@ -131,7 +159,9 @@
         "fields": {
             "name": "Weight",
             "value": "0.6 kg",
-            "product_id": 3
+            "product_id": 3,
+            "name_uk": "Вага",
+            "value_uk": "0.6 кг"
         }
     },
     {
@@ -140,7 +170,9 @@
         "fields": {
             "name": "Color",
             "value": "White",
-            "product_id": 4
+            "product_id": 4,
+            "name_uk": "Колір",
+            "value_uk": "Білий"
         }
     },
     {
@@ -149,7 +181,9 @@
         "fields": {
             "name": "Size",
             "value": "XL",
-            "product_id": 4
+            "product_id": 4,
+            "name_uk": "Розмір",
+            "value_uk": "XL"
         }
     },
     {
@@ -158,7 +192,9 @@
         "fields": {
             "name": "Material",
             "value": "Silk",
-            "product_id": 4
+            "product_id": 4,
+            "name_uk": "Матеріал",
+            "value_uk": "Шовк"
         }
     },
     {
@@ -167,7 +203,9 @@
         "fields": {
             "name": "Gender",
             "value": "Unisex",
-            "product_id": 4
+            "product_id": 4,
+            "name_uk": "Стать",
+            "value_uk": "Унісекс"
         }
     },
     {
@@ -176,7 +214,9 @@
         "fields": {
             "name": "Weight",
             "value": "0.8 kg",
-            "product_id": 4
+            "product_id": 4,
+            "name_uk": "Вага",
+            "value_uk": "0.8 кг"
         }
     },
     {
@@ -185,7 +225,9 @@
         "fields": {
             "name": "Color",
             "value": "White",
-            "product_id": 5
+            "product_id": 5,
+            "name_uk": "Колір",
+            "value_uk": "Білий"
         }
     },
     {
@@ -194,7 +236,9 @@
         "fields": {
             "name": "Size",
             "value": "Large",
-            "product_id": 5
+            "product_id": 5,
+            "name_uk": "Розмір",
+            "value_uk": "Великий"
         }
     },
     {
@@ -203,7 +247,9 @@
         "fields": {
             "name": "Material",
             "value": "Wool",
-            "product_id": 5
+            "product_id": 5,
+            "name_uk": "Матеріал",
+            "value_uk": "Вовна"
         }
     },
     {
@@ -212,7 +258,9 @@
         "fields": {
             "name": "Gender",
             "value": "Female",
-            "product_id": 5
+            "product_id": 5,
+            "name_uk": "Стать",
+            "value_uk": "Жіночий"
         }
     },
     {
@@ -221,7 +269,9 @@
         "fields": {
             "name": "Weight",
             "value": "0.9 kg",
-            "product_id": 5
+            "product_id": 5,
+            "name_uk": "Вага",
+            "value_uk": "0.9 кг"
         }
     },
     {
@@ -230,7 +280,9 @@
         "fields": {
             "name": "Color",
             "value": "Brown",
-            "product_id": 6
+            "product_id": 6,
+            "name_uk": "Колір",
+            "value_uk": "Коричневий"
         }
     },
     {
@@ -239,7 +291,9 @@
         "fields": {
             "name": "Size",
             "value": "Medium",
-            "product_id": 6
+            "product_id": 6,
+            "name_uk": "Розмір",
+            "value_uk": "Середній"
         }
     },
     {
@@ -248,7 +302,9 @@
         "fields": {
             "name": "Material",
             "value": "Canvas",
-            "product_id": 6
+            "product_id": 6,
+            "name_uk": "Матеріал",
+            "value_uk": "Канва"
         }
     },
     {
@@ -257,7 +313,9 @@
         "fields": {
             "name": "Gender",
             "value": "Unisex",
-            "product_id": 6
+            "product_id": 6,
+            "name_uk": "Стать",
+            "value_uk": "Унісекс"
         }
     },
     {
@@ -266,7 +324,9 @@
         "fields": {
             "name": "Weight",
             "value": "0.7 kg",
-            "product_id": 6
+            "product_id": 6,
+            "name_uk": "Вага",
+            "value_uk": "0.7 кг"
         }
     },
     {
@@ -275,7 +335,9 @@
         "fields": {
             "name": "Color",
             "value": "Gray",
-            "product_id": 7
+            "product_id": 7,
+            "name_uk": "Колір",
+            "value_uk": "Сірий"
         }
     },
     {
@@ -284,7 +346,9 @@
         "fields": {
             "name": "Size",
             "value": "Small",
-            "product_id": 7
+            "product_id": 7,
+            "name_uk": "Розмір",
+            "value_uk": "Малий"
         }
     },
     {
@@ -293,7 +357,9 @@
         "fields": {
             "name": "Material",
             "value": "Nylon",
-            "product_id": 7
+            "product_id": 7,
+            "name_uk": "Матеріал",
+            "value_uk": "Нейлон"
         }
     },
     {
@@ -302,7 +368,9 @@
         "fields": {
             "name": "Gender",
             "value": "Male",
-            "product_id": 7
+            "product_id": 7,
+            "name_uk": "Стать",
+            "value_uk": "Чоловічій"
         }
     },
     {
@@ -311,7 +379,9 @@
         "fields": {
             "name": "Weight",
             "value": "0.6 kg",
-            "product_id": 7
+            "product_id": 7,
+            "name_uk": "Вага",
+            "value_uk": "0.6 кг"
         }
     }
 ]
