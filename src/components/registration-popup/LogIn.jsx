@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import styles from "./signup.module.css";
 import Input from "../common/Input";
 import Button from "../common/Button";
@@ -12,9 +12,9 @@ import socialMediaAuth from "./firebase/auth";
 // import {auth, facebookProvider, googleProvider} from './config'
 // import { signInWithPopup } from "firebase/auth";
 
-const LogIn = ({ isOpen, onClose, openSignUp, openRemindPass }) => {
+const LogIn = ({  onClose, openSignUp, openRemindPass }) => {
   const handleOnClick = async (provider) => {
-    const res = await socialMediaAuth(provider)
+   await socialMediaAuth(provider)
   }
  
   const [email, setEmail] = useState("");
@@ -48,24 +48,24 @@ const LogIn = ({ isOpen, onClose, openSignUp, openRemindPass }) => {
     return regex.test(email);
   };
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+  // useEffect(() => {
+  //   if (isOpen) {
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     document.body.style.overflow = "auto";
+  //   }
 
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isOpen]);
+  //   return () => {
+  //     document.body.style.overflow = "auto";
+  //   };
+  // }, [isOpen]);
 
   return (
     <>
-      {isOpen && (
+
         <div className={styles.overlay} onClick={onClose}>
           <div
-            className={`${styles.popup} ${isOpen ? styles.open : ""}`}
+            className={`${styles.popup} ${styles.open}`}
             onClick={(e) => e.stopPropagation()}
           >
              <div className={styles.titleWrap}>
@@ -142,7 +142,7 @@ const LogIn = ({ isOpen, onClose, openSignUp, openRemindPass }) => {
             </form>
           </div>
         </div>
-      )}
+
     </>
   );
 };

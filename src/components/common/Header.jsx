@@ -12,19 +12,38 @@ import { setIsCategoriesOpen } from "../../redux/headerSlice";
 import useTranslation from "../../locale/locales";
 import Categories from "./Categories";
 import SignUp from "../registration-popup/SignUp";
+import RemindPas from "../registration-popup/RemindPas";
+import LogIn from "../registration-popup/LogIn";
+import SuccessMes from "../registration-popup/SuccessMes";
 
 function Header() {
   const dispatch = useDispatch();
 
   const t = useTranslation();
-  // const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
-  const [isOpenSignUpPopup, setOpenSignUpPopup] = useState(false);
-
   const locale = useSelector((state) => state.locale.locale);
+  
   const isCategoriesOpen = useSelector((state) => state.header.isCategoriesOpen);
 
 
+  const [isOpenSignUpPopup, setOpenSignUpPopup] = useState(false);
+  const [isRemindPassOpen, setRemindPassOpen] = useState(false);
+  const [isLoginOpen, setLoginOpen] = useState(false);
+  const [isSuccessMesOpen, setSuccessMesOpen] = useState(false);
 
+
+
+
+
+
+  // scroll lock
+    if (isOpenSignUpPopup||isRemindPassOpen||isLoginOpen||isSuccessMesOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+
+ 
 
 
 
@@ -32,7 +51,7 @@ function Header() {
 
   return (
     <>
-      <div className=" relative">
+      <div className=" relative z-10">
         <div className="flex justify-between items-center px-10 bg-white text-custom-black drop-shadow-5xl ">
           <div className="flex justify-between items-center">
             <NavLink to={"/"}>
@@ -57,7 +76,7 @@ function Header() {
             <li onClick={() => dispatch(setIsCategoriesOpen({ isCategoriesOpen: !isCategoriesOpen }))} className="mr-10 cursor-pointer flex flex-row">
               <img
                 className={` w-3 mr-2 ${isCategoriesOpen ? "rotate-0" : "rotate-180"}`} src={ArrowDown} alt="arrow down" />
-                {t("CATALOGUE")}
+              {t("CATALOGUE")}
             </li>
             <li className="cursor-pointer">{t("CONTACTS")}</li>
           </ul>
@@ -78,10 +97,75 @@ function Header() {
       <div className="flex justify-center">
         {isCategoriesOpen && <Categories />}
       </div>
-      {isOpenSignUpPopup &&   <SignUp 
-        onClose={()=>setOpenSignUpPopup(false)}
-      /> }
-    
+
+
+
+      {/* isOpenSignUpPopup */}
+      {isOpenSignUpPopup && <SignUp
+        onClose={() => setOpenSignUpPopup(false)}
+     
+        openLogin={() => {
+          setOpenSignUpPopup(false);
+          setLoginOpen(true);
+        }}
+
+        openRemindPass={() => {
+          setOpenSignUpPopup(false);
+          setRemindPassOpen(true);
+        }}
+      />}
+
+
+      {/* isRemindPassOpen */}
+      {isRemindPassOpen &&
+        <RemindPas
+          onClose={() => setRemindPassOpen(false)}
+          openLogin={() => {
+            setRemindPassOpen(false);
+            setLoginOpen(true);
+          }}
+        // openSuccess={openSuccess}
+        />
+      }
+
+
+      {/*isLoginOpen  */}
+      {isLoginOpen &&
+        <LogIn
+
+          onClose={() => setLoginOpen(false)}
+       
+          openSignUp={() => {
+            setLoginOpen(false);
+            setOpenSignUpPopup(true);
+          }}
+
+          openRemindPass={() => {
+            setLoginOpen(false);
+            setRemindPassOpen(true);
+          }}
+
+        />
+      }
+
+
+      {/* isSuccessMesOpen */}
+      {isSuccessMesOpen &&
+        <SuccessMes
+          onClose={() => setSuccessMesOpen(false)}
+
+          openLogin={() => {
+            setSuccessMesOpen(false)
+            setRemindPassOpen(false);
+            setOpenSignUpPopup(false);
+            setLoginOpen(true);
+
+          }}
+        />
+      }
+
+
+
     </>
   );
 }

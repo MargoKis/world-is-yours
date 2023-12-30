@@ -9,6 +9,7 @@ import { setLocale, setLanguage } from "./redux/localeSlice";
 import api from "./api/api";
 import Footer from "./components/common/Footer";
 import DonateBanner from "./components/common/DonateBanner";
+import Header from "./components/common/Header";
 
 function App() {
 
@@ -47,7 +48,7 @@ function App() {
   return (
     <>
       <DonateBanner />
-      
+      <Header />
       <Routes>
         <Route exact path="/" element={<MainPage />} />
         <Route path="/payment" element={<PaymentPage />} />
@@ -55,7 +56,6 @@ function App() {
         <Route path="*" element={<NotFound404 />} />
       </Routes>
       <Footer />
-      <div>red line</div>
     </>
   );
 }

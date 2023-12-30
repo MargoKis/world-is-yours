@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import styles from "./signup.module.css";
 import Input from "../common/Input";
 import Button from "../common/Button";
@@ -15,7 +15,7 @@ import socialMediaAuth from "./firebase/auth";
 const SignUp = ({  onClose, openLogin, openRemindPass }) => {
 const isOpen =true;
   const handleOnClick = async (provider) => {
-    const res = await socialMediaAuth(provider)
+    await socialMediaAuth(provider)
   }
 
   const [name, setName] = useState("");
@@ -84,17 +84,6 @@ const isOpen =true;
     return true;
   };
 
-  // useEffect(() => {
-  //   if (isOpen) {
-  //     document.body.style.overflow = "hidden";
-  //   } else {
-  //     document.body.style.overflow = "auto";
-  //   }
-
-  //   return () => {
-  //     document.body.style.overflow = "auto";
-  //   };
-  // }, [isOpen]);
 
   return (
     <>
