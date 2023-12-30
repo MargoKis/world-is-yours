@@ -2,7 +2,7 @@ import React from 'react';
 
 function Categories() {
     return (
-        <div className='w-1/2 mx-auto bg-white pt-10 px-24 pb-24 text-xl text-custom-black font-semibold rounded-b-2xl'>
+        <div className=' absolute w-1/2 mx-auto bg-white pt-10 px-24 pb-24 text-xl text-custom-black font-semibold rounded-b-2xl'>
             <div className='mb-10'>
                 <p className='text-base font-light pb-2'>Для вас</p>
                 <ul className='flex'>

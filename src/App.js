@@ -7,8 +7,11 @@ import InfoPayment from "./pages/InfoHelp";
 import { useDispatch, useSelector } from "react-redux";
 import { setLocale, setLanguage } from "./redux/localeSlice";
 import api from "./api/api";
+import Footer from "./components/common/Footer";
+import DonateBanner from "./components/common/DonateBanner";
 
 function App() {
+
   const dispatch = useDispatch();
 
 
@@ -43,12 +46,16 @@ function App() {
 
   return (
     <>
+      <DonateBanner />
+      
       <Routes>
         <Route exact path="/" element={<MainPage />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/info-help" element={<InfoPayment />} />
         <Route path="*" element={<NotFound404 />} />
       </Routes>
+      <Footer />
+      <div>red line</div>
     </>
   );
 }

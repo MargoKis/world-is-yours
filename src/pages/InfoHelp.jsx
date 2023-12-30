@@ -6,7 +6,7 @@ import SideLinks from '../components/info-help/SideLinks';
 import Payment from '../components/info-help/Payment';
 import Return from '../components/info-help/Return';
 import Delivery from '../components/info-help/Delivery';
-import DonateBanner from '../components/common/DonateBanner';
+
 
 const InfoHelp = () => {
   
@@ -33,7 +33,7 @@ const InfoHelp = () => {
 
   return (
     <>
-       <DonateBanner/>
+
       <Header />
       <div className="flex flex-col">
         <div className="text-custom-black text-35px font-semibold mx-32 mt-12" id='dovidka'>Довідка</div>
