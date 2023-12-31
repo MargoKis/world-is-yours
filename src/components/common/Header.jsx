@@ -37,7 +37,7 @@ function Header() {
 
 
   // scroll lock
-  if (isOpenSignUpPopup || isRemindPassOpen || isLoginOpen || isSuccessMesOpen||isCategoriesOpen) {
+  if (isOpenSignUpPopup || isRemindPassOpen || isLoginOpen || isSuccessMesOpen || isCategoriesOpen) {
     document.body.style.overflow = "hidden";
   } else {
     document.body.style.overflow = "auto";
@@ -73,8 +73,10 @@ function Header() {
             <img className="cursor-pointer" src={SearchIconDark} alt="Search" />
           </div>
           <ul className="flex justify-between items-center">
-            <li className="mr-10 cursor-pointer">{t("HOME")}</li>
-            <li onClick={()=>setCategoriesOpen(true)} className="mr-10 cursor-pointer flex flex-row">
+            <NavLink to={"/"}>
+              <li className="mr-10 cursor-pointer">{t("HOME")}</li>
+            </NavLink>
+            <li onClick={() => setCategoriesOpen(true)} className="mr-10 cursor-pointer flex flex-row">
               <img
                 className={` w-3 mr-2 ${isCategoriesOpen ? "rotate-0" : "rotate-180"}`} src={ArrowDown} alt="arrow down" />
               {t("CATALOGUE")}
@@ -96,8 +98,8 @@ function Header() {
 
       </div>
       <div className="flex justify-center">
-        {isCategoriesOpen && <Categories 
-          onClose={()=>setCategoriesOpen(false)}
+        {isCategoriesOpen && <Categories
+          onClose={() => setCategoriesOpen(false)}
         />}
       </div>
 
