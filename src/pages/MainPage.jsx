@@ -36,9 +36,9 @@ function MainPage() {
       <div
         className="bg-header bg-cover bg-no-repeat bg-bottom text-white"
         style={{ height: 'calc(100vh - 140px)' }}
-        // - header and DonnateBanner height
+        // minus header and DonnateBanner height
       >
-        <div className={`h-full ${isCategoriesOpen ? "backdrop-blur-sm" : "backdrop-blur-none"}`}> {/*blur owerlay */}
+
 
           {/* main page nav text */}
           <div className={`flex flex-col h-3/5 justify-center items-center px-10 ${isCategoriesOpen ? "hidden" : "flex"}`}>
@@ -62,7 +62,7 @@ function MainPage() {
 
 
         </div>
-      </div>
+
       <SeasonSelect />
       <FavouritesCardList />
       <ScrollingText />

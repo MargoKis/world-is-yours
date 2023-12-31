@@ -8,7 +8,7 @@ import ProfileIconDark from "../../assets/icons/dark/icon-profile-dark.svg";
 import ArrowDown from "../../assets/icons/arrow-up.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { setLocale } from "../../redux/localeSlice";
-import { setIsCategoriesOpen } from "../../redux/headerSlice";
+// import { setIsCategoriesOpen } from "../../redux/headerSlice";
 import useTranslation from "../../locale/locales";
 import Categories from "./Categories";
 import SignUp from "../registration-popup/SignUp";
@@ -21,9 +21,9 @@ function Header() {
 
   const t = useTranslation();
   const locale = useSelector((state) => state.locale.locale);
-  
-  const isCategoriesOpen = useSelector((state) => state.header.isCategoriesOpen);
 
+  // const isCategoriesOpen = useSelector((state) => state.header.isCategoriesOpen);
+  const [isCategoriesOpen, setCategoriesOpen] = useState(false);
 
   const [isOpenSignUpPopup, setOpenSignUpPopup] = useState(false);
   const [isRemindPassOpen, setRemindPassOpen] = useState(false);
@@ -35,15 +35,16 @@ function Header() {
 
 
 
+
   // scroll lock
-    if (isOpenSignUpPopup||isRemindPassOpen||isLoginOpen||isSuccessMesOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+  if (isOpenSignUpPopup || isRemindPassOpen || isLoginOpen || isSuccessMesOpen||isCategoriesOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
 
 
- 
+
 
 
 
@@ -73,7 +74,7 @@ function Header() {
           </div>
           <ul className="flex justify-between items-center">
             <li className="mr-10 cursor-pointer">{t("HOME")}</li>
-            <li onClick={() => dispatch(setIsCategoriesOpen({ isCategoriesOpen: !isCategoriesOpen }))} className="mr-10 cursor-pointer flex flex-row">
+            <li onClick={()=>setCategoriesOpen(true)} className="mr-10 cursor-pointer flex flex-row">
               <img
                 className={` w-3 mr-2 ${isCategoriesOpen ? "rotate-0" : "rotate-180"}`} src={ArrowDown} alt="arrow down" />
               {t("CATALOGUE")}
@@ -95,7 +96,9 @@ function Header() {
 
       </div>
       <div className="flex justify-center">
-        {isCategoriesOpen && <Categories />}
+        {isCategoriesOpen && <Categories 
+          onClose={()=>setCategoriesOpen(false)}
+        />}
       </div>
 
 
@@ -103,7 +106,7 @@ function Header() {
       {/* isOpenSignUpPopup */}
       {isOpenSignUpPopup && <SignUp
         onClose={() => setOpenSignUpPopup(false)}
-     
+
         openLogin={() => {
           setOpenSignUpPopup(false);
           setLoginOpen(true);
@@ -134,7 +137,7 @@ function Header() {
         <LogIn
 
           onClose={() => setLoginOpen(false)}
-       
+
           openSignUp={() => {
             setLoginOpen(false);
             setOpenSignUpPopup(true);
