@@ -10,16 +10,11 @@ import FavouritesCardList from "../components/main-page/FavouritesCardList";
 import NewArrivalsCardList from "../components/main-page/NewArrivalsCardList";
 import ScrollingText from "../components/scrolling-effect/ScrollingText";
 
-// hooks
-import useTranslation from "../locale/locales";
 
-
-
-function MainPage() {
-  const t = useTranslation();
 
 
   return (
+
     <>
 
       <div className="bg-header bg-cover bg-no-repeat bg-bottom text-white" style={{ height: 'calc(100vh - 140px)' }}>{/* minus header and DonnateBanner height*/}
