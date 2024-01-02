@@ -6,6 +6,48 @@ import CartIconDark from "../../assets/icons/dark/icon-cart-dark.svg";
 import HeartIconDark from "../../assets/icons/dark/icon-heart-dark.svg";
 import ProfileIconDark from "../../assets/icons/dark/icon-profile-dark.svg";
 import ArrowDown from "../../assets/icons/arrow-up.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { setLocale } from "../../redux/localeSlice";
+// import { setIsCategoriesOpen } from "../../redux/headerSlice";
+import useTranslation from "../../locale/locales";
+import Categories from "./Categories";
+import SignUp from "../registration-popup/SignUp";
+import RemindPas from "../registration-popup/RemindPas";
+import LogIn from "../registration-popup/LogIn";
+import SuccessMes from "../registration-popup/SuccessMes";
+
+function Header() {
+  const dispatch = useDispatch();
+
+  const t = useTranslation();
+  const locale = useSelector((state) => state.locale.locale);
+
+  // const isCategoriesOpen = useSelector((state) => state.header.isCategoriesOpen);
+  const [isCategoriesOpen, setCategoriesOpen] = useState(false);
+
+  const [isOpenSignUpPopup, setOpenSignUpPopup] = useState(false);
+  const [isRemindPassOpen, setRemindPassOpen] = useState(false);
+  const [isLoginOpen, setLoginOpen] = useState(false);
+  const [isSuccessMesOpen, setSuccessMesOpen] = useState(false);
+
+
+
+
+
+
+
+  // scroll lock
+  if (isOpenSignUpPopup || isRemindPassOpen || isLoginOpen || isSuccessMesOpen || isCategoriesOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+
+
+
+
+
+
 
 
   return (
@@ -134,5 +176,3 @@ import ArrowDown from "../../assets/icons/arrow-up.svg";
 }
 
 export default Header;
-
-

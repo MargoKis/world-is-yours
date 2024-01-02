@@ -44,7 +44,7 @@ const ChatPopup = ({ onClose, isOpen }) => {
 
     if (!themeRegex.test(theme)) {
       setThemeError(
-        "Theme should be 5-16 characters long and should not contain numbers"
+        "Theme should be 6-20 characters long and should not contain numbers"
       );
       return false;
     }
