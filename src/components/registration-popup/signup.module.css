@@ -1,5 +1,6 @@
 .overlay {
   position: fixed;
+  z-index: 100;
   top: 0;
   left: 0;
   width: 100%;
@@ -31,7 +32,7 @@
 .titleWrap {
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;
 }
 

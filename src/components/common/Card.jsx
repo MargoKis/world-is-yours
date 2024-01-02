@@ -5,7 +5,7 @@ import Cart from '../../assets/icons/dark/icon-cart-dark.svg';
 import Image from '../../assets/temporary-img/tent.png'
 
 const Card = ({ data }) => {
-  console.log(data.image)
+  // console.log(data.image);
   return (
     <>
     <div className=" m-3 border-2 border-gray-light rounded-lg relative w-90 items-center">

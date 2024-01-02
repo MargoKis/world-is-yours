@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import styles from "./signup.module.css";
 import Input from "../common/Input";
 import Button from "../common/Button";
@@ -12,10 +12,10 @@ import socialMediaAuth from "./firebase/auth";
 // import {auth } from './firebase/config'
 // import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
-const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
-
+const SignUp = ({  onClose, openLogin, openRemindPass }) => {
+const isOpen =true;
   const handleOnClick = async (provider) => {
-    const res = await socialMediaAuth(provider)
+    await socialMediaAuth(provider)
   }
 
   const [name, setName] = useState("");
@@ -84,21 +84,10 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
     return true;
   };
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isOpen]);
 
   return (
     <>
-      {isOpen && (
+      
         <div className={styles.overlay} onClick={onClose}>
           <div
             className={`${styles.popup} ${isOpen ? styles.open : ""}`}
@@ -245,7 +234,7 @@ const SignUp = ({ isOpen, onClose, openLogin, openRemindPass }) => {
             </form>
           </div>
         </div>
-      )}
+
     </>
   );
 };

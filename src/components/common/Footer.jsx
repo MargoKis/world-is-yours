@@ -18,19 +18,19 @@ const Footer = () => {
           </h1>
           <img src={LogoWorldIsYours} alt="logo" />
           <div className="social-media-icons mt-6 mb-10 flex flex-row gap-4">
-            <a href="#">
+            <a href="/404/">
               <img src={mediaIcons.IconTelegram} alt="icon telegram" />
             </a>
-            <a href="#">
+            <a href="/404/">
               <img src={mediaIcons.IconInstagram} alt="icon instagram" />
             </a>
-            <a href="#">
+            <a href="/404/">
               <img src={mediaIcons.IconFacebook} alt="icon facebook" />
             </a>
-            <a href="#">
+            <a href="/404/">
               <img src={mediaIcons.IconTikTok} alt="icon tik-tok" />
             </a>
-            <a href="#">
+            <a href="/404/">
               <img src={mediaIcons.IconYouTube} alt="icon youtube" />
             </a>
           </div>
@@ -44,7 +44,7 @@ const Footer = () => {
             Потрібна допомога?
           </h2>
           <div className="flex flex-row gap-8 mb-4">
-            <a href="#">
+            <a href="/404/">
               <p className="flex flex-row text-white gap-2 text-16px">
                 <img src={IconChat} alt="icon chat" />
                 Зв’яжись з нами
@@ -59,22 +59,22 @@ const Footer = () => {
           <ul className="reference flex flex-col gap-3 mt-4">
             <NavLink
               to="/info-help?component=payment"
-              className="text-white font-raleway font-400 text-16px"
-              activeClassName="active-link"
+              className="text-white font-raleway font-400 text-16px "
+              // activeClassName="active-link"
             >
               Оплата
             </NavLink>
               <NavLink
                 to="/info-help?component=delivery"
                 className="text-white font-raleway font-400 text-16px"
-                activeClassName="active-link"
+                // activeClassName="active-link"
               >
                 Доставка
               </NavLink>
               <NavLink
                 to="/info-help?component=return"
                 className="text-white font-raleway font-400 text-16px"
-                activeClassName="active-link"
+                // activeClassName="active-link"
               >
                 Повернення та обмін
               </NavLink>

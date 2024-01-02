@@ -1,8 +1,9 @@
 import React from 'react';
-
-function Categories() {
+import globalStyle from './globalStyles.module.css';
+function Categories({onClose}) {
     return (
-        <div className='w-1/2 mx-auto bg-white pt-10 px-24 pb-24 text-xl text-custom-black font-semibold rounded-b-2xl'>
+        <div className={globalStyle.overlay} onClick={onClose}>
+        <div className=' absolute w-1/2 mx-auto bg-white pt-10 px-24 pb-24 text-xl text-custom-black font-semibold rounded-b-2xl'>
             <div className='mb-10'>
                 <p className='text-base font-light pb-2'>Для вас</p>
                 <ul className='flex'>
@@ -29,12 +30,13 @@ function Categories() {
                 </div>
             </div>
             <svg className='mb-6' width="287" height="1" viewBox="0 0 287 1" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <line y1="0.75" x2="287" y2="0.75" stroke="#646464" stroke-width="0.5"/>
+                <line y1="0.75" x2="287" y2="0.75" stroke="#646464" strokeWidth="0.5" />
             </svg>
             <ul>
                 <li className='mb-6'>Автодомові аксесуари</li>
                 <li>Комфорт та зручності</li>
             </ul>
+        </div>
         </div>
     );
 }
