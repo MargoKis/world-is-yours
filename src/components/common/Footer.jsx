@@ -5,12 +5,13 @@ import { mediaIcons } from "../../assets/icons/media-icons/mediaIcons";
 import IconCopyright from "../../assets/icons/icon-copyright.svg";
 import IconChat from "../../assets/icons/icon-chat.svg";
 import IconArrowRight from "../../assets/icons/arrow-up.svg";
+import './media-queris.css'
 
 const Footer = () => {
 
   return (
-    <>
-      <footer className="flex flex-row flex-wrap bg-gray-dark justify-between pt-16 pb-5 ">
+
+      <footer className="grid grid-cols-1 md:grid-cols-3 gap-10 bg-gray-dark justify-between pt-16 pb-5 mx-auto place-content-center place-items-center  items-start">
         <div className="social-media-block ml-10 ">
           <h1 className="text-white mb-5 font-inter text-20px">
             Ваша пригода починається тут
@@ -79,7 +80,7 @@ const Footer = () => {
               </NavLink>
           </ul>
         </div>
-        <div className="mailing-list mr-10">
+        <div className="mailing-list mr-10 ">
           <h2 className="text-white mb-4 font-raleway mb-0 text-20px">
             Підпишиться на розсилку
           </h2>
@@ -102,7 +103,6 @@ const Footer = () => {
           </form>
         </div>
       </footer>
-    </>
   );
 };
 

@@ -6,6 +6,8 @@ import CartIconDark from "../../assets/icons/dark/icon-cart-dark.svg";
 import HeartIconDark from "../../assets/icons/dark/icon-heart-dark.svg";
 import ProfileIconDark from "../../assets/icons/dark/icon-profile-dark.svg";
 import ArrowDown from "../../assets/icons/arrow-up.svg";
+import { useState } from "react";
+
 
 function Header({ isCategoriesOpen, setIsCategoriesOpen, openSignUpPopup }) {
   return (
@@ -53,3 +55,5 @@ function Header({ isCategoriesOpen, setIsCategoriesOpen, openSignUpPopup }) {
 }
 
 export default Header;
+
+

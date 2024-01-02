@@ -14,6 +14,7 @@ import SignUp from "../components/registration-popup/SignUp";
 import LogIn from "../components/registration-popup/LogIn";
 import RemindPas from "../components/registration-popup/RemindPas";
 import SuccessMes from "../components/registration-popup/SuccessMes";
+import ChatPopup from "../components/main-page/ChatPopup";
 
 function MainPage() {
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
@@ -21,6 +22,12 @@ function MainPage() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRemindPassOpen, setIsRemindPassOpen] = useState(false);
   const [isSuccessMesOpen, setIsSuccessMesOpen] = useState(false);
+  const [isChatPopupOpen, setIsChatPopupOpen] = useState(false); 
+
+  const toggleChatPopup = () => {
+    setIsChatPopupOpen(!isChatPopupOpen);
+  };
+
 
   const openSignUpPopup = () => {
     setIsSignUpOpen(true);
@@ -61,6 +68,9 @@ function MainPage() {
     setIsSuccessMesOpen(true);
   };
 
+
+
+
   return (
     <div className="h-screen bg-header bg-cover bg-no-repeat bg-bottom text-white">
       <div
@@ -93,7 +103,6 @@ function MainPage() {
           onClose={closePopups}
           openSignUp={openSignUp}
           openRemindPass={openRemindPass}
-          
         />
         <SuccessMes
           isOpen={isSuccessMesOpen}
@@ -111,7 +120,7 @@ function MainPage() {
             Ваша пригода починається тут
           </p>
           <a href="#sectionFav">
-            <img  className="cursor-pointer" src={ArrowIcon} alt="Arrow Down" />
+            <img className="cursor-pointer" src={ArrowIcon} alt="Arrow Down" />
           </a>
         </div>
         <div
@@ -119,7 +128,20 @@ function MainPage() {
             isCategoriesOpen ? "hidden" : "flex"
           }`}
         >
-          <img className="scale-75" src={ChatIcon} alt="Arrow Down" />
+          {/* <img className="scale-75" src={ChatIcon} alt="Arrow Down" /> 
+   */}
+
+
+        <img
+          className="scale-75 cursor-pointer"
+          src={ChatIcon}
+          alt="Arrow Down"
+          onClick={toggleChatPopup}
+        />
+
+        {/* Показываем ChatPopup только если isChatPopupOpen === true */}
+        {isChatPopupOpen && <ChatPopup onClose={() => setIsChatPopupOpen(false)} />}
+
         </div>
       </div>
       <SeasonSelect />

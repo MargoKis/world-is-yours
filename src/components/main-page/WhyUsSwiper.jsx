@@ -66,7 +66,25 @@ function WhyUsSwiper() {
                     </div>
 
 
-                    {/*<div className='mx-10 flex h-screen'>
+                 
+                </SwiperSlide>
+            ))}
+        </Swiper>
+
+    );
+}
+
+export default WhyUsSwiper;
+
+
+
+
+
+
+
+
+
+   {/*<div className='mx-10 flex h-screen'>
                         <div
                             className='p-24 border-2 border-custom-black/30 rounded-3xl w-1/2 h-1/2 mr-5 flex flex-col justify-center'>
                             <div className='mb-14 text-lg'>{index + 1}/{whyUsItems.length}</div>
@@ -77,11 +95,3 @@ function WhyUsSwiper() {
                             <img className='rounded-3xl h-1/2 w-auto' src={w.image} alt=""/>
                         </div>
                     </div>*/}
-                </SwiperSlide>
-            ))}
-        </Swiper>
-
-    );
-}
-
-export default WhyUsSwiper;
