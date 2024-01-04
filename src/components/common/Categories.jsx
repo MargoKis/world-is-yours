@@ -1,8 +1,8 @@
 import React from 'react';
 import globalStyle from './globalStyles.module.css';
 function Categories({onClose}) {
+    
     const handleClickOverlay = (e) => {
-        // Викликати функцію тільки якщо клік був не на квадраті
         if (!e.target.closest('.Catalog'))  {
           onClose();
         }
