@@ -14,7 +14,7 @@ import socialMediaAuth from "./firebase/auth";
 
 import api from "../../api/api";
 
-const SignUp = ({ onClose, openLogin, openRemindPass }) => {
+const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
   const handleOnClick = async (provider) => {
     await socialMediaAuth(provider)
   }
@@ -93,24 +93,37 @@ const SignUp = ({ onClose, openLogin, openRemindPass }) => {
   const handleRegistration = async () => {
     try {
       const userData = {
-        username:name,
-        first_name:name,
-        last_name:surname,
-        password:password,
-        confirm_password:password,
+        username: name,
+        first_name: name,
+        last_name: surname,
+        password: password,
+        confirm_password: password,
         email,
       };
 
       const registrationResult = await api.signUp(userData);
 
+      const handleRegistrationStatus = (status) => {
+        switch (status) {
+          case 201:
+            openSuccess();
+            break;
+          case 400:
+            console.log("User already exists");
+            break;
+          default:
+            console.log(`Unexpected response status: ${status}`);
+        }
+      };
 
-      if(registrationResult.status===201){
-        openLogin();
-      }
+      // Виклик функції з обробкою статусу
+      handleRegistrationStatus(registrationResult.status);
+
 
 
       console.log('Registration successful:', registrationResult);
     } catch (error) {
+      // need to catch status 400 
 
       console.error('Error during registration in signUp:', error);
 
@@ -118,9 +131,9 @@ const SignUp = ({ onClose, openLogin, openRemindPass }) => {
   };
 
 
-  const submit =(e)=>{
+  const submit = (e) => {
     e.preventDefault()
-    if(validateSignUpForm()){
+    if (validateSignUpForm()) {
       handleRegistration()
 
     }
@@ -151,7 +164,7 @@ const SignUp = ({ onClose, openLogin, openRemindPass }) => {
           <form
             className={styles.form}
             // onSubmit={(e) => e.preventDefault() || validateSignUpForm()||handleRegistration()}
-            onSubmit={(e) =>submit(e)}
+            onSubmit={(e) => submit(e)}
           >
             <label htmlFor="name"></label>
             <Input
@@ -185,7 +198,7 @@ const SignUp = ({ onClose, openLogin, openRemindPass }) => {
             />
             <div className={styles.error}>{surnameError}</div>
 
-       
+
 
 
 

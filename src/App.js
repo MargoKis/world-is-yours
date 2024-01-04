@@ -4,7 +4,7 @@ import MainPage from "./pages/MainPage";
 import PaymentPage from "./pages/PaymentPage";
 import NotFound404 from "./pages/NotFound404";
 import InfoPayment from "./pages/InfoHelp";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLocale, setLanguage } from "./redux/localeSlice";
 import api from "./api/api";
 import Footer from "./components/common/Footer";
@@ -14,6 +14,7 @@ import Header from "./components/common/Header";
 function App() {
 
   const dispatch = useDispatch();
+  
 
 
   // language switcher
@@ -27,22 +28,26 @@ function App() {
   
     dispatch(setLocale({ locale: selectedLanguage }));
   
+
+  
+    // Викликаємо getLanguage
+ 
+  }, [availableLanguages, dispatch]);
+  
+
+  const locale = useSelector((state) => state.locale.locale);
+  useEffect(()=>{
     const getLanguage = async () => {
       try {
-        const data = await api.getLanguage(selectedLanguage);
+        const data = await api.getLanguage(locale);
         dispatch(setLanguage({ language: data }));
         console.log(data);
       } catch (error) {
         console.error('Error in useTranslation:', error);
       }
     };
-  
-    // Викликаємо getLanguage
     getLanguage();
-  }, [availableLanguages, dispatch]);
-  
-
-  // const locale = useSelector((state) => state.locale.locale);
+  }, [locale, dispatch])
 
 
 
