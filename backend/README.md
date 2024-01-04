@@ -36,9 +36,9 @@ API works on [localhost:8000](http://localhost:8000/)
 ## 2. Authorization
 - **Endpoint:** `/api/auth/`
 - **Method:** `POST`
-- **Description:** Authorization with username and password. Accepts username and password, returns a token.
+- **Description:** Authorization with email and password. Accepts email and password, returns a token.
 - **Parameters:**
-  - username (string)
+  - username (string) - accepts your email
   - password (string)
 
 
@@ -55,10 +55,11 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Description:** Create a new user.
 - **Protection:** None (No authentication required for creating a user)
 - **Parameters:**
-  - username (string)
-  - email (string)
+  - first_name (string) *optional*
+  - last_name (string) *optional*
+  - phone (string) *optional*
+  - email (string) 
   - password (string)
-  - confirm_password (string)
 
 ### 3.3 Get, Update, Destroy User
 - **Endpoint:** `/api/users/<int:user_id>/`
@@ -119,19 +120,19 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Description:** List all products.
 - **Protection:** Non7
 
-###76.2 Create Product
+### 6.2 Create Product
 - **Endpoint:** `/api/products/`
 - **Method:** `POST`
 - **Description:** Create a new product.
-- **Protection:** Is8dminUser
+- **Protection:** IsAdminUser
 - **Parameters:**
-  87name (string)
+  - name (string)
   - price (decimal)
   - description (string)
   - category (integer)
 
 ### 6.3 Get, Update, Destroy Product
-- 8*Endpoint:** `/api/products/<int:prod_id>/`
+- **Endpoint:** `/api/products/<int:prod_id>/`
 - **Method:** `GET` (Get), `PUT` or `PATCH` (Update), `DELETE` (Destroy)
 - **Description:** Get, update, or delete information for the specified product.
 - **Protection:** IsAdminUser
@@ -143,13 +144,13 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Description:** List all product specs for a specific product.
 - **Protection:** IsAuthenticate8
 
-###87.2 Create Spec
+### 7.2 Create Spec
 - **Endpoint:** `/api/products/<int:prod_id>/specs/`
 - **Method:** `POST`
 - **Description:** Create a new product spec.
 - **Protection:** IsAdminUser
 - **Parameters:**
-  -8name (string)
+  - name (string)
   - value (string)
 
 ### 7.3 Get, Update, Destroy Spec
