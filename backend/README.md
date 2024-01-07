@@ -67,6 +67,14 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Description:** Get, update, or delete information for the specified user.
 - **Protection:** IsAuthenticated, IsOwnerOrReadOnly
 
+### 3.4 Reset Password
+- **Endpoint:** `/api/password_reset/`
+- **Method:** `POST`
+- **Description:** Request a password reset
+- **Protection:** None
+- **Parameters:**
+  - email (string)
+
 
 ## 4. Product Categories
 ### 4.1 List Categories
