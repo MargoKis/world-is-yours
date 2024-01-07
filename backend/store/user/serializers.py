@@ -55,5 +55,20 @@ class UserUpdateSerializer(serializers.ModelSerializer):
         return value
 
 
-class EmailVerificationSerializer(serializers.Serializer):
-    ...  # TODO
+class PasswordChangeRequestSerializer(serializers.Serializer):
+    email = serializers.EmailField(required=True)
+
+    def validate(self, data):
+        email = data["email"]
+        if not UserModel.objects.filter(email=email).exists():
+            raise serializers.ValidationError(
+                "Please, enter your email address that you use to authorization to our site.")
+        return data
+
+
+class PasswordResetSerializer(serializers.Serializer):
+    password = serializers.CharField(required=True)
+
+    class Meta:
+        model = UserModel
+        fields = "password"

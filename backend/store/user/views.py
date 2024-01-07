@@ -6,15 +6,17 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from user.models import EmailVerification
+from user.models import EmailVerification, EmailPasswordReset
 from user.permissions import IsOwnerOrReadOnly
-from user.serializers import UserModel, UserSerializer, UserCreateSerializer, UserUpdateSerializer
+from user.serializers import UserModel, UserSerializer, UserCreateSerializer, UserUpdateSerializer, \
+    PasswordChangeRequestSerializer, PasswordResetSerializer
+from user.tasks import send_password_change
 
 
 class UserListAPIView(ListCreateAPIView):
     queryset = UserModel.objects.all()
     serializer_class = UserSerializer
-    
+
     def get_permissions(self):
         if self.request.method != "POST":
             self.permission_classes = [IsAuthenticated]
@@ -60,3 +62,39 @@ class EmailVerificationView(APIView):
                 return Response({'error': 'Verification link has expired.'}, status=status.HTTP_400_BAD_REQUEST)
         except EmailVerification.DoesNotExist:
             return Response({'error': 'Invalid verification link.'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class PasswordResetView(APIView):
+    def post(self, request, email, code):
+        serializer = PasswordResetSerializer(data=request.data)
+        if serializer.is_valid():
+            try:
+                pc_record = EmailPasswordReset.objects.get(user__email=email, code=code)
+                user = UserModel.objects.get(email=email)
+                if not pc_record.is_expired():
+                    user.set_password(serializer.validated_data['password'])
+                    user.save()
+                    pc_record.delete()
+                    return Response({'message': 'Your password has been changed successfully.'}, status=status.HTTP_200_OK)
+                else:
+                    pc_record.delete()
+                    return Response({'error': 'This link has expired.'}, status=status.HTTP_400_BAD_REQUEST)
+            except EmailPasswordReset.DoesNotExist:
+                return Response({'error': 'Invalid link.'}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response({"detail": "Invalid input. Please provide the correct data."},
+                            status=status.HTTP_400_BAD_REQUEST)
+
+
+class PasswordChangeRequestView(APIView):
+    def post(self, request, *args, **kwargs):
+        serializer = PasswordChangeRequestSerializer(data=request.data)
+
+        if serializer.is_valid():
+            user = UserModel.objects.get(email=serializer.validated_data['email'])
+            send_password_change.delay(user_id=user.id)
+            return Response({"detail": "An email has been sent to your email address with further instructions"},
+                            status=status.HTTP_200_OK)
+        else:
+            return Response({"detail": "Invalid input. Please provide the correct data."},
+                            status=status.HTTP_400_BAD_REQUEST)

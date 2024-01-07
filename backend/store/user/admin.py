@@ -3,5 +3,5 @@ from user.models import User
 
 
 @admin.register(User)
-class TaskModelAdmin(admin.ModelAdmin):
+class UserModelAdmin(admin.ModelAdmin):
     ...
