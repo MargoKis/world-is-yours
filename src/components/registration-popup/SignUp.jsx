@@ -120,16 +120,11 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
 
 
     } catch (error) {
-      
+
       handleRegistrationStatus(error.response.status);
       console.error('Error during registration in signUp:', error);
     }
   };
-
-
-
-
-
 
 
   const submit = (e) => {
@@ -164,9 +159,11 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
           </div>
           <form
             className={styles.form}
-            // onSubmit={(e) => e.preventDefault() || validateSignUpForm()||handleRegistration()}
             onSubmit={(e) => submit(e)}
           >
+
+
+          {/* username */}
             <label htmlFor="name"></label>
             <Input
               classNameInput={styles.input}
