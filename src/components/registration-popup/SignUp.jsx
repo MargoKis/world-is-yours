@@ -88,7 +88,19 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
     return true;
   };
 
-
+  // Registration status answear
+  const handleRegistrationStatus = (status) => {
+    switch (status) {
+      case 201:
+        openSuccess();
+        break;
+      case 400:
+        console.log("User already exists");
+        break;
+      default:
+        console.log(`Unexpected response status: ${status}`);
+    }
+  };
 
   const handleRegistration = async () => {
     try {
@@ -102,33 +114,22 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
       };
 
       const registrationResult = await api.signUp(userData);
-
-      const handleRegistrationStatus = (status) => {
-        switch (status) {
-          case 201:
-            openSuccess();
-            break;
-          case 400:
-            console.log("User already exists");
-            break;
-          default:
-            console.log(`Unexpected response status: ${status}`);
-        }
-      };
-
       // Виклик функції з обробкою статусу
       handleRegistrationStatus(registrationResult.status);
-
-
-
       console.log('Registration successful:', registrationResult);
+
+
     } catch (error) {
-      // need to catch status 400 
-
+      
+      handleRegistrationStatus(error.response.status);
       console.error('Error during registration in signUp:', error);
-
     }
   };
+
+
+
+
+
 
 
   const submit = (e) => {
