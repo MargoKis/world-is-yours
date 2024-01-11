@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 // import { useEffect } from "react";
 import styles from "./signup.module.css";
 import Input from "../common/Input";
@@ -9,133 +9,220 @@ import Google from "../../assets/icons/media-icons/google-color.svg";
 import Apple from "../../assets/icons/media-icons/apple-color.svg";
 import { facebookProvider, googleProvider } from "./firebase/provider";
 import socialMediaAuth from "./firebase/auth";
+
+import attantionIcon from '../../assets/icons/icon-attantion.svg'
 // import {auth } from './firebase/config'
 // import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-
+import useTranslation from "../../locale/locales";
 import api from "../../api/api";
 
 const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
+
+  const t = useTranslation();
+
+
   const handleOnClick = async (provider) => {
     await socialMediaAuth(provider)
   }
 
 
+// inputs
+  const [username, setUsername] = useState("");
+  const [userSurname, setUserSurname] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
 
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [email, setEmail] = useState("");
-
-  const [password, setPassword] = useState("");
-
-
-
+  // errors 
   const [nameError, setNameError] = useState("");
   const [surnameError, setSurnameError] = useState("");
   const [emailError, setEmailError] = useState("");
-
   const [passwordError, setPasswordError] = useState("");
 
+  const isValidationOnRef = useRef(false);
 
 
 
-  const resetErrors = () => {
-    setNameError("");
-    setSurnameError("");
 
-    setEmailError("");
-    setPasswordError("");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // name validation
+  const nameValidation = (name) => {
+    if (isValidationOnRef.current) {
+      if (!name.trim()) {
+        setNameError('Ім\'я обов\'язкове');
+      } else if (/^\s/.test(name)) {
+        setNameError('Пароль не може починатися з пробілу');
+      } else if (name.length < 2 || name.length > 32) {
+        setNameError('Ім\'я повинно бути від 2 до 32 символів');
+      } else if (!/^[a-zA-Z' -]+$/.test(name)) {
+        setNameError('Ім\'я містить не припустимі символи');
+      } else {
+        setNameError(null);
+        return true;
+      }
+    }
+  }
+
+
+  // surname validation
+  const surnameValidation = (surname) => {
+    if (isValidationOnRef.current) {
+      if (!surname.trim()) {
+        setSurnameError('Прізвище обов\'язкове');
+      } else if (/^\s/.test(surname)) {
+        setSurnameError('Пароль не може починатися з пробілу');
+      } else if (surname.length < 2 || surname.length > 32) {
+        setSurnameError('Прізвище повинно бути від 2 до 32 символів');
+      } else if (!/^[a-zA-Z' -]+$/.test(surname)) {
+        setSurnameError('Прізвище містить не припустимі символи');
+      } else {
+        setSurnameError(null);
+        return true;
+      }
+    }
+  }
+
+
+
+  // Email validation
+  const emailValidation = (email) => {
+    if (isValidationOnRef.current) {
+      if (!email.trim()) {
+        setEmailError('Емейл обов\'язковий');
+        // empty
+      } else if (/^\s/.test(email)) {
+        setEmailError('Пароль не може починатися з пробілу');
+      } else if (email.length < 5 || email.length > 32) {
+        setEmailError('Не вірно введений емейл');
+        // leght
+      } else if (!/@/.test(email) || !/\./.test(email)) {
+        setEmailError('Не вірно введений емейл');
+        // have @ and .
+      } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+$/.test(email)) {
+        setEmailError('Не вірно введений емейл');
+        // incorrect characters
+      } else if (!/[a-zA-Z]{2,}$/.test(email.split('@')[1])) {
+        setEmailError('Мінімум дві літери після крапки');
+        // At least two letters after the period
+      } else if (/@\./.test(email)) {
+        setEmailError('Символ "." не може йти одразу після символу "@"');
+        // The "." character cannot follow the "@" character.
+
+      } else {
+        setEmailError(null);
+        return true;
+      }
+    }
   };
 
 
 
-  const validateEmail = (email) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-  };
+  // password validation
+  const passwordValidation = (password) => {
+    if (isValidationOnRef.current) {
+      if (!password.trim()) {
+        setPasswordError('Прізвище обов\'язкове');
+      } else if (/^\s/.test(password)) {
+        setPasswordError('Пароль не може починатися з пробілу');
+      } else if (password.length < 6 || password.length > 32) {
+        setPasswordError('Прізвище повинно бути від 2 до 32 символів');
+      } else if (!/^[a-zA-Z0-9@#$%^&_+]+$/.test(password)) {
+        setPasswordError('Прізвище містить не припустимі символи');
+      } else {
+        setPasswordError(null);
+        return true;
+      }
+    }
+  }
 
-  const nameSurnameRegex = /^[^\d\s]{3,16}$/;
 
+  // valid all
   const validateSignUpForm = () => {
-    resetErrors();
-
-
-    if (!nameSurnameRegex.test(name)) {
-      setNameError(
-        "Name should be 3-16 characters long and should not contain numbers"
-      );
-      return false;
-    }
-
-    if (!nameSurnameRegex.test(surname)) {
-      setSurnameError(
-        "Surname should be 3-16 characters long and should not contain numbers"
-      );
-      return false;
-    }
-
-    if (!validateEmail(email)) {
-      setEmailError("Invalid email address");
-      return false;
-    }
-
-    if (password.length < 8) {
-      setPasswordError("Password must be at least 8 characters");
-      return false;
-    }
-
-
-
-    return true;
+    return (
+      nameValidation(username) &&
+      surnameValidation(userSurname) &&
+      emailValidation(userEmail) &&
+      passwordValidation(userPassword)
+    );
   };
+
+  // submit
+  const submit = (e) => {
+    e.preventDefault();
+    isValidationOnRef.current = true;
+    if (validateSignUpForm()) {
+      // handleRegistration()
+    }
+  }
+
+
+
+
+
 
   // Registration status answear
   const handleRegistrationStatus = (status) => {
-    switch (status) {
-      case 201:
-        openSuccess();
-        break;
-      case 400:
-        console.log("User already exists");
-        break;
-      default:
-        console.log(`Unexpected response status: ${status}`);
+    // status message
+    const statusMessages = {
+      201: 'Registration successful',
+      400: 'User already exists',
+    };
+
+    if (statusMessages.hasOwnProperty(status)) {
+      // log status
+      console.log(statusMessages[status]);
+
+      // status
+      switch (status) {
+        case 201:
+          openSuccess();
+          break;
+        case 400:
+          console.log("already exist");
+          break;
+
+        default:
+          break;
+      }
+    } else {
+      // undefinded status error
+      console.log(`Unexpected response status: ${status}`);
     }
   };
+
+
 
   const handleRegistration = async () => {
     try {
       const userData = {
-        username: name,
-        first_name: name,
-        last_name: surname,
-        password: password,
-        confirm_password: password,
-        email,
+        username: username,
+        first_name: username,
+        last_name: userSurname,
+        password: userPassword,
+        confirm_password: userPassword,
+        email: userEmail,
       };
 
       const registrationResult = await api.signUp(userData);
-      // Виклик функції з обробкою статусу
       handleRegistrationStatus(registrationResult.status);
       console.log('Registration successful:', registrationResult);
-
-
     } catch (error) {
-
       handleRegistrationStatus(error.response.status);
       console.error('Error during registration in signUp:', error);
     }
   };
-
-
-  const submit = (e) => {
-    e.preventDefault()
-    if (validateSignUpForm()) {
-      handleRegistration()
-
-    }
-
-  }
-
 
 
 
@@ -149,7 +236,7 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
           onClick={(e) => e.stopPropagation()}
         >
           <div className={styles.titleWrap}>
-            <h2 className={styles.title}>Реєстрація</h2>
+            <h2 className={styles.title}>{t("Registration")}</h2>
             <img
               className={styles.closeIcon}
               src={closeIcon}
@@ -163,74 +250,102 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
           >
 
 
-          {/* username */}
-            <label htmlFor="name"></label>
-            <Input
-              classNameInput={styles.input}
-              typeInput="text"
-              id="name"
-              nameInput="name"
-              valueInput={name}
-              placeholderInput="Ім'я"
-              onChangeInput={(e) => {
-                setName(e.target.value);
-                validateSignUpForm(); // Викликати функцію валідації при зміні значення
-              }}
-              required
-            />
-            <div className={styles.error}>{nameError}</div>
-
-            <label htmlFor="surname"></label>
-            <Input
-              classNameInput={styles.input}
-              typeInput="text"
-              id="surname"
-              nameInput="surname"
-              valueInput={surname}
-              placeholderInput="Прізвище"
-              onChangeInput={(e) => {
-                setSurname(e.target.value);
-                validateSignUpForm();
-              }}
-              required
-            />
-            <div className={styles.error}>{surnameError}</div>
+            {/* username */}
+            <div className={styles.container}>
+              <label className={styles.label} htmlFor="name">{t("Name")}</label>
+              <div className={styles.inputContainer}>
+                <Input
+                  classNameInput={styles.input}
+                  typeInput="text"
+                  id="name"
+                  nameInput="name"
+                  valueInput={username}
+                  placeholderInput={t("Enter your name")}
+                  onChangeInput={(e) => {
+                    setUsername(e.target.value);
+                    nameValidation(e.target.value);
+                  }}
+                  required
+                />
+                {nameError ? <div className={styles.error}>{nameError}</div> : null}
+                {nameError ? <img className={styles.attantion} src={attantionIcon} alt="attantion" /> : null}
+              </div>
+            </div>
 
 
 
+            {/* surname */}
+            <div className={styles.container}>
+              <label className={styles.label} htmlFor="surname">{t("Surname")}</label>
+              <div className={styles.inputContainer}>
+                <Input
+                  classNameInput={styles.input}
+                  typeInput="text"
+                  id="surname"
+                  nameInput="surname"
+                  valueInput={userSurname}
+                  placeholderInput={t("Enter your last name")}
+                  onChangeInput={(e) => {
+                    setUserSurname(e.target.value);
+                    surnameValidation(e.target.value);
+                  }}
+                  required
+                />
+                {surnameError ? <div className={styles.error}>{surnameError}</div> : null}
+                {surnameError ? <img className={styles.attantion} src={attantionIcon} alt="attantion" /> : null}
+              </div>
+            </div>
 
 
-            <label htmlFor="email"></label>
-            <Input
-              classNameInput={styles.input}
-              typeInput="email"
-              id="email"
-              nameInput="email"
-              value={email}
-              placeholderInput="Ел.пошта"
-              onChangeInput={(e) => {
-                setEmail(e.target.value);
-                validateSignUpForm();
-              }}
-              required
-            />
-            <div className={styles.error}>{emailError}</div>
 
-            <label htmlFor="password"></label>
-            <Input
-              classNameInput={styles.input}
-              typeInput="password"
-              id="password"
-              nameInput="password"
-              value={password}
-              placeholderInput="Пароль"
-              onChangeInput={(e) => {
-                setPassword(e.target.value);
-                validateSignUpForm();
-              }}
-              required
-            />
-            <div className={styles.error}>{passwordError}</div>
+            {/* email */}
+            <div className={styles.container}>
+              <label className={styles.label} htmlFor="email">{t("Email")}</label>
+              <div className={styles.inputContainer}>
+                <Input
+                  classNameInput={styles.input}
+                  typeInput="email"
+                  id="email"
+                  nameInput="email"
+                  value={userEmail}
+                  placeholderInput={t("Enter your email address")}
+                  onChangeInput={(e) => {
+                    setUserEmail(e.target.value);
+                    emailValidation(e.target.value);
+                  }}
+                  required
+                />
+                {emailError ? <div className={styles.error}>{emailError}</div> : null}
+                {emailError ? <img className={styles.attantion} src={attantionIcon} alt="attantion" /> : null}
+              </div>
+            </div>
+
+
+            {/* password */}
+            <div className={styles.container}>
+              <label className={styles.label} htmlFor="password">{t("Password")}</label>
+              <div className={styles.inputContainer}>
+                <Input
+                  classNameInput={styles.input}
+                  typeInput="text"
+                  id="password"
+                  nameInput="password"
+                  value={userPassword}
+                  placeholderInput={t("Create a password")}
+                  onChangeInput={(e) => {
+                    setUserPassword(e.target.value);
+                    passwordValidation(e.target.value);
+                  }}
+                  required
+                />
+                {passwordError ? <div className={styles.error}>{passwordError}</div> : null}
+                {passwordError ? <img className={styles.attantion} src={attantionIcon} alt="attantion" /> : null}
+              </div>
+            </div>
+
+
+
+
 
             <p className={styles.remindPas} onClick={openRemindPass}>
               Нагадати пароль

@@ -22,7 +22,7 @@ function App() {
   const dispatch = useDispatch();
 
 
-  const [isLanguagueLoad, setLanguagueLoad] = useState(false)
+  const [isLanguagueLoad, setLanguagueLoad] = useState(false);
   // language switcher
   const availableLanguages = useMemo(() => ["en", "uk"], []);
 
@@ -50,7 +50,13 @@ function App() {
         console.log(data);
         setLanguagueLoad(true);
       } catch (error) {
+      
         console.error('Error in useTranslation:', error);
+ 
+        setTimeout(() => {
+          setLanguagueLoad(true);
+          console.log("here use effect error");
+        }, 2000);
       }
     };
     getLanguage();

@@ -15,7 +15,7 @@
 .popup {
   background-color: rgb(255, 255, 255);
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 15px;
   position: relative;
   width: 400px;
 }
@@ -58,17 +58,11 @@
   box-sizing: border-box;
   border: 1px solid #202020;
   border-radius: 10px;
-  width: 86%;
+  width: 100%;
   color: #202020;
 }
 
-.error {
-  /* margin-right: 30%; */
-  color: red;
-  font-size: 13px;
-  margin-bottom: 16px;
-  max-width: 80%;
-}
+
 
 .remindPas {
   color: #202020;
@@ -117,4 +111,54 @@
   align-items: center;
   text-align: center;
   gap: 40px;
+}
+
+
+.container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.label{
+  color: gray;
+  display: flex;
+  justify-content: flex-start;
+  width: 86%;
+  /* margin-bottom: 10px; */
+}
+.inputContainer{
+  display: flex;
+  position: relative;
+  width: 86%;
+  justify-content: center;
+  
+}
+
+.error {
+  /* margin-right: 30%; */
+  color: red;
+  font-size: 13px;
+  margin-bottom: 16px;
+  max-width: 50%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  position: absolute;
+  right: 16px;
+  top: -14px;
+  background-color: white;
+  border: solid 1px red;
+  padding: 3px 5px;
+  border-radius: 5px 5px 0px 5px;
+}
+.attantion{
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: 16px;
+  top: 16px;
 }
