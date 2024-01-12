@@ -10,9 +10,10 @@ import FavouritesCardList from "../components/main-page/FavouritesCardList";
 import NewArrivalsCardList from "../components/main-page/NewArrivalsCardList";
 import ScrollingText from "../components/scrolling-effect/ScrollingText";
 import ChatPopup from "../components/main-page/ChatPopup";
-import Slider from "../components/main-page/Slider";
 
 const MainPage = () => {
+  const t = useTranslation();
+  
   const [isChatPopupOpen, setIsChatPopupOpen] = useState(false);
 
   const toggleChatPopup = () => {
@@ -31,7 +32,7 @@ const MainPage = () => {
           className={`flex flex-col h-4/5 justify-center items-center px-10 flex`}
         >
           <p className="text-center text-4xl mb-10">
-            {("Your adventure starts here")}
+            {t("Your adventure starts here")}
           </p>
           <a href="#sectionFav">
             <img className="cursor-pointer" src={ArrowIcon} alt="Arrow Down" />
