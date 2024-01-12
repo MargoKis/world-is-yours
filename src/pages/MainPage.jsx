@@ -10,6 +10,7 @@ import FavouritesCardList from "../components/main-page/FavouritesCardList";
 import NewArrivalsCardList from "../components/main-page/NewArrivalsCardList";
 import ScrollingText from "../components/scrolling-effect/ScrollingText";
 import ChatPopup from "../components/main-page/ChatPopup";
+import Slider from "../components/main-page/Slider";
 
 const MainPage = () => {
   const [isChatPopupOpen, setIsChatPopupOpen] = useState(false);
@@ -51,8 +52,8 @@ const MainPage = () => {
           )}
         </div>
       </div>
-
-      <SeasonSelect />
+      <Slider/>
+      {/* <SeasonSelect /> */}
       <FavouritesCardList />
       <ScrollingText />
       <NewArrivalsCardList />

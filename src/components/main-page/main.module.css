@@ -108,7 +108,47 @@
   padding-top: 3%;
 }
 
-/* .textarea::placeholder {
-  padding-left: 8px;
-  padding-top: 6px;
-} */
+/* slider */
+
+.slider {
+  height: fit-content;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin: 4% 3%;
+}
+
+.textWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  height: 100%; 
+  padding: 5% 20%; 
+  background-image: url('../../assets/img/slider-new-year.png');
+  background-size: cover; 
+  background-position: center; 
+  border: 15px solid transparent; 
+  border-radius: 15px; 
+}
+
+.cardS {
+  max-width: fit-content;
+  padding: 4px;
+  background-color: white;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 8px;
+}
+
+.titleS, .subtitleS {
+  max-width: fit-content;
+  font-size: 60px;
+  font-weight: 500;
+  font-family: Raleway;
+  color: white;
+}
+
+.subtitleS {
+  font-size: 30px;
+}
+

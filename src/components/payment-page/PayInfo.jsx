@@ -1,47 +1,43 @@
-import React from "react";
+import React from 'react'
 import { useState } from "react";
 import Button from "../common/Button";
 
-const DeliveryInfo = ({
-  handleDeliveryClick,
-  handleContactInfoClick,
-  handlePayClick,
-}) => {
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const handleOptionChange = (value) => {
-    setSelectedOption(value);
-  };
-
-  return (
+const PayInfo = ({ handleDeliveryClick, handleContactInfoClick, handlePayClick }) => {
+    const [selectedOption, setSelectedOption] = useState(null);
+    const handleOptionChange = (value) => {
+        setSelectedOption(value);
+      };
+  
+    return (
+    <>
     <div className="flex flex-col">
-      <h1 className="text-grayDark font-raleway font-semibold text-35px mb-10">
-        Оформлення замовлення
-      </h1>
-      <div className="flex flex-row justify-between mb-10">
-        <p
-          className="text-gray font-raleway font-semibold text-20px cursor-pointer"
-          onClick={handleContactInfoClick}
-        >
-          Контактна інформація
-        </p>
-        <p
-          className="font-raleway font-semibold text-20px text-blue"
-          onClick={handleDeliveryClick}
-        >
-          Доставка
-        </p>
-        <p
-          className="text-gray font-raleway font-semibold text-20px cursor-pointer "
+    <h1 className="text-grayDark font-raleway font-semibold text-35px mb-10">
+      Оформлення замовлення
+    </h1>
+    <div className="flex flex-row justify-between mb-10">
+      <p
+        className="text-gray font-raleway font-semibold text-20px cursor-pointer"
+        onClick={handleContactInfoClick}
+      >
+        Контактна інформація
+      </p>
+      <p
+        className="font-raleway font-semibold text-20px text-gray"
+        onClick={handleDeliveryClick}
+      >
+        Доставка
+      </p>
+      <p
+          className="font-raleway font-semibold text-20px cursor-pointer text-blue"
           onClick={handlePayClick}
         >
           Оплата
         </p>
-      </div>
-
-      <div className="flex flex-col">
+    </div>
+    </div>
+    <div className="flex flex-col">
         <label className="text-textLight font-medium font-raleway text-sm mb-2">
-          Тип доставки
+          Варіант оплати
         </label>
         <form className="flex flex-col gap-2">
           <div className="flex items-center gap-2">
@@ -55,7 +51,7 @@ const DeliveryInfo = ({
             />
             <label for="opt1" className="text-base">
               {" "}
-              Самовивіз з магазину
+              Банківська карта (Visa, Mastercard)
             </label>
           </div>
           <div className="flex items-center gap-2">
@@ -101,31 +97,16 @@ const DeliveryInfo = ({
             </label>
           </div>
         </form>
-      </div>
-
-      <div className="flex flex-col mt-8">
-        <label
-          htmlFor="additionalInfo"
-          className="text-textLight font-medium font-raleway text-sm "
-        >
-          Додаткова інформація до замовлення
-        </label>
-        <textarea
-          id="additionalInfo"
-          className="max-w-md px-3 py-2 border rounded-md resize-none mt-4 "
-          style={{ height: "110px" }}
-          placeholder="Чи є додаткові умови для доставки?"
-        ></textarea>
-      </div>
-      <Button
+        <Button
         classNameBtn="max-w-md bg-gray-dark mt-10 p-4 border rounded-xl font-raleway font-700 text-18px text-white border-black"
         nameBtn="submitForm"
         valueBtn="submit"
       >
-        Варіанти оплати
+        Оплатити
       </Button>
-    </div>
-  );
-};
+      </div>
+    </>
+  )
+}
 
-export default DeliveryInfo;
+export default PayInfo

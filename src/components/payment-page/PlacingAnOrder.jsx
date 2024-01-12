@@ -1,27 +1,41 @@
 import React, { useState } from "react";
 import ContactInfo from "./ContactInfo";
 import DeliveryInfo from "./DeliveryInfo";
+import PayInfo from "./PayInfo";
 
-const PlaycingAnOrder = () => {
-  const [showDeliveryInfo, setShowDeliveryInfo] = useState(false);
+const PlacingAnOrder = () => {
+  const [step, setStep] = useState(1);
 
   const handleDeliveryClick = () => {
-    setShowDeliveryInfo(true);
+    setStep(2);
   };
 
   const handleContactInfoClick = () => {
-    setShowDeliveryInfo(false);
+    setStep(1);
+  };
+
+  const handlePayClick = () => {
+    setStep(3);
   };
 
   return (
     <div>
-      {showDeliveryInfo ? (
+      {step === 1 && (
+        <ContactInfo
+          handleContactInfoClick={handleContactInfoClick}
+          handleDeliveryClick={handleDeliveryClick}
+          handlePayClick={handlePayClick}
+        />
+      )}
+      {step === 2 && (
         <DeliveryInfo
           handleContactInfoClick={handleContactInfoClick}
           handleDeliveryClick={handleDeliveryClick}
+          handlePayClick={handlePayClick}
         />
-      ) : (
-        <ContactInfo
+      )}
+      {step === 3 && (
+        <PayInfo
           handleContactInfoClick={handleContactInfoClick}
           handleDeliveryClick={handleDeliveryClick}
         />
@@ -30,4 +44,4 @@ const PlaycingAnOrder = () => {
   );
 };
 
-export default PlaycingAnOrder;
+export default PlacingAnOrder;

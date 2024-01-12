@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./popup.module.css";
+import styles from "./main.module.css";
 import Input from "../common/Input";
 import closeIcon from "../../assets/icons/icon-close.svg";
 import Button from "../common/Button";

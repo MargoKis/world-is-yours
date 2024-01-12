@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "../common/Button";
 import Input from "../common/Input";
 
-const ContactInfo = ({ handleDeliveryClick, handleContactInfoClick }) => {
+const ContactInfo = ({ handleDeliveryClick, handleContactInfoClick, handlePayClick}) => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [phone, setPhone] = useState("");
@@ -90,12 +90,25 @@ const ContactInfo = ({ handleDeliveryClick, handleContactInfoClick }) => {
         >
           Доставка
         </p>
+        <p
+          className="text-gray font-raleway font-semibold text-20px cursor-pointer"
+          onClick={handlePayClick}
+        >
+          Оплата
+        </p>
       </div>
+
       <form onSubmit={handleSubmit}>
         <div className="flex flex-row justify-between">
           <div className="flex flex-col">
+            <label
+              for="name"
+              className="mb-1 ml-2 text-textLight font-medium font-raleway text-sm"
+            >
+              Ім’я
+            </label>
             <Input
-              classNameInput="font-light text-textLight border rounded-xl p-3 w-52 border-black" // font-raleway
+              classNameInput="font-light text-base text-gray border rounded-xl p-3 w-52 border-black font-raleway" // font-raleway
               typeInput="text"
               placeholderInput="Ім’я"
               value={name}
@@ -107,8 +120,14 @@ const ContactInfo = ({ handleDeliveryClick, handleContactInfoClick }) => {
             )}
           </div>
           <div className="flex flex-col">
+            <label
+              for="name"
+              className="mb-1 ml-2 text-textLight font-medium font-raleway text-sm"
+            >
+              Прізвище
+            </label>
             <Input
-              classNameInput="text-textLight border rounded-xl p-3 font-light w-52  border-black"
+              classNameInput="text-textLight border rounded-xl p-3 font-light w-52 border-black font-raleway text-base"
               typeInput="text"
               placeholderInput="Прізвище"
               value={surname}
@@ -121,18 +140,30 @@ const ContactInfo = ({ handleDeliveryClick, handleContactInfoClick }) => {
         </div>
 
         <div className="flex flex-col mt-8">
+          <label
+            for="tel"
+            className="mb-1 ml-2 text-textLight font-medium font-raleway text-sm"
+          >
+            Номер телефону
+          </label>
           <Input
-            classNameInput="text-textLight border rounded-xl max-w-md p-3 mb-3 font-light w-full  border-black"
+            classNameInput="text-textLight border rounded-xl p-3 mb-3 font-light w-3/4 border-black font-raleway text-base"
             typeInput="tel"
             placeholderInput="Номер телефону"
             value={phone}
             onChangeInput={(e) => setPhone(e.target.value)}
           />
           {phoneError && <p className="text-red-500 text-xs">{phoneError}</p>}
+          <label
+            for="name"
+            className="mb-1 ml-2 text-textLight font-medium font-raleway text-sm"
+          >
+            Електронна пошта
+          </label>
           <Input
-            classNameInput="text-textLight border rounded-xl max-w-md p-3 font-light"
+            classNameInput="text-textLight border rounded-xl w-3/4 p-3 font-light text-base font-raleway"
             typeInput="email"
-            placeholderInput="Електрона пошта"
+            placeholderInput="Електронна пошта"
             value={email}
             onChangeInput={(e) => setEmail(e.target.value)}
           />
@@ -142,28 +173,17 @@ const ContactInfo = ({ handleDeliveryClick, handleContactInfoClick }) => {
         </div>
 
         <div className="flex flex-row mt-8 justify-between">
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-1">
+            <label
+              for="name"
+              className="ml-2 text-textLight font-medium font-raleway text-sm"
+            >
+              День народження
+            </label>
             <Input
-              classNameInput="text-textLight border rounded-xl max-w-md p-3 font-light w-52  border-black"
+              classNameInput="text-textLight border rounded-xl w-3/5 p-3 pl-6 font-light border-black font-raleway text-base"
               typeInput="text"
-              placeholderInput="Країна"
-            />
-            <Input
-              classNameInput="text-textLight border rounded-xl max-w-md p-3 font-light w-52  border-black"
-              typeInput="text"
-              placeholderInput="Адреса"
-            />
-          </div>
-          <div className="flex flex-col gap-3">
-            <Input
-              classNameInput="text-textLight border rounded-xl max-w-md p-3 font-light w-52  border-black"
-              typeInput="text"
-              placeholderInput="Населений пункт"
-            />
-            <Input
-              classNameInput="text-textLight border rounded-xl max-w-md p-3 font-light w-52  border-black"
-              typeInput="text"
-              placeholderInput="Поштовий індекс"
+              placeholderInput="00.00.0000"
             />
           </div>
         </div>
