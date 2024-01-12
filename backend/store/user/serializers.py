@@ -33,6 +33,9 @@ class UserCreateSerializer(serializers.ModelSerializer):
 
         return data
 
+    def create(self, validated_data):
+        return UserModel.objects.create_user(**validated_data)
+
     def save(self, **kwargs):
         user = super(UserCreateSerializer, self).save(**kwargs)
         send_email_verification.delay(user_id=user.id)
