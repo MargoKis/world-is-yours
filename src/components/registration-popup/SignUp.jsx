@@ -125,19 +125,20 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
   const passwordValidation = (password) => {
     if (isValidationOnRef.current) {
       if (!password.trim()) {
-        setPasswordError('Прізвище обов\'язкове');
+        setPasswordError('Пароль обов\'язковий');
       } else if (/^\s/.test(password)) {
         setPasswordError('Пароль не може починатися з пробілу');
       } else if (password.length < 6 || password.length > 32) {
-        setPasswordError('Прізвище повинно бути від 2 до 32 символів');
+        setPasswordError('Пароль повиннен бути від 2 до 32 символів');
       } else if (!/^[a-zA-Z0-9@#$%^&_+]+$/.test(password)) {
-        setPasswordError('Прізвище містить не припустимі символи');
+        setPasswordError('Пароль містить не припустимі символи');
       } else {
         setPasswordError(null);
         return true;
       }
     }
-  }
+  };
+
 
 
   // valid all
@@ -343,13 +344,6 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
               </div>
             </div>
 
-
-
-
-
-            <p className={styles.remindPas} onClick={openRemindPass}>
-              Нагадати пароль
-            </p>
             <Button classNameBtn={styles.btn} type="submit">
               Зареєструватися
             </Button>

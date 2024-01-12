@@ -73,7 +73,11 @@ function Header() {
             <img className="cursor-pointer" src={SearchIconDark} alt="Search" />
           </div>
           <ul className="flex justify-between items-center">
-            <NavLink to={"/"}>
+            <NavLink onClick={() => {
+              if (window.location.pathname === '/world-is-yours') {
+                window.location.reload();
+              }
+            }} to={"/"}>
               <li className="mr-10 cursor-pointer">{t("HOME")}</li>
             </NavLink>
             <li onClick={() => setCategoriesOpen(true)} className="mr-10 cursor-pointer flex flex-row">
@@ -115,7 +119,7 @@ function Header() {
         }}
 
         openSuccess={() => {
-          
+
           setOpenSignUpPopup(false);
           // setSuccessMesOpen(true);
           console.log("user created");
@@ -155,11 +159,11 @@ function Header() {
           }}
 
           openSuccess={() => {
-          
+
             setLoginOpen(false);
-          // setSuccessMesOpen(true);
-          console.log("user login");
-        }}
+            // setSuccessMesOpen(true);
+            console.log("user login");
+          }}
 
           openRemindPass={() => {
             setLoginOpen(false);

@@ -16,7 +16,7 @@ const api = {
   
 
 
-  signUp: async (userData) => {  //data
+  signUp: async (userData) => {  
     try {
       const response = await axios.post(`${BASE_URL}/users/`, userData);
       return response;
@@ -27,9 +27,20 @@ const api = {
   },
 
 
-  signIn: async (userData) => {  //data
+  signIn: async (userData) => {  
     try {
       const response = await axios.post(`${BASE_URL}/users/`, userData);
+      return response;
+    } catch (error) {
+      // console.error('Error login user in api:', error);
+      throw error;
+    }
+  },
+
+
+  resetPassword: async (userData) => {  
+    try {
+      const response = await axios.post(`${BASE_URL}/password_reset/`, userData);
       return response;
     } catch (error) {
       // console.error('Error registering user in api:', error);

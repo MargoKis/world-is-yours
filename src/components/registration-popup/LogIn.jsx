@@ -246,7 +246,7 @@ const LogIn = ({ onClose, openSignUp, openRemindPass,openSuccess}) => {
 
 
 
-            <p className={styles.remindPas} onClick={openRemindPass}>Нагадати пароль</p>
+            <p className={styles.remindPas} onClick={openRemindPass}>Забули пароль?</p>
             <Button classNameBtn={styles.btn} type="submit">
               Увійти
             </Button>
