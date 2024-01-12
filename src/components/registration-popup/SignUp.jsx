@@ -10,7 +10,9 @@ import Apple from "../../assets/icons/media-icons/apple-color.svg";
 import { facebookProvider, googleProvider } from "./firebase/provider";
 import socialMediaAuth from "./firebase/auth";
 
-import attantionIcon from '../../assets/icons/icon-attantion.svg'
+import attantionIcon from '../../assets/icons/icon-attantion.svg';
+import openEye from '../../assets/icons/icon-openEye.svg';
+import closeEye from '../../assets/icons/icon-Eye-off.svg';
 // import {auth } from './firebase/config'
 // import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import useTranslation from "../../locale/locales";
@@ -26,7 +28,7 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
   }
 
 
-// inputs
+  // inputs
   const [username, setUsername] = useState("");
   const [userSurname, setUserSurname] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -38,23 +40,13 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
+
+  // states
+
+  // password visible
+  const [isPasswordVisible, setPasswordVisible] = useState(false);
+  // is validation on
   const isValidationOnRef = useRef(false);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   // name validation
@@ -163,7 +155,7 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
     e.preventDefault();
     isValidationOnRef.current = true;
     if (validateSignUpForm()) {
-      // handleRegistration()
+      handleRegistration()
     }
   }
 
@@ -188,9 +180,10 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
       switch (status) {
         case 201:
           openSuccess();
+
           break;
         case 400:
-          console.log("already exist");
+          // console.log("already exist");
           break;
 
         default:
@@ -217,10 +210,10 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
 
       const registrationResult = await api.signUp(userData);
       handleRegistrationStatus(registrationResult.status);
-      console.log('Registration successful:', registrationResult);
+      // console.log('Registration successful:', registrationResult);
     } catch (error) {
       handleRegistrationStatus(error.response.status);
-      console.error('Error during registration in signUp:', error);
+      // console.error('Error during registration in signUp:', error);
     }
   };
 
@@ -244,7 +237,7 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
               onClick={onClose}
             />
           </div>
-          <form
+          <form noValidate
             className={styles.form}
             onSubmit={(e) => submit(e)}
           >
@@ -324,22 +317,29 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
             {/* password */}
             <div className={styles.container}>
               <label className={styles.label} htmlFor="password">{t("Password")}</label>
-              <div className={styles.inputContainer}>
-                <Input
-                  classNameInput={styles.input}
-                  typeInput="text"
-                  id="password"
-                  nameInput="password"
-                  value={userPassword}
-                  placeholderInput={t("Create a password")}
-                  onChangeInput={(e) => {
-                    setUserPassword(e.target.value);
-                    passwordValidation(e.target.value);
-                  }}
-                  required
-                />
-                {passwordError ? <div className={styles.error}>{passwordError}</div> : null}
-                {passwordError ? <img className={styles.attantion} src={attantionIcon} alt="attantion" /> : null}
+              <div className={styles.passwordContainer}>
+                <div className={styles.inputContainer}>
+                  <Input
+                    classNameInput={styles.input}
+                    typeInput={isPasswordVisible ? "text" : "password"}
+                    id="password"
+                    nameInput="password"
+                    value={userPassword}
+                    placeholderInput={t("Create a password")}
+                    onChangeInput={(e) => {
+                      setUserPassword(e.target.value);
+                      passwordValidation(e.target.value);
+                    }}
+                    required
+                  />
+                  {passwordError ? <div className={styles.error}>{passwordError}</div> : null}
+                  {passwordError ? <img className={styles.attantion} src={attantionIcon} alt="attantion" /> : null}
+                </div>
+                {/* icon eyes */}
+                <div className={styles.eyesIcon} onClick={() => setPasswordVisible(!isPasswordVisible)}>
+                  <img className="w-24px h-24px" src={isPasswordVisible ? openEye : closeEye} alt="openEyes" />
+                </div>
+
               </div>
             </div>
 

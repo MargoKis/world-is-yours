@@ -9,7 +9,7 @@ const api = {
       const response = await axios.get(`${BASE_URL}/language/${code}/`);
       return response.data;
     } catch (error) {
-      console.error('Error fetching posts:', error);
+      // console.error('Error fetching posts:', error);
       throw error;
     }
   },
@@ -21,7 +21,18 @@ const api = {
       const response = await axios.post(`${BASE_URL}/users/`, userData);
       return response;
     } catch (error) {
-      console.error('Error registering user in api:', error);
+      // console.error('Error registering user in api:', error);
+      throw error;
+    }
+  },
+
+
+  signIn: async (userData) => {  //data
+    try {
+      const response = await axios.post(`${BASE_URL}/users/`, userData);
+      return response;
+    } catch (error) {
+      // console.error('Error registering user in api:', error);
       throw error;
     }
   },

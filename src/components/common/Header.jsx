@@ -154,6 +154,13 @@ function Header() {
             setOpenSignUpPopup(true);
           }}
 
+          openSuccess={() => {
+          
+            setLoginOpen(false);
+          // setSuccessMesOpen(true);
+          console.log("user login");
+        }}
+
           openRemindPass={() => {
             setLoginOpen(false);
             setRemindPassOpen(true);
