@@ -121,7 +121,7 @@ const LogIn = ({ onClose, openSignUp, openRemindPass,openSuccess}) => {
     // status message
     const statusMessages = {
       201: 'SignIn successful',
-      400: 'User already exists',
+      400: 'status 400',
     };
 
     if (statusMessages.hasOwnProperty(status)) {
@@ -153,7 +153,6 @@ const LogIn = ({ onClose, openSignUp, openRemindPass,openSuccess}) => {
     try {
       const userData = {
         password: userPassword,
-        confirm_password: userPassword,
         email: userEmail,
       };
 

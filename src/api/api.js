@@ -13,10 +13,10 @@ const api = {
       throw error;
     }
   },
-  
 
 
-  signUp: async (userData) => {  
+
+  signUp: async (userData) => {
     try {
       const response = await axios.post(`${BASE_URL}/users/`, userData);
       return response;
@@ -27,18 +27,20 @@ const api = {
   },
 
 
-  signIn: async (userData) => {  
+  signIn: async (userData) => {
     try {
-      const response = await axios.post(`${BASE_URL}/users/`, userData);
+      const response = await axios.post(`${BASE_URL}/auth/`, { username: userData.email, password: userData.password });
+      console.log('Error login user in api:', response);
       return response;
+
     } catch (error) {
-      // console.error('Error login user in api:', error);
+      console.error('Error login user in api:', error);
       throw error;
     }
   },
 
 
-  resetPassword: async (userData) => {  
+  resetPassword: async (userData) => {
     try {
       const response = await axios.post(`${BASE_URL}/password_reset/`, userData);
       return response;
