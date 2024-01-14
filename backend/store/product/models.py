@@ -92,7 +92,7 @@ class Basket(models.Model):
     objects = BasketQuerySet.as_manager()
 
     def __str__(self):
-        return f'Basket for {self.user.username} | Product: {self.product.name}'
+        return f'Basket for {self.user.email} | Product: {self.product.name}'
 
     def sum(self):
         return self.product.price * self.quantity
@@ -112,7 +112,7 @@ class Wishlist(models.Model):
     product = models.ForeignKey(to=Product, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'Wishlist for {self.user.username} | Product: {self.product.name}'
+        return f'Wishlist for {self.user.email} | Product: {self.product.name}'
 
     class Meta:
         unique_together = "user", "product"
