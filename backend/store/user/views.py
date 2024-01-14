@@ -8,14 +8,13 @@ from rest_framework import status
 
 from user.models import EmailVerification, EmailPasswordReset
 from user.permissions import IsOwnerOrReadOnly
-from user.serializers import UserModel, UserSerializer, UserCreateSerializer, UserUpdateSerializer, \
-    PasswordChangeRequestSerializer, PasswordResetSerializer
+from user import serializers
 from user.tasks import send_password_change
 
 
 class UserListAPIView(ListCreateAPIView):
-    queryset = UserModel.objects.all()
-    serializer_class = UserSerializer
+    queryset = serializers.UserModel.objects.all()
+    serializer_class = serializers.UserSerializer
 
     def get_permissions(self):
         if self.request.method != "POST":
@@ -24,20 +23,20 @@ class UserListAPIView(ListCreateAPIView):
 
     def get_serializer_class(self):
         if self.request.method in SAFE_METHODS:
-            return UserSerializer
-        return UserCreateSerializer
+            return serializers.UserSerializer
+        return serializers.UserCreateSerializer
 
 
 class UserDetailAPIView(RetrieveUpdateDestroyAPIView):
-    queryset = UserModel.objects.all()
-    serializer_class = UserSerializer
+    queryset = serializers.UserModel.objects.all()
+    serializer_class = serializers.UserSerializer
     lookup_field = "id"
     permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
 
     def get_serializer_class(self):
         if self.request.method in SAFE_METHODS:
-            return UserSerializer
-        return UserUpdateSerializer
+            return serializers.UserSerializer
+        return serializers.UserUpdateSerializer
 
     def perform_update(self, serializer):
         if 'password' in serializer.validated_data:
@@ -66,11 +65,11 @@ class EmailVerificationView(APIView):
 
 class PasswordResetView(APIView):
     def post(self, request, email, code):
-        serializer = PasswordResetSerializer(data=request.data)
+        serializer = serializers.PasswordResetSerializer(data=request.data)
         if serializer.is_valid():
             try:
                 pc_record = EmailPasswordReset.objects.get(user__email=email, code=code)
-                user = UserModel.objects.get(email=email)
+                user = serializers.UserModel.objects.get(email=email)
                 if not pc_record.is_expired():
                     user.set_password(serializer.validated_data['password'])
                     user.save()
@@ -88,10 +87,10 @@ class PasswordResetView(APIView):
 
 class PasswordChangeRequestView(APIView):
     def post(self, request, *args, **kwargs):
-        serializer = PasswordChangeRequestSerializer(data=request.data)
+        serializer = serializers.PasswordChangeRequestSerializer(data=request.data)
 
         if serializer.is_valid():
-            user = UserModel.objects.get(email=serializer.validated_data['email'])
+            user = serializers.UserModel.objects.get(email=serializer.validated_data['email'])
             send_password_change.delay(user_id=user.id)
             return Response({"detail": "An email has been sent to your email address with further instructions"},
                             status=status.HTTP_200_OK)
