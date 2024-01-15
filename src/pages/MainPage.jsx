@@ -31,7 +31,7 @@ const MainPage = () => {
 
         {/* main page nav text */}
         <div
-          className={`flex flex-col h-4/5 justify-center items-center px-10 flex`}
+          className={`flex flex-col h-4/5 justify-center items-center px-10 `}
         >
           <p className="text-center text-4xl mb-10">
             {t("Your adventure starts here")}
@@ -42,7 +42,7 @@ const MainPage = () => {
         </div>
 
         {/* chat icon */}
-        <div className={`flex flex-row-reverse h-1/5 items-center px-10 flex`}>
+        <div className={`flex flex-row-reverse h-1/5 items-center px-10 `}>
         <img
             className="scale-75 cursor-pointer"
             src={ChatIcon}
