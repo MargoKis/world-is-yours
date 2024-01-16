@@ -6,19 +6,19 @@ from product.models import Product, ProductCategory, ProductSubCategory, Product
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = "name", "description", "price", "old_price", "quantity", "image", "category"
+        fields = "__all__"
 
 
 class ProductCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductCategory
-        fields = "name", "description"
+        fields = "__all__"
 
 
 class ProductSubCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductSubCategory
-        fields = "name", "description"
+        fields = "__all__"
 
 
 class ProductReviewSerializer(serializers.ModelSerializer):
