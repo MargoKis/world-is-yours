@@ -4,13 +4,48 @@ const BASE_URL = 'http://localhost:8000/api';
 
 const api = {
   // language switch
-  getLanguage: (code) => {  // lang code
-    return axios.get(`${BASE_URL}/language/${code}/`)
-      .then(response => response.data)
-      .catch(error => {
-        console.error('Error fetching posts:', error);
-        throw error; 
-      });
+  getLanguage: async (code) => {
+    try {
+      const response = await axios.get(`${BASE_URL}/language/${code}/`);
+      return response.data;
+    } catch (error) {
+      // console.error('Error fetching posts:', error);
+      throw error;
+    }
+  },
+  
+
+
+  signUp: async (userData) => {  
+    try {
+      const response = await axios.post(`${BASE_URL}/users/`, userData);
+      return response;
+    } catch (error) {
+      // console.error('Error registering user in api:', error);
+      throw error;
+    }
+  },
+
+
+  signIn: async (userData) => {  
+    try {
+      const response = await axios.post(`${BASE_URL}/users/`, userData);
+      return response;
+    } catch (error) {
+      // console.error('Error login user in api:', error);
+      throw error;
+    }
+  },
+
+
+  resetPassword: async (userData) => {  
+    try {
+      const response = await axios.post(`${BASE_URL}/password_reset/`, userData);
+      return response;
+    } catch (error) {
+      // console.error('Error registering user in api:', error);
+      throw error;
+    }
   },
 
 

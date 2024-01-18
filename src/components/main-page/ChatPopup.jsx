@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./popup.module.css";
+import styles from "./main.module.css";
 import Input from "../common/Input";
 import closeIcon from "../../assets/icons/icon-close.svg";
 import Button from "../common/Button";
@@ -44,7 +44,7 @@ const ChatPopup = ({ onClose, isOpen }) => {
 
     if (!themeRegex.test(theme)) {
       setThemeError(
-        "Theme should be 5-16 characters long and should not contain numbers"
+        "Theme should be 6-20 characters long and should not contain numbers"
       );
       return false;
     }

@@ -143,6 +143,7 @@ const ContactInfo = ({
       ) : (
         <>
           <p>You are new here</p>
+          <Button onClick={handleLogin}>Login</Button>
         </>
       )}
     </div>
