@@ -123,7 +123,7 @@ const LogIn = ({ onClose, openSignUp, openRemindPass,openSuccess}) => {
   const handleSignInStatus = (status) => {
     // status message
     const statusMessages = {
-      201: 'SignIn successful',
+      200: 'SignIn successful',
       400: 'status 400',
     };
 
