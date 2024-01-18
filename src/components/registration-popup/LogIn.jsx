@@ -19,6 +19,7 @@ import closeEye from '../../assets/icons/icon-Eye-off.svg';
 
 import api from "../../api/api";
 import { useDispatch } from "react-redux";
+import { login } from "../../redux/userSlice";
 // import {auth, facebookProvider, googleProvider} from './config'
 // import { signInWithPopup } from "firebase/auth";
 
@@ -40,6 +41,7 @@ const LogIn = ({ onClose, openSignUp, openRemindPass,openSuccess}) => {
 
 
   // states
+
 
   // password visible
   const [isPasswordVisible, setPasswordVisible] = useState(false);
@@ -134,6 +136,7 @@ const LogIn = ({ onClose, openSignUp, openRemindPass,openSuccess}) => {
         case 200:
           openSuccess();
           dispatch(login());
+          
 
 
           break;

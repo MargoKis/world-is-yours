@@ -5,7 +5,7 @@ import ChatIcon from "../assets/icons/button_chat.svg";
 
 // components
 import WhyUs from "../components/main-page/WhyUs";
-import SeasonSelect from "../components/main-page/SeasonSelect";
+// import SeasonSelect from "../components/main-page/SeasonSelect";
 import FavouritesCardList from "../components/main-page/FavouritesCardList";
 import NewArrivalsCardList from "../components/main-page/NewArrivalsCardList";
 import ScrollingText from "../components/scrolling-effect/ScrollingText";
