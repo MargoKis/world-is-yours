@@ -39,7 +39,68 @@ const PayInfo = ({ handleDeliveryClick, handleContactInfoClick, handlePayClick }
         </p>
     </div>
     </div>
-    <div className="flex flex-col">
+
+       {/*  для нового покупця */}
+
+      <div className="flex flex-col">
+        <label className="text-textLight font-medium font-raleway text-sm mb-2">
+          Варіант оплати
+        </label>
+        <form className="flex flex-col gap-2">
+          <div className="flex items-center gap-2">
+            <input
+              type="radio"
+              id="opt1"
+              name="opt1"
+              value="opt1"
+              className="h-4 w-4"
+              onChange={() => handleOptionChange("opt1")}
+            />
+            <label for="opt1" className="text-base">
+              {" "}
+              Готівка
+            </label>
+          </div>
+          <div className="flex items-center gap-2">
+            <input
+              type="radio"
+              id="opt2"
+              name="opt1"
+              value="opt2"
+              className="h-4 w-4"
+              onChange={() => handleOptionChange("opt1")}
+            />
+            <label for="opt2" className="text-base">
+              {" "}
+              Оплата банківською картою
+            </label>
+          </div>
+          <div className="flex items-center gap-2">
+            <input
+              type="radio"
+              id="opt3"
+              name="opt1"
+              value="opt3"
+              className="h-4 w-4"
+              onChange={() => handleOptionChange("opt1")}
+            />
+            <label for="opt3" className="text-base">
+              {" "}
+              Google Pay
+            </label>
+          </div>
+        </form>
+        <Button
+        classNameBtn="max-w-md bg-gray-dark mt-10 p-4 border rounded-xl font-raleway font-700 text-18px text-white border-black"
+        nameBtn="submitForm"
+        valueBtn="submit"
+      >
+        Оплатити
+      </Button>
+      </div> 
+
+     {/* ДЛЯ ПОСТІЙНОГО ПОКУПЦЯ */}
+    {/* <div className="flex flex-col">
         <label className="text-textLight font-medium font-raleway text-sm mb-2">
           Варіант оплати
         </label>
@@ -108,7 +169,9 @@ const PayInfo = ({ handleDeliveryClick, handleContactInfoClick, handlePayClick }
       >
         Оплатити
       </Button>
-      </div>
+      </div> */}
+
+     
     </>
   )
 }

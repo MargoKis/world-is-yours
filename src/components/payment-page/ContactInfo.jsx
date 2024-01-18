@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import Button from "../common/Button";
 import Input from "../common/Input";
 import FormSection from "./FormSection";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../redux/userSlice";
 
 const ContactInfo = ({
   handleDeliveryClick,
   handleContactInfoClick,
   handlePayClick,
   openPopup,
-}) => { 
+}) => {
+  // const dispatch = useDispatch();
   // const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
   const [name, setName] = useState("");
@@ -136,10 +138,16 @@ const ContactInfo = ({
   };
 
   return (
+
+
     <div className="flex flex-col">
-      <h1 className="font-raleway font-semibold text-35px mb-10">
+      <h1 className="font-raleway font-semibold text-35px mb-4">
         Оформлення замовлення
       </h1>
+      <div className="flex flex-row mb-2 gap-6">
+        <p className="text-decoration-line: underline cursor-pointer">Новий покупець </p>
+        <p className="text-decoration-line: underline cursor-pointer" onClick={openPopup}> Я постійний клієнт</p>
+      </div>
       <div className="flex flex-row justify-between mb-10">
         <p
           className="font-raleway font-semibold text-20px text-blue"
@@ -163,63 +171,43 @@ const ContactInfo = ({
 
       <form onSubmit={handleSubmit}>
         <div className="flex flex-row justify-between">
-          <div className="flex flex-col">
-            <label
-              for="name"
-              className="mb-1 ml-2 text-textLight font-medium font-raleway text-sm"
-            >
-              Ім’я
-            </label>
-            <Input
-              classNameInput="font-light text-base text-gray border rounded-xl p-3 w-52 border-black font-raleway" // font-raleway
-              typeInput="text"
-              placeholderInput="Ім’я"
-              value={name}
-              onChangeInput={(e) => setName(e.target.value)}
-              className="font-light"
-            />
-            {nameError && (
-              <p className="text-red-400 text-xs w-1/2 ml-2">{nameError}</p>
-            )}
-          </div>
-          <div className="flex flex-col">
-            <label
-              for="name"
-              className="mb-1 ml-2 text-textLight font-medium font-raleway text-sm"
-            >
-              Прізвище
-            </label>
-            <Input
-              classNameInput="text-textLight border rounded-xl p-3 font-light w-52 border-black font-raleway text-base"
-              typeInput="text"
-              placeholderInput="Прізвище"
-              value={surname}
-              onChangeInput={(e) => setSurname(e.target.value)}
-            />
-            {surnameError && (
-              <p className="text-red-400 text-xs w-1/2 ml-2">{surnameError}</p>
-            )}
-          </div>
+
+          <FormSection
+            label="Ім’я"
+            value={name}
+            onChange={handleNameChange}
+            error={nameError}
+            placeholder="Ім’я"
+          />
+          <FormSection
+            label="Прізвище"
+            value={surname}
+            onChange={handleSurnameChange}
+            error={surnameError}
+            placeholder="Прізвище"
+          />
         </div>
 
         <div className="flex flex-col mt-8">
           <label
-            for="tel"
+            htmlFor="tel"
             className="mb-1 ml-2 text-textLight font-medium font-raleway text-sm"
           >
             Номер телефону
           </label>
           <Input
-            classNameInput="text-textLight border rounded-xl p-3 mb-3 font-light w-3/4 border-black font-raleway text-base"
+            classNameInput="text-textLight border rounded-xl p-3 font-light w-3/4 border-black font-raleway text-base"
             typeInput="tel"
             placeholderInput="Номер телефону"
             value={phone}
-            onChangeInput={(e) => setPhone(e.target.value)}
+            onChangeInput={(e) => handlePhoneChange(e.target.value)}
           />
-          {phoneError && <p className="text-red-500 text-xs">{phoneError}</p>}
+          {phoneError && (
+            <p className="text-red-500 text-xs mb-3 ml-2">{phoneError}</p>
+          )}
           <label
-            for="name"
-            className="mb-1 ml-2 text-textLight font-medium font-raleway text-sm"
+            htmlFor="email"
+            className="mb-1 ml-2 mt-4 text-textLight font-medium font-raleway text-sm"
           >
             Електронна пошта
           </label>
@@ -228,7 +216,7 @@ const ContactInfo = ({
             typeInput="email"
             placeholderInput="Електронна пошта"
             value={email}
-            onChangeInput={(e) => setEmail(e.target.value)}
+            onChangeInput={(e) => handleEmailChange(e.target.value)}
           />
           {emailError && (
             <p className="text-red-500 text-xs ml-2">{emailError}</p>
@@ -238,16 +226,21 @@ const ContactInfo = ({
         <div className="flex flex-row mt-8 justify-between">
           <div className="flex flex-col gap-1">
             <label
-              for="name"
+              htmlFor="name"
               className="ml-2 text-textLight font-medium font-raleway text-sm"
             >
               День народження
             </label>
             <Input
-              classNameInput="text-textLight border rounded-xl w-3/5 p-3 pl-6 font-light border-black font-raleway text-base"
+              classNameInput="text-textLight border rounded-xl w-3/5 p-3 pl-5 font-light border-black font-raleway text-base"
               typeInput="text"
               placeholderInput="00.00.0000"
+              value={birthdate}
+              onChangeInput={(e) => handleBirthdateChange(e.target.value)}
             />
+            {birthdateError && (
+              <p className="text-red-500 text-xs mb-3 ml-2">{birthdateError}</p>
+            )}
           </div>
         </div>
 
@@ -262,131 +255,6 @@ const ContactInfo = ({
         {formError && <p className="text-red-500 ml-2">{formError}</p>}
       </form>
     </div>
-
-    // <div className="flex flex-col">
-    //   <h1 className="font-raleway font-semibold text-35px mb-4">
-    //     Оформлення замовлення
-    //   </h1>
-    //   <div className="flex flex-row mb-2 gap-6">
-    //     <p className="text-decoration-line: underline cursor-pointer">Новий покупець </p>
-    //     <p className="text-decoration-line: underline cursor-pointer" onClick={openPopup}> Я постійний клієнт</p>
-    //   </div>
-    //   <div className="flex flex-row justify-between mb-10">
-    //     <p
-    //       className="font-raleway font-semibold text-20px text-blue"
-    //       onClick={handleContactInfoClick}
-    //     >
-    //       Контактна інформація
-    //     </p>
-    //     <p
-    //       className="text-gray font-raleway font-semibold text-20px cursor-pointer"
-    //       onClick={handleDeliveryClick}
-    //     >
-    //       Доставка
-    //     </p>
-    //     <p
-    //       className="text-gray font-raleway font-semibold text-20px cursor-pointer"
-    //       onClick={handlePayClick}
-    //     >
-    //       Оплата
-    //     </p>
-    //   </div>
-
-    //   <form onSubmit={handleSubmit}>
-    //     <div className="flex flex-row justify-between">
-
-    //       <FormSection
-    //         label="Ім’я"
-    //         value={name}
-    //         onChange={handleNameChange}
-    //         error={nameError}
-    //         placeholder="Ім’я"
-    //       />
-    //       <FormSection
-    //         label="Прізвище"
-    //         value={surname}
-    //         onChange={handleSurnameChange}
-    //         error={surnameError}
-    //         placeholder="Прізвище"
-    //       />
-    //     </div>
-
-    //     <div className="flex flex-col mt-8">
-    //     <FormSection
-    //         label="Номер телефону"
-    //         value={phone}
-    //         onChange={handlePhoneChange}
-    //         error={phoneError}
-    //         placeholder="Номер телефону"
-    //         type="tel"
-    //         className="w-3/4"
-    //       />
-    //       <label
-    //         htmlFor="tel"
-    //         className="mb-1 ml-2 text-textLight font-medium font-raleway text-sm"
-    //       >
-    //         Номер телефону
-    //       </label>
-    //       <Input
-    //         classNameInput="text-textLight border rounded-xl p-3 font-light w-3/4 border-black font-raleway text-base"
-    //         typeInput="tel"
-    //         placeholderInput="Номер телефону"
-    //         value={phone}
-    //         onChangeInput={(e) => handlePhoneChange(e.target.value)}
-    //       />
-    //       {phoneError && (
-    //         <p className="text-red-500 text-xs mb-3 ml-2">{phoneError}</p>
-    //       )}
-    //       <label
-    //         htmlFor="email"
-    //         className="mb-1 ml-2 mt-4 text-textLight font-medium font-raleway text-sm"
-    //       >
-    //         Електронна пошта
-    //       </label>
-    //       <Input
-    //         classNameInput="text-textLight border rounded-xl w-3/4 p-3 font-light text-base font-raleway"
-    //         typeInput="email"
-    //         placeholderInput="Електронна пошта"
-    //         value={email}
-    //         onChangeInput={(e) => handleEmailChange(e.target.value)}
-    //       />
-    //       {emailError && (
-    //         <p className="text-red-500 text-xs ml-2">{emailError}</p>
-    //       )}
-    //     </div>
-
-    //     <div className="flex flex-row mt-8 justify-between">
-    //       <div className="flex flex-col gap-1">
-    //         <label
-    //           htmlFor="name"
-    //           className="ml-2 text-textLight font-medium font-raleway text-sm"
-    //         >
-    //           День народження
-    //         </label>
-    //         <Input
-    //           classNameInput="text-textLight border rounded-xl w-3/5 p-3 pl-5 font-light border-black font-raleway text-base"
-    //           typeInput="text"
-    //           placeholderInput="00.00.0000"
-    //           value={birthdate}
-    //           onChangeInput={(e) => handleBirthdateChange(e.target.value)}
-    //         />
-    //         {birthdateError && (
-    //           <p className="text-red-500 text-xs mb-3 ml-2">{birthdateError}</p>
-    //         )}
-    //       </div>
-    //     </div>
-
-    //     <Button
-    //       classNameBtn="w-full bg-gray-dark mt-10 p-4 border rounded-xl font-bold text-18px text-white"
-    //       nameBtn="submitForm"
-    //       valueBtn="submit"
-    //       type="submit"
-    //     >
-    //       Обрати спосіб доставки
-    //     </Button>
-    //     {formError && <p className="text-red-500 ml-2">{formError}</p>}
-    //   </form>
-    // </div>
   );
 };
 
