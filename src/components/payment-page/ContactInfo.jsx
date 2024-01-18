@@ -9,14 +9,9 @@ const ContactInfo = ({
   handleContactInfoClick,
   handlePayClick,
   openPopup,
-}) => {
-  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+}) => { 
+  // const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
-
-<<<<<<< HEAD
-=======
-const ContactInfo = ({ handleDeliveryClick, handleContactInfoClick, handlePayClick}) => {
->>>>>>> 5b95ddb60179bfdd8d2a3550404b533fddfa2eb0
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [phone, setPhone] = useState("");
@@ -142,16 +137,6 @@ const ContactInfo = ({ handleDeliveryClick, handleContactInfoClick, handlePayCli
 
   return (
     <div className="flex flex-col">
-<<<<<<< HEAD
-      {isLoggedIn ? (
-        <p>I know you</p>
-      ) : (
-        <>
-          <p>You are new here</p>
-          <Button onClick={handleLogin}>Login</Button>
-        </>
-      )}
-=======
       <h1 className="font-raleway font-semibold text-35px mb-10">
         Оформлення замовлення
       </h1>
@@ -276,7 +261,6 @@ const ContactInfo = ({ handleDeliveryClick, handleContactInfoClick, handlePayCli
         </Button>
         {formError && <p className="text-red-500 ml-2">{formError}</p>}
       </form>
->>>>>>> 5b95ddb60179bfdd8d2a3550404b533fddfa2eb0
     </div>
 
     // <div className="flex flex-col">

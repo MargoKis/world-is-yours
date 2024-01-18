@@ -1,8 +1,5 @@
 import React, { useRef, useState } from "react";
-<<<<<<< HEAD
-import { useDispatch } from "react-redux";
-=======
->>>>>>> 5b95ddb60179bfdd8d2a3550404b533fddfa2eb0
+import { useDispatch, useSelector } from "react-redux";
 // import { useEffect } from "react";
 import styles from "./signup.module.css";
 import Input from "../common/Input";
@@ -13,10 +10,7 @@ import Google from "../../assets/icons/media-icons/google-color.svg";
 import Apple from "../../assets/icons/media-icons/apple-color.svg";
 import { facebookProvider, googleProvider } from "./firebase/provider";
 import socialMediaAuth from "./firebase/auth";
-<<<<<<< HEAD
 import { login } from "../../redux/userSlice";
-=======
->>>>>>> 5b95ddb60179bfdd8d2a3550404b533fddfa2eb0
 
 import attantionIcon from '../../assets/icons/icon-attantion.svg';
 import openEye from '../../assets/icons/icon-openEye.svg';
@@ -25,7 +19,6 @@ import closeEye from '../../assets/icons/icon-Eye-off.svg';
 // import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import useTranslation from "../../locale/locales";
 import api from "../../api/api";
-<<<<<<< HEAD
 
 const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
 
@@ -33,28 +26,12 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
 
   const t = useTranslation();
 
-=======
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../redux/userSlice";
-
-const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
-
-  const t = useTranslation();
-  const dispatch = useDispatch();
-  
->>>>>>> 5b95ddb60179bfdd8d2a3550404b533fddfa2eb0
 
   const handleOnClick = async (provider) => {
     await socialMediaAuth(provider)
   }
 
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 5b95ddb60179bfdd8d2a3550404b533fddfa2eb0
   // inputs
   const [username, setUsername] = useState("");
   const [userSurname, setUserSurname] = useState("");
@@ -69,11 +46,10 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
 
 
   // states
-<<<<<<< HEAD
-=======
+
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   console.log(isAuthenticated);
->>>>>>> 5b95ddb60179bfdd8d2a3550404b533fddfa2eb0
+
 
   // password visible
   const [isPasswordVisible, setPasswordVisible] = useState(false);

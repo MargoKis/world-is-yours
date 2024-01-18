@@ -11,7 +11,6 @@ const PayInfo = ({ handleDeliveryClick, handleContactInfoClick, handlePayClick }
     return (
     <>
     <div className="flex flex-col">
-<<<<<<< HEAD
     <h1 className="text-grayDark font-raleway font-semibold text-35px mb-4">
       Оформлення замовлення
     </h1>
@@ -19,11 +18,6 @@ const PayInfo = ({ handleDeliveryClick, handleContactInfoClick, handlePayClick }
         <p className="text-decoration-line: underline cursor-pointer">Новий покупець </p>
         <p className="text-decoration-line: underline cursor-pointer"> Я постійний клієнт</p>
     </div>
-=======
-    <h1 className="text-grayDark font-raleway font-semibold text-35px mb-10">
-      Оформлення замовлення
-    </h1>
->>>>>>> 5b95ddb60179bfdd8d2a3550404b533fddfa2eb0
     <div className="flex flex-row justify-between mb-10">
       <p
         className="text-gray font-raleway font-semibold text-20px cursor-pointer"
@@ -32,11 +26,7 @@ const PayInfo = ({ handleDeliveryClick, handleContactInfoClick, handlePayClick }
         Контактна інформація
       </p>
       <p
-<<<<<<< HEAD
         className="font-raleway font-semibold text-20px text-gray cursor-pointer"
-=======
-        className="font-raleway font-semibold text-20px text-gray"
->>>>>>> 5b95ddb60179bfdd8d2a3550404b533fddfa2eb0
         onClick={handleDeliveryClick}
       >
         Доставка

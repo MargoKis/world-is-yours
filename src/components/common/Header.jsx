@@ -22,10 +22,8 @@ function Header() {
   const t = useTranslation();
   const locale = useSelector((state) => state.locale.locale);
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 5b95ddb60179bfdd8d2a3550404b533fddfa2eb0
+
   // const isCategoriesOpen = useSelector((state) => state.header.isCategoriesOpen);
   const [isCategoriesOpen, setCategoriesOpen] = useState(false);
 
