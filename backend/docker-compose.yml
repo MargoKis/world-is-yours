@@ -35,9 +35,12 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    networks:
+      - default
+
 
   redis_server:
-    image: "redis:latest"
+    image: redis:latest
     container_name: redis_server
     ports:
       - "6379:6379"
@@ -60,9 +63,22 @@ services:
     depends_on:
       - redis_server
 
+  stripe-cli:
+    image: stripe/stripe-cli:v1.19.1
+    environment:
+      STRIPE_API_KEY: sk_test_51MEFcVLuDZka6EPF6oucetUqAPDxoNRyI7zHQ4nyGVVbdScCV9xCwiRNyjcBFvL1YlI0FsGLfhs20vxhghqAus2o00yQysgABt
+      STRIPE_DEVICE_NAME: stripe-cli
+    command:
+      listen --forward-to django-backend:8000/api/webhook/stripe/
+    networks:
+      - default
+
+
 networks:
   default:
     driver: bridge
+  inbound:
+    external: true
 
 volumes:
   postgres_data:

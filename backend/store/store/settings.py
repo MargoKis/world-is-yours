@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-%(4hy+$hd+4grgc2k45tp@04x9kj$40i(9j=(r&0=a0+rh21gz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'django-backend']
 
 DOMAIN_NAME = 'http://localhost:8000'
 
@@ -174,6 +174,13 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'email.for.parsers.pages@gmail.com'
 EMAIL_HOST_PASSWORD = 'wiip xfel sxbk cngw'
+
+# Stripe
+
+STRIPE_PUBLIC_KEY = 'pk_test_51MEFcVLuDZka6EPFrMETXuN01j5Ekq85JY861bmdRqSQSavUctiN7Xp3RiWdDPdgwN4m34NYjfWGRxrEv2SaUA2s00tXKxwmG3'
+STRIPE_SECRET_KEY = 'sk_test_51MEFcVLuDZka6EPF6oucetUqAPDxoNRyI7zHQ4nyGVVbdScCV9xCwiRNyjcBFvL1YlI0FsGLfhs20vxhghqAus2o00yQysgABt'
+STRIPE_WEBHOOK_SECRET = 'whsec_bdd0fa414a62c679b64957f61b6603d061a67f7886165fc475144f517ad70eec'
+
 
 if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
