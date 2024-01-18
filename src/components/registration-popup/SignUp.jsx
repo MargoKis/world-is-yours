@@ -17,15 +17,21 @@ import closeEye from '../../assets/icons/icon-Eye-off.svg';
 // import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import useTranslation from "../../locale/locales";
 import api from "../../api/api";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../redux/userSlice";
 
 const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
 
   const t = useTranslation();
-
+  const dispatch = useDispatch();
+  
 
   const handleOnClick = async (provider) => {
     await socialMediaAuth(provider)
   }
+
+
+
 
 
   // inputs
@@ -42,6 +48,8 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
 
 
   // states
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  console.log(isAuthenticated);
 
   // password visible
   const [isPasswordVisible, setPasswordVisible] = useState(false);
@@ -181,6 +189,7 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
       switch (status) {
         case 201:
           openSuccess();
+          dispatch(login());
 
           break;
         case 400:

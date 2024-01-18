@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Button from '../components/common/Button';
 import { useLocation } from 'react-router-dom';
+import Personal from '../components/profile/personal';
 
 const Profile = () => {
     const location = useLocation();
@@ -29,9 +30,9 @@ const Profile = () => {
         <>
             <div className='w-screen pt-20 px-170 pb-150'>
                 <h1 className='text-40px flex font-raleway text-2xl font-semibold'>Профіль</h1>
-                <div className="flex flex-row mt-50 ">
+                <div className="flex  mt-50  flex-col xl:flex-row">
                     {/* left side */}
-                    <div className="basis-2/7 border-r border-solid border-gray-500 h-80 flex flex-col items-start gap-2">
+                    <div className="min-w-235  h-80 flex flex-col items-start gap-2">
                         <Button
                             classNameBtn={`font-raleway text-base font-medium ${selectedComponent === 'personal'
                                 ? 'underline text-black'
@@ -81,8 +82,8 @@ const Profile = () => {
                     </div>
 
                     {/* right side */}
-                    <div className="basis-5/7 pl-70">
-                        {selectedComponent === 'personal' && <div>personal</div>}
+                    <div className="basis-5/5 pl-70 border-l border-solid border-gray-500">
+                        {selectedComponent === 'personal' && <Personal />}
                         {selectedComponent === 'addresses' && <div>addresses</div>}
                         {selectedComponent === 'history' && <div>history</div>}
                         {selectedComponent === 'payment' && <div>payment</div>}

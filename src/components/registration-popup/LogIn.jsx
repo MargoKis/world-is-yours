@@ -18,6 +18,7 @@ import closeEye from '../../assets/icons/icon-Eye-off.svg';
 
 
 import api from "../../api/api";
+import { useDispatch } from "react-redux";
 // import {auth, facebookProvider, googleProvider} from './config'
 // import { signInWithPopup } from "firebase/auth";
 
@@ -27,7 +28,7 @@ const LogIn = ({ onClose, openSignUp, openRemindPass,openSuccess}) => {
   }
 
 
-
+  const dispatch = useDispatch();
   const t = useTranslation();
   // inputs
   const [userEmail, setUserEmail] = useState("");
@@ -130,8 +131,10 @@ const LogIn = ({ onClose, openSignUp, openRemindPass,openSuccess}) => {
 
       // status
       switch (status) {
-        case 201:
+        case 200:
           openSuccess();
+          dispatch(login());
+
 
           break;
         case 400:
