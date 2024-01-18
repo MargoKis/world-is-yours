@@ -19,9 +19,10 @@ const api = {
   signUp: async (userData) => {
     try {
       const response = await axios.post(`${BASE_URL}/users/`, userData);
+      // console.log('signUp success.  status:', response.status);
       return response;
     } catch (error) {
-      // console.error('Error registering user in api:', error);
+      console.log('Error registering user in api:', error);
       throw error;
     }
   },
@@ -30,7 +31,7 @@ const api = {
   signIn: async (userData) => {
     try {
       const response = await axios.post(`${BASE_URL}/auth/`, { username: userData.email, password: userData.password });
-      console.log('Error login user in api:', response);
+      // console.log('signIn success  status:', response.status);
       return response;
 
     } catch (error) {
