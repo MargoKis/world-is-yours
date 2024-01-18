@@ -1,50 +1,135 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./signup.module.css";
 import Input from "../common/Input";
 import Button from "../common/Button";
 import closeIcon from "../../assets/icons/icon-close.svg";
+import useTranslation from "../../locale/locales";
+
+
+import attantionIcon from '../../assets/icons/icon-attantion.svg';
+
+import api from "../../api/api";
 
 
 const RemindPas = ({ onClose, openLogin, openSuccess }) => {
-  const [email, setEmail] = useState("");
+
+  const t = useTranslation();
+  // inputs
+  const [userEmail, setUserEmail] = useState("");
+
+
+  // errors 
   const [emailError, setEmailError] = useState("");
 
-  const resetErrors = () => {
-    setEmailError("");
-  };
 
-  const validateSignUpForm = () => {
-    resetErrors();
 
-    if (!validateEmail(email)) {
-      setEmailError("Invalid email address");
-      return false;
+  // states
+
+
+  // is validation on
+  const isValidationOnRef = useRef(false);
+
+
+
+  // Email validation
+  const emailValidation = (email) => {
+    if (isValidationOnRef.current) {
+      if (!email.trim()) {
+        setEmailError('Емейл обов\'язковий');
+        // empty
+      } else if (/^\s/.test(email)) {
+        setEmailError('Пароль не може починатися з пробілу');
+      } else if (email.length < 5 || email.length > 32) {
+        setEmailError('Не вірно введений емейл');
+        // leght
+      } else if (!/@/.test(email) || !/\./.test(email)) {
+        setEmailError('Не вірно введений емейл');
+        // have @ and .
+      } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+$/.test(email)) {
+        setEmailError('Не вірно введений емейл');
+        // incorrect characters
+      } else if (!/[a-zA-Z]{2,}$/.test(email.split('@')[1])) {
+        setEmailError('Мінімум дві літери після крапки');
+        // At least two letters after the period
+      } else if (/@\./.test(email)) {
+        setEmailError('Символ "." не може йти одразу після символу "@"');
+        // The "." character cannot follow the "@" character.
+
+      } else {
+        setEmailError(null);
+        return true;
+      }
     }
-
-    return true;
   };
 
-  const validateEmail = (email) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
+
+
+
+  // valid all
+  const validateResetPasswordForm = () => {
+    return (
+      emailValidation(userEmail)
+    );
   };
 
-  // useEffect(() => {
-  //   if (isOpen) {
-  //     document.body.style.overflow = "hidden";
-  //   } else {
-  //     document.body.style.overflow = "auto";
-  //   }
-  //   resetErrors();
-  // }, [isOpen]);
-
-  const handleSubmit = (e) => {
+  // submit
+  const submit = (e) => {
     e.preventDefault();
-    if (validateSignUpForm()) {
-      onClose();
-      openSuccess();
+    isValidationOnRef.current = true;
+    if (validateResetPasswordForm()) {
+      handleResetPassword();
+    }
+  }
+
+
+  // SIgnIn status answear
+  const handleResetPasswordStatus = (status) => {
+    // status message
+    const statusMessages = {
+      200: 'ResetPassword successful',
+      400: 'User already exists',
+    };
+
+    if (statusMessages.hasOwnProperty(status)) {
+      // log status
+      console.log(statusMessages[status]);
+
+      // status
+      switch (status) {
+        case 201:
+          openSuccess();
+
+          break;
+        case 400:
+          // console.log("already exist");
+          break;
+
+        default:
+          break;
+      }
+    } else {
+      // undefinded status error
+      console.log(`Unexpected response status: ${status}`);
     }
   };
+
+
+
+  const handleResetPassword = async () => {
+    try {
+      const userData = {
+        email: userEmail,
+      };
+
+      const resetPasswordResult = await api.resetPassword(userData);
+      handleResetPasswordStatus(resetPasswordResult.status);
+      // console.log('signIn successful:', signInResult);
+    } catch (error) {
+      handleResetPasswordStatus(error.response.status);
+      // console.error('Error during signIn in signIn:', error);
+    }
+  };
+
 
   return (
     <>
@@ -59,31 +144,42 @@ const RemindPas = ({ onClose, openLogin, openSuccess }) => {
             <h2 className={styles.title}>Відновлення паролю</h2>
             <img className={styles.closeIcon} src={closeIcon} alt="close icon" onClick={onClose} />
           </div>
-          <form className={styles.form} onSubmit={handleSubmit}>
-            <label htmlFor="email"></label>
-            <Input
-              classNameInput={styles.input}
-              typeInput="email"
-              id="email"
-              nameInput="email"
-              value={email}
-              placeholderInput="Ел.пошта"
-              onChangeInput={(e) => setEmail(e.target.value)}
-              required
-            />
-            <div className={styles.error}>{emailError}</div>
+          <form noValidate
+            className={styles.form}
+            onSubmit={(e) => submit(e)}
+          >
+
+            {/* email */}
+            <div className={styles.container}>
+              <label className={styles.label} htmlFor="email">{t("Email")}</label>
+              <div className={styles.inputContainer}>
+                <Input
+                  classNameInput={styles.input}
+                  typeInput="email"
+                  id="email"
+                  nameInput="email"
+                  value={userEmail}
+                  placeholderInput={t("Enter your email address")}
+                  onChangeInput={(e) => {
+                    setUserEmail(e.target.value);
+                    emailValidation(e.target.value);
+                  }}
+                  required
+                />
+                {emailError ? <div className={styles.error}>{emailError}</div> : null}
+                {emailError ? <img className={styles.attantion} src={attantionIcon} alt="attantion" /> : null}
+              </div>
+            </div>
+
             <Button classNameBtn={styles.remind} type="submit">
-              Надіслати лист
+              Відправити лист на пошту
             </Button>
-            <p style={{ color: "#202020" }}>
-              Згадали пароль?{" "}
               <span
                 style={{ textDecoration: "underline", color: "#888888", cursor: "pointer" }}
                 onClick={openLogin}
               >
                 Увійдіть
               </span>
-            </p>
           </form>
         </div>
       </div>

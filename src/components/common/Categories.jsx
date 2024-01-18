@@ -1,9 +1,16 @@
 import React from 'react';
 import globalStyle from './globalStyles.module.css';
 function Categories({onClose}) {
+    
+    const handleClickOverlay = (e) => {
+        if (!e.target.closest('.Catalog'))  {
+          onClose();
+        }
+      };
+
     return (
-        <div className={globalStyle.overlay} onClick={onClose}>
-        <div className=' absolute w-1/2 mx-auto bg-white pt-10 px-24 pb-24 text-xl text-custom-black font-semibold rounded-b-2xl'>
+        <div className={globalStyle.overlay} onClick={handleClickOverlay}>
+        <div className='Catalog absolute w-1/2 mx-auto bg-white pt-10 px-24 pb-24 text-xl text-custom-black font-semibold rounded-b-2xl'>
             <div className='mb-10'>
                 <p className='text-base font-light pb-2'>Для вас</p>
                 <ul className='flex'>

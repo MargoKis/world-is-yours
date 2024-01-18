@@ -5,7 +5,7 @@ import ChatIcon from "../assets/icons/button_chat.svg";
 
 // components
 import WhyUs from "../components/main-page/WhyUs";
-import SeasonSelect from "../components/main-page/SeasonSelect";
+// import SeasonSelect from "../components/main-page/SeasonSelect";
 import FavouritesCardList from "../components/main-page/FavouritesCardList";
 import NewArrivalsCardList from "../components/main-page/NewArrivalsCardList";
 import ScrollingText from "../components/scrolling-effect/ScrollingText";
@@ -31,7 +31,11 @@ const MainPage = () => {
 
         {/* main page nav text */}
         <div
+<<<<<<< HEAD
           className={`flex flex-col h-4/5 justify-center items-center px-10 flex`}
+=======
+          className={`flex flex-col h-4/5 justify-center items-center px-10 `}
+>>>>>>> 5b95ddb60179bfdd8d2a3550404b533fddfa2eb0
         >
           <p className="text-center text-4xl mb-10">
             {t("Your adventure starts here")}
@@ -42,7 +46,11 @@ const MainPage = () => {
         </div>
 
         {/* chat icon */}
+<<<<<<< HEAD
         <div className={`flex flex-row-reverse h-1/5 items-center px-10 flex`}>
+=======
+        <div className={`flex flex-row-reverse h-1/5 items-center px-10 `}>
+>>>>>>> 5b95ddb60179bfdd8d2a3550404b533fddfa2eb0
         <img
             className="scale-75 cursor-pointer"
             src={ChatIcon}

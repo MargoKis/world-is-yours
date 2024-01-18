@@ -13,10 +13,17 @@ const api = {
       throw error;
     }
   },
+<<<<<<< HEAD
   
 
 
   signUp: async (userData) => {  
+=======
+
+
+
+  signUp: async (userData) => {
+>>>>>>> 5b95ddb60179bfdd8d2a3550404b533fddfa2eb0
     try {
       const response = await axios.post(`${BASE_URL}/users/`, userData);
       return response;
@@ -27,18 +34,33 @@ const api = {
   },
 
 
+<<<<<<< HEAD
   signIn: async (userData) => {  
     try {
       const response = await axios.post(`${BASE_URL}/users/`, userData);
       return response;
     } catch (error) {
       // console.error('Error login user in api:', error);
+=======
+  signIn: async (userData) => {
+    try {
+      const response = await axios.post(`${BASE_URL}/auth/`, { username: userData.email, password: userData.password });
+      console.log('Error login user in api:', response);
+      return response;
+
+    } catch (error) {
+      console.error('Error login user in api:', error);
+>>>>>>> 5b95ddb60179bfdd8d2a3550404b533fddfa2eb0
       throw error;
     }
   },
 
 
+<<<<<<< HEAD
   resetPassword: async (userData) => {  
+=======
+  resetPassword: async (userData) => {
+>>>>>>> 5b95ddb60179bfdd8d2a3550404b533fddfa2eb0
     try {
       const response = await axios.post(`${BASE_URL}/password_reset/`, userData);
       return response;

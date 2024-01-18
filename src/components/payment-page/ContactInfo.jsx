@@ -13,6 +13,10 @@ const ContactInfo = ({
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
 
+<<<<<<< HEAD
+=======
+const ContactInfo = ({ handleDeliveryClick, handleContactInfoClick, handlePayClick}) => {
+>>>>>>> 5b95ddb60179bfdd8d2a3550404b533fddfa2eb0
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [phone, setPhone] = useState("");
@@ -138,6 +142,7 @@ const ContactInfo = ({
 
   return (
     <div className="flex flex-col">
+<<<<<<< HEAD
       {isLoggedIn ? (
         <p>I know you</p>
       ) : (
@@ -146,6 +151,132 @@ const ContactInfo = ({
           <Button onClick={handleLogin}>Login</Button>
         </>
       )}
+=======
+      <h1 className="font-raleway font-semibold text-35px mb-10">
+        Оформлення замовлення
+      </h1>
+      <div className="flex flex-row justify-between mb-10">
+        <p
+          className="font-raleway font-semibold text-20px text-blue"
+          onClick={handleContactInfoClick}
+        >
+          Контактна інформація
+        </p>
+        <p
+          className="text-gray font-raleway font-semibold text-20px cursor-pointer"
+          onClick={handleDeliveryClick}
+        >
+          Доставка
+        </p>
+        <p
+          className="text-gray font-raleway font-semibold text-20px cursor-pointer"
+          onClick={handlePayClick}
+        >
+          Оплата
+        </p>
+      </div>
+
+      <form onSubmit={handleSubmit}>
+        <div className="flex flex-row justify-between">
+          <div className="flex flex-col">
+            <label
+              for="name"
+              className="mb-1 ml-2 text-textLight font-medium font-raleway text-sm"
+            >
+              Ім’я
+            </label>
+            <Input
+              classNameInput="font-light text-base text-gray border rounded-xl p-3 w-52 border-black font-raleway" // font-raleway
+              typeInput="text"
+              placeholderInput="Ім’я"
+              value={name}
+              onChangeInput={(e) => setName(e.target.value)}
+              className="font-light"
+            />
+            {nameError && (
+              <p className="text-red-400 text-xs w-1/2 ml-2">{nameError}</p>
+            )}
+          </div>
+          <div className="flex flex-col">
+            <label
+              for="name"
+              className="mb-1 ml-2 text-textLight font-medium font-raleway text-sm"
+            >
+              Прізвище
+            </label>
+            <Input
+              classNameInput="text-textLight border rounded-xl p-3 font-light w-52 border-black font-raleway text-base"
+              typeInput="text"
+              placeholderInput="Прізвище"
+              value={surname}
+              onChangeInput={(e) => setSurname(e.target.value)}
+            />
+            {surnameError && (
+              <p className="text-red-400 text-xs w-1/2 ml-2">{surnameError}</p>
+            )}
+          </div>
+        </div>
+
+        <div className="flex flex-col mt-8">
+          <label
+            for="tel"
+            className="mb-1 ml-2 text-textLight font-medium font-raleway text-sm"
+          >
+            Номер телефону
+          </label>
+          <Input
+            classNameInput="text-textLight border rounded-xl p-3 mb-3 font-light w-3/4 border-black font-raleway text-base"
+            typeInput="tel"
+            placeholderInput="Номер телефону"
+            value={phone}
+            onChangeInput={(e) => setPhone(e.target.value)}
+          />
+          {phoneError && <p className="text-red-500 text-xs">{phoneError}</p>}
+          <label
+            for="name"
+            className="mb-1 ml-2 text-textLight font-medium font-raleway text-sm"
+          >
+            Електронна пошта
+          </label>
+          <Input
+            classNameInput="text-textLight border rounded-xl w-3/4 p-3 font-light text-base font-raleway"
+            typeInput="email"
+            placeholderInput="Електронна пошта"
+            value={email}
+            onChangeInput={(e) => setEmail(e.target.value)}
+          />
+          {emailError && (
+            <p className="text-red-500 text-xs ml-2">{emailError}</p>
+          )}
+        </div>
+
+        <div className="flex flex-row mt-8 justify-between">
+          <div className="flex flex-col gap-1">
+            <label
+              for="name"
+              className="ml-2 text-textLight font-medium font-raleway text-sm"
+            >
+              День народження
+            </label>
+            <Input
+              classNameInput="text-textLight border rounded-xl w-3/5 p-3 pl-6 font-light border-black font-raleway text-base"
+              typeInput="text"
+              placeholderInput="00.00.0000"
+            />
+          </div>
+        </div>
+
+        <Button
+          classNameBtn="w-full bg-gray-dark mt-10 p-4 border rounded-xl font-bold text-18px text-white"
+          nameBtn="submitForm"
+          valueBtn="submit"
+          type="submit"
+        >
+          Обрати спосіб доставки
+        </Button>
+        {formError && <p className="text-red-500 ml-2">{formError}</p>}
+      </form>
+>>>>>>> 5b95ddb60179bfdd8d2a3550404b533fddfa2eb0
     </div>
 
     // <div className="flex flex-col">
