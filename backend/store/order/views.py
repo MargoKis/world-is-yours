@@ -56,28 +56,52 @@ class OrderCreateView(CreateAPIView):
     serializer_class = OrderSerializer
 
     def post(self, request, *args, **kwargs):
-        super().post(request, *args, **kwargs)
-        checkout_session = stripe.checkout.Session.create(
-            line_items=[
-                {
-                    # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                    'price': 'price_1MEJgOLuDZka6EPFcVeeksQN',
-                    'quantity': 1,
-                },
-            ],
-            mode='payment',
-            success_url='{}{}'.format(settings.DOMAIN_NAME, reverse('order:payment-success')),
-            cancel_url='{}{}'.format(settings.DOMAIN_NAME, reverse('order:payment-canceled')),
-        )
-        return HttpResponseRedirect(checkout_session.url, status=HTTPStatus.SEE_OTHER)
+        response = super().post(request, *args, **kwargs)
+        baskets = Basket.objects.filter(user=self.request.user)
+
+        if response.status_code == status.HTTP_201_CREATED:
+            order_id = response.data.get('id')
+            if order_id:
+                checkout_session = stripe.checkout.Session.create(
+                    line_items=baskets.stripe_products(),
+                    metadata={'order_id': str(order_id)},
+                    mode='payment',
+                    success_url='{}{}'.format(settings.DOMAIN_NAME, reverse('order:payment-success')),
+                    cancel_url='{}{}'.format(settings.DOMAIN_NAME, reverse('order:payment-canceled')),
+                )
+                return HttpResponseRedirect(checkout_session.url, status=HTTPStatus.SEE_OTHER)
+        return response
 
 
 @csrf_exempt
 def stripe_webhook_view(request):
     payload = request.body
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    event = None
 
-    # For now, you only need to print out the webhook payload so you can see
-    # the structure.
-    print(payload)
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
+        )
+    except ValueError as e:
+        # Invalid payload
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError as e:
+        # Invalid signature
+        return HttpResponse(status=400)
 
+    # Handle the checkout.session.completed event
+    if event['type'] == 'checkout.session.completed':
+        # Retrieve the session. If you require line items in the response, you may include them by expanding line_items.
+        session = event['data']['object']
+        # Fulfill the purchase...
+        fulfill_order(session)
+
+    # Passed signature verification
     return HttpResponse(status=200)
+
+
+def fulfill_order(session):
+    order_id = int(session.metadata.order_id)
+    order = Order.objects.get(id=order_id)
+    order.update_after_payment()

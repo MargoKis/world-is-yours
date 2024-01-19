@@ -1,6 +1,10 @@
+import stripe
 from django.core.validators import MaxValueValidator
+from django.conf import settings
 from django.db import models
 from user.models import User
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 class ProductCategory(models.Model):
@@ -36,6 +40,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products_images',
                               default="products_images/default_image.jpg")
     category = models.ForeignKey(to=ProductSubCategory, on_delete=models.PROTECT)
+    stripe_price_id = models.CharField(max_length=128, null=True, blank=True)
     description = models.TextField()
 
     class Meta:
@@ -44,6 +49,21 @@ class Product(models.Model):
 
     def __str__(self):
         return f'{self.name}|{self.category.name}'
+
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        if not self.stripe_price_id:
+            stripe_product_price = self.create_stripe_product_price()
+            self.stripe_price_id = stripe_product_price['id']
+        super(Product, self).save(force_insert=False, force_update=False, using=None, update_fields=None)
+
+    def create_stripe_product_price(self):
+        stripe_product = stripe.Product.create(name=self.name)
+        stripe_product_price = stripe.Price.create(
+            product=stripe_product['id'],
+            unit_amount=round(self.price * 100),
+            currency="uah",
+        )
+        return stripe_product_price
 
 
 class ProductSpecs(models.Model):

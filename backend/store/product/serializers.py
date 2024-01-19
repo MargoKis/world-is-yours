@@ -6,19 +6,19 @@ from product.models import Product, ProductCategory, ProductSubCategory, Product
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = "__all__"
+        exclude = "description_uk", "description_en", "name_uk", "name_en"
 
 
 class ProductCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductCategory
-        fields = "__all__"
+        exclude = "description_uk", "description_en", "name_uk", "name_en"
 
 
 class ProductSubCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductSubCategory
-        fields = "__all__"
+        exclude = "description_uk", "description_en", "name_uk", "name_en"
 
 
 class ProductReviewSerializer(serializers.ModelSerializer):
