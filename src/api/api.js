@@ -14,8 +14,6 @@ const api = {
     }
   },
 
-
-
   signUp: async (userData) => {
     try {
       const response = await axios.post(`${BASE_URL}/users/`, userData);
@@ -39,7 +37,6 @@ const api = {
       throw error;
     }
   },
-
 
   resetPassword: async (userData) => {
     try {

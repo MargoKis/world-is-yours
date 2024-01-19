@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import ArrowDown from "../../assets/icons/arrow-up.svg";
 
-const DropDownList = ({ options, label }) => {
+const DropDownList = ({ options, label}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const dropdownRef = useRef(null);
@@ -35,12 +35,12 @@ const DropDownList = ({ options, label }) => {
   return (
     <div
       ref={dropdownRef}
-      className={`select ${
-        isOpen ? "active" : ""
+      className={`select  ${
+        isOpen ? "active " : ""
       } font-light border rounded-xl max-w-md p-3 border-black mb-4`}
     >
       <div
-        className="select-styled font-light flex flex-row justify-between max-w-md "
+        className="select-styled font-light flex flex-row justify-between max-w-md gap-4"
         onClick={toggleSelect}
       >
         {selectedOption ? selectedOption.label : label}
@@ -54,7 +54,7 @@ const DropDownList = ({ options, label }) => {
         />
       </div>
       <ul
-        className="select-options font-light z-50 mt-4 bg-white" //absolute
+        className="select-options font-light z-50 mt-4 bg-white " //absolute
         style={{ display: isOpen ? "block" : "none" }}
       >
         {options.map((option) => (
