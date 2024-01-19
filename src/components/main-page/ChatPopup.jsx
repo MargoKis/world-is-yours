@@ -11,11 +11,14 @@ const ChatPopup = ({ onClose, isOpen }) => {
   const [emailError, setEmailError] = useState("");
   const [theme, setTheme] = useState("");
   const [themeError, setThemeError] = useState("");
+  const [textArea, setTextArea] = useState("");
+  const [textAreaError, setTextAreaError] = useState("");
 
   const resetErrors = () => {
     setNameError("");
     setEmailError("");
     setThemeError("");
+    setTextAreaError("");
   };
 
   const validateEmail = (email) => {
@@ -24,15 +27,58 @@ const ChatPopup = ({ onClose, isOpen }) => {
   };
 
   const nameSurnameRegex = /^[^\d\s]{3,16}$/;
-
   const themeRegex = /^[^\d\s]{5,20}$/;
+
+  const validateName = (value) => {
+    if (!value.trim()) {
+      setNameError("Name and surname cannot be empty");
+    } else if (!nameSurnameRegex.test(value)) {
+      setNameError(
+        "Name and surname should be 3-16 characters long and should not contain numbers"
+      );
+    } else {
+      setNameError("");
+    }
+  };
+  
+  const validateTheme = (value) => {
+    if (!value.trim()) {
+      setThemeError("Theme cannot be empty");
+    } else if (!themeRegex.test(value)) {
+      setThemeError(
+        "Theme should be 6-20 characters long and should not contain numbers"
+      );
+    } else {
+      setThemeError("");
+    }
+  };
+  
+  const validateEmailOnChange = (value) => {
+    if (!value.trim()) {
+      setEmailError("Email cannot be empty");
+    } else if (!validateEmail(value)) {
+      setEmailError("Invalid email address");
+    } else {
+      setEmailError("");
+    }
+  };
+  
+  const validateTextArea = (value) => {
+    if (!value.trim()) {
+      setTextAreaError("Text cannot be empty");
+    } else if (value.length < 10) {
+      setTextAreaError("Text should be at least 10 characters long");
+    } else {
+      setTextAreaError("");
+    }
+  };
 
   const validateSignUpForm = () => {
     resetErrors();
 
     if (!nameSurnameRegex.test(name)) {
       setNameError(
-        "Full name should be 3-16 characters long and should not contain numbers"
+        "Name and surname should be 3-16 characters long and should not contain numbers"
       );
       return false;
     }
@@ -49,7 +95,12 @@ const ChatPopup = ({ onClose, isOpen }) => {
       return false;
     }
 
-    return true;
+    if (textArea.length < 10) {
+      setTextAreaError("Text should be at least 10 characters long");
+      return false;
+    }
+
+    onClose();
   };
 
   return (
@@ -58,7 +109,7 @@ const ChatPopup = ({ onClose, isOpen }) => {
         <div
           className={`${styles.popup} ${isOpen ? styles.open : ""}`}
           onClick={(e) => e.stopPropagation()}
-          style={{ top: '8%', left: 520 }}
+          style={{ top: "8%", left: 520 }}
         >
           <div className={styles.titleWrap}>
             <h2 className={styles.title}>Зв’яжіться з нами!</h2>
@@ -69,64 +120,94 @@ const ChatPopup = ({ onClose, isOpen }) => {
               onClick={onClose}
             />
           </div>
-          <form
-            className={styles.form}
-            onSubmit={(e) => e.preventDefault() || validateSignUpForm()}
-          >
-            <label htmlFor="name"></label>
+          <form className={styles.form} onSubmit={(e) => { e.preventDefault(); validateSignUpForm(); }}>
+            <label
+              htmlFor="name"
+              className="mb-1 ml-1 text-textLight font-medium font-raleway text-sm"
+            >
+              Ім'я та прізвище
+            </label>
             <Input
               classNameInput={styles.input}
               typeInput="text"
               id="name"
               nameInput="name"
               valueInput={name}
-              placeholderInput="Ім'я Прізвище"
+              placeholderInput="Введіть свої ім'я та прізвище"
               onChangeInput={(e) => {
                 setName(e.target.value);
-                validateSignUpForm();
+                validateName(e.target.value);
               }}
               required
             />
             <div className={styles.error}>{nameError}</div>
 
-            <label htmlFor="theme"></label>
-            <Input
-              classNameInput={styles.input}
-              typeInput="text"
-              id="theme"
-              nameInput="theme"
-              valueInput={theme}
-              placeholderInput="Тема повідомлення"
-              onChangeInput={(e) => {
-                setTheme(e.target.value);
-                validateSignUpForm();
-              }}
-              required
-            />
-            <div className={styles.error}>{themeError}</div>
-
-            <label htmlFor="email"></label>
+            <label
+              htmlFor="email"
+              className="mb-1 ml-1 text-textLight font-medium font-raleway text-sm"
+            >
+              Електронна пошта
+            </label>
             <Input
               classNameInput={styles.input}
               typeInput="email"
               id="email"
               nameInput="email"
               value={email}
-              placeholderInput="Ел.пошта"
+              placeholderInput="Введіть свою електронну пошту"
               onChangeInput={(e) => {
                 setEmail(e.target.value);
-                validateSignUpForm();
+                validateEmailOnChange(e.target.value);
               }}
               required
             />
             <div className={styles.error}>{emailError}</div>
 
-            <textarea className={styles.textarea}
-              maxLength={100} 
-              placeholder="Текст повідомлення"
-            ></textarea>
+            <label
+              htmlFor="theme"
+              className="mb-1 ml-1 text-textLight font-medium font-raleway text-sm"
+            >
+              Тема повідомлення
+            </label>
+            <Input
+              classNameInput={styles.input}
+              typeInput="text"
+              id="theme"
+              nameInput="theme"
+              valueInput={theme}
+              placeholderInput="Введіть тему повідомлення"
+              onChangeInput={(e) => {
+                setTheme(e.target.value);
+                validateTheme(e.target.value);
+              }}
+              required
+            />
+            <div className={styles.error}>{themeError}</div>
 
-            <Button classNameBtn={styles.btn} type="submit">
+            <label
+              htmlFor="textArea"
+              className="mb-1 ml-1 text-textLight font-medium font-raleway text-sm"
+            >
+              Текст повідомлення
+            </label>
+            <textarea
+              className={styles.textarea}
+              maxLength={100}
+              placeholder="Опишіть проблему, з якою звертаєтесь"
+              value={textArea}
+              onChange={(e) => {
+                setTextArea(e.target.value);
+                validateTextArea(e.target.value);
+              }}
+              required
+            ></textarea>
+            <div className={styles.error}>{textAreaError}</div>
+
+            <Button
+              classNameBtn={styles.btn}
+              type="button"
+              onClick={validateSignUpForm}
+            >
               Відправити
             </Button>
           </form>
