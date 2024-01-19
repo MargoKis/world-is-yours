@@ -23,7 +23,7 @@ import { login } from "../../redux/userSlice";
 // import {auth, facebookProvider, googleProvider} from './config'
 // import { signInWithPopup } from "firebase/auth";
 
-const LogIn = ({ onClose, openSignUp, openRemindPass,openSuccess}) => {
+const LogIn = ({ onClose, openSignUp, openRemindPass, openSuccess }) => {
   const handleOnClick = async (provider) => {
     await socialMediaAuth(provider)
   }
@@ -136,7 +136,7 @@ const LogIn = ({ onClose, openSignUp, openRemindPass,openSuccess}) => {
         case 200:
           openSuccess();
           dispatch(login());
-          
+
 
 
           break;
@@ -163,11 +163,19 @@ const LogIn = ({ onClose, openSignUp, openRemindPass,openSuccess}) => {
       };
 
       const signInResult = await api.signIn(userData);
+
       handleSignInStatus(signInResult.status);
       // console.log('signIn successful:', signInResult);
+
+
     } catch (error) {
-      handleSignInStatus(error.response.status);
-      // console.error('Error during signIn in signIn:', error);
+      // api signUp error
+      if (error.response && error.response.status) {
+        console.log(`Error during login in signIn. status: ${error.response.status}`);
+        handleSignInStatus(error.response.status);
+      } else {
+        console.error('No server response error in signIn', error);
+      }
     }
   };
 

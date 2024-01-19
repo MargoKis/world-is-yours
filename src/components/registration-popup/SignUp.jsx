@@ -24,7 +24,9 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
 
   const dispatch = useDispatch();
 
+
   const t = useTranslation();
+
 
 
   const handleOnClick = async (provider) => {
@@ -219,11 +221,22 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
       };
 
       const registrationResult = await api.signUp(userData);
+
       handleRegistrationStatus(registrationResult.status);
       // console.log('Registration successful:', registrationResult);
+
+
     } catch (error) {
-      handleRegistrationStatus(error.response.status);
-      // console.error('Error during registration in signUp:', error);
+      // api signUp error
+      if (error.response && error.response.status) {
+        console.log(`Error during registration in signUp. status: ${error.response.status}`);
+        handleRegistrationStatus(error.response.status);
+      } else {
+        console.error('No server response error in SignUp', error);
+      }
+
+
+
     }
   };
 
