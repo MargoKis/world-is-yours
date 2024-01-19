@@ -13,7 +13,7 @@ const FormSection = ({
     <div className="flex flex-col">
       <label
         htmlFor={label.toLowerCase()}
-        className="mb-1 ml-2 text-textLight font-medium font-raleway text-sm"
+        className="mb-1 ml-1 text-textLight font-medium font-raleway text-sm"
       >
         {label}
       </label>
@@ -25,7 +25,7 @@ const FormSection = ({
         onChangeInput={(e) => onChange(e.target.value)}
         className="font-light"
       />
-      {error && <p className="text-red-400 text-xs ml-2">{error}</p>}
+      {error && <p className="text-red-400 text-xs ml-1">{error}</p>}
     </div>
   );
 };

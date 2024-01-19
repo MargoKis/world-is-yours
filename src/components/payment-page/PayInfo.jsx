@@ -40,7 +40,7 @@ const PayInfo = ({ handleDeliveryClick, handleContactInfoClick, handlePayClick }
     </div>
     </div>
 
-       {/*  для нового покупця */}
+       {/* ДЛЯ НОВОГО ПОКУПЦЯ */}
 
       <div className="flex flex-col">
         <label className="text-textLight font-medium font-raleway text-sm mb-2">
@@ -100,6 +100,7 @@ const PayInfo = ({ handleDeliveryClick, handleContactInfoClick, handlePayClick }
       </div> 
 
      {/* ДЛЯ ПОСТІЙНОГО ПОКУПЦЯ */}
+     
     {/* <div className="flex flex-col">
         <label className="text-textLight font-medium font-raleway text-sm mb-2">
           Варіант оплати

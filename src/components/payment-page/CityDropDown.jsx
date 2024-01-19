@@ -12,7 +12,7 @@ const CityDropdown = ({ selectedCountry, onSelectCity }) => {
     const fetchCities = async () => {
       try {
         const response = await axios.get(`http://api.geonames.org/searchJSON?name_startsWith=${selectedCountry}&maxRows=10&username=demo`);
-        
+  
         if (response.data.geonames) {
           const citiesData = response.data.geonames.map((city) => city.name);
           setCities(citiesData);
@@ -57,7 +57,7 @@ const CityDropdown = ({ selectedCountry, onSelectCity }) => {
     <>
     <label
         htmlFor="text"
-        className="mb-1 ml-2 text-textLight font-medium font-raleway text-sm"
+        className="mb-1 ml-1 text-textLight font-medium font-raleway text-sm"
       >
         Місто
       </label>

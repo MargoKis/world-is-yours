@@ -4,6 +4,9 @@ import Input from "../common/Input";
 import FormSection from "./FormSection";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/userSlice";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import LogIn from "../registration-popup/LogIn";
 
 const ContactInfo = ({
   handleDeliveryClick,
@@ -25,6 +28,8 @@ const ContactInfo = ({
   const [formError, setFormError] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [birthdateError, setBirthdateError] = useState("");
+
+  const [isPopupOpen, setPopupOpen] = useState(false);
 
   const handleNameChange = (value) => {
     setName(value);
@@ -110,9 +115,11 @@ const ContactInfo = ({
     return true;
   };
 
-  const handleBirthdateChange = (value) => {
-    setBirthdate(value);
-    validateBirthdate(value);
+
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
   };
 
   const handleSubmit = (e) => {
@@ -138,16 +145,29 @@ const ContactInfo = ({
   };
 
   return (
-
-
     <div className="flex flex-col">
       <h1 className="font-raleway font-semibold text-35px mb-4">
         Оформлення замовлення
       </h1>
       <div className="flex flex-row mb-2 gap-6">
-        <p className="text-decoration-line: underline cursor-pointer">Новий покупець </p>
-        <p className="text-decoration-line: underline cursor-pointer" onClick={openPopup}> Я постійний клієнт</p>
+        <p className="text-decoration-line: underline cursor-pointer">
+          Новий покупець{" "}
+        </p>
+        <p
+          className="text-decoration-line: underline cursor-pointer"
+          onClick={() => setPopupOpen(true)}
+        >
+          {" "}
+          Я постійний клієнт
+        </p>
       </div>
+   
+       {isPopupOpen && (
+        <LogIn
+          onClose={() => setPopupOpen(false)}
+         
+        />
+      )}
       <div className="flex flex-row justify-between mb-10">
         <p
           className="font-raleway font-semibold text-20px text-blue"
@@ -171,7 +191,6 @@ const ContactInfo = ({
 
       <form onSubmit={handleSubmit}>
         <div className="flex flex-row justify-between">
-
           <FormSection
             label="Ім’я"
             value={name}
@@ -188,10 +207,10 @@ const ContactInfo = ({
           />
         </div>
 
-        <div className="flex flex-col mt-8">
+        <div className="flex flex-col mt-6">
           <label
             htmlFor="tel"
-            className="mb-1 ml-2 text-textLight font-medium font-raleway text-sm"
+            className="mb-1 ml-1 text-textLight font-medium font-raleway text-sm"
           >
             Номер телефону
           </label>
@@ -203,11 +222,11 @@ const ContactInfo = ({
             onChangeInput={(e) => handlePhoneChange(e.target.value)}
           />
           {phoneError && (
-            <p className="text-red-500 text-xs mb-3 ml-2">{phoneError}</p>
+            <p className="text-red-500 text-xs mb-3 ml-1">{phoneError}</p>
           )}
           <label
             htmlFor="email"
-            className="mb-1 ml-2 mt-4 text-textLight font-medium font-raleway text-sm"
+            className="mb-1 ml-1 mt-6 text-textLight font-medium font-raleway text-sm"
           >
             Електронна пошта
           </label>
@@ -219,29 +238,24 @@ const ContactInfo = ({
             onChangeInput={(e) => handleEmailChange(e.target.value)}
           />
           {emailError && (
-            <p className="text-red-500 text-xs ml-2">{emailError}</p>
+            <p className="text-red-500 text-xs ml-1">{emailError}</p>
           )}
         </div>
 
-        <div className="flex flex-row mt-8 justify-between">
-          <div className="flex flex-col gap-1">
-            <label
-              htmlFor="name"
-              className="ml-2 text-textLight font-medium font-raleway text-sm"
-            >
-              День народження
-            </label>
-            <Input
-              classNameInput="text-textLight border rounded-xl w-3/5 p-3 pl-5 font-light border-black font-raleway text-base"
-              typeInput="text"
-              placeholderInput="00.00.0000"
-              value={birthdate}
-              onChangeInput={(e) => handleBirthdateChange(e.target.value)}
-            />
-            {birthdateError && (
-              <p className="text-red-500 text-xs mb-3 ml-2">{birthdateError}</p>
-            )}
-          </div>
+        <div className="flex flex-col gap-1 mt-6">
+          <label
+            htmlFor="name"
+            className="ml-1 text-textLight font-medium font-raleway text-sm"
+          >
+            День народження
+          </label>
+          <DatePicker
+            className="text-textLight border rounded-xl w-32 p-3 pl-5 font-light border-black font-raleway text-base"
+            selected={selectedDate}
+            onChange={handleDateChange}
+            dateFormat="dd.MM.yyyy"
+            placeholderText="dd.mm.yyyy"
+          />
         </div>
 
         <Button
@@ -252,7 +266,7 @@ const ContactInfo = ({
         >
           Обрати спосіб доставки
         </Button>
-        {formError && <p className="text-red-500 ml-2">{formError}</p>}
+        {formError && <p className="text-red-500 ml-1">{formError}</p>}
       </form>
     </div>
   );

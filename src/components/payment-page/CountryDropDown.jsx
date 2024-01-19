@@ -1,43 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-
-// const CountryDropdown = ({ onSelectCountry }) => {
-//   const [countries, setCountries] = useState([]);
-//   const [selectedCountry, setSelectedCountry] = useState('');
-
-//   useEffect(() => {
-//     const fetchCountries = async () => {
-//       try {
-//         const response = await axios.get('https://restcountries.com/v3.1/all');
-//         const countriesData = response.data.map((country) => country.name.common);
-//         setCountries(countriesData);
-//       } catch (error) {
-//         console.error('Error fetching countries:', error);
-//       }
-//     };
-
-//     fetchCountries();
-//   }, []);
-
-//   const handleCountryChange = (event) => {
-//     const country = event.target.value;
-//     setSelectedCountry(country);
-//     onSelectCountry(country);
-//   };
-
-//   return (
-//     <select value={selectedCountry} onChange={handleCountryChange}>
-//       {countries.map((country) => (
-//         <option key={country} value={country}>
-//           {country}
-//         </option>
-//       ))}
-//     </select>
-//   );
-// };
-
-// export default CountryDropdown;
-
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import ArrowDown from "../../assets/icons/arrow-up.svg";
@@ -91,7 +51,7 @@ const CountryDropdown = ({ onSelectCountry }) => {
     <>
       <label
         htmlFor="text"
-        className="mb-1 ml-2 text-textLight font-medium font-raleway text-sm"
+        className="mb-1 ml-1 text-textLight font-medium font-raleway text-sm"
       >
         Країна
       </label>
