@@ -10,36 +10,44 @@ const DeliveryInfo = ({
   handleContactInfoClick,
   handlePayClick,
 }) => {
-
   const [address, setAddress] = useState("");
   const [apartment, setApartment] = useState("");
   const [addressError, setAddressError] = useState("");
   const [apartmentError, setApartmentError] = useState("");
+  const [deliveryOptionError, setDeliveryOptionError] = useState("");
+  const [selectedCountryError, setSelectedCountryError] = useState("");
 
   const handleAddressChange = (event) => {
     const inputValue = event.target.value;
-    if (/^[a-zA-Zа-яА-Я0-9\s]*$/.test(inputValue) && inputValue.length <= 60) {
+    if (/^[a-zA-Zа-яА-Я0-9\s.,]*$/.test(inputValue) && inputValue.length <= 60) {
       setAddress(inputValue);
       setAddressError("");
     } else {
-      setAddressError("До 60 символів");
+      setAddressError("Up to 60 characters");
     }
   };
+  
 
   const handleApartmentChange = (event) => {
     const inputValue = event.target.value;
-    if (/^\d*$/.test(inputValue) && inputValue.length <= 3) {
-      setApartment(inputValue);
+    setApartment(inputValue); 
+  
+    if (inputValue.trim() === "") {
+      setApartmentError("Required");
+    } else if (/^\d*$/.test(inputValue) && inputValue.length <= 3) {
       setApartmentError("");
     } else {
-      setApartmentError("Only numbers");
+      setApartmentError("Invalid");
     }
   };
+  
 
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleOptionChange = (value) => {
     setSelectedOption(value);
+
+    setDeliveryOptionError("");
   };
 
   const postOffices = [
@@ -50,12 +58,19 @@ const DeliveryInfo = ({
   const [selectedCountry, setSelectedCountry] = useState("");
 
   const handleCountrySelect = (selectedCountry) => {
-    console.log("Selected Country:", selectedCountry);
+    if (selectedCountry) {
+      setSelectedCountry(selectedCountry);
+      setSelectedCountryError("");
+    } else {
+      setSelectedCountryError("Select country");
+    }
   };
 
   const handleCitySelect = (selectedCity) => {
-    console.log("Selected Cityy:", selectedCity);
+    console.log("Selected City:", selectedCity);
   };
+
+  
 
   return (
     <>
@@ -92,8 +107,13 @@ const DeliveryInfo = ({
             Оплата
           </p>
         </div>
-        
+
         <CountryDropdown onSelectCountry={handleCountrySelect} />
+        {selectedCountryError && (
+          <p className="text-red-500 text-xs mb-3 ml-2">
+            {selectedCountryError}
+          </p>
+        )}
         <CityDropdown
           onSelectCity={handleCitySelect}
           selectedCountry={selectedCountry}
@@ -140,73 +160,78 @@ const DeliveryInfo = ({
 
         <div className="flex flex-row mb-6 justify-between mt-6 ">
           <div className="flex flex-col">
-          <label className="text-textLight font-medium font-raleway text-sm mb-2 ">
-            Тип доставки
-          </label>
-          <form className="flex flex-col gap-2">
-            <div className="flex items-center gap-2">
-              <input
-                type="radio"
-                id="opt1"
-                name="opt1"
-                value="opt1"
-                className="h-4 w-4"
-                onChange={() => handleOptionChange("opt1")}
-              />
-              <label for="opt1" className="text-base">
-                {" "}
-                Самовивіз з магазину
-              </label>
-            </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="radio"
-                id="opt2"
-                name="opt1"
-                value="opt2"
-                className="h-4 w-4"
-                onChange={() => handleOptionChange("opt1")}
-              />
-              <label for="opt2" className="text-base">
-                {" "}
-                Кур’єром (адресна)
-              </label>
-            </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="radio"
-                id="opt3"
-                name="opt1"
-                value="opt3"
-                className="h-4 w-4"
-                onChange={() => handleOptionChange("opt1")}
-              />
-              <label for="opt3" className="text-base">
-                {" "}
-                У відділення Нової Пошти
-              </label>
-            </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="radio"
-                id="opt4"
-                name="opt1"
-                value="opt4"
-                className="h-4 w-4"
-                onChange={() => handleOptionChange("opt1")}
-              />
-              <label for="opt4" className="text-base">
-                {" "}
-                У відділення Укрпошти
-              </label>
-            </div>
-          </form>
+            <label className="text-textLight font-medium font-raleway text-sm mb-2 ">
+              Тип доставки
+            </label>
+            <form className="flex flex-col gap-2">
+              <div className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  id="opt1"
+                  name="opt1"
+                  value="opt1"
+                  className="h-4 w-4"
+                  onChange={() => handleOptionChange("opt1")}
+                />
+                <label for="opt1" className="text-base">
+                  {" "}
+                  Самовивіз з магазину
+                </label>
+              </div>
+              <div className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  id="opt2"
+                  name="opt1"
+                  value="opt2"
+                  className="h-4 w-4"
+                  onChange={() => handleOptionChange("opt1")}
+                />
+                <label for="opt2" className="text-base">
+                  {" "}
+                  Кур’єром (адресна)
+                </label>
+              </div>
+              <div className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  id="opt3"
+                  name="opt1"
+                  value="opt3"
+                  className="h-4 w-4"
+                  onChange={() => handleOptionChange("opt1")}
+                />
+                <label for="opt3" className="text-base">
+                  {" "}
+                  У відділення Нової Пошти
+                </label>
+              </div>
+              <div className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  id="opt4"
+                  name="opt1"
+                  value="opt4"
+                  className="h-4 w-4"
+                  onChange={() => handleOptionChange("opt1")}
+                />
+                <label for="opt4" className="text-base">
+                  {" "}
+                  У відділення Укрпошти
+                </label>
+              </div>
+            </form>
+            {deliveryOptionError && (
+              <p className="text-red-500 text-xs mb-3 ml-2">
+                {deliveryOptionError}
+              </p>
+            )}
           </div>
           <div className="h-4 flex flex-col">
-          <label className="text-textLight font-medium font-raleway text-sm mb-2">
-            Адреса відділення
-          </label>
-          <DropDownList options={postOffices} label="Оберіть відділення" />
+            <label className="text-textLight font-medium font-raleway text-sm mb-2 ml-1">
+              Адреса відділення
+            </label>
+            <DropDownList options={postOffices} label="Оберіть відділення" />
           </div>
         </div>
         <div className="flex flex-col mt-4">
