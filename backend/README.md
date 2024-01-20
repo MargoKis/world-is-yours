@@ -198,16 +198,14 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Protection:** IsAuthenticated
 
 ### 9.2 Create Order
-- **Endpoint:** `/api/orders/`
+- **Endpoint:** `/api/payment/`
 - **Method:** `POST`
-- **Description:** Create a new order.
+- **Description:** Create a new order. Basket history is taken automatically 
 - **Protection:** IsAuthenticated
-
-### 9.3 Get, Destroy Order
-- **Endpoint:** `/api/orders/<int:order_id>/`
-- **Method:** `GET` (Get), `DELETE` (Destroy)
-- **Description:** Get or delete information for the specified order.
-- **Protection:** IsAuthenticated
+- **Parameters:**
+  - first_name (string)
+  - last_name (string)
+  - address (string)
 
 ## 10. Baskets
 ### 10.1 List Baskets

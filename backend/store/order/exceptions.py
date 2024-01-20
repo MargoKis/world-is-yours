@@ -1,0 +1,2 @@
+class EmptyBasketException(Exception):
+    pass

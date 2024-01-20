@@ -5,41 +5,27 @@ from django.conf import settings
 from django.urls import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.viewsets import ModelViewSet
 
+from rest_framework import status
 from rest_framework.views import APIView
-
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework import status
 
 from order.models import Order
 from product.models import Basket
 from order.serializers import OrderSerializer
+from order.exceptions import EmptyBasketException
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
-class OrderViewSet(ModelViewSet):
+class OrderListAPIView(ListAPIView):
     serializer_class = OrderSerializer
     permission_classes = [IsAuthenticated]
-    lookup_field = 'id'
 
     def get_queryset(self):
-        return Order.objects.filter(initiator=self.request.user)
-
-    def update(self, request, *args, **kwargs):
-        return Response({'error': 'You cant update order.'}, status=status.HTTP_400_BAD_REQUEST)
-
-    def create(self, request, *args, **kwargs):
-        initiator = self.request.user.id
-        basket = Basket.objects.filter(user=initiator)
-
-        request.data["initiator"] = initiator
-        request.data["basket_history"] = [obj.de_json() for obj in basket]
-        request.data["status"] = 0
-        return super().create(request, *args, **kwargs)
+        return Order.objects.filter(initiator=self.request.user.id)
 
 
 class CanceledOrderAPIView(APIView):
@@ -54,23 +40,27 @@ class SuccessOrderAPIView(APIView):
 
 class OrderCreateView(CreateAPIView):
     serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
+        request.data['initiator'] = self.request.user.id
         response = super().post(request, *args, **kwargs)
-        baskets = Basket.objects.filter(user=self.request.user)
 
-        if response.status_code == status.HTTP_201_CREATED:
+        try:
+            baskets = Basket.objects.filter(user=self.request.user)
+            if len(baskets) == 0:
+                raise EmptyBasketException
             order_id = response.data.get('id')
-            if order_id:
-                checkout_session = stripe.checkout.Session.create(
-                    line_items=baskets.stripe_products(),
-                    metadata={'order_id': str(order_id)},
-                    mode='payment',
-                    success_url='{}{}'.format(settings.DOMAIN_NAME, reverse('order:payment-success')),
-                    cancel_url='{}{}'.format(settings.DOMAIN_NAME, reverse('order:payment-canceled')),
-                )
-                return HttpResponseRedirect(checkout_session.url, status=HTTPStatus.SEE_OTHER)
-        return response
+            checkout_session = stripe.checkout.Session.create(
+                line_items=baskets.stripe_products(),
+                metadata={'order_id': str(order_id)},
+                mode='payment',
+                success_url='{}{}'.format(settings.DOMAIN_NAME, reverse('order:payment-success')),
+                cancel_url='{}{}'.format(settings.DOMAIN_NAME, reverse('order:payment-canceled')),
+            )
+            return HttpResponseRedirect(checkout_session.url, status=HTTPStatus.SEE_OTHER)
+        except EmptyBasketException:
+            return Response({'message': 'Basket history cannot be empty'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @csrf_exempt

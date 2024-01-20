@@ -96,7 +96,7 @@ class BasketQuerySet(models.QuerySet):
         line_items = []
         for basket in self:
             item = {
-                'price': basket.product.stripe_product_price_id,
+                'price': basket.product.stripe_price_id,
                 'quantity': basket.quantity,
             }
             line_items.append(item)
