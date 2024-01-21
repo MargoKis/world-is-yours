@@ -1,7 +1,7 @@
+from rest_framework.authtoken.models import Token
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework.permissions import SAFE_METHODS
-from rest_framework.permissions import IsAuthenticated
-
+from rest_framework.permissions import IsAuthenticated, SAFE_METHODS
+from rest_framework.authtoken import views
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -97,3 +97,25 @@ class PasswordChangeRequestView(APIView):
         else:
             return Response({"detail": "Invalid input. Please provide the correct data."},
                             status=status.HTTP_400_BAD_REQUEST)
+
+
+class UserTokenAuth(views.ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data, context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        token, created = Token.objects.get_or_create(user=user)
+
+        response_data = {
+            'token': token.key,
+            'user_id': user.id,
+            'first_name': user.first_name,
+            'last_name': user.last_name,
+            'email': user.email,
+            'phone': user.phone,
+            'is_verified_email': user.is_verified_email,
+            'image': user.image if user.image else None,
+            'is_superuser': user.is_superuser
+        }
+
+        return Response(response_data)
