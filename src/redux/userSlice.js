@@ -34,5 +34,6 @@ export const userSlice = createSlice({
 });
 
 export const { login, logout,updateUser } = userSlice.actions;
+export const selectIsLoggedIn = (state) => state.user.isLoggedIn;
 
 export default userSlice.reducer;

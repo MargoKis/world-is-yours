@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 // import { useEffect } from "react";
 import styles from "./signup.module.css";
 import Input from "../common/Input";
@@ -9,6 +10,7 @@ import Google from "../../assets/icons/media-icons/google-color.svg";
 import Apple from "../../assets/icons/media-icons/apple-color.svg";
 import { facebookProvider, googleProvider } from "./firebase/provider";
 import socialMediaAuth from "./firebase/auth";
+import { login } from "../../redux/userSlice";
 
 import attantionIcon from '../../assets/icons/icon-attantion.svg';
 import openEye from '../../assets/icons/icon-openEye.svg';
@@ -22,16 +24,16 @@ import { login , updateUser } from "../../redux/userSlice";
 
 const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
 
-  const t = useTranslation();
   const dispatch = useDispatch();
+
+
+  const t = useTranslation();
+
 
 
   const handleOnClick = async (provider) => {
     await socialMediaAuth(provider)
   }
-
-
-
 
 
   // inputs
@@ -48,8 +50,10 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
 
 
   // states
+
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   console.log(isAuthenticated);
+
 
   // password visible
   const [isPasswordVisible, setPasswordVisible] = useState(false);

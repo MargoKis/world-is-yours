@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Card from "../common/Card";
-import cardData from "../../data";
 import ArrowRight from "../../assets/icons/arrow-up.svg";
 import axios from 'axios'
 
@@ -15,7 +14,7 @@ const NewArrivalsCardList = () => {
     axios.get(API)
       .then((response) => {
         const allProducts = response.data;
-        const categoryTwoArrivals = allProducts.filter(item => item.category === 2); // Фильтрация по категории 2
+        const categoryTwoArrivals = allProducts.filter(item => item.category === 2); 
         setArrivals(categoryTwoArrivals);
       })
       .catch((error) => {
@@ -38,7 +37,7 @@ const NewArrivalsCardList = () => {
         {arrivals.slice(0, visibleCards).map((item, name) => (
           <Card data={item} key={name} />
         ))}
-        {visibleCards < cardData.length && (
+        {/* {visibleCards < allProducts.length && ( */}
           <div
             className="flex justify-center w-80 m-4 border-2 border-gray-light rounded-lg relative cursor-pointer"
             onClick={loadMoreCards}
@@ -55,7 +54,7 @@ const NewArrivalsCardList = () => {
               />
             </div>
           </div>
-        )}
+        {/* )} */}
       </div>
     </div>
   );

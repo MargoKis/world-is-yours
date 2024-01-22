@@ -2,7 +2,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import localeReducer from './localeSlice';
 import headerReducer from './headerSlice';
-import userReducer from './userSlice';
+import userReducer from './userSlice'
 
 const store = configureStore({
   reducer: {
