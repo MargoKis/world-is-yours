@@ -8,8 +8,7 @@ const Profile = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const paramComponent = searchParams.get('component');
-
-    
+   
 
 
 

@@ -28,7 +28,6 @@ export const userSlice = createSlice({
     },
     updateUser: (state, action) => {
       state.user = { ...state.user, ...action.payload };
-      console.log(state.user);
     },
   },
 });
