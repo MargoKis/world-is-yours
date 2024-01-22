@@ -19,7 +19,7 @@ import closeEye from '../../assets/icons/icon-Eye-off.svg';
 
 import api from "../../api/api";
 import { useDispatch } from "react-redux";
-import { login } from "../../redux/userSlice";
+import { login,updateUser } from "../../redux/userSlice";
 // import {auth, facebookProvider, googleProvider} from './config'
 // import { signInWithPopup } from "firebase/auth";
 
@@ -120,7 +120,8 @@ const LogIn = ({ onClose, openSignUp, openRemindPass, openSuccess }) => {
 
 
   // SIgnIn status answear
-  const handleSignInStatus = (status) => {
+  const handleSignInStatus = (status , signInResult=null) => {
+    console.log(signInResult.data);
     // status message
     const statusMessages = {
       200: 'SignIn successful',
@@ -134,7 +135,8 @@ const LogIn = ({ onClose, openSignUp, openRemindPass, openSuccess }) => {
       // status
       switch (status) {
         case 200:
-          openSuccess();
+          // openSuccess();
+          dispatch(updateUser(signInResult.data));
           dispatch(login());
 
 
@@ -164,7 +166,7 @@ const LogIn = ({ onClose, openSignUp, openRemindPass, openSuccess }) => {
 
       const signInResult = await api.signIn(userData);
 
-      handleSignInStatus(signInResult.status);
+      handleSignInStatus(signInResult.status ,signInResult);
       // console.log('signIn successful:', signInResult);
 
 

@@ -1,7 +1,11 @@
 import React from 'react';
 import Button from '../common/Button';
+import { useSelector } from 'react-redux';
 
 const Personal = () => {
+
+    const userData = useSelector((state) => state.user.user);
+    console.log(userData);
     return (
         <>
             <h3 className='text-blue font-raleway lining-nums proportional-nums  font-semibold mb-10 text-2xl'>Контактна інформація</h3>
@@ -11,7 +15,7 @@ const Personal = () => {
                 <div className='left-side w-1/2 min-w-500 mb-10 '>
                     <div className='flex gap-5 justify-between'>
                         <label htmlFor='username' className='w-1/2 text-darkGrey font-raleway text-4 font-medium'>Ім’я
-                            <input id='username' type="text" className="flex mt-2 w-5/5 p-3 items-center self-stretch rounded-xl border border-black focus:border-blue-500 outline-none" />
+                            <input value={userData.first_name} id='username' type="text" className="flex mt-2 w-5/5 p-3 items-center self-stretch rounded-xl border border-black focus:border-blue-500 outline-none" />
                         </label>
                         <label htmlFor='userSurname' className='w-1/2  text-darkGrey font-raleway text-4 font-medium'>Ім’я
                             <input id='userSurname' type="text" className="flex mt-2 w-5/5 p-3 items-center self-stretch rounded-xl border border-black focus:border-blue-500 outline-none" />

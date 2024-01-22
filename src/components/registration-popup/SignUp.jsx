@@ -18,7 +18,7 @@ import closeEye from '../../assets/icons/icon-Eye-off.svg';
 import useTranslation from "../../locale/locales";
 import api from "../../api/api";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../redux/userSlice";
+import { login , updateUser } from "../../redux/userSlice";
 
 const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
 
@@ -188,8 +188,7 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
       // status
       switch (status) {
         case 201:
-          openSuccess();
-          dispatch(login());
+          handleSignIn();        
 
           break;
         case 400:
@@ -210,11 +209,9 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
   const handleRegistration = async () => {
     try {
       const userData = {
-        username: username,
         first_name: username,
         last_name: userSurname,
         password: userPassword,
-        confirm_password: userPassword,
         email: userEmail,
       };
 
@@ -237,6 +234,77 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
 
     }
   };
+
+
+
+
+
+
+
+  // SIgnIn status answear
+  const handleSignInStatus = (status , signInResult=null) => {
+    // status message
+    const statusMessages = {
+      200: 'SignIn successful',
+      400: 'status 400',
+    };
+
+    if (statusMessages.hasOwnProperty(status)) {
+      // log status
+      console.log(statusMessages[status]);
+
+      // status
+      switch (status) {
+        case 200:
+          openSuccess();
+          dispatch(updateUser(signInResult.data));
+          // dispatch(signInResult)
+          dispatch(login());
+
+
+
+          break;
+        case 400:
+          // console.log("already exist");
+          break;
+
+        default:
+          break;
+      }
+    } else {
+      // undefinded status error
+      console.log(`Unexpected response status: ${status}`);
+    }
+  };
+
+
+  
+  const handleSignIn = async () => {
+    try {
+      const userData = {
+        password: userPassword,
+        email: userEmail,
+      };
+
+      const signInResult = await api.signIn(userData);
+
+      handleSignInStatus(signInResult.status ,signInResult);
+      console.log('signIn successful:', signInResult);
+
+
+    } catch (error) {
+      // api signUp error
+      if (error.response && error.response.status) {
+        console.log(`Error during login in signIn. status: ${error.response.status}`);
+        handleSignInStatus(error.response.status);
+      } else {
+        console.error('No server response error in signIn', error);
+      }
+    }
+  };
+  
+
+
 
 
 

@@ -3,10 +3,15 @@ import Button from '../components/common/Button';
 import { useLocation } from 'react-router-dom';
 import Personal from '../components/profile/personal';
 
+
 const Profile = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const paramComponent = searchParams.get('component');
+
+    
+
+
 
     const [selectedComponent, setSelectedComponent] = useState(null);
 
