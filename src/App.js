@@ -12,6 +12,7 @@ import DonateBanner from "./components/common/DonateBanner";
 import Header from "./components/common/Header";
 import Loader from "./components/common/Loader";
 import Profile from "./pages/Profile";
+import Cart from "./pages/Cart";
 
 
 const PaymentPage = lazy(()=>import("./pages/PaymentPage")); 
@@ -85,6 +86,7 @@ function App() {
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/info-help" element={<InfoPayment />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/cart" element={<Cart/>} />
         <Route path="*" element={<NotFound404 />} />
 
       </Routes>

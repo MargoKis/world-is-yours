@@ -120,7 +120,7 @@ const UserOrder = () => {
                 </div>
               </div>
               </div>
-              <p className="text-gray text-lg">{product.price}</p>
+              <p className="text-gray text-lg">{product.price} </p>
             </div>
             <hr className="text-gray mt-3 mb-3"/>
             </>
