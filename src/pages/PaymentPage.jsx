@@ -3,7 +3,7 @@ import UserOrder from "../components/payment-page/UserOrder";
 
 
 
-import PlaycingAnOrder from "../components/payment-page/PlacingAnOrder";
+import PlacingAnOrder from "../components/payment-page/PlacingAnOrder";
 import PreviousPage from "../components/common/PreviousPage";
 
 const PaymentPage = () => {
@@ -13,7 +13,7 @@ const PaymentPage = () => {
 
       <PreviousPage>Кошик</PreviousPage>
       <div className="flex flex-row flex-wrap justify-center gap-36 mt-14 mb-20">
-        <PlaycingAnOrder />
+        <PlacingAnOrder />
         <UserOrder />
       </div>
     </>
