@@ -4,15 +4,16 @@ import trash from "../../assets/icons/icon-trash.svg";
 import ArrowDown from "../../assets/icons/arrow-up.svg";
 
 const CartItem = ({ product, handleQuantityChange, handleRemoveItem }) => {
+  const calculateProductTotal = () => {
+    const discountedPrice = product.price * (1 - product.discount / 100);
+    return discountedPrice * product.quantity;
+  };
+
   return (
     <>
       <div className="flex flex-row w-100 justify-between items-end border-b border-gray p-4">
         <div className="flex flex-row items-center">
-          <img
-            src={order}
-            alt={product.name}
-            className="w-36 h-36 rounded-lg mr-4"
-          />
+          <img src={order} alt={product.name} className="w-36 h-36 rounded-lg mr-4" />
           <div className="flex flex-col gap-2">
             <p className="font-medium text-xl">{product.name}</p>
             <div className="text-gray gap-2">
@@ -47,7 +48,7 @@ const CartItem = ({ product, handleQuantityChange, handleRemoveItem }) => {
             <p className="text-gray mt-3 font-normal text-base">Ціна: {product.price} грн</p>
             <p className="text-gray mt-3 font-normal text-base">Знижка: {product.discount}%</p>
             <p className="text-gray mt-3 font-semibold text-grayDark">
-              Всього: {product.discountedPrice} грн
+              Всього: {calculateProductTotal()} грн
             </p>
           </div>
         </div>
@@ -65,3 +66,6 @@ const CartItem = ({ product, handleQuantityChange, handleRemoveItem }) => {
 };
 
 export default CartItem;
+
+
+

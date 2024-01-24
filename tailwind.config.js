@@ -113,6 +113,12 @@ module.exports = {
           xxl: '2rem',
         },
       },
+      maxHeight: {
+        '52': '520px',
+      },
+      overflowY: {
+        auto: 'auto',
+      },
     },
   },
   plugins: [],
