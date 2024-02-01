@@ -13,6 +13,7 @@ import Header from "./components/common/Header";
 import Loader from "./components/common/Loader";
 import Profile from "./pages/Profile";
 import Cart from "./pages/Cart";
+import PasswordRecovery from "./pages/PasswordRecovery";
 
 
 const PaymentPage = lazy(()=>import("./pages/PaymentPage")); 
@@ -83,6 +84,7 @@ function App() {
       <Routes>
 
         <Route exact path="/" element={<MainPage />} />
+        <Route path="/password-recovery" element={<PasswordRecovery/>} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/info-help" element={<InfoPayment />} />
         <Route path="/profile" element={<Profile />} />
