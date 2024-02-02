@@ -10,7 +10,7 @@ import FavouritesCardList from "../components/main-page/FavouritesCardList";
 import NewArrivalsCardList from "../components/main-page/NewArrivalsCardList";
 import ScrollingText from "../components/scrolling-effect/ScrollingText";
 import ChatPopup from "../components/main-page/ChatPopup";
-import Slider from "react-slick";
+import Slider from "../components/main-page/Slider";
 import useTranslation from "../locale/locales";
 
 const MainPage = () => {
