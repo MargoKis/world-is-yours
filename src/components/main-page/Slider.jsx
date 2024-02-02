@@ -8,29 +8,42 @@ const SimpleSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
   };
 
   return (
     <Slider className={styles.slider} {...settings}>
-      <div className={styles.textWrap}>
+      <div className={styles.backImgFirst}>
         <div className={styles.cardS}>
-          <p className={styles.textS}>знижки до -80%</p>
+          <p className={styles.textS}>СЕЗОННИЙ РОЗПРОДАЖ</p>
         </div>
-        <h2 className={styles.titleS}>Happy New Year</h2>
+        <h2 className={styles.titleS}>Зимовий розпродаж -30%</h2>
         <p className={styles.subtitleS}>
-          Здійсни свої бажання разом з Word is Yours
+          Заощаджуйте на обраному зимовому одязі, <br/> спорядженні та аксесуарах.{" "}
+          <br /> До 20.02.2024
         </p>
       </div>
-      <div>
-        <h3>Slide 2</h3>
+      <div className={styles.backImgSecond}>
+        <div className={styles.cardSCenter}>
+          <p className={styles.textS}>БЕЗКОШТОВНА ДОСТАВКА</p>
+        </div>
+        <h2 className={styles.titleSCenter}>Безкоштовна доставка для замовлень від 2000 грн</h2>
+        <p className={styles.subtitleS}>
+        Подорожуйте з комфортом, не переймайтеся вартістю доставки!{" "}
+        </p>
       </div>
-      <div>
-        <h3>Slide 3</h3>
+      <div className={styles.backImgThird}>
+      <div className={styles.cardS}>
+          <p className={styles.textS}>ЗНИЖКИ ДО -15%</p>
+        </div>
+        <h2 className={styles.titleSBlack}>Знижка на все для намету!</h2>
+        <p className={styles.subtitleSBlack}>
+        Час вирушити у дику природу! Купуйте товари для кемпінгу та отримайте знижку 15%. Зробіть своє пригодницьке відкриття комфортним та незабутнім.
+        </p>
       </div>
     </Slider>
   );
