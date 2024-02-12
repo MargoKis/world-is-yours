@@ -1,13 +1,71 @@
 import React from "react";
+ import { useEffect } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import LogoWorldIsYours from "../../assets/icons/light/logo-light.svg";
 import { mediaIcons } from "../../assets/icons/media-icons/mediaIcons";
 import IconCopyright from "../../assets/icons/icon-copyright.svg";
 import IconChat from "../../assets/icons/icon-chat.svg";
 import IconArrowRight from "../../assets/icons/arrow-up.svg";
+import SubscriptionSuccess from "../common/SubscriptionSuccess";
 import './media-queris.css'
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+  const [isEmailValid, setIsEmailValid] = useState(true);
+  const [emailError, setEmailError] = useState('');
+  const [successPopup, setSuccessPopup] = useState(false);
+
+  useEffect(() => {
+    // This effect runs when the successPopup state changes
+    if (!successPopup) {
+      // Clear input fields when the popup is closed
+      clearInput();
+    }
+  }, [successPopup]);
+
+
+  const handleInputChange = (event) => {
+    setEmail(event.target.value);
+    validateAndShowError();
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      validateAndOpenPopup();
+    }
+  };
+
+  const validateAndShowError = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Updated regex for a valid email format
+    const isValid = emailRegex.test(email);
+  
+    setIsEmailValid(isValid);
+  
+    if (!isValid) {
+      setEmailError('Некоректно введений email');
+    } else {
+      setEmailError(''); 
+    }
+  };
+
+  const validateAndOpenPopup = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValid = emailRegex.test(email);
+
+    validateAndShowError();
+
+    if (isValid) {
+      setSuccessPopup(true);
+    }
+  };
+
+  const clearInput = () => {
+    setEmail('');
+    setIsEmailValid(true);
+    setEmailError('');
+  };
 
   return (
 
@@ -87,22 +145,33 @@ const Footer = () => {
           <p className="text-white text-opacity-30 font-raleway mt-1 mb-10 text-16px">
             Щоб першим дізнаватися про новинки та знижки
           </p>
-          <form className="relative">
-            <input
-              type="text"
-              className="bg-gray-dark p-3 text-white-500 border-2 border-white-500 rounded-lg w-full text-16px text-white"
-              placeholder="Введіть ел.пошту"
-            />
-            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-              <img
-                src={IconArrowRight}
-                alt="arrow right"
-                className="text-red bg-red"
-              />
-            </div>
-          </form>
+             <form className="relative">
+          <input
+          type="text"
+          className={`bg-gray-dark p-3 text-white-500 border-2 border-white-500 rounded-lg w-full text-16px text-white ${
+            isEmailValid ? '' : 'border-red-500'
+          }`}
+          placeholder="Введіть ел.пошту"
+          value={email}
+          onChange={handleInputChange}
+          onKeyPress={handleKeyPress}
+        />
+        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+          <img src={IconArrowRight} alt="arrow right" className="text-red bg-red" />
         </div>
-      </footer>
+        {emailError && (
+          <div className="text-red-500 text-sm mt-1">{emailError}</div>
+        )}
+      </form>
+      {successPopup && (
+        <SubscriptionSuccess 
+          onClose={() => setSuccessPopup(false)} 
+          isOpen={successPopup} 
+          clearInput={clearInput} 
+        />
+      )}
+    </div>
+  </footer>
   );
 };
 
