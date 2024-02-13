@@ -12,6 +12,7 @@ import ScrollingText from "../components/scrolling-effect/ScrollingText";
 import ChatPopup from "../components/main-page/ChatPopup";
 import Slider from "../components/main-page/Slider";
 import useTranslation from "../locale/locales";
+import MoveUp from "../components/common/MoveUp";
 
 const MainPage = () => {
   const t = useTranslation();
@@ -61,6 +62,7 @@ const MainPage = () => {
       <ScrollingText />
       <NewArrivalsCardList />
       <WhyUs />
+      <MoveUp/>
     </>
   );
 };

@@ -11,7 +11,7 @@ const PreviousPage = (props) => {
           alt="arrow left"
           className="transform rotate-[-95deg] w-6"
         />
-        <p className='raleway-500 text-20px'>{props.children}</p>
+        <p className='raleway-500 text-20px'>{props.text}</p>
       </div>
     </Link>
   );
