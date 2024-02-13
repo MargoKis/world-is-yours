@@ -40,7 +40,7 @@ const Cart = () => {
       quantity: 1,
       discount: 15,
     },
-    // Добавьте больше товаров при необходимости
+
   ]);
 
   const calculateTotalAmount = (cartItems) => {
