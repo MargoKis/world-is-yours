@@ -14,6 +14,7 @@ import Loader from "./components/common/Loader";
 import Profile from "./pages/Profile";
 import Cart from "./pages/Cart";
 import PasswordRecovery from "./pages/PasswordRecovery";
+import ProductPage from "./pages/ProductPage";
 
 
 const PaymentPage = lazy(()=>import("./pages/PaymentPage")); 
@@ -89,6 +90,7 @@ function App() {
         <Route path="/info-help" element={<InfoPayment />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/cart" element={<Cart/>} />
+        <Route path="/product" element={<ProductPage/>} />
         <Route path="*" element={<NotFound404 />} />
 
       </Routes>

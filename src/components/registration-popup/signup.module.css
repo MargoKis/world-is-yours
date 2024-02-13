@@ -73,7 +73,8 @@
 }
 
 .btn,
-.remind {
+.remind,
+.productBtn {
   color: rgb(255, 255, 255);
   box-sizing: border-box;
   border: 1px solid #202020;
@@ -87,6 +88,10 @@
   width: 86%;
   margin-bottom: 10%;
   margin-top: 30px;
+}
+
+.productBtn {
+  width: 100%;
 }
 
 .remind {
