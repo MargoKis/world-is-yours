@@ -18,15 +18,11 @@ const CityDropdown = ({ selectedCountry, onSelectCity }) => {
           }
         );
 
-        // Выведем в консоль весь ответ API для отладки
         console.log("API response:", response.data);
 
-        // Извлекаем города из данных
         const citiesData = response.data.data;
 
-        // Проверим, есть ли города в данных
         if (citiesData && citiesData.length > 0) {
-          // Устанавливаем список городов для выбранной страны
           setCities(citiesData);
         } else {
           console.warn("API не вернул список городов.");
@@ -36,7 +32,6 @@ const CityDropdown = ({ selectedCountry, onSelectCity }) => {
       }
     };
 
-    // Выполняем запрос только если выбрана страна
     if (selectedCountry) {
       fetchCities();
     }
@@ -71,7 +66,7 @@ const CityDropdown = ({ selectedCountry, onSelectCity }) => {
         htmlFor="text"
         className="mb-1 ml-1 text-textLight font-medium font-raleway text-sm"
       >
-        Город
+        Місто
       </label>
       <div
         ref={dropdownRef}

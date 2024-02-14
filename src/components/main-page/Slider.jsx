@@ -16,8 +16,8 @@ const SimpleSlider = () => {
   };
 
   return (
-    <Slider className={styles.slider} {...settings}>
-      <div className={styles.backImgFirst}>
+    <Slider className={styles.slider} {...settings} >
+      <div className={styles.backImgFirst} id="sectionFav">
         <div className={styles.cardS}>
           <p className={styles.textS}>СЕЗОННИЙ РОЗПРОДАЖ</p>
         </div>
