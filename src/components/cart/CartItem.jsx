@@ -11,7 +11,7 @@ const CartItem = ({ product, handleQuantityChange, handleRemoveItem }) => {
 
   return (
     <>
-      <div className="flex flex-row w-100 justify-between items-end border-b border-gray p-4">
+      <div className="flex flex-row justify-between items-end border-b border-gray p-4">
         <div className="flex flex-row items-center">
           <img src={order} alt={product.name} className="w-36 h-36 rounded-lg mr-4" />
           <div className="flex flex-col gap-2">
