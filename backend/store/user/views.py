@@ -43,8 +43,7 @@ class UserDetailAPIView(RetrieveUpdateDestroyAPIView):
             user = self.get_object()
             user.set_password(serializer.validated_data['password'])
             user.save()
-        else:
-            serializer.save()
+        serializer.save()
 
 
 class EmailVerificationView(APIView):
