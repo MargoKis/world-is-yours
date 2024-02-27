@@ -1,9 +1,11 @@
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-from django.core.mail import send_mail
 from django.db import models
 from django.urls import reverse
 from django.utils.timezone import now
+
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
 
 
 class MyUserManager(BaseUserManager):
@@ -51,18 +53,18 @@ class EmailVerification(models.Model):
     def send_verification_email(self):
         link = reverse('user:email_verification', kwargs={'email': self.user.email, 'code': self.code})
         verification_link = f'{settings.DOMAIN_NAME}{link}'
-        subject = f'Account confirmation for {self.user.email}'
-        massage = 'Follow the link {} to confirm the account for user {}'.format(
-            verification_link,
-            self.user.email
-        )
-        send_mail(
+        subject = 'Email Confirmation for Your Account at World is Yours'
+
+        html_message = render_to_string('user/email_password_reset.html', {'reset_link': verification_link, 'user': self.user})
+
+        email = EmailMessage(
             subject=subject,
-            message=massage,
+            body=html_message,
             from_email=settings.EMAIL_HOST_USER,
-            recipient_list=[self.user.email],
-            fail_silently=False,
+            to=[self.user.email],
         )
+        email.content_subtype = "html"
+        email.send()
 
     def is_expired(self):
         return True if now() >= self.expiration else False
@@ -80,18 +82,18 @@ class EmailPasswordReset(models.Model):
     def send_verification_email(self):
         link = reverse('user:password_changing', kwargs={'email': self.user.email, 'code': self.code})
         reset_link = f'{settings.DOMAIN_NAME}{link}'
-        subject = f'Reset password for {self.user.email}'
-        massage = 'Follow the link {} to reset password for user {}'.format(
-            reset_link,
-            self.user.email
-        )
-        send_mail(
+        subject = 'Password Reset for Your World is Yours Account'
+
+        html_message = render_to_string('user/email_password_reset.html', {'reset_link': reset_link, 'user': self.user})
+
+        email = EmailMessage(
             subject=subject,
-            message=massage,
+            body=html_message,
             from_email=settings.EMAIL_HOST_USER,
-            recipient_list=[self.user.email],
-            fail_silently=False,
+            to=[self.user.email],
         )
+        email.content_subtype = "html"
+        email.send()
 
     def is_expired(self):
         return True if now() >= self.expiration else False

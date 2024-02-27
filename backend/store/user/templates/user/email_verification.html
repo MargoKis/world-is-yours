@@ -1,0 +1,63 @@
+{% extends 'user/base.html' %}
+{% load static %}
+
+{% block css %}
+    <style>
+        .letterWrap {
+            width: 500px;
+            height: 330px;
+        }
+
+        .themeOfLetter,
+        .black,
+        .gray,
+        .blue {
+            font-family: "Raleway", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .themeOfLetter {
+            font-weight: 600;
+            font-size: 16px;
+            color: black;
+        }
+
+        .black {
+            color: black;
+        }
+
+        .gray {
+            color: #888888;
+        }
+
+        .blue {
+            color: #135cfb;
+            cursor: pointer;
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="letterWrap">
+      <h1 class="themeOfLetter">
+        Subject: Email Confirmation for Your Account at World is Yours
+      </h1>
+      <p class="black">Dear <span class="gray">
+          {% if user.first_name %}
+              {{ user.first_name }}
+          {% else %}
+              Customer
+          {% endif %},
+      </span></p>
+      <p class="black">
+        Thank you for registering at World is Yours  – your premier online store for travel essentials and camper van accessories. We've got everything you need for your adventures, both on the road and in the great outdoors! To complete the registration process and ensure the security of your account, we kindly ask you to verify your email address.
+      </p>
+      <p class="black">Please click the following link to finalize the verification:</p>
+      <p class="blue">{{ verification_link }}</p>
+      <p class="black">If you did not initiate this request, please disregard this email. Your account will remain active, but we recommend completing the verification for enhanced security.</p>
+      <p class="black">We appreciate your choice of World is Yours! Should you have any questions or encounter any difficulties, feel free to contact our support team at <span class="blue">info@worldisyours.com</span></p>
+      <p class="black">Best regards, <br>World is Yours Team!</p>
+    </div>
+{% endblock %}
