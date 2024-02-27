@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from user.models import EmailVerification, EmailPasswordReset
-from user.permissions import IsOwnerOrReadOnly
+from user.permissions import IsOwnerOrReadOnly, IsOwnerOrIsAdmin
 from user import serializers
 from user.tasks import send_password_change
 
@@ -31,7 +31,12 @@ class UserDetailAPIView(RetrieveUpdateDestroyAPIView):
     queryset = serializers.UserModel.objects.all()
     serializer_class = serializers.UserSerializer
     lookup_field = "id"
-    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
+    permission_classes = [IsOwnerOrReadOnly]
+
+    def get_permissions(self):
+        if self.request.method == "DELETE":
+            self.permission_classes = [IsOwnerOrIsAdmin]
+        return super().get_permissions()
 
     def get_serializer_class(self):
         if self.request.method in SAFE_METHODS:
