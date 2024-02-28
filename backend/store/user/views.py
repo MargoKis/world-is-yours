@@ -119,6 +119,7 @@ class UserTokenAuth(views.ObtainAuthToken):
             'phone': user.phone,
             'is_verified_email': user.is_verified_email,
             'image': user.image if user.image else None,
+            'is_staff': user.is_staff,
             'is_superuser': user.is_superuser
         }
 

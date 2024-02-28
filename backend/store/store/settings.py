@@ -10,23 +10,28 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+
+from dotenv import load_dotenv
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
+# Load .env file
+load_dotenv(dotenv_path=BASE_DIR / '.env.dev')
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%(4hy+$hd+4grgc2k45tp@04x9kj$40i(9j=(r&0=a0+rh21gz'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'django-backend']
 
-DOMAIN_NAME = 'http://localhost:8000'
+DOMAIN_NAME = os.getenv('DOMAIN_NAME')
 
 # Application definition
 
@@ -96,11 +101,11 @@ REST_FRAMEWORK = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'world_is_yours',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
-        'PORT': '5432',
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
+        'PORT': os.getenv('DATABASE_PORT'),
     }
 }
 
@@ -162,24 +167,21 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Celery
-CELERY_BROKER_URL = 'redis://redis_server:6379/0'
-CELERY_RESULT_BACKEND = 'redis://redis_server:6379/0'
+CELERY_BROKER_URL = f'redis://{os.getenv("REDIS_HOST")}:{os.getenv("REDIS_PORT")}/0'
+CELERY_RESULT_BACKEND = f'redis://{os.getenv("REDIS_HOST")}:{os.getenv("REDIS_PORT")}/0'
 
 # Email
-
-# Настройки для отправки электронных писем
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'email.for.parsers.pages@gmail.com'
-EMAIL_HOST_PASSWORD = 'wiip xfel sxbk cngw'
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TSL')
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 # Stripe
-
-STRIPE_PUBLIC_KEY = 'pk_test_51MEFcVLuDZka6EPFrMETXuN01j5Ekq85JY861bmdRqSQSavUctiN7Xp3RiWdDPdgwN4m34NYjfWGRxrEv2SaUA2s00tXKxwmG3'
-STRIPE_SECRET_KEY = 'sk_test_51MEFcVLuDZka6EPF6oucetUqAPDxoNRyI7zHQ4nyGVVbdScCV9xCwiRNyjcBFvL1YlI0FsGLfhs20vxhghqAus2o00yQysgABt'
-STRIPE_WEBHOOK_SECRET = 'whsec_bdd0fa414a62c679b64957f61b6603d061a67f7886165fc475144f517ad70eec'
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+STRIPE_WEBHOOK_SECRET = os.getenv('STRIPE_WEBHOOK_SECRET')
 
 
 if DEBUG:
