@@ -37,8 +37,10 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     old_price = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
     quantity = models.PositiveIntegerField(default=0)
-    image = models.ImageField(upload_to='products_images',
-                              default="products_images/default_image.jpg")
+    image_1 = models.ImageField(upload_to='products_images', default="products_images/default_image.jpg")
+    image_2 = models.ImageField(upload_to='products_images', null=True, blank=True)
+    image_3 = models.ImageField(upload_to='products_images', null=True, blank=True)
+    image_4 = models.ImageField(upload_to='products_images', null=True, blank=True)
     category = models.ForeignKey(to=ProductSubCategory, on_delete=models.PROTECT)
     stripe_price_id = models.CharField(max_length=128, null=True, blank=True)
     description = models.TextField()

@@ -150,7 +150,7 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Endpoint:** `/api/products/`
 - **Method:** `GET`
 - **Description:** List all products.
-- **Protection:** Non7
+- **Protection:** None
 
 ### 6.2 Create Product
 - **Endpoint:** `/api/products/`
@@ -220,8 +220,14 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Method:** `GET`
 - **Description:** List all orders for the logged-in user.
 - **Protection:** IsAuthenticated
+- 
+### 9.2 Full List Orders
+- **Endpoint:** `/api/orders/all/`
+- **Method:** `GET`
+- **Description:** List of all orders for admin user.
+- **Protection:** IsAdmin
 
-### 9.2 Create Order
+### 9.3 Create Order
 - **Endpoint:** `/api/payment/`
 - **Method:** `POST`
 - **Description:** Create a new order. Basket history is taken automatically 

@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView, ListAPIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 
 from order.models import Order
@@ -26,6 +26,12 @@ class OrderListAPIView(ListAPIView):
 
     def get_queryset(self):
         return Order.objects.filter(initiator=self.request.user.id)
+
+
+class OrderListAllAPIView(ListAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+    permission_classes = [IsAdminUser]
 
 
 class CanceledOrderAPIView(APIView):
