@@ -67,7 +67,31 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Description:** Get, update, or delete information for the specified user.
 - **Protection:** IsAuthenticated, IsOwnerOrReadOnly
 
-### 3.4 Reset Password
+### 3.4 User Addresses
+#### 3.4.1 List Addresses
+- **Endpoint:** `/api/users/<int:user_id>/address/`
+- **Method:** `GET` (Get)
+- **Description:** Get list of addresses for current user
+- **Protection:** IsOwner
+
+#### 3.4.2 Create Address
+- **Endpoint:** `/api/users/<int:user_id>/address/`
+- **Method:** `POST` (Create)
+- **Description:** Create address for user
+- **Protection:** IsOwner
+- **Parameters:**
+  - address_line (string)
+  - city (string)
+  - country (string)
+  - zip_code (string)
+
+#### 3.4.3 Get, Update, Destroy Address
+- **Endpoint:** `/api/users/<int:user_id>/address/<int:address_id>/`
+- **Method:** `GET` (Get), `PUT` or `PATCH` (Update), `DELETE` (Destroy)
+- **Description:** Get, update, or delete address for the specified user.
+- **Protection:** IsOwner
+
+### 3.5 Reset Password
 - **Endpoint:** `/api/password_reset/`
 - **Method:** `POST`
 - **Description:** Request a password reset

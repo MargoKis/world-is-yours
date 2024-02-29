@@ -41,6 +41,17 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
 
 
+class Address(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    address_line = models.CharField(max_length=100)
+    city = models.CharField(max_length=50)
+    country = models.CharField(max_length=50)
+    zip_code = models.CharField(max_length=20)
+
+    def __str__(self):
+        return f"{self.address_line}, {self.city}, {self.country}"
+
+
 class EmailVerification(models.Model):
     code = models.UUIDField(unique=True)
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)

@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 from user.tasks import send_email_verification
+from user.models import Address
 
 UserModel = get_user_model()
 
@@ -75,3 +76,9 @@ class PasswordResetSerializer(serializers.Serializer):
     class Meta:
         model = UserModel
         fields = "password"
+
+
+class AddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Address
+        fields = "__all__"

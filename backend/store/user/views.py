@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework.authtoken.models import Token
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated, SAFE_METHODS
@@ -6,8 +7,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from user.models import EmailVerification, EmailPasswordReset
-from user.permissions import IsOwnerOrReadOnly, IsOwnerOrIsAdmin
+from user.models import EmailVerification, EmailPasswordReset, Address, User
+from user.permissions import IsOwnerOrReadOnly, IsOwnerOrIsAdmin, IsOwner
 from user import serializers
 from user.tasks import send_password_change
 
@@ -49,6 +50,39 @@ class UserDetailAPIView(RetrieveUpdateDestroyAPIView):
             user.set_password(serializer.validated_data['password'])
             user.save()
         serializer.save()
+
+
+class UserAddressListAPIView(ListCreateAPIView):
+    serializer_class = serializers.AddressSerializer
+    permission_classes = [IsOwner]
+
+    def get_queryset(self):
+        user_id = self.kwargs.get('user_id')
+        user = get_object_or_404(User, pk=user_id)
+        queryset = Address.objects.filter(user=user)
+        return queryset
+
+    def create(self, request, *args, **kwargs):
+        user = request.user
+        request.data["user"] = user.id
+        return super().create(request, *args, **kwargs)
+
+
+class UserAddressDetailAPIView(RetrieveUpdateDestroyAPIView):
+    serializer_class = serializers.AddressSerializer
+    lookup_field = "id"
+    permission_classes = [IsOwner]
+
+    def get_queryset(self):
+        user_id = self.kwargs.get('user_id')
+        user = get_object_or_404(User, pk=user_id)
+        queryset = Address.objects.filter(user=user)
+        return queryset
+
+    def perform_update(self, serializer):
+        if 'user' in serializer.validated_data:
+            del serializer.validated_data['user']
+        super().perform_update(serializer)
 
 
 class EmailVerificationView(APIView):
