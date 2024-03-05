@@ -16,7 +16,7 @@ const Accordion = () => {
   return (
     <div className="flex flex-col space-y-2">
       {data.map((item) => (
-        <div key={item.id} className="border-b-2 border-gray-300 rounded-md">
+        <div key={item.id} className="border-b-2 border-gray-300">
           <div
             className="flex justify-between items-center p-4 cursor-pointer transition-colors duration-300 ease-in-out"
             onClick={() => toggleAccordion(item.id)}

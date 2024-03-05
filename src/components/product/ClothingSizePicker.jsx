@@ -10,7 +10,7 @@ const ClothingSizePicker = () => {
       {clothingSizes.map((size) => (
         <div
           key={`clothing-${size}`}
-          className={`relative w-8 h-8 mr-4 rounded-full bg-gray-500 cursor-pointer border border-gray-800 ${
+          className={`relative w-8 h-8 mr-4 rounded-full bg-gray-500 cursor-pointer border border-gray ${
             selectedSize === `clothing-${size}` ? "bg-blue-500" : ""
           }`}
           style={{

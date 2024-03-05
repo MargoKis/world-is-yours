@@ -8,6 +8,7 @@ const Button = (props) => {
       type={props.typeBtn}
       value={props.valueBtn}
       onClick={props.onClickBtn}
+      style={props.style} 
     >
       {props.children}
     </button>
