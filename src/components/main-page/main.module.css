@@ -173,3 +173,9 @@
   font-size: 25px;
   
 }
+
+.contactUsWrap {
+  display: flex;
+  flex-direction: column;
+  width: 26%;
+}

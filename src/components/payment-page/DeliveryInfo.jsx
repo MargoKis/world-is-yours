@@ -21,7 +21,10 @@ const DeliveryInfo = ({
 
   const handleAddressChange = (event) => {
     const inputValue = event.target.value;
-    if (/^[a-zA-Zа-яА-Я0-9\s.,]*$/.test(inputValue) && inputValue.length <= 60) {
+    if (
+      /^[a-zA-Zа-яА-Я0-9\s.,]*$/.test(inputValue) &&
+      inputValue.length <= 60
+    ) {
       setAddress(inputValue);
       setAddressError("");
     } else {
@@ -115,9 +118,9 @@ const DeliveryInfo = ({
           onSelectCity={handleCitySelect}
           selectedCountry={selectedCountry}
         />
-        
+
         {/* Добавленные компоненты CountryDropdown и CityDropdown */}
-        
+
         <div className="flex flex-row gap-4">
           <div className="flex flex-col w-full">
             <label
@@ -233,10 +236,10 @@ const DeliveryInfo = ({
             </label>
             {/* <DropDownList options={postOffices} label="Оберіть відділення" /> */}
 
-            <PostOfficeDropdown  selectedCity={selectedCity} // Передайте значення обраного міста
-  selectedDeliveryType={selectedDeliveryType} // Передайте значення обраного типу доставки
- />
-
+            <PostOfficeDropdown
+              selectedCity={selectedCity}
+              selectedDeliveryType={selectedDeliveryType}
+            />
           </div>
         </div>
         <div className="flex flex-col mt-4">
@@ -266,4 +269,3 @@ const DeliveryInfo = ({
 };
 
 export default DeliveryInfo;
-
