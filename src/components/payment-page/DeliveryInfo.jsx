@@ -2,15 +2,13 @@ import React, { useState } from "react";
 import CountryDropdown from "../payment-page/CountryDropDown";
 import CityDropdown from "../payment-page/CityDropDown";
 import Button from "../common/Button";
-import DropDownList from "./DropDownList";
-import PostOfficeDropdown from "./PostOfficeDropDown";
+import DeliveryOptions from "./DeliveryOptions";
 
 const DeliveryInfo = ({
   handleDeliveryClick,
   handleContactInfoClick,
   handlePayClick,
   selectedCity,
-  selectedDeliveryType,
 }) => {
   const [address, setAddress] = useState("");
   const [apartment, setApartment] = useState("");
@@ -21,7 +19,10 @@ const DeliveryInfo = ({
 
   const handleAddressChange = (event) => {
     const inputValue = event.target.value;
-    if (/^[a-zA-Zа-яА-Я0-9\s.,]*$/.test(inputValue) && inputValue.length <= 60) {
+    if (
+      /^[a-zA-Zа-яА-Я0-9\s.,]*$/.test(inputValue) &&
+      inputValue.length <= 60
+    ) {
       setAddress(inputValue);
       setAddressError("");
     } else {
@@ -48,11 +49,6 @@ const DeliveryInfo = ({
     setSelectedOption(value);
     setDeliveryOptionError("");
   };
-
-  const postOffices = [
-    { value: "opt1", label: "Київ, вул. Українська, 1" },
-    { value: "opt2", label: "Харків, вул. Харківська, 2" },
-  ];
 
   const [selectedCountry, setSelectedCountry] = useState("");
 
@@ -115,10 +111,13 @@ const DeliveryInfo = ({
           onSelectCity={handleCitySelect}
           selectedCountry={selectedCountry}
         />
-        
-        {/* Добавленные компоненты CountryDropdown и CityDropdown */}
-        
-        <div className="flex flex-row gap-4">
+
+        <DeliveryOptions
+          handleOptionChange={handleOptionChange}
+          deliveryOptionError={deliveryOptionError}
+        />
+
+        <div className="flex flex-row gap-4 mt-4">
           <div className="flex flex-col w-full">
             <label
               htmlFor="text"
@@ -126,14 +125,12 @@ const DeliveryInfo = ({
             >
               Адреса
             </label>
-
             <input
               className="font-light border rounded-xl w-full p-3 border-black mb-1"
               placeholder="Введіть свою адресу"
               onChange={handleAddressChange}
               value={address}
             ></input>
-
             {addressError && (
               <p className="text-red-500 text-xs mb-3 ml-2">{addressError}</p>
             )}
@@ -145,7 +142,6 @@ const DeliveryInfo = ({
             >
               Квартира
             </label>
-
             <input
               className="font-light border rounded-xl w-16 p-3 pl-4 border-black mb-1"
               placeholder="000"
@@ -158,87 +154,6 @@ const DeliveryInfo = ({
           </div>
         </div>
 
-        <div className="flex flex-row mb-6 justify-between mt-6 ">
-          <div className="flex flex-col">
-            <label className="text-textLight font-medium font-raleway text-sm mb-2 ">
-              Тип доставки
-            </label>
-            <form className="flex flex-col gap-2">
-              <div className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  id="opt1"
-                  name="opt1"
-                  value="opt1"
-                  className="h-4 w-4"
-                  onChange={() => handleOptionChange("opt1")}
-                />
-                <label for="opt1" className="text-base">
-                  {" "}
-                  Самовивіз з магазину
-                </label>
-              </div>
-              <div className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  id="opt2"
-                  name="opt1"
-                  value="opt2"
-                  className="h-4 w-4"
-                  onChange={() => handleOptionChange("opt1")}
-                />
-                <label for="opt2" className="text-base">
-                  {" "}
-                  Кур’єром (адресна)
-                </label>
-              </div>
-              <div className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  id="opt3"
-                  name="opt1"
-                  value="opt3"
-                  className="h-4 w-4"
-                  onChange={() => handleOptionChange("opt1")}
-                />
-                <label for="opt3" className="text-base">
-                  {" "}
-                  У відділення Нової Пошти
-                </label>
-              </div>
-              <div className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  id="opt4"
-                  name="opt1"
-                  value="opt4"
-                  className="h-4 w-4"
-                  onChange={() => handleOptionChange("opt1")}
-                />
-                <label for="opt4" className="text-base">
-                  {" "}
-                  У відділення Укрпошти
-                </label>
-              </div>
-            </form>
-            {deliveryOptionError && (
-              <p className="text-red-500 text-xs mb-3 ml-2">
-                {deliveryOptionError}
-              </p>
-            )}
-          </div>
-          <div className="h-4 flex flex-col">
-            <label className="text-textLight font-medium font-raleway text-sm mb-2 ml-1">
-              Адреса відділення
-            </label>
-            {/* <DropDownList options={postOffices} label="Оберіть відділення" /> */}
-
-            <PostOfficeDropdown  selectedCity={selectedCity} // Передайте значення обраного міста
-  selectedDeliveryType={selectedDeliveryType} // Передайте значення обраного типу доставки
- />
-
-          </div>
-        </div>
         <div className="flex flex-col mt-4">
           <label
             htmlFor="additionalInfo"
@@ -266,4 +181,3 @@ const DeliveryInfo = ({
 };
 
 export default DeliveryInfo;
-

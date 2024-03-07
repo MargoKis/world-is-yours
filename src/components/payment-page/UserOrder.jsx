@@ -2,8 +2,8 @@ import React from "react";
 import order from "../../assets/temporary-img/tent.png";
 import ArrowDown from "../../assets/icons/arrow-up.svg";
 import { useState } from "react";
+import DeleteIcon from "../../assets/icons/icon-trash.svg";
 
-// база товарів, які замовляє користувач
 const products = [
   {
     id: 1,
@@ -63,6 +63,11 @@ const UserOrder = () => {
     setCart(updatedCart);
   };
 
+  const handleRemoveProduct = (id) => {
+    const updatedCart = cart.filter(product => product.id !== id);
+    setCart(updatedCart);
+  };
+
   const calculateTotalPrice = () => {
     const subtotal = cart.reduce((total, product) => {
       return total + parseInt(product.price) * product.quantity;
@@ -84,47 +89,59 @@ const UserOrder = () => {
         </div>
         <hr className="mt-6 mb-6 text-blue" />
         <div className="scrolnan overflow-auto max-h-80 pr-4">
-          {cart.map((product) => (
+          {cart.length === 0 ? (
+            <p className="text-custom-black text-lg mx-8 my-10 ">Нажаль, ви ще нічого не замовили :(</p>
+          ) : (
             <>
-            <div
-              key={product.id}
-              className="flex flex-row justify-between text-custom-black"
-            >
-              <div className="flex flex-row mr-20">
-              <img
-                src={product.image.order}
-                alt="user order"
-                className="w-32 h-32 rounded-lg"
-              />
-              <div className="flex flex-col ml-4 justify-center gap-8">
-                <p className="font-medium text-lg">{product.name}</p>
-                <div className="text-gray gap-2">
-                  <p className="text-grey font-light text-base">Розмір: {product.size}</p>
-                  <p className="text-grey font-light text-base">Колір: {product.color}</p>
-                  <p className="flex flex-row text-gray font-light text-base">
-                    Кількість:{" "}
-                    <img
-                      className="w-3 mr-2 rotate-180 ml-4 mr-4 cursor-pointer"
-                      src={ArrowDown}
-                      alt="arrow down"
-                      onClick={() => handleQuantityChange(product.id, "decrement")}
-                    />{" "}
-                    {product.quantity}{" "}
-                    <img
-                      className="w-3 mr-2 rotate-0 ml-4 cursor-pointer"
-                      src={ArrowDown}
-                      alt="arrow up"
-                      onClick={() => handleQuantityChange(product.id, "increment")}
-                    />{" "}
-                  </p>
-                </div>
-              </div>
-              </div>
-              <p className="text-gray text-lg">{product.price} </p>
-            </div>
-            <hr className="text-gray mt-3 mb-3"/>
+              {cart.map((product) => (
+                <React.Fragment key={product.id}>
+                  <div className="flex flex-row justify-between text-custom-black">
+                    <div className="flex flex-row mr-20">
+                      <img
+                        src={product.image.order}
+                        alt="user order"
+                        className="w-32 h-32 rounded-lg"
+                      />
+                      <div className="flex flex-col ml-4 justify-center gap-8">
+                        <p className="font-medium text-lg">{product.name}</p>
+                        <div className="text-gray gap-2">
+                          <p className="text-grey font-light text-base">Розмір: {product.size}</p>
+                          <p className="text-grey font-light text-base">Колір: {product.color}</p>
+                          <p className="flex flex-row text-gray font-light text-base">
+                            Кількість:{" "}
+                            <img
+                              className="w-3 mr-2 rotate-180 ml-4 mr-4 cursor-pointer"
+                              src={ArrowDown}
+                              alt="arrow down"
+                              onClick={() => handleQuantityChange(product.id, "decrement")}
+                            />{" "}
+                            {product.quantity}{" "}
+                            <img
+                              className="w-3 mr-2 rotate-0 ml-4 cursor-pointer"
+                              src={ArrowDown}
+                              alt="arrow up"
+                              onClick={() => handleQuantityChange(product.id, "increment")}
+                            />{" "}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex flex-col justify-between items-end">
+                      <p className="text-gray text-lg">{product.price} </p>
+                      <button onClick={() => handleRemoveProduct(product.id)}>
+                        <img
+                          className="w-5 h-5 cursor-pointer"
+                          src={DeleteIcon}
+                          alt="delete"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                  <hr className="text-gray mt-3 mb-3"/>
+                </React.Fragment>
+              ))}
             </>
-          ))}
+          )}
         </div>
         <hr className="mt-3 mb-6 text-blue" />
         <div className="flex flex-row justify-between  text-custom-black">
@@ -142,7 +159,7 @@ const UserOrder = () => {
         <hr className="mt-4 mb-4" />
         <div className="flex flex-row justify-between">
           <p className="font-semibold text-xl text-custom-black font-raleway">Всього:</p>
-          <p className="font-semibold text-xl text-custom-black">900 грн</p>
+          <p className="font-semibold text-xl text-custom-black">{calculateTotalPrice()} грн</p>
         </div>
       </div>
     </div>

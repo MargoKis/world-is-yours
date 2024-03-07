@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CartItem from "../components/cart/CartItem";
 import Button from "../components/common/Button";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [cart, setCart] = useState([
@@ -63,19 +64,15 @@ const Cart = () => {
       const updatedCart = prevCart.map((product) => {
         if (product.id === id) {
           let newQuantity = product.quantity;
-
           if (operation === "increment" && newQuantity < 100) {
             newQuantity++;
           } else if (operation === "decrement" && newQuantity > 1) {
             newQuantity--;
           }
-
           return { ...product, quantity: newQuantity };
         }
-
         return product;
       });
-
       return updatedCart;
     });
   };
@@ -90,6 +87,27 @@ const Cart = () => {
   const handleRemoveAllItems = () => {
     setCart([]);
   };
+
+  if (cart.length === 0) {
+    return (
+      <div className="w-full flex justify-center items-center flex-col mt-20 mb-60">
+        <p className="font-raleway font-semibold text-4xl mb-20">Кошик</p>
+        <p className="font-raleway text-18px font-semibold text-center text-gray mt-10">
+          Кошик порожній. <br /> Додайте товари, які вас цікавлять!
+        </p>
+        <Link to="/">
+          <Button
+            classNameBtn="w-22 bg-gray-dark mt-6 p-4 border rounded-xl font-bold text-18px text-white"
+            nameBtn="submitForm"
+            valueBtn="submit"
+            type="submit"
+          >
+            На головну сторінку
+          </Button>
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <>

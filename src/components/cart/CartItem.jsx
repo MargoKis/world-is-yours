@@ -26,7 +26,7 @@ const CartItem = ({ product, handleQuantityChange, handleRemoveItem }) => {
               <p className="mt-3 flex flex-row text-gray font-normal text-base">
                 Кількість:{" "}
                 <img
-                  className="w-3 mr-2 rotate-180 ml-4 mr-4 cursor-pointer"
+                  className={`w-3 mr-2 rotate-180 ml-4 mr-4 cursor-pointer ${product.quantity === 1 ? 'text-gray' : 'text-black'}`}
                   src={ArrowDown}
                   alt="arrow down"
                   onClick={() => handleQuantityChange(product.id, "decrement")}
