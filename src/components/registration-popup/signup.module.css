@@ -12,7 +12,7 @@
   align-items: center;
 }
 
-.popup {
+.popup, .popupNewsLetter {
   background-color: rgb(255, 255, 255);
   padding: 20px;
   border-radius: 15px;
@@ -20,7 +20,14 @@
   width: 400px;
 }
 
-.title {
+.popupNewsLetter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: auto;
+}
+
+.title, .titleNews {
   color: black;
   font-size: 20px;
   text-align: center;
@@ -28,12 +35,20 @@
   font-weight: 600;
   margin-bottom: 10%;
 }
+.titleNews {
+  margin-bottom: 6%;
+  text-align: left;
+}
 
-.titleWrap {
+.titleWrap, .titleWrapNews {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
+}
+
+.textNews{
+  text-align: left;
 }
 
 .closeIcon {
@@ -73,7 +88,8 @@
 }
 
 .btn,
-.remind {
+.remind,
+.btnNews {
   color: rgb(255, 255, 255);
   box-sizing: border-box;
   border: 1px solid #202020;
@@ -87,6 +103,12 @@
   width: 86%;
   margin-bottom: 10%;
   margin-top: 30px;
+}
+
+.btnNews {
+  margin-top: 0px;
+  margin-bottom: 4%;
+  width: 70%;
 }
 
 .remind {
@@ -105,13 +127,19 @@
   margin-top: 13px;
 }
 
-.btnWrap {
+.btnWrap, .btnWrapNews {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   gap: 40px;
+}
+
+.btnWrapNews {
+  justify-content: start;
+  align-items: start;
+  text-align: start;
 }
 
 
@@ -125,11 +153,11 @@
 }
 
 .label {
-  color: gray;
+  color: #515151;
   display: flex;
   justify-content: flex-start;
   width: 86%;
-  /* margin-bottom: 10px; */
+  margin-bottom: 10px;
 }
 
 .inputContainer {
@@ -137,7 +165,6 @@
   position: relative;
   width: 86%;
   justify-content: center;
-
 }
 
 .error {
@@ -184,3 +211,18 @@
   margin-left: 10px;
   cursor: pointer;
 }
+
+
+/* for password recovery */
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  width: 30%;
+  margin: auto;
+}
+
+
+
