@@ -4,7 +4,7 @@ import Input from "../common/Input";
 import closeIcon from "../../assets/icons/icon-close.svg";
 import Button from "../common/Button";
 
-const ChatPopup = ({ onClose, isOpen }) => {
+const ChatPopup = ({ onClose }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [nameError, setNameError] = useState("");
@@ -73,7 +73,8 @@ const ChatPopup = ({ onClose, isOpen }) => {
     }
   };
 
-  const validateSignUpForm = () => {
+  const validateSignUpForm = (e) => {
+    e.preventDefault();
     resetErrors();
 
     if (!nameSurnameRegex.test(name)) {
@@ -107,9 +108,8 @@ const ChatPopup = ({ onClose, isOpen }) => {
     <>
       <div className={styles.overlay} onClick={onClose}>
         <div
-          className={`${styles.popup} ${isOpen ? styles.open : ""}`}
+          className={`${styles.popup}`}
           onClick={(e) => e.stopPropagation()}
-          style={{ top: "8%", left: 520 }}
         >
           <div className={styles.titleWrap}>
             <h2 className={styles.title}>Зв’яжіться з нами!</h2>
@@ -120,7 +120,7 @@ const ChatPopup = ({ onClose, isOpen }) => {
               onClick={onClose}
             />
           </div>
-          <form className={styles.form} onSubmit={(e) => { e.preventDefault(); validateSignUpForm(); }}>
+          <form className={styles.form} onSubmit={validateSignUpForm}>
             <label
               htmlFor="name"
               className="mb-1 ml-1 text-textLight font-medium font-raleway text-sm"
@@ -205,8 +205,7 @@ const ChatPopup = ({ onClose, isOpen }) => {
 
             <Button
               classNameBtn={styles.btn}
-              type="button"
-              onClick={validateSignUpForm}
+              type="submit"
             >
               Відправити
             </Button>
@@ -218,3 +217,4 @@ const ChatPopup = ({ onClose, isOpen }) => {
 };
 
 export default ChatPopup;
+

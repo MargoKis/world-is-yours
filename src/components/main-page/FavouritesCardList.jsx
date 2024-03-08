@@ -29,7 +29,7 @@ const FavoritesCardList = () => {
   }, []);
 
   return (
-    <div className="text-grayLight" id="sectionFav">
+    <div className="text-grayLight">
       <h1 className="flex items-center justify-center mt-20 mb-10 font-raleway text-custom-black text-30px">
         {/* Наші фаворити */}
         {t('Our favourites')}

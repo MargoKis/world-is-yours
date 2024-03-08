@@ -12,6 +12,11 @@ import DonateBanner from "./components/common/DonateBanner";
 import Header from "./components/common/Header";
 import Loader from "./components/common/Loader";
 import Profile from "./pages/Profile";
+import Cart from "./pages/Cart";
+import PasswordRecovery from "./pages/PasswordRecovery";
+import ProductPage from "./pages/ProductPage";
+import Contacts from "./pages/Contacts";
+import CategoryPage from "./pages/CategoryPage";
 import { updateUser } from "./redux/userSlice";
 
 const PaymentPage = lazy(() => import("./pages/PaymentPage"));
@@ -85,9 +90,14 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/" element={<MainPage />} />
+        <Route path="/password-recovery" element={<PasswordRecovery/>} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/info-help" element={<InfoPayment />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/categories" element={<CategoryPage/>} />
+        <Route path="/cart" element={<Cart/>} />
+        <Route path="/contacts" element={<Contacts/>} />
+        <Route path="/product" element={<ProductPage/>} />
         <Route path="*" element={<NotFound404 />} />
       </Routes>
       <Footer />
