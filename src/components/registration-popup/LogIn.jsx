@@ -17,7 +17,7 @@ import openEye from '../../assets/icons/icon-openEye.svg';
 import closeEye from '../../assets/icons/icon-Eye-off.svg';
 
 
-import api from "../../api/api";
+import {api2} from "../../api/api";
 import { useDispatch } from "react-redux";
 import { login,updateUser } from "../../redux/userSlice";
 // import {auth, facebookProvider, googleProvider} from './config'
@@ -119,9 +119,18 @@ const LogIn = ({ onClose, openSignUp, openRemindPass, openSuccess }) => {
   }
 
 
+
+  const setCookie = (name, object, daysToExpire) => {
+    const expires = new Date();
+    expires.setTime(expires.getTime() + daysToExpire * 24 * 60 * 60 * 1000);
+    document.cookie = `${name}=${encodeURIComponent(
+      JSON.stringify(object)
+    )};expires=${expires.toUTCString()};path=/`;
+  }
+
+
   // SIgnIn status answear
   const handleSignInStatus = (status , signInResult=null) => {
-    console.log(signInResult.data);
     // status message
     const statusMessages = {
       200: 'SignIn successful',
@@ -135,15 +144,17 @@ const LogIn = ({ onClose, openSignUp, openRemindPass, openSuccess }) => {
       // status
       switch (status) {
         case 200:
-          // openSuccess();
+          openSuccess();
           dispatch(updateUser(signInResult.data));
+          setCookie("user" , signInResult.data, 7 )
+          
           dispatch(login());
 
 
 
           break;
         case 400:
-          // console.log("already exist");
+          console.log("incorect");
           break;
 
         default:
@@ -164,7 +175,7 @@ const LogIn = ({ onClose, openSignUp, openRemindPass, openSuccess }) => {
         email: userEmail,
       };
 
-      const signInResult = await api.signIn(userData);
+      const signInResult = await api2.signIn(userData);
 
       handleSignInStatus(signInResult.status ,signInResult);
       // console.log('signIn successful:', signInResult);

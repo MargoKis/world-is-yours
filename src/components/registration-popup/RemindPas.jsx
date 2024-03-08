@@ -8,7 +8,7 @@ import useTranslation from "../../locale/locales";
 
 import attantionIcon from '../../assets/icons/icon-attantion.svg';
 
-import api from "../../api/api";
+import {api2} from "../../api/api";
 
 
 const RemindPas = ({ onClose, openLogin, openSuccess }) => {
@@ -121,7 +121,7 @@ const RemindPas = ({ onClose, openLogin, openSuccess }) => {
         email: userEmail,
       };
 
-      const resetPasswordResult = await api.resetPassword(userData);
+      const resetPasswordResult = await api2.resetPassword(userData);
       handleResetPasswordStatus(resetPasswordResult.status);
       // console.log('signIn successful:', signInResult);
     } catch (error) {

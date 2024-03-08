@@ -1,8 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
+import config from "../config/config";
 
-const BASE_URL = 'http://localhost:8000/api';
+const BASE_URL = "http://localhost:8000/api";
 
-const api = {
+const api2 = {
   // language switch
   getLanguage: async (code) => {
     try {
@@ -20,20 +21,21 @@ const api = {
       // console.log('signUp success.  status:', response.status);
       return response;
     } catch (error) {
-      console.log('Error registering user in api:', error);
+      console.log("Error registering user in api:", error);
       throw error;
     }
   },
 
-
   signIn: async (userData) => {
     try {
-      const response = await axios.post(`${BASE_URL}/auth/`, { username: userData.email, password: userData.password });
+      const response = await axios.post(`${BASE_URL}/auth/`, {
+        username: userData.email,
+        password: userData.password,
+      });
       // console.log('signIn success  status:', response.status);
       return response;
-
     } catch (error) {
-      console.error('Error login user in api:', error);
+      console.error("Error login user in api:", error);
       throw error;
     }
   },
@@ -47,10 +49,43 @@ const api = {
       throw error;
     }
   },
-
-
-
-
 };
 
-export default api;
+const api = axios.create({
+  baseURL: config.BASE_URL,
+});
+
+api.interceptors.request.use(
+  (config) => {
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) {
+        return JSON.parse(decodeURIComponent(parts.pop().split(";").shift()));
+      }
+    }
+    const user = getCookie("user");
+    const token = user.token;
+    if (token) {
+      config.headers["Authorization"] = `Token ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+api.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      console.error("Unauthorized error: Access is denied due to invalid credentials.");
+    }
+    return Promise.reject(error);
+  }
+);
+
+export { api2, api };

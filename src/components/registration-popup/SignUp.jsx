@@ -11,31 +11,25 @@ import Apple from "../../assets/icons/media-icons/apple-color.svg";
 import { facebookProvider, googleProvider } from "./firebase/provider";
 import socialMediaAuth from "./firebase/auth";
 
-import attantionIcon from '../../assets/icons/icon-attantion.svg';
-import openEye from '../../assets/icons/icon-openEye.svg';
-import closeEye from '../../assets/icons/icon-Eye-off.svg';
+import attantionIcon from "../../assets/icons/icon-attantion.svg";
+import openEye from "../../assets/icons/icon-openEye.svg";
+import closeEye from "../../assets/icons/icon-Eye-off.svg";
 // import {auth } from './firebase/config'
 // import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import useTranslation from "../../locale/locales";
-import api from "../../api/api";
-
+import {api2} from "../../api/api";
 
 import { useDispatch, useSelector } from "react-redux";
-import { login , updateUser } from "../../redux/userSlice";
+import { login, updateUser } from "../../redux/userSlice";
 
 const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
-
   const dispatch = useDispatch();
-
 
   const t = useTranslation();
 
-
-
   const handleOnClick = async (provider) => {
-    await socialMediaAuth(provider)
-  }
-
+    await socialMediaAuth(provider);
+  };
 
   // inputs
   const [username, setUsername] = useState("");
@@ -43,88 +37,95 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
 
-  // errors 
+  // errors
   const [nameError, setNameError] = useState("");
   const [surnameError, setSurnameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-
 
   // states
 
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   console.log(isAuthenticated);
 
-
   // password visible
   const [isPasswordVisible, setPasswordVisible] = useState(false);
   // is validation on
   const isValidationOnRef = useRef(false);
 
-
   // name validation
   const nameValidation = (name) => {
     if (isValidationOnRef.current) {
       if (!name.trim()) {
-        setNameError('Ім\'я обов\'язкове');
+        setNameError("Ім'я обов'язкове");
+        return false;
       } else if (/^\s/.test(name)) {
-        setNameError('Пароль не може починатися з пробілу');
+        setNameError("Пароль не може починатися з пробілу");
       } else if (name.length < 2 || name.length > 32) {
-        setNameError('Ім\'я повинно бути від 2 до 32 символів');
+        setNameError("Ім'я повинно бути від 2 до 32 символів");
+        return false;
       } else if (!/^[a-zA-Z' -]+$/.test(name)) {
-        setNameError('Ім\'я містить не припустимі символи');
+        setNameError("Ім'я містить не припустимі символи");
+        return false;
       } else {
         setNameError(null);
         return true;
       }
     }
-  }
-
+  };
 
   // surname validation
   const surnameValidation = (surname) => {
     if (isValidationOnRef.current) {
       if (!surname.trim()) {
-        setSurnameError('Прізвище обов\'язкове');
+        setSurnameError("Прізвище обов'язкове");
+        return false;
       } else if (/^\s/.test(surname)) {
-        setSurnameError('Пароль не може починатися з пробілу');
+        setSurnameError("Пароль не може починатися з пробілу");
+        return false;
       } else if (surname.length < 2 || surname.length > 32) {
-        setSurnameError('Прізвище повинно бути від 2 до 32 символів');
+        setSurnameError("Прізвище повинно бути від 2 до 32 символів");
+        return false;
       } else if (!/^[a-zA-Z' -]+$/.test(surname)) {
-        setSurnameError('Прізвище містить не припустимі символи');
+        setSurnameError("Прізвище містить не припустимі символи");
+        return false;
       } else {
         setSurnameError(null);
         return true;
       }
     }
-  }
-
-
+  };
 
   // Email validation
   const emailValidation = (email) => {
     if (isValidationOnRef.current) {
       if (!email.trim()) {
-        setEmailError('Емейл обов\'язковий');
+        setEmailError("Емейл обов'язковий");
+        return false;
         // empty
       } else if (/^\s/.test(email)) {
-        setEmailError('Пароль не може починатися з пробілу');
+        setEmailError("Пароль не може починатися з пробілу");
+        return false;
       } else if (email.length < 5 || email.length > 32) {
-        setEmailError('Не вірно введений емейл');
+        setEmailError("Не вірно введений емейл");
+        return false;
         // leght
       } else if (!/@/.test(email) || !/\./.test(email)) {
-        setEmailError('Не вірно введений емейл');
+        setEmailError("Не вірно введений емейл");
+        return false;
         // have @ and .
       } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+$/.test(email)) {
-        setEmailError('Не вірно введений емейл');
+        setEmailError("Не вірно введений емейл");
+        return false;
         // incorrect characters
-      } else if (!/[a-zA-Z]{2,}$/.test(email.split('@')[1])) {
-        setEmailError('Мінімум дві літери після крапки');
+      } else if (!/[a-zA-Z]{2,}$/.test(email.split("@")[1])) {
+        setEmailError("Мінімум дві літери після крапки");
+        return false;
         // At least two letters after the period
       } else if (/@\./.test(email)) {
         setEmailError('Символ "." не може йти одразу після символу "@"');
+        return false;
         // The "." character cannot follow the "@" character.
-
       } else {
         setEmailError(null);
         return true;
@@ -132,27 +133,27 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
     }
   };
 
-
-
   // password validation
   const passwordValidation = (password) => {
     if (isValidationOnRef.current) {
       if (!password.trim()) {
-        setPasswordError('Пароль обов\'язковий');
+        setPasswordError("Пароль обов'язковий");
+        return false;
       } else if (/^\s/.test(password)) {
-        setPasswordError('Пароль не може починатися з пробілу');
+        setPasswordError("Пароль не може починатися з пробілу");
+        return false;
       } else if (password.length < 6 || password.length > 32) {
-        setPasswordError('Пароль повиннен бути від 2 до 32 символів');
+        setPasswordError("Пароль повиннен бути від 2 до 32 символів");
+        return false;
       } else if (!/^[a-zA-Z0-9@#$%^&_+]+$/.test(password)) {
-        setPasswordError('Пароль містить не припустимі символи');
+        setPasswordError("Пароль містить не припустимі символи");
+        return false;
       } else {
         setPasswordError(null);
         return true;
       }
     }
   };
-
-
 
   // valid all
   const validateSignUpForm = () => {
@@ -169,21 +170,16 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
     e.preventDefault();
     isValidationOnRef.current = true;
     if (validateSignUpForm()) {
-      handleRegistration()
+      handleRegistration();
     }
-  }
-
-
-
-
-
+  };
 
   // Registration status answear
   const handleRegistrationStatus = (status) => {
     // status message
     const statusMessages = {
-      201: 'Registration successful',
-      400: 'User already exists',
+      201: "Registration successful",
+      400: "User already exists",
     };
 
     if (statusMessages.hasOwnProperty(status)) {
@@ -193,7 +189,7 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
       // status
       switch (status) {
         case 201:
-          handleSignIn();        
+          handleSignIn();
 
           break;
         case 400:
@@ -209,8 +205,6 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
     }
   };
 
-
-
   const handleRegistration = async () => {
     try {
       const userData = {
@@ -220,38 +214,29 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
         email: userEmail,
       };
 
-      const registrationResult = await api.signUp(userData);
+      const registrationResult = await api2.signUp(userData);
 
       handleRegistrationStatus(registrationResult.status);
       // console.log('Registration successful:', registrationResult);
-
-
     } catch (error) {
-      // api signUp error
+      // api2 signUp error
       if (error.response && error.response.status) {
-        console.log(`Error during registration in signUp. status: ${error.response.status}`);
+        console.log(
+          `Error during registration in signUp. status: ${error.response.status}`
+        );
         handleRegistrationStatus(error.response.status);
       } else {
-        console.error('No server response error in SignUp', error);
+        console.error("No server response error in SignUp", error);
       }
-
-
-
     }
   };
 
-
-
-
-
-
-
   // SIgnIn status answear
-  const handleSignInStatus = (status , signInResult=null) => {
+  const handleSignInStatus = (status, signInResult = null) => {
     // status message
     const statusMessages = {
-      200: 'SignIn successful',
-      400: 'status 400',
+      200: "SignIn successful",
+      400: "status 400",
     };
 
     if (statusMessages.hasOwnProperty(status)) {
@@ -266,8 +251,6 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
           // dispatch(signInResult)
           dispatch(login());
 
-
-
           break;
         case 400:
           // console.log("already exist");
@@ -282,8 +265,6 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
     }
   };
 
-
-  
   const handleSignIn = async () => {
     try {
       const userData = {
@@ -291,32 +272,23 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
         email: userEmail,
       };
 
-      const signInResult = await api.signIn(userData);
+      const signInResult = await api2.signIn(userData);
 
-      handleSignInStatus(signInResult.status ,signInResult);
-      console.log('signIn successful:', signInResult);
-
-
+      handleSignInStatus(signInResult.status, signInResult);
+      console.log("signIn successful:", signInResult);
     } catch (error) {
-      // api signUp error
+      // api2 signUp error
       if (error.response && error.response.status) {
         console.log(`Error during login in signIn. status: ${error.response.status}`);
         handleSignInStatus(error.response.status);
       } else {
-        console.error('No server response error in signIn', error);
+        console.error("No server response error in signIn", error);
       }
     }
   };
-  
-
-
-
-
-
 
   return (
     <>
-
       <div className={styles.overlay} onClick={onClose}>
         <div
           className={`${styles.popup} ${styles.open}`}
@@ -331,15 +303,12 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
               onClick={onClose}
             />
           </div>
-          <form noValidate
-            className={styles.form}
-            onSubmit={(e) => submit(e)}
-          >
-
-
+          <form noValidate className={styles.form} onSubmit={(e) => submit(e)}>
             {/* username */}
             <div className={styles.container}>
-              <label className={styles.label} htmlFor="name">{t("Name")}</label>
+              <label className={styles.label} htmlFor="name">
+                {t("Name")}
+              </label>
               <div className={styles.inputContainer}>
                 <Input
                   classNameInput={styles.input}
@@ -355,15 +324,17 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
                   required
                 />
                 {nameError ? <div className={styles.error}>{nameError}</div> : null}
-                {nameError ? <img className={styles.attantion} src={attantionIcon} alt="attantion" /> : null}
+                {nameError ? (
+                  <img className={styles.attantion} src={attantionIcon} alt="attantion" />
+                ) : null}
               </div>
             </div>
 
-
-
             {/* surname */}
             <div className={styles.container}>
-              <label className={styles.label} htmlFor="surname">{t("Surname")}</label>
+              <label className={styles.label} htmlFor="surname">
+                {t("Surname")}
+              </label>
               <div className={styles.inputContainer}>
                 <Input
                   classNameInput={styles.input}
@@ -379,15 +350,17 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
                   required
                 />
                 {surnameError ? <div className={styles.error}>{surnameError}</div> : null}
-                {surnameError ? <img className={styles.attantion} src={attantionIcon} alt="attantion" /> : null}
+                {surnameError ? (
+                  <img className={styles.attantion} src={attantionIcon} alt="attantion" />
+                ) : null}
               </div>
             </div>
 
-
-
             {/* email */}
             <div className={styles.container}>
-              <label className={styles.label} htmlFor="email">{t("Email")}</label>
+              <label className={styles.label} htmlFor="email">
+                {t("Email")}
+              </label>
               <div className={styles.inputContainer}>
                 <Input
                   classNameInput={styles.input}
@@ -403,14 +376,17 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
                   required
                 />
                 {emailError ? <div className={styles.error}>{emailError}</div> : null}
-                {emailError ? <img className={styles.attantion} src={attantionIcon} alt="attantion" /> : null}
+                {emailError ? (
+                  <img className={styles.attantion} src={attantionIcon} alt="attantion" />
+                ) : null}
               </div>
             </div>
 
-
             {/* password */}
             <div className={styles.container}>
-              <label className={styles.label} htmlFor="password">{t("Password")}</label>
+              <label className={styles.label} htmlFor="password">
+                {t("Password")}
+              </label>
               <div className={styles.passwordContainer}>
                 <div className={styles.inputContainer}>
                   <Input
@@ -426,14 +402,28 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
                     }}
                     required
                   />
-                  {passwordError ? <div className={styles.error}>{passwordError}</div> : null}
-                  {passwordError ? <img className={styles.attantion} src={attantionIcon} alt="attantion" /> : null}
+                  {passwordError ? (
+                    <div className={styles.error}>{passwordError}</div>
+                  ) : null}
+                  {passwordError ? (
+                    <img
+                      className={styles.attantion}
+                      src={attantionIcon}
+                      alt="attantion"
+                    />
+                  ) : null}
                 </div>
                 {/* icon eyes */}
-                <div className={styles.eyesIcon} onClick={() => setPasswordVisible(!isPasswordVisible)}>
-                  <img className="w-24px h-24px" src={isPasswordVisible ? openEye : closeEye} alt="openEyes" />
+                <div
+                  className={styles.eyesIcon}
+                  onClick={() => setPasswordVisible(!isPasswordVisible)}
+                >
+                  <img
+                    className="w-24px h-24px"
+                    src={isPasswordVisible ? openEye : closeEye}
+                    alt="openEyes"
+                  />
                 </div>
-
               </div>
             </div>
 
@@ -459,11 +449,7 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
                 alt="icon google"
                 onClick={() => handleOnClick(googleProvider)}
               />
-              <img
-                src={Apple}
-                className={styles.mediaIcons}
-                alt="icon apple"
-              />
+              <img src={Apple} className={styles.mediaIcons} alt="icon apple" />
             </div>
 
             <p style={{ color: "#202020" }}>
@@ -482,7 +468,6 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
           </form>
         </div>
       </div>
-
     </>
   );
 };
