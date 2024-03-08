@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
 
 from user.tasks import send_email_verification
@@ -31,7 +32,8 @@ class UserCreateSerializer(serializers.ModelSerializer):
         email = data["email"]
         if UserModel.objects.filter(email=email).exists():
             raise serializers.ValidationError("Email is already registered.")
-
+        if data['password']:
+            validate_password(data['password'])
         return data
 
     def create(self, validated_data):
