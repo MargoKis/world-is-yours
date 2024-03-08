@@ -1,18 +1,24 @@
+import logging
+
 from django.db import models
 from user.models import User
 from product.models import Basket
 
+logger = logging.getLogger('order_logger')
+
 
 class Order(models.Model):
-    CREATED = 0
-    PAID = 1
-    ON_WAY = 2
-    DELIVERED = 3
+    CREATED = 1
+    PAID = 2
+    ON_WAY = 3
+    DELIVERED = 4
+    CANCELED = 0
     STATUSES = (
         (CREATED, 'Created'),
         (PAID, 'Paid'),
         (ON_WAY, 'On way'),
         (DELIVERED, 'Delivered'),
+        (CANCELED, 'Canceled')
     )
 
     first_name = models.CharField(max_length=64)
@@ -33,6 +39,11 @@ class Order(models.Model):
             'purchased_items': [basket.de_json() for basket in baskets],
             'total_sum': float(baskets.total_sum()),
         }
+        logger.info({
+            'order_id': self.id,
+            'user': self.initiator,
+            'total_sum': float(baskets.total_sum()),
+        })
         baskets.delete()
         self.save()
 

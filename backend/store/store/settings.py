@@ -14,6 +14,9 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 
+from pythonjsonlogger.jsonlogger import JsonFormatter
+
+from store.logging_formatter import CustomJsonFormatter
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -55,6 +58,7 @@ INSTALLED_APPS = [
     'product',
     'translation',
     'order',
+    'logs',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +72,54 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
 ]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+
+    'formatters': {
+        'main_format': {
+            'format': '{asctime} - {levelname} - {module} - {filename} - {message}',
+            'style': "{",
+        },
+        'json_formatter': {
+            '()': CustomJsonFormatter
+        }
+    },
+
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'main_format'
+        },
+        'user_info': {
+            'class': 'logging.FileHandler',
+            'formatter': 'json_formatter',
+            'filename': 'user.info.log'
+        },
+        'order_info': {
+            'class': 'logging.FileHandler',
+            'formatter': 'json_formatter',
+            'filename': 'order.info.log'
+        },
+    },
+
+    'loggers': {
+        'user_logger': {
+            'handlers': ['console', 'user_info'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'order_logger': {
+            'handlers': ['order_info'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
+
+# GeoIP settings
+GEOIP_PATH = BASE_DIR / 'geo_db'
 
 ROOT_URLCONF = 'store.urls'
 

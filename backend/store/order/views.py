@@ -67,6 +67,8 @@ class OrderCreateView(CreateAPIView):
             return HttpResponseRedirect(checkout_session.url, status=HTTPStatus.SEE_OTHER)
         except EmptyBasketException:
             return Response({'message': 'Basket history cannot be empty'}, status=status.HTTP_400_BAD_REQUEST)
+        except stripe.error.InvalidRequestError:
+            return Response({'message': 'Please, provide items with stripe_price_id'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @csrf_exempt
