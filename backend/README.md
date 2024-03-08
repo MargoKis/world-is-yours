@@ -285,6 +285,12 @@ API works on [localhost:8000](http://localhost:8000/)
 - - **Description:** Switch content language. Available languages - 'uk', 'en'.
 - **Protection:** None
 
+### 13 Logs
+- **Endpoint:** `/logs/`
+- **Method:** `POST`
+- - **Description:** Post user information with required attr 'platform'
+- **Protection:** None
+
 ## Authentication and Authorization
 - **Authentication:** Token-based (OAuth 2.0).
 - **Authorization:** Different user types have different access rights.
