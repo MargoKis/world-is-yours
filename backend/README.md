@@ -279,17 +279,34 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Description:** Delete the specified wishlist.
 - **Protection:** IsAuthenticated
 
-### 12 Language Switcher
+## 12 Language Switcher
 - **Endpoint:** `/api/language/<str:language>/`
 - **Method:** `GET`
 - - **Description:** Switch content language. Available languages - 'uk', 'en'.
 - **Protection:** None
 
-### 13 Logs
+## 13 Logs
+### 13.1 Post user logs
 - **Endpoint:** `/logs/`
 - **Method:** `POST`
-- - **Description:** Post user information with required attr 'platform'
+- **Description:** Post user information with required attr 'platform'
 - **Protection:** None
+
+### 13.2 User logs list
+- **Endpoint:** `/logs/users/`
+- **Method:** `GET`
+- **Description:** Get user info logs by period (day, month, year)
+- **Protection:** IsAdmin
+- **Parameters:**
+  - interval (allowed values - "day", "month", "year")
+
+### 13.3 Order logs list
+- **Endpoint:** `/logs/orders/`
+- **Method:** `GET`
+- **Description:** Get order info logs by period (day, month, year)
+- **Protection:** IsAdmin
+- **Parameters:**
+  - interval (allowed values - "day", "month", "year")
 
 ## Authentication and Authorization
 - **Authentication:** Token-based (OAuth 2.0).
