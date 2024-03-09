@@ -51,11 +51,11 @@ const api2 = {
   },
 };
 
-const api = axios.create({
+const $api = axios.create({
   baseURL: config.BASE_URL,
 });
 
-api.interceptors.request.use(
+$api.interceptors.request.use(
   (config) => {
     function getCookie(name) {
       const value = `; ${document.cookie}`;
@@ -66,8 +66,9 @@ api.interceptors.request.use(
     }
     const user = getCookie("user");
     const token = user.token;
+    console.log("token==="+token);
     if (token) {
-      config.headers["Authorization"] = `Token ${token}`;
+      // config.headers["Authorization"] = `Token ${token}`;
     }
     return config;
   },
@@ -76,7 +77,7 @@ api.interceptors.request.use(
   }
 );
 
-api.interceptors.response.use(
+$api.interceptors.response.use(
   (response) => {
     return response;
   },
@@ -88,4 +89,4 @@ api.interceptors.response.use(
   }
 );
 
-export { api2, api };
+export { api2, $api };
