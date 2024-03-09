@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ArrowDown from "../../assets/icons/arrow-up.svg";
 
@@ -6,15 +6,12 @@ const CountryDropdown = ({ onSelectCountry }) => {
   const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        const response = await axios.get("https://restcountries.com/v3.1/all");
-        const countriesData = response.data.map(
-          (country) => country.name.common
-        );
+        const response = await axios.get("https://countriesnow.space/api/v0.1/countries");
+        const countriesData = response.data.data.map((country) => country.country);
         setCountries(countriesData.sort());
       } catch (error) {
         console.error("Error fetching countries:", error);
@@ -34,19 +31,6 @@ const CountryDropdown = ({ onSelectCountry }) => {
     setIsOpen(!isOpen);
   };
 
-  const handleClickOutside = (event) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-      setIsOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
-
   return (
     <>
       <label
@@ -56,7 +40,6 @@ const CountryDropdown = ({ onSelectCountry }) => {
         Країна
       </label>
       <div
-        ref={dropdownRef}
         className={`select ${
           isOpen ? "active" : ""
         } font-light border rounded-xl max-w-md p-3 border-black mb-4`}
@@ -78,9 +61,9 @@ const CountryDropdown = ({ onSelectCountry }) => {
           className="select-options font-light z-50 mt-4 bg-white max-h-48 overflow-y-auto"
           style={{ display: isOpen ? "block" : "none" }}
         >
-          {countries.map((country) => (
+          {countries.map((country, index) => (
             <li
-              key={country}
+              key={`${country}-${index}`}
               onClick={() => handleCountryChange(country)}
               className={`border p-2 rounded-xl mt-2 border-black cursor-pointer ${
                 selectedCountry === country ? "is-selected" : ""
