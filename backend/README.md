@@ -279,13 +279,13 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Description:** Delete the specified wishlist.
 - **Protection:** IsAuthenticated
 
-## 12 Language Switcher
+## 12. Language Switcher
 - **Endpoint:** `/api/language/<str:language>/`
 - **Method:** `GET`
 - - **Description:** Switch content language. Available languages - 'uk', 'en'.
 - **Protection:** None
 
-## 13 Logs
+## 13. Logs
 ### 13.1 Post user logs
 - **Endpoint:** `/logs/`
 - **Method:** `POST`
