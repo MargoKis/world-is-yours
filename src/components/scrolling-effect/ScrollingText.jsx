@@ -16,7 +16,7 @@ function ScrollingText() {
 
       
       const words = char.innerText.split(" ");
-      char.innerHTML = words.map((word) => `<span class="word">${word}</span>`).join(" ");
+      char.innerHTML = words.map((word) => `<span className="word">${word}</span>`).join(" ");
 
       const wordSpans = char.querySelectorAll(".word");
 

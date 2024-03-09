@@ -1,45 +1,38 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../common/Card";
-import axios from "axios";
 import useTranslation from "../../locale/locales";
-
+import { $api } from "../../api/api";
+import Container from "../common/container";
 const FavoritesCardList = () => {
   const t = useTranslation();
 
-
   const [products, setProducts] = useState([]);
- 
 
   useEffect(() => {
-    const API = "http://localhost:8000/api/products/";
+    const fetchData = async () => {
+      try {
+        const response = await $api.get("/api/products/");
+        // #devnote add favorite fiter
+        setProducts(response.data.slice(0, 8));
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-    axios
-      .get(API)
-      .then((response) => {
-        const favourites = response.data;
-        const categoryOneProducts = favourites.filter(
-          (item) => item.category === 1
-        ); 
-        const limitedFavorites = categoryOneProducts.slice(0, 8);
-        setProducts(limitedFavorites);
-      })
-      .catch((error) => {
-        console.error("Ошибка при получении данных:", error);
-      });
+    fetchData();
   }, []);
 
   return (
-    <div className="text-grayLight" id="sectionFav">
+    <Container className="justify-center text-grayLight" id="sectionFav">
       <h1 className="flex items-center justify-center mt-20 mb-10 font-raleway text-custom-black text-30px">
-        {/* Наші фаворити */}
-        {t('Our favourites')}
+        {t("Our favourites")}
       </h1>
-      <div className="flex flex-wrap justify-around mb-20 mx-6">
+      <div className="grid grid-flow-row-dense grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center">
         {products.map((item, index) => (
           <Card key={index} data={item} />
         ))}
       </div>
-    </div>
+    </Container>
   );
 };
 
