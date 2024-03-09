@@ -5,7 +5,6 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, DestroyAPIView
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
-
 from product import serializers
 from product.permissions import CanChangeReview
 from product.models import Product, ProductCategory, ProductSubCategory, ProductReview, ProductSpecs, Wishlist, Basket
