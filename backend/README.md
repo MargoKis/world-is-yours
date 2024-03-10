@@ -151,6 +151,10 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Method:** `GET`
 - **Description:** List all products.
 - **Protection:** None
+- **Parameters:**
+  - page (page number for the displayed products)
+  - page_size (number of products displayed)
+  - ordering (sorting by date and price. Available values: price/-price, created_at/-created_at)
 
 ### 6.2 Create Product
 - **Endpoint:** `/api/products/`
