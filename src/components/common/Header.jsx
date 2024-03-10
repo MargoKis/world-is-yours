@@ -8,9 +8,8 @@ import ProfileIconDark from "../../assets/icons/dark/icon-profile-dark.svg";
 import ArrowDown from "../../assets/icons/arrow-up.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { setLocale } from "../../redux/localeSlice";
-// import { setIsCategoriesOpen } from "../../redux/headerSlice";
 import useTranslation from "../../locale/locales";
-import Categories from "./Categories";
+import Categories from "./Catalog";
 import SignUp from "../registration-popup/SignUp";
 import RemindPas from "../registration-popup/RemindPas";
 import LogIn from "../registration-popup/LogIn";
@@ -18,73 +17,84 @@ import SuccessMes from "../registration-popup/SuccessMes";
 
 function Header() {
   const dispatch = useDispatch();
-
   const t = useTranslation();
   const locale = useSelector((state) => state.locale.locale);
-
-
-
-  // const isCategoriesOpen = useSelector((state) => state.header.isCategoriesOpen);
   const [isCategoriesOpen, setCategoriesOpen] = useState(false);
-
   const [isOpenSignUpPopup, setOpenSignUpPopup] = useState(false);
   const [isRemindPassOpen, setRemindPassOpen] = useState(false);
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [isSuccessMesOpen, setSuccessMesOpen] = useState(false);
 
+  const closeAllModals = () => {
+    setOpenSignUpPopup(false);
+    setRemindPassOpen(false);
+    setLoginOpen(false);
+    setSuccessMesOpen(false);
+  };
 
-
-
-
-
-
-  // scroll lock
-  if (isOpenSignUpPopup || isRemindPassOpen || isLoginOpen || isSuccessMesOpen || isCategoriesOpen) {
+  if (
+    isOpenSignUpPopup ||
+    isRemindPassOpen ||
+    isLoginOpen ||
+    isSuccessMesOpen ||
+    isCategoriesOpen
+  ) {
     document.body.style.overflow = "hidden";
   } else {
     document.body.style.overflow = "auto";
   }
 
-
-
-
-
-
-
-
   return (
     <>
-      <div className=" relative z-10">
+      <div className="relative z-10">
         <div className="flex justify-between items-center px-10 bg-white text-custom-black drop-shadow-5xl ">
           <div className="flex justify-between items-center">
             <NavLink to={"/"}>
               <img src={LogoWorldIsYoursDark} alt="World Is Yours" />
             </NavLink>
             <div className="mx-10 text-center">
-
-              <div className={`cursor-pointer ${locale === 'en' ? ' underline' : 'text-custom-black/30'}`} onClick={() => dispatch(setLocale({ locale: 'en' }))}>
+              <div
+                className={`cursor-pointer ${
+                  locale === "en" ? "underline" : "text-custom-black/30"
+                }`}
+                onClick={() => dispatch(setLocale({ locale: "en" }))}
+              >
                 ENG
               </div>
 
-              <div className={`cursor-pointer ${locale === 'uk' ? ' underline' : 'text-custom-black/30'}`} onClick={() => dispatch(setLocale({ locale: 'uk' }))}>
+              <div
+                className={`cursor-pointer ${
+                  locale === "uk" ? "underline" : "text-custom-black/30"
+                }`}
+                onClick={() => dispatch(setLocale({ locale: "uk" }))}
+              >
                 UA
               </div>
-
-
             </div>
             <img className="cursor-pointer" src={SearchIconDark} alt="Search" />
           </div>
           <ul className="flex justify-between items-center">
-            <NavLink onClick={() => {
-              if (window.location.pathname === '/world-is-yours') {
-                window.location.reload();
-              }
-            }} to={"/"}>
+            <NavLink
+              onClick={() => {
+                if (window.location.pathname === "/world-is-yours") {
+                  window.location.reload();
+                }
+              }}
+              to={"/"}
+            >
               <li className="mr-10 cursor-pointer">{t("HOME")}</li>
             </NavLink>
-            <li onClick={() => setCategoriesOpen(true)} className="mr-10 cursor-pointer flex flex-row">
+            <li
+              onClick={() => setCategoriesOpen(!isCategoriesOpen)}
+              className="mr-10 cursor-pointer flex flex-row"
+            >
               <img
-                className={` w-3 mr-2 ${isCategoriesOpen ? "rotate-0" : "rotate-180"}`} src={ArrowDown} alt="arrow down" />
+                className={`w-3 mr-2 ${
+                  isCategoriesOpen ? "rotate-0" : "rotate-180"
+                }`}
+                src={ArrowDown}
+                alt="arrow down"
+              />
               {t("CATALOGUE")}
             </li>
             <li className="cursor-pointer">{t("CONTACTS")}</li>
@@ -101,98 +111,67 @@ function Header() {
             </NavLink>
           </div>
         </div>
-
-      </div>
-      <div className="flex justify-center">
-        {isCategoriesOpen && <Categories
-          onClose={() => setCategoriesOpen(false)}
-        />}
       </div>
 
+      {isCategoriesOpen && (
+        <Categories onClose={() => setCategoriesOpen(false)} />
+      )}
 
+      {isOpenSignUpPopup && (
+        <SignUp
+          onClose={() => setOpenSignUpPopup(false)}
+          openLogin={() => {
+            closeAllModals();
+            setLoginOpen(true);
+          }}
+          openSuccess={() => {
+            closeAllModals();
+            console.log("user created");
+          }}
+          openRemindPass={() => {
+            closeAllModals();
+            setRemindPassOpen(true);
+          }}
+        />
+      )}
 
-      {/* isOpenSignUpPopup */}
-      {isOpenSignUpPopup && <SignUp
-        onClose={() => setOpenSignUpPopup(false)}
-
-        openLogin={() => {
-          setOpenSignUpPopup(false);
-          setLoginOpen(true);
-        }}
-
-        openSuccess={() => {
-
-          setOpenSignUpPopup(false);
-          // setSuccessMesOpen(true);
-          console.log("user created");
-        }}
-
-
-
-        openRemindPass={() => {
-          setOpenSignUpPopup(false);
-          setRemindPassOpen(true);
-        }}
-      />}
-
-
-      {/* isRemindPassOpen */}
-      {isRemindPassOpen &&
+      {isRemindPassOpen && (
         <RemindPas
           onClose={() => setRemindPassOpen(false)}
           openLogin={() => {
-            setRemindPassOpen(false);
+            closeAllModals();
             setLoginOpen(true);
           }}
-        // openSuccess={openSuccess}
         />
-      }
+      )}
 
-
-      {/*isLoginOpen  */}
-      {isLoginOpen &&
+      {isLoginOpen && (
         <LogIn
-
           onClose={() => setLoginOpen(false)}
-
           openSignUp={() => {
-            setLoginOpen(false);
+            closeAllModals();
             setOpenSignUpPopup(true);
           }}
-
           openSuccess={() => {
-
-            setLoginOpen(false);
-            // setSuccessMesOpen(true);
+            closeAllModals();
             console.log("user login");
           }}
-
           openRemindPass={() => {
-            setLoginOpen(false);
+            closeAllModals();
             setRemindPassOpen(true);
           }}
-
         />
-      }
+      )}
 
-
-      {/* isSuccessMesOpen */}
-      {isSuccessMesOpen &&
+      {isSuccessMesOpen && (
         <SuccessMes
           onClose={() => setSuccessMesOpen(false)}
-
           openLogin={() => {
-            setSuccessMesOpen(false)
-            setRemindPassOpen(false);
-            setOpenSignUpPopup(false);
+            closeAllModals();
             setLoginOpen(true);
-
           }}
         />
-      }
-
-
-
+      )}
     </>
   );
 }
