@@ -274,7 +274,7 @@ API works on [localhost:8000](http://localhost:8000/)
   - product (integer)
 
 ### 11.3 Destroy Wishlist
-- **Endpoint:** `/api/wishlist/<int:wishlist_id>/`
+- **Endpoint:** `/api/wishlist/<int:product_id>/`
 - **Method:** `DELETE`
 - **Description:** Delete the specified wishlist.
 - **Protection:** IsAuthenticated

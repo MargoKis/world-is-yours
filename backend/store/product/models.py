@@ -34,20 +34,25 @@ class ProductSubCategory(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=256)
-    price = models.DecimalField(max_digits=8, decimal_places=2)
+    price = models.DecimalField(max_digits=8, decimal_places=2, db_index=True)
     old_price = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
     quantity = models.PositiveIntegerField(default=0)
     image_1 = models.ImageField(upload_to='products_images', default="products_images/default_image.jpg")
     image_2 = models.ImageField(upload_to='products_images', null=True, blank=True)
     image_3 = models.ImageField(upload_to='products_images', null=True, blank=True)
     image_4 = models.ImageField(upload_to='products_images', null=True, blank=True)
-    category = models.ForeignKey(to=ProductSubCategory, on_delete=models.PROTECT)
+    category = models.ForeignKey(to=ProductSubCategory, on_delete=models.PROTECT, db_index=True)
     stripe_price_id = models.CharField(max_length=128, null=True, blank=True)
     description = models.TextField()
 
     class Meta:
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
+
+        indexes = [
+            models.Index(fields=['price'], name='price_idx'),
+            models.Index(fields=['category'], name='category_idx'),
+        ]
 
     def __str__(self):
         return f'{self.name}|{self.category.name}'
@@ -112,6 +117,9 @@ class Basket(models.Model):
     created_timestamp = models.DateTimeField(auto_now_add=True)
 
     objects = BasketQuerySet.as_manager()
+
+    class Meta:
+        unique_together = "user", "product"
 
     def __str__(self):
         return f'Basket for {self.user.email} | Product: {self.product.name}'

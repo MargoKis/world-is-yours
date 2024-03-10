@@ -100,17 +100,27 @@ class WishlistAPIListView(ListCreateAPIView):
 
 
 class WishlistAPIDeleteView(DestroyAPIView):
-    lookup_field = "id"
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user.id
         return Wishlist.objects.filter(user=user)
 
-    def delete(self, request, *args, **kwargs):
-        if self.request.user.id == self.get_object().user.id:
-            return super().delete(request, *args, **kwargs)
-        return Response({'error': 'You can only delete your wishlist.'}, status=status.HTTP_400_BAD_REQUEST)
+    def destroy(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        product_id = self.kwargs.get('id')
+
+        wishlist_item = queryset.filter(product=product_id).first()
+
+        if not wishlist_item:
+            return Response({'error': 'Wishlist item not found.'}, status=status.HTTP_404_NOT_FOUND)
+
+        if wishlist_item.user != request.user:
+            return Response({'error': 'You can only delete items from your own wishlist.'},
+                            status=status.HTTP_403_FORBIDDEN)
+
+        wishlist_item.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class BasketViewSet(ModelViewSet):
