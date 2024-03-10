@@ -44,6 +44,7 @@ class Product(models.Model):
     category = models.ForeignKey(to=ProductSubCategory, on_delete=models.PROTECT, db_index=True)
     stripe_price_id = models.CharField(max_length=128, null=True, blank=True)
     description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = 'Product'
