@@ -160,6 +160,7 @@ API works on [localhost:8000](http://localhost:8000/)
   - category `int` - returns products of the specified category (value is a category id)
   - subcategory `int` - returns products of the specified subcategory (value is a subcategory id)
   - is_on_sale `bool` - returns products on sale if value is 'true'
+  - spec `string` - returns products of the specified specification. Important! Values are accepted in the following format: "name:value"
 
 ### 6.2 Create Product
 - **Endpoint:** `/api/products/`
@@ -183,7 +184,7 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Endpoint:** `/api/products/<int:prod_id>/specs/`
 - **Method:** `GET`
 - **Description:** List all product specs for a specific product.
-- **Protection:** IsAuthenticate8
+- **Protection:** IsAuthenticated
 
 ### 7.2 Create Spec
 - **Endpoint:** `/api/products/<int:prod_id>/specs/`

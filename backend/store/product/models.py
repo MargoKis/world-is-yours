@@ -56,7 +56,7 @@ class Product(models.Model):
         ]
 
     def __str__(self):
-        return f'{self.name}|{self.category.name}'
+        return f'{self.name}|{self.category.name}|{self.category.category.name}'
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         if not self.stripe_price_id:
@@ -72,6 +72,10 @@ class Product(models.Model):
             currency="uah",
         )
         return stripe_product_price
+
+    @property
+    def specs(self):
+        return self.productspecs_set.all()
 
 
 class ProductSpecs(models.Model):
