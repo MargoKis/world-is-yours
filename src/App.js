@@ -14,7 +14,7 @@ import PasswordRecovery from "./pages/PasswordRecovery";
 import ProductPage from "./pages/ProductPage";
 import Contacts from "./pages/Contacts";
 import CategoryPage from "./pages/CategoryPage";
-import AdminPanel from "./admin/components/common/AdminPanel";
+import AdminPanel from "../src/admin/common/AdminPanel";
 
 const PaymentPage = React.lazy(() => import("./pages/PaymentPage"));
 const InfoPayment = React.lazy(() => import("./pages/InfoHelp"));

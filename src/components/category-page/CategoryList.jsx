@@ -31,6 +31,7 @@ const CategoryList = () => {
             <p className="cursor-pointer">Устаткування для кемпінгу</p>
             <p className="cursor-pointer">Кухонне обладнання</p>
             <p className="cursor-pointer">Автодомові аксесуари</p>
+            <p className="cursor-pointer">Комфорт та зручності</p>
           </>
         );
       case "additional":

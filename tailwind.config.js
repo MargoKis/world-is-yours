@@ -81,6 +81,7 @@ module.exports = {
       backgroundColor: {
         "gray-dark": "#202020",
         darkWhite: "#F7F9FB",
+        lightGray: "#EBEFF2",
       },
       fontFamily: {
         // inter: ["Inter", "sans"],
