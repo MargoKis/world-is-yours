@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django_celery_results',
     'modeltranslation',
     'corsheaders',
+    'django_filters',
 
     'user',
     'product',

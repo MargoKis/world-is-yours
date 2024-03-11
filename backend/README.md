@@ -155,6 +155,11 @@ API works on [localhost:8000](http://localhost:8000/)
   - page (page number for the displayed products)
   - page_size (number of products displayed)
   - ordering (sorting by date and price. Available values: price/-price, created_at/-created_at)
+- **Filters:**
+  - price `int` - returns products with equal and less price than value
+  - category `int` - returns products of the specified category (value is a category id)
+  - subcategory `int` - returns products of the specified subcategory (value is a subcategory id)
+  - is_on_sale `bool` - returns products on sale if value is 'true'
 
 ### 6.2 Create Product
 - **Endpoint:** `/api/products/`

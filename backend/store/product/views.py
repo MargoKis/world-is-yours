@@ -1,28 +1,24 @@
 from rest_framework import status, filters
-from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import SAFE_METHODS
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, DestroyAPIView
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
-
+from django_filters import rest_framework as dj_filters
 from product import serializers
+from product.filters import ProductPaginator, ProductFilter
 from product.permissions import CanChangeReview
 from product.models import Product, ProductCategory, ProductSubCategory, ProductReview, ProductSpecs, Wishlist, Basket
-
-
-class ProductPaginator(PageNumberPagination):
-    page_size = 10
-    page_size_query_param = 'page_size'
-    max_page_size = 100
 
 
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = serializers.ProductSerializer
     pagination_class = ProductPaginator
-    filter_backends = [filters.OrderingFilter]
+    filter_backends = [filters.OrderingFilter, dj_filters.DjangoFilterBackend]
     ordering_fields = ['price', 'created_at']
+
+    filterset_class = ProductFilter
 
     def get_permissions(self):
         if self.request.method not in SAFE_METHODS:
