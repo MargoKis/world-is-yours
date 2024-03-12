@@ -65,10 +65,11 @@ $api.interceptors.request.use(
       }
     }
     const user = getCookie("user");
-    const token = user.token;
-    console.log("token==="+token);
-    if (token) {
-      // config.headers["Authorization"] = `Token ${token}`;
+    if (user) {
+      const token = user.token;
+      if (token) {
+        config.headers["Authorization"] = `Token ${token}`;
+      }
     }
     return config;
   },

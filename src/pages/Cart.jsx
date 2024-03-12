@@ -4,6 +4,7 @@ import Button from "../components/common/Button";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
+  
   const [cart, setCart] = useState([
     {
       id: 1,
