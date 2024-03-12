@@ -5,22 +5,25 @@ import { $api } from "../../api/api";
 import Container from "../common/container";
 const FavoritesCardList = () => {
   const t = useTranslation();
-
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await $api.get("/api/products/");
-        // #devnote add favorite fiter
-        setProducts(response.data.slice(0, 8));
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  const fetchData = async (page_size, page) => {
+    try {
+      const response = await $api.get(
+        `/api/products/?page_size=${page_size}&page=${page}`
+      );
+      // #devnote add favorite fiter
+      setProducts((currentProduct) => [...currentProduct, ...response.data.results]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    fetchData();
+  useEffect(() => {
+    fetchData(8, 1);
   }, []);
+
+  
 
   return (
     <Container className="justify-center text-grayLight" id="sectionFav">
@@ -28,8 +31,8 @@ const FavoritesCardList = () => {
         {t("Our favourites")}
       </h1>
       <div className="grid grid-flow-row-dense grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center">
-        {products.map((item, index) => (
-          <Card key={index} data={item} />
+        {products.map((item) => (
+          <Card key={item.id} data={item} />
         ))}
       </div>
     </Container>

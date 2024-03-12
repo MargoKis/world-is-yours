@@ -21,8 +21,7 @@ function Header() {
 
   const t = useTranslation();
   const locale = useSelector((state) => state.locale.locale);
-
-
+  const user = useSelector((state) => state.user.user);
 
   // const isCategoriesOpen = useSelector((state) => state.header.isCategoriesOpen);
   const [isCategoriesOpen, setCategoriesOpen] = useState(false);
@@ -32,25 +31,18 @@ function Header() {
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [isSuccessMesOpen, setSuccessMesOpen] = useState(false);
 
-
-
-
-
-
-
   // scroll lock
-  if (isOpenSignUpPopup || isRemindPassOpen || isLoginOpen || isSuccessMesOpen || isCategoriesOpen) {
+  if (
+    isOpenSignUpPopup ||
+    isRemindPassOpen ||
+    isLoginOpen ||
+    isSuccessMesOpen ||
+    isCategoriesOpen
+  ) {
     document.body.style.overflow = "hidden";
   } else {
     document.body.style.overflow = "auto";
   }
-
-
-
-
-
-
-
 
   return (
     <>
@@ -61,138 +53,137 @@ function Header() {
               <img src={LogoWorldIsYoursDark} alt="World Is Yours" />
             </NavLink>
             <div className="mx-10 text-center">
-
-              <div className={`cursor-pointer ${locale === 'en' ? ' underline' : 'text-custom-black/30'}`} onClick={() => dispatch(setLocale({ locale: 'en' }))}>
+              <div
+                className={`cursor-pointer ${
+                  locale === "en" ? " underline" : "text-custom-black/30"
+                }`}
+                onClick={() => dispatch(setLocale({ locale: "en" }))}
+              >
                 ENG
               </div>
 
-              <div className={`cursor-pointer ${locale === 'uk' ? ' underline' : 'text-custom-black/30'}`} onClick={() => dispatch(setLocale({ locale: 'uk' }))}>
+              <div
+                className={`cursor-pointer ${
+                  locale === "uk" ? " underline" : "text-custom-black/30"
+                }`}
+                onClick={() => dispatch(setLocale({ locale: "uk" }))}
+              >
                 UA
               </div>
-
-
             </div>
             <img className="cursor-pointer" src={SearchIconDark} alt="Search" />
           </div>
           <ul className="flex justify-between items-center">
-            <NavLink onClick={() => {
-              if (window.location.pathname === '/world-is-yours') {
-                window.location.reload();
-              }
-            }} to={"/"}>
+            <NavLink
+              onClick={() => {
+                if (window.location.pathname === "/world-is-yours") {
+                  window.location.reload();
+                }
+              }}
+              to={"/"}
+            >
               <li className="mr-10 cursor-pointer">{t("HOME")}</li>
             </NavLink>
-            <li onClick={() => setCategoriesOpen(true)} className="mr-10 cursor-pointer flex flex-row">
+            <li
+              onClick={() => setCategoriesOpen(true)}
+              className="mr-10 cursor-pointer flex flex-row"
+            >
               <img
-                className={` w-3 mr-2 ${isCategoriesOpen ? "rotate-0" : "rotate-180"}`} src={ArrowDown} alt="arrow down" />
+                className={` w-3 mr-2 ${isCategoriesOpen ? "rotate-0" : "rotate-180"}`}
+                src={ArrowDown}
+                alt="arrow down"
+              />
               {t("CATALOGUE")}
             </li>
             <li className="cursor-pointer">{t("CONTACTS")}</li>
           </ul>
           <div className="flex justify-between items-center ">
-            <NavLink className="mr-10" to={"#"}>
+            <NavLink className="mr-10" to={"/cart"}>
               <img className="text-red-400" src={CartIconDark} alt="Cart" />
             </NavLink>
-            <NavLink className="mr-10" to={"#"}>
+            <NavLink className="mr-10" to={"/favorites"}>
               <img src={HeartIconDark} alt="Favorites" />
             </NavLink>
-            <NavLink to="#" onClick={() => setOpenSignUpPopup(true)}>
-              <img src={ProfileIconDark} alt="Profile" />
-            </NavLink>
+            {user.email ? (
+              <NavLink to="/profile">
+                <img src={ProfileIconDark} alt="Profile" />
+              </NavLink>
+            ) : (
+              <NavLink to="#" onClick={() => setLoginOpen(true)}>
+                <img src={ProfileIconDark} alt="Profile" />
+              </NavLink>
+            )}
           </div>
         </div>
-
       </div>
       <div className="flex justify-center">
-        {isCategoriesOpen && <Categories
-          onClose={() => setCategoriesOpen(false)}
-        />}
+        {isCategoriesOpen && <Categories onClose={() => setCategoriesOpen(false)} />}
       </div>
 
-
-
       {/* isOpenSignUpPopup */}
-      {isOpenSignUpPopup && <SignUp
-        onClose={() => setOpenSignUpPopup(false)}
-
-        openLogin={() => {
-          setOpenSignUpPopup(false);
-          setLoginOpen(true);
-        }}
-
-        openSuccess={() => {
-
-          setOpenSignUpPopup(false);
-          // setSuccessMesOpen(true);
-          console.log("user created");
-        }}
-
-
-
-        openRemindPass={() => {
-          setOpenSignUpPopup(false);
-          setRemindPassOpen(true);
-        }}
-      />}
-
+      {isOpenSignUpPopup && (
+        <SignUp
+          onClose={() => setOpenSignUpPopup(false)}
+          openLogin={() => {
+            setOpenSignUpPopup(false);
+            setLoginOpen(true);
+          }}
+          openSuccess={() => {
+            setOpenSignUpPopup(false);
+            // setSuccessMesOpen(true);
+            console.log("user created");
+          }}
+          openRemindPass={() => {
+            setOpenSignUpPopup(false);
+            setRemindPassOpen(true);
+          }}
+        />
+      )}
 
       {/* isRemindPassOpen */}
-      {isRemindPassOpen &&
+      {isRemindPassOpen && (
         <RemindPas
           onClose={() => setRemindPassOpen(false)}
           openLogin={() => {
             setRemindPassOpen(false);
             setLoginOpen(true);
           }}
-        // openSuccess={openSuccess}
+          // openSuccess={openSuccess}
         />
-      }
-
+      )}
 
       {/*isLoginOpen  */}
-      {isLoginOpen &&
+      {isLoginOpen && (
         <LogIn
-
           onClose={() => setLoginOpen(false)}
-
           openSignUp={() => {
             setLoginOpen(false);
             setOpenSignUpPopup(true);
           }}
-
           openSuccess={() => {
-
             setLoginOpen(false);
             // setSuccessMesOpen(true);
             console.log("user login");
           }}
-
           openRemindPass={() => {
             setLoginOpen(false);
             setRemindPassOpen(true);
           }}
-
         />
-      }
-
+      )}
 
       {/* isSuccessMesOpen */}
-      {isSuccessMesOpen &&
+      {isSuccessMesOpen && (
         <SuccessMes
           onClose={() => setSuccessMesOpen(false)}
-
           openLogin={() => {
-            setSuccessMesOpen(false)
+            setSuccessMesOpen(false);
             setRemindPassOpen(false);
             setOpenSignUpPopup(false);
             setLoginOpen(true);
-
           }}
         />
-      }
-
-
-
+      )}
     </>
   );
 }

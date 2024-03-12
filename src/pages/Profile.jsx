@@ -40,7 +40,7 @@ const Profile = () => {
 
     if (!user.email){
         console.log("user in store==" + JSON.stringify(user, null, 2));
-        // return (<NotFound404 />);
+        return (<NotFound404 />);
     }
       return (
         <>

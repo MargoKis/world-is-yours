@@ -6,7 +6,7 @@ import MainPage from "./pages/MainPage";
 // import InfoPayment from "./pages/InfoHelp";
 import { useDispatch, useSelector } from "react-redux";
 import { setLocale, setLanguage } from "./redux/localeSlice";
-import {api2} from "./api/api";
+import { $api, api2 } from "./api/api";
 import Footer from "./components/common/Footer";
 import DonateBanner from "./components/common/DonateBanner";
 import Header from "./components/common/Header";
@@ -18,6 +18,9 @@ import ProductPage from "./pages/ProductPage";
 import Contacts from "./pages/Contacts";
 import CategoryPage from "./pages/CategoryPage";
 import { updateUser } from "./redux/userSlice";
+import { setWishlist } from "./redux/wishlistSlice";
+import { addItemsCart } from "./redux/cartSlice";
+import Favorites from "./pages/Favorites";
 
 const PaymentPage = lazy(() => import("./pages/PaymentPage"));
 const InfoPayment = lazy(() => import("./pages/InfoHelp"));
@@ -73,12 +76,37 @@ function App() {
         return JSON.parse(decodeURIComponent(parts.pop().split(";").shift()));
       }
     }
-
+    // init user cart and wishlist
     const user = getCookie("user");
     if (user) {
       if (user && typeof user === "object") {
-        // console.log("user===" + JSON.stringify(user, null, 2));
-        dispatch(updateUser(user));
+        const getWishlist = async () => {
+          try {
+            const response = await $api.get("/api/wishlist/");
+            const productIds = response.data.map((item) => item.product);
+            dispatch(setWishlist(productIds));
+
+            dispatch(updateUser(user));
+          } catch (error) {
+            console.error("Failed to fetch wishlist:", error);
+          }
+        };
+        getWishlist();
+
+        const getCart = async () => {
+          try {
+            const response = await $api.get("/api/baskets/");
+            const cartItems = response.data.map((item) => ({
+              id: item.id,
+              product: item.product,
+              quantity: item.quantity,
+            }));
+            dispatch(addItemsCart(cartItems)); // Переконайтесь, що це правильна назва вашої дії
+          } catch (error) {
+            console.error("Failed to fetch cart:", error);
+          }
+        };
+        getCart();
       }
     }
   }, []);
@@ -90,14 +118,15 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/" element={<MainPage />} />
-        <Route path="/password-recovery" element={<PasswordRecovery/>} />
+        <Route path="/password-recovery" element={<PasswordRecovery />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/info-help" element={<InfoPayment />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/categories" element={<CategoryPage/>} />
-        <Route path="/cart" element={<Cart/>} />
-        <Route path="/contacts" element={<Contacts/>} />
-        <Route path="/product" element={<ProductPage/>} />
+        <Route path="/categories" element={<CategoryPage />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/contacts" element={<Contacts />} />
+        <Route path="/product" element={<ProductPage />} />
+        <Route path="/favorites" element={<Favorites />} />
         <Route path="*" element={<NotFound404 />} />
       </Routes>
       <Footer />
