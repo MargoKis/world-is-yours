@@ -23,7 +23,7 @@ const ReviewPage = () => {
               className={`mr-2 text-base px-3 py-1 rounded-md text-gray ${
                 activeButton === "week"
                   ? "bg-blue text-white"
-                  : "border-solid border-gray"
+                  : "border border-gray"
               }`}
               onClick={() => handleButtonClick("week")}
             >
@@ -31,7 +31,7 @@ const ReviewPage = () => {
             </button>
             <button
               className={`mr-2 text-base px-3 py-1 rounded-md text-gray ${
-                activeButton === "month" ? "bg-blue text-white" : "border-gray"
+                activeButton === "month" ? "bg-blue text-white" : "border border-gray"
               }`}
               onClick={() => handleButtonClick("month")}
             >
@@ -39,7 +39,7 @@ const ReviewPage = () => {
             </button>
             <button
               className={`mr-2 text-base px-3 py-1 rounded-md text-gray ${
-                activeButton === "year" ? "bg-blue text-white" : "border-gray"
+                activeButton === "year" ? "bg-blue text-white" : "border border-gray"
               }`}
               onClick={() => handleButtonClick("year")}
             >
@@ -84,7 +84,7 @@ const ReviewPage = () => {
         </div>
         <LineChart />
       </div>
-      <div className="flex flex-row gap-5 mr-8 justify-end">
+      <div className="flex flex-row gap-5 mr-8">
         <WorldMap />
         <BarChart />
         <DoughnutChart />

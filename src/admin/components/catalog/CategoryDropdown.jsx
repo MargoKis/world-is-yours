@@ -14,7 +14,7 @@ const CategoryDropdown = () => {
   };
 
   return (
-    <div className="category w-72 bg-darkWhite p-4 mb-6 rounded-2xl ml-8">
+    <div className="category w-96 h-full bg-darkWhite p-4 mb-6 rounded-2xl ml-8">
       <div className="category-title text-gray mb-4">Категорії</div>
       <ul className="sub-categories ml-4">
         <li>

@@ -42,8 +42,8 @@ const BarChart = () => {
   };
 
   return (
-    <div className='w-2/5 h-72 bg-darkWhite p-4 rounded-2xl'>
-      <h2>Відвідування профілю</h2>
+    <div className='w-3/6 bg-darkWhite p-4 rounded-2xl'>
+      <h2 className='mb-4'>Відвідування профілю</h2>
       <Bar data={data} options={options} />
     </div>
   );
