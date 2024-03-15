@@ -12,4 +12,5 @@ urlpatterns = [
     path("auth/", views.UserTokenAuth.as_view(), name="auth"),
     path('password_reset/', views.PasswordChangeRequestView.as_view(), name='reset_password_request'),
     path('reset-password/<str:email>/<uuid:code>/', views.PasswordResetView.as_view(), name='password_changing'),
+    path('contact_us/', views.ContactUsAPIView.as_view(), name='contact_us'),
 ]

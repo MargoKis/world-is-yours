@@ -84,3 +84,10 @@ class AddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = Address
         fields = "__all__"
+
+
+class ContactFormSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    message = serializers.CharField()
+    subject = serializers.CharField()
+    fullname = serializers.CharField()

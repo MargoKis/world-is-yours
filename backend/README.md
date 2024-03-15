@@ -99,6 +99,16 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Parameters:**
   - email (string)
 
+### 3.6 Contact Us
+- **Endpoint:** `/api/contact_us/`
+- **Method:** `POST`
+- **Description:** Contact us form
+- **Protection:** None
+- **Parameters:**
+  - email (string)
+  - fullname (string)
+  - subject (string)
+  - message (string)
 
 ## 4. Product Categories
 ### 4.1 List Categories

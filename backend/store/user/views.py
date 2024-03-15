@@ -10,7 +10,8 @@ from rest_framework import status
 from user.models import EmailVerification, EmailPasswordReset, Address, User
 from user.permissions import IsOwnerOrReadOnly, IsOwnerOrIsAdmin, IsOwner
 from user import serializers
-from user.tasks import send_password_change
+from user.serializers import ContactFormSerializer
+from user.tasks import send_password_change, send_mail_from_contact_us
 
 
 class UserListAPIView(ListCreateAPIView):
@@ -135,6 +136,21 @@ class PasswordChangeRequestView(APIView):
         else:
             return Response({"detail": "Invalid input. Please provide the correct data."},
                             status=status.HTTP_400_BAD_REQUEST)
+
+
+class ContactUsAPIView(APIView):
+    def post(self, request, format=None):
+        serializer = ContactFormSerializer(data=request.data)
+        if serializer.is_valid():
+            send_mail_from_contact_us.delay(
+                email=serializer.validated_data['email'],
+                message=serializer.validated_data['message'],
+                subject=serializer.validated_data['subject'],
+                fullname=serializer.validated_data['fullname'],
+            )
+
+            return Response({'message': 'Email sent successfully'}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class UserTokenAuth(views.ObtainAuthToken):
