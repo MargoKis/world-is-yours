@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import Button from "../common/Button";
+import React, { useState } from "react";
 import CountryDropdown from "../payment-page/CountryDropDown";
 import CityDropdown from "../payment-page/CityDropDown";
-import TrashIcon from '../../assets/icons/icon-trash.svg';
+import TrashIcon from "../../assets/icons/icon-trash.svg";
 import LocationIcon from "../../assets/icons/icon-location.svg";
 
 const Adress = () => {

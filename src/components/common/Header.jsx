@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import LogoWorldIsYoursDark from "../../assets/icons/dark/logo-dark.svg";
 import SearchIconDark from "../../assets/icons/dark/icon-search-dark.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import CartIconDark from "../../assets/icons/dark/icon-cart-dark.svg";
 import HeartIconDark from "../../assets/icons/dark/icon-heart-dark.svg";
-import ProfileIconDark from "../../assets/icons/dark/icon-profile-dark.svg";
+
 import ArrowDown from "../../assets/icons/arrow-up.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { setLocale } from "../../redux/localeSlice";
@@ -15,13 +15,13 @@ import SignUp from "../registration-popup/SignUp";
 import RemindPas from "../registration-popup/RemindPas";
 import LogIn from "../registration-popup/LogIn";
 import SuccessMes from "../registration-popup/SuccessMes";
+import LoginStatus from "../feature/header/loginStatus";
 
 function Header() {
   const dispatch = useDispatch();
 
   const t = useTranslation();
   const locale = useSelector((state) => state.locale.locale);
-  const user = useSelector((state) => state.user.user);
 
   // const isCategoriesOpen = useSelector((state) => state.header.isCategoriesOpen);
   const [isCategoriesOpen, setCategoriesOpen] = useState(false);
@@ -71,7 +71,7 @@ function Header() {
                 UA
               </div>
             </div>
-            <img className="cursor-pointer" src={SearchIconDark} alt="Search" />
+            <Search />
           </div>
           <ul className="flex justify-between items-center">
             <NavLink
@@ -104,15 +104,7 @@ function Header() {
             <NavLink className="mr-10" to={"/favorites"}>
               <img src={HeartIconDark} alt="Favorites" />
             </NavLink>
-            {user.email ? (
-              <NavLink to="/profile">
-                <img src={ProfileIconDark} alt="Profile" />
-              </NavLink>
-            ) : (
-              <NavLink to="#" onClick={() => setLoginOpen(true)}>
-                <img src={ProfileIconDark} alt="Profile" />
-              </NavLink>
-            )}
+            <LoginStatus setLoginOpen={() => setLoginOpen(true)} />
           </div>
         </div>
       </div>
@@ -189,3 +181,47 @@ function Header() {
 }
 
 export default Header;
+
+// search bar
+const Search = () => {
+  let navigate = useNavigate();
+  const [isSearchOpen, setSearchOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      navigate(`/categories?${searchValue}`);
+    }
+  };
+
+  return (
+    <div>
+      {isSearchOpen ? (
+        <div className="StateClicked w-[400px] h-10 px-2.5 border-b border-neutral-800 inline-flex items-center gap-[15px]">
+          <img
+            onClick={() => navigate(`/categories?${searchValue}`)}
+            className="cursor-pointer w-6 h-6"
+            src={SearchIconDark}
+            alt="Search"
+          />
+          <span className="text-neutral-800 text-lg font-medium font-['Raleway']">|</span>
+          <input
+            type="text"
+            placeholder="Я шукаю..."
+            className="grow shrink basis-0 h-[21px] bg-transparent text-neutral-400 text-base font-light font-['Raleway']  outline-none active:border-none"
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
+        </div>
+      ) : (
+        <img
+          onClick={() => setSearchOpen(!isSearchOpen)}
+          className="cursor-pointer w-6 h-6"
+          src={SearchIconDark}
+          alt="Search"
+        />
+      )}
+    </div>
+  );
+};
