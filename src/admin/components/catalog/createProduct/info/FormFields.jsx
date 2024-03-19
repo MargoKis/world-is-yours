@@ -22,7 +22,7 @@ const FormFields = () => {
           placeholder="Оберіть для кого призначений товар"
           selectOptions={[
             { value: "option1", label: "Для жінок" },
-            { value: "option2", label: "Для чоловіків" }
+            { value: "option2", label: "Для чоловіків" },
           ]}
         />
         <InputField
@@ -41,7 +41,7 @@ const FormFields = () => {
           placeholder="Оберіть статус товару"
           selectOptions={[
             { value: "option1", label: "Option 1" },
-            { value: "option2", label: "Option 2" }
+            { value: "option2", label: "Option 2" },
           ]}
         />
       </div>
@@ -51,24 +51,28 @@ const FormFields = () => {
           id="input7"
           label="Опис товару"
           placeholder="Введіть невеликий опис товару"
+          maxLength={150}
         />
         <TextAreaField
           id="input8"
           label="Особливості"
           placeholder="Які є особливості товару?"
           rows={4}
+          maxLength={500}
         />
         <TextAreaField
           id="input9"
           label="Матеріал"
           placeholder="Матеріал товару"
           rows={8}
+          maxLength={150}
         />
         <TextAreaField
           id="input10"
           label="Догляд"
           placeholder="Як доглядати за товаром?"
           rows={6}
+          maxLength={500}
         />
       </div>
     </div>

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
-import LineChart from "../components/review/LineChart";
-import BarChart from "../components/review/BarChart";
-import DoughnutChart from "../components/review/DonghnutChart";
-import WorldMap from "../components/review/WorldMap";
+import LineChart from "../../components/review/LineChart";
+import BarChart from "../../components/review/BarChart";
+import DoughnutChart from "../../components/review/DonghnutChart";
+import WorldMap from "../../components/review/WorldMap";
 
 const ReviewPage = () => {
   const [activeButton, setActiveButton] = useState("");
@@ -31,7 +31,9 @@ const ReviewPage = () => {
             </button>
             <button
               className={`mr-2 text-base px-3 py-1 rounded-md text-gray ${
-                activeButton === "month" ? "bg-blue text-white" : "border border-gray"
+                activeButton === "month"
+                  ? "bg-blue text-white"
+                  : "border border-gray"
               }`}
               onClick={() => handleButtonClick("month")}
             >
@@ -39,7 +41,9 @@ const ReviewPage = () => {
             </button>
             <button
               className={`mr-2 text-base px-3 py-1 rounded-md text-gray ${
-                activeButton === "year" ? "bg-blue text-white" : "border border-gray"
+                activeButton === "year"
+                  ? "bg-blue text-white"
+                  : "border border-gray"
               }`}
               onClick={() => handleButtonClick("year")}
             >

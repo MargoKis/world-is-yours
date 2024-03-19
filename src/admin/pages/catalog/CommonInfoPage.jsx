@@ -1,11 +1,12 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import FormFields from "./FormFields";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import FormFields from "../../components/catalog/createProduct/info/FormFields";
+import SizeColorPage from "./SizeColorPage";
+import CompleteTheSet from "../../components/catalog/createProduct/set/CompleteTheSet";
 
-const CommonInfo = () => {
+const CommonInfoPage = () => {
   const [activeTab, setActiveTab] = useState(null);
 
   const handleClick = (index) => {
@@ -25,7 +26,10 @@ const CommonInfo = () => {
           </p>
         </div>
         <button className="h-3 p-7 border border-gray rounded-xl relative">
-        <FontAwesomeIcon icon={faCheck} className="text-gray absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+          <FontAwesomeIcon
+            icon={faCheck}
+            className="text-gray absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          />
         </button>
       </div>
       <div className="flex flex-row ml-8 gap-16 mt-10 text-xl">
@@ -60,9 +64,12 @@ const CommonInfo = () => {
           Доповни комплект
         </h2>
       </div>
-      <FormFields/>
+
+      {activeTab === 1 && <SizeColorPage />}
+      {activeTab === 2 && <CompleteTheSet />}
+      {activeTab !== 1 && activeTab !== 2 && <FormFields />}
     </>
   );
 };
 
-export default CommonInfo;
+export default CommonInfoPage;

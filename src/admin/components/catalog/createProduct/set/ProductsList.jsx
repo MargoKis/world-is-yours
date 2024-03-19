@@ -2,12 +2,20 @@ import React from "react";
 import { useTable } from "react-table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import tent from "../../../../assets/png/tent.png";
 
-const ProductsList = ({ onAddProductClick }) => {
+const ProductsList = () => {
   const data = React.useMemo(
     () => [
       {
         code: "1234",
+        photo: (
+          <img
+            src={tent}
+            alt="Трекінгове взуття"
+            className="w-20 h-20 mr-2 rounded-xl"
+          />
+        ),
         name: "Трекінгове взуття",
         category: "Взуття",
         price: 100,
@@ -16,6 +24,13 @@ const ProductsList = ({ onAddProductClick }) => {
       },
       {
         code: "5678",
+        photo: (
+          <img
+            src={tent}
+            alt="Бігова куртка"
+            className="w-20 h-20 mr-2 rounded-xl"
+          />
+        ),
         name: "Бігова куртка",
         category: "Одяг",
         price: 80,
@@ -29,12 +44,12 @@ const ProductsList = ({ onAddProductClick }) => {
   const columns = React.useMemo(
     () => [
       { Header: "Артикул", accessor: "code" },
+      { Header: "Фото", accessor: "photo" },
       { Header: "Назва товару", accessor: "name" },
       { Header: "Категорія", accessor: "category" },
       { Header: "Ціна на сайті", accessor: "price" },
       { Header: "Кількість", accessor: "quantity" },
       { Header: "Статус", accessor: "status" },
-      { Header: "Дії", accessor: "actions" },
     ],
     []
   );
@@ -59,22 +74,9 @@ const ProductsList = ({ onAddProductClick }) => {
 
   return (
     <>
-      <div className="flex flex-row justify-between mb-4">
-        <button
-          className="p-4 w-80 text-blue font-bold rounded-lg border border-blue bg-white"
-          onClick={onAddProductClick}
-        >
-          Додати товар
-        </button>
-        <div className="flex flex-col">
-          <p className="">Всього товарів - 100 000</p>
-          <p className="">Товарів у підкатегорії - 5000</p>
-        </div>
-      </div>
-
       <table
         {...getTableProps()}
-        className="border-collapse border border-gray-300 rounded-lg"
+        className="border-collapse border border-gray-300 rounded-lg mr-10"
       >
         <thead>
           {headerGroups.map((headerGroup) => (

@@ -5,8 +5,8 @@ import { faChartLine, faTh, faCog, faArrowRightFromBracket } from '@fortawesome/
 import { faLayerGroup } from '@fortawesome/free-solid-svg-icons/faLayerGroup';
 import { faUsers } from '@fortawesome/free-solid-svg-icons/faUsers';
 import Logo from '../../assets/icons/light/logo-light.svg';
-import ReviewPage from '../pages/ReviewPage.jsx';
-import CatalogPage from '../pages/CatalogPage.jsx';
+import ReviewPage from '../pages/review/ReviewPage.jsx';
+import CatalogPage from '../pages/catalog/CatalogPage.jsx'
 
 const AdminPanel = () => {
     const [activeMenuItem, setActiveMenuItem] = useState('overview');
