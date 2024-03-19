@@ -166,6 +166,7 @@ API works on [localhost:8000](http://localhost:8000/)
   - page_size (number of products displayed)
   - ordering (sorting by date and price. Available values: price/-price, created_at/-created_at)
 - **Filters:**
+  - name `str` - returns products with a similar names
   - price `int` - returns products with equal and less price than value
   - category `int` - returns products of the specified category (value is a category id)
   - subcategory `int` - returns products of the specified subcategory (value is a subcategory id)

@@ -1,9 +1,11 @@
+from django.db.models import Q
 from rest_framework.pagination import PageNumberPagination
 from django_filters import rest_framework as filters
 from product.models import Product, ProductSubCategory
 
 
 class ProductFilter(filters.FilterSet):
+    name = filters.CharFilter(field_name='name', method='filter_by_name')
     price = filters.NumberFilter(field_name='price', lookup_expr='lte')
     is_on_sale = filters.BooleanFilter(field_name='old_price', method='filter_on_sale')
     subcategory = filters.NumberFilter(field_name='category')
@@ -34,6 +36,9 @@ class ProductFilter(filters.FilterSet):
         except ValueError:
             return queryset
         return queryset.filter(productspecs__name=spec, productspecs__value=value)
+
+    def filter_by_name(self, queryset, name, value):
+        return queryset.filter(Q(name__icontains=value))
 
 
 class ProductPaginator(PageNumberPagination):
