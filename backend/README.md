@@ -230,7 +230,7 @@ API works on [localhost:8000](http://localhost:8000/)
 
 ### 8.3 Get, Update, Destroy Spec
 - **Endpoint:** `/api/products/subcategory/<int:subcategory_id>/specs/<int:specs_id>`
-- **Method:** `GET` (Get), `PUT` or `PATCH` (Update), `DELETE` (Destroy)
+- **Method:** `GET` (Get), PATCH` (Update), `DELETE` (Destroy)
 - **Description:** Get, update, or delete information for the specified spec.
 - **Protection:** IsAdminUser
 
