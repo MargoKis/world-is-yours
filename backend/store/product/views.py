@@ -8,11 +8,11 @@ from django_filters import rest_framework as dj_filters
 from product import serializers
 from product.filters import ProductPaginator, ProductFilter
 from product.permissions import CanChangeReview
-from product.models import Product, ProductCategory, ProductSubCategory, ProductReview, ProductSpecs, Wishlist, Basket
+from product import models
 
 
 class ProductViewSet(ModelViewSet):
-    queryset = Product.objects.all()
+    queryset = models.Product.objects.all()
     serializer_class = serializers.ProductSerializer
     pagination_class = ProductPaginator
     filter_backends = [filters.OrderingFilter, dj_filters.DjangoFilterBackend]
@@ -27,7 +27,7 @@ class ProductViewSet(ModelViewSet):
 
 
 class ProductCategoryViewSet(ModelViewSet):
-    queryset = ProductCategory.objects.all()
+    queryset = models.ProductCategory.objects.all()
     serializer_class = serializers.ProductCategorySerializer
 
     def get_permissions(self):
@@ -37,7 +37,7 @@ class ProductCategoryViewSet(ModelViewSet):
 
 
 class ProductSubCategoryViewSet(ModelViewSet):
-    queryset = ProductSubCategory.objects.all()
+    queryset = models.ProductSubCategory.objects.all()
     serializer_class = serializers.ProductSubCategorySerializer
 
     def get_permissions(self):
@@ -46,8 +46,32 @@ class ProductSubCategoryViewSet(ModelViewSet):
         return super().get_permissions()
 
 
+class SubCategorySpecsViewSet(ModelViewSet):
+    queryset = models.SubcategorySpecs.objects.all()
+    serializer_class = serializers.SubCategorySpecsSerializer
+
+    def get_queryset(self):
+        sub_id = self.kwargs.get('sub_id')
+        return models.SubcategorySpecs.objects.filter(subcategory_id=sub_id)
+
+    def get_permissions(self):
+        if self.request.method not in SAFE_METHODS:
+            self.permission_classes = [IsAdminUser]
+        return super().get_permissions()
+
+    def create(self, request, *args, **kwargs):
+        subcategory = self.kwargs.get('sub_id')
+        request.data["subcategory"] = subcategory
+        return super().create(request, *args, **kwargs)
+
+    def update(self, request, *args, **kwargs):
+        if 'subcategory' in request.data:
+            return Response({'error': 'You cannot change the subcategory.'}, status=status.HTTP_400_BAD_REQUEST)
+        return super().update(request, *args, **kwargs)
+
+
 class ProductReviewViewSet(ModelViewSet):
-    queryset = ProductReview.objects.all()
+    queryset = models.ProductReview.objects.all()
     serializer_class = serializers.ProductReviewSerializer
     permission_classes = [IsAuthenticated, CanChangeReview]
 
@@ -66,7 +90,7 @@ class ProductReviewViewSet(ModelViewSet):
 
 
 class ProductSpecDetailAPIView(RetrieveUpdateDestroyAPIView):
-    queryset = ProductSpecs
+    queryset = models.ProductSpecs
     serializer_class = serializers.ProductSpecSerializer
     lookup_field = "id"
     permission_classes = [IsAdminUser]
@@ -78,7 +102,7 @@ class ProductSpecListAPIView(ListCreateAPIView):
 
     def get_queryset(self):
         product_id = self.kwargs.get('product_id')
-        return ProductSpecs.objects.filter(product_id=product_id)
+        return models.ProductSpecs.objects.filter(product_id=product_id)
 
     def get_permissions(self):
         if self.request.method not in SAFE_METHODS:
@@ -97,7 +121,7 @@ class WishlistAPIListView(ListCreateAPIView):
 
     def get_queryset(self):
         user = self.request.user.id
-        return Wishlist.objects.filter(user=user)
+        return models.Wishlist.objects.filter(user=user)
 
     def create(self, request, *args, **kwargs):
         user = self.request.user.id
@@ -110,7 +134,7 @@ class WishlistAPIDeleteView(DestroyAPIView):
 
     def get_queryset(self):
         user = self.request.user.id
-        return Wishlist.objects.filter(user=user)
+        return models.Wishlist.objects.filter(user=user)
 
     def destroy(self, request, *args, **kwargs):
         queryset = self.get_queryset()
@@ -134,7 +158,7 @@ class BasketViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return Basket.objects.filter(user_id=self.request.user.id)
+        return models.Basket.objects.filter(user_id=self.request.user.id)
 
     def update(self, request, *args, **kwargs):
         if set(request.data.keys()) == {'quantity'}:

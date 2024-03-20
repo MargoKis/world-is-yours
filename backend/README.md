@@ -212,14 +212,36 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Description:** Get, update, or delete information for the specified spec.
 - **Protection:** IsAdminUser
 
-## 8. Product Reviews
-### 8.1 List Reviews
+## 8. SubCategory Specs
+### 8.1 List Specs
+- **Endpoint:** `/api/products/subcategory/<int:subcategory_id>/specs/`
+- **Method:** `GET`
+- **Description:** List all specifications for a subcategory.
+- **Protection:** None
+
+### 8.2 Create Spec
+- **Endpoint:** `/api/products/subcategory/<int:subcategory_id>/specs/`
+- **Method:** `POST`
+- **Description:** Create a new spec for subcategory.
+- **Protection:** IsAdminUser
+- **Parameters:**
+  - name (`string`)
+  - allowed_value (`list`)
+
+### 8.3 Get, Update, Destroy Spec
+- **Endpoint:** `/api/products/subcategory/<int:subcategory_id>/specs/<int:specs_id>`
+- **Method:** `GET` (Get), `PUT` or `PATCH` (Update), `DELETE` (Destroy)
+- **Description:** Get, update, or delete information for the specified spec.
+- **Protection:** IsAdminUser
+
+## 9. Product Reviews
+### 9.1 List Reviews
 - **Endpoint:** `/api/products/reviews/`
 - **Method:** `GET`
 - **Description:** List all product reviews.
 - **Protection:** IsAuthenticated
 
-### 8.2 Create Review
+### 9.2 Create Review
 - **Endpoint:** `/api/products/reviews/`
 - **Method:** `POST`
 - **Description:** Create a new product review.
@@ -229,26 +251,26 @@ API works on [localhost:8000](http://localhost:8000/)
   - comment (string)
   - product (integer)
 
-### 8.3 Get, Update, Destroy Review
+### 9.3 Get, Update, Destroy Review
 - **Endpoint:** `/api/products/reviews/<int:review_id>/`
 - **Method:** `GET` (Get), `PUT` or `PATCH` (Update), `DELETE` (Destroy)
 - **Description:** Get, update, or delete information for the specified review.
 - **Protection:** IsAuthenticated, CanChangeReview (If the logged-in user is the author)
 
-## 9. Orders
-### 9.1 List Orders
+## 10. Orders
+### 10.1 List Orders
 - **Endpoint:** `/api/orders/`
 - **Method:** `GET`
 - **Description:** List all orders for the logged-in user.
 - **Protection:** IsAuthenticated
 - 
-### 9.2 Full List Orders
+### 10.2 Full List Orders
 - **Endpoint:** `/api/orders/all/`
 - **Method:** `GET`
 - **Description:** List of all orders for admin user.
 - **Protection:** IsAdmin
 
-### 9.3 Create Order
+### 10.3 Create Order
 - **Endpoint:** `/api/payment/`
 - **Method:** `POST`
 - **Description:** Create a new order. Basket history is taken automatically 
@@ -258,14 +280,14 @@ API works on [localhost:8000](http://localhost:8000/)
   - last_name (string)
   - address (string)
 
-## 10. Baskets
-### 10.1 List Baskets
+## 11. Baskets
+### 11.1 List Baskets
 - **Endpoint:** `/api/baskets/`
 - **Method:** `GET`
 - **Description:** List all baskets for the logged-in user.
 - **Protection:** IsAuthenticated
 
-### 10.2 Create Basket
+### 11.2 Create Basket
 - **Endpoint:** `/api/baskets/`
 - **Method:** `POST`
 - **Description:** Create a new basket.
@@ -273,20 +295,20 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Parameters:**
   - product (integer)
 
-### 10.3 Get, Update, Destroy Basket
+### 11.3 Get, Update, Destroy Basket
 - **Endpoint:** `/api/baskets/<int:basket_id>/`
 - **Method:** `GET` (Get), `PUT` (Update: You can only update the quantity field), `DELETE` (Destroy)
 - **Description:** Get, update, or delete information for the specified basket.
 - **Protection:** IsAuthenticated
 
-## 11. Wishlist
-### 11.1 List Wishlists
+## 12. Wishlist
+### 12.1 List Wishlists
 - **Endpoint:** `/api/wishlist/`
 - **Method:** `GET`
 - **Description:** List all wishlists for the logged-in user.
 - **Protection:** IsAuthenticated
 
-### 11.2 Create Wishlist
+### 12.2 Create Wishlist
 - **Endpoint:** `/api/wishlist/`
 - **Method:** `POST`
 - **Description:** Create a new wishlist.
@@ -294,26 +316,26 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Parameters:**
   - product (integer)
 
-### 11.3 Destroy Wishlist
+### 12.3 Destroy Wishlist
 - **Endpoint:** `/api/wishlist/<int:product_id>/`
 - **Method:** `DELETE`
 - **Description:** Delete the specified wishlist.
 - **Protection:** IsAuthenticated
 
-## 12. Language Switcher
+## 13. Language Switcher
 - **Endpoint:** `/api/language/<str:language>/`
 - **Method:** `GET`
 - - **Description:** Switch content language. Available languages - 'uk', 'en'.
 - **Protection:** None
 
-## 13. Logs
-### 13.1 Post user logs
+## 14. Logs
+### 14.1 Post user logs
 - **Endpoint:** `/logs/`
 - **Method:** `POST`
 - **Description:** Post user information with required attr 'platform'
 - **Protection:** None
 
-### 13.2 User logs list
+### 14.2 User logs list
 - **Endpoint:** `/logs/users/`
 - **Method:** `GET`
 - **Description:** Get user info logs by period (day, month, year)
@@ -321,7 +343,7 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Parameters:**
   - interval (allowed values - "day", "month", "year")
 
-### 13.3 Order logs list
+### 14.3 Order logs list
 - **Endpoint:** `/logs/orders/`
 - **Method:** `GET`
 - **Description:** Get order info logs by period (day, month, year)

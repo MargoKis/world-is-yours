@@ -41,7 +41,7 @@ class Product(models.Model):
     image_2 = models.ImageField(upload_to='products_images', null=True, blank=True)
     image_3 = models.ImageField(upload_to='products_images', null=True, blank=True)
     image_4 = models.ImageField(upload_to='products_images', null=True, blank=True)
-    category = models.ForeignKey(to=ProductSubCategory, on_delete=models.PROTECT, db_index=True)
+    subcategory = models.ForeignKey(to=ProductSubCategory, on_delete=models.PROTECT, db_index=True)
     stripe_price_id = models.CharField(max_length=128, null=True, blank=True)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -52,11 +52,11 @@ class Product(models.Model):
 
         indexes = [
             models.Index(fields=['price'], name='price_idx'),
-            models.Index(fields=['category'], name='category_idx'),
+            models.Index(fields=['subcategory'], name='subcategory_idx'),
         ]
 
     def __str__(self):
-        return f'{self.name}|{self.category.name}|{self.category.category.name}'
+        return f'{self.name}|{self.subcategory.name}|{self.subcategory.category.name}'
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         if not self.stripe_price_id:
@@ -79,14 +79,23 @@ class Product(models.Model):
 
 
 class ProductSpecs(models.Model):
-    name = models.CharField(max_length=256)
-    value = models.CharField(max_length=256)
+    name = models.CharField(max_length=256, db_index=True)
+    value = models.CharField(max_length=256, db_index=True)
     product_id = models.ForeignKey(to=Product, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'ProductSpecs'
         verbose_name_plural = 'ProductSpecs'
         unique_together = "name", "product_id"
+
+
+class SubcategorySpecs(models.Model):
+    name = models.CharField(max_length=256, db_index=True)
+    allowed_value = models.JSONField(default=list, blank=True, null=True)
+    subcategory = models.ForeignKey(to=ProductSubCategory, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = "name", "subcategory"
 
 
 class ProductReview(models.Model):
