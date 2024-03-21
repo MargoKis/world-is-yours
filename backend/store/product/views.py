@@ -2,7 +2,7 @@ from rest_framework import status, filters
 from rest_framework.permissions import SAFE_METHODS
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, DestroyAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, DestroyAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from django_filters import rest_framework as dj_filters
 from product import serializers
@@ -68,6 +68,16 @@ class SubCategorySpecsViewSet(ModelViewSet):
         if 'subcategory' in request.data:
             return Response({'error': 'You cannot change the subcategory.'}, status=status.HTTP_400_BAD_REQUEST)
         return super().update(request, *args, **kwargs)
+
+
+class CategorySpecsAPIView(ListAPIView):
+    queryset = models.SubcategorySpecs.objects.all()
+    serializer_class = serializers.SubCategorySpecsSerializer
+
+    def get_queryset(self):
+        category_id = self.kwargs.get('category_id')
+        subcategory_ids = models.ProductSubCategory.objects.filter(category_id=category_id).values_list('id', flat=True)
+        return self.queryset.filter(subcategory_id__in=subcategory_ids)
 
 
 class ProductReviewViewSet(ModelViewSet):

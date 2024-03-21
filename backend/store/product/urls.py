@@ -16,6 +16,7 @@ router.register('baskets', views.BasketViewSet, 'basket')
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('products/category/<int:category_id>/specs/', views.CategorySpecsAPIView.as_view(), name='category_specs'),
     path('products/<int:product_id>/specs/', views.ProductSpecListAPIView.as_view(), name='product_specs_list'),
     path('products/specs/<int:id>/', views.ProductSpecDetailAPIView.as_view(), name='product_specs_detail'),
     path('wishlist/', views.WishlistAPIListView.as_view(), name='wishlist'),

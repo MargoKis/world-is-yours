@@ -213,13 +213,19 @@ API works on [localhost:8000](http://localhost:8000/)
 - **Protection:** IsAdminUser
 
 ## 8. SubCategory Specs
-### 8.1 List Specs
+### 8.1 List of Subcategory Specs
 - **Endpoint:** `/api/products/subcategory/<int:subcategory_id>/specs/`
 - **Method:** `GET`
 - **Description:** List all specifications for a subcategory.
 - **Protection:** None
 
-### 8.2 Create Spec
+### 8.2 List of Category Specs
+- **Endpoint:** `/api/products/category/<int:category_id>/specs/`
+- **Method:** `GET`
+- **Description:** List all specifications for a category.
+- **Protection:** None
+
+### 8.3 Create Spec
 - **Endpoint:** `/api/products/subcategory/<int:subcategory_id>/specs/`
 - **Method:** `POST`
 - **Description:** Create a new spec for subcategory.
@@ -228,7 +234,7 @@ API works on [localhost:8000](http://localhost:8000/)
   - name (`string`)
   - allowed_value (`list`)
 
-### 8.3 Get, Update, Destroy Spec
+### 8.4 Get, Update, Destroy Spec
 - **Endpoint:** `/api/products/subcategory/<int:subcategory_id>/specs/<int:specs_id>`
 - **Method:** `GET` (Get), `PATCH` (Update), `DELETE` (Destroy)
 - **Description:** Get, update, or delete information for the specified spec.
