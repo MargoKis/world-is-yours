@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTable } from "react-table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import tent from "../../../../assets/png/tent.png";
 
-const ProductsList = () => {
+const ProductsList = ({ onProductSelect }) => {
+  const [selectedRows, setSelectedRows] = useState([]);
+
   const data = React.useMemo(
     () => [
       {
@@ -72,6 +74,22 @@ const ProductsList = () => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data: augmentedData });
 
+  const toggleRowSelection = (code) => {
+    if (selectedRows.includes(code)) {
+      setSelectedRows(selectedRows.filter((rowCode) => rowCode !== code));
+      const unselectedProduct = data.find((product) => product.code === code);
+      onProductSelect(unselectedProduct, false);
+    } else {
+      setSelectedRows([...selectedRows, code]);
+      const selectedProduct = data.find((product) => product.code === code);
+      onProductSelect(selectedProduct, true);
+    }
+  };
+
+  const handleRowClick = (code) => {
+    toggleRowSelection(code);
+  };
+
   return (
     <>
       <table
@@ -96,10 +114,15 @@ const ProductsList = () => {
         <tbody {...getTableBodyProps()}>
           {rows.map((row) => {
             prepareRow(row);
+            const isRowSelected = selectedRows.includes(row.original.code);
             return (
-              <tr {...row.getRowProps()}>
+              <tr
+                {...row.getRowProps()}
+                className={isRowSelected ? "bg-highlight" : ""}
+                onClick={() => handleRowClick(row.original.code)}
+              >
                 <td className="p-2 border border-gray-300">
-                  <input type="checkbox" />
+                  <input type="checkbox" checked={isRowSelected} readOnly />
                 </td>
                 {row.cells.map((cell) => (
                   <td

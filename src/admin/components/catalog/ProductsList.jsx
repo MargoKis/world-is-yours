@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTable } from "react-table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const ProductsList = ({ onAddProductClick }) => {
+  const [selectedRows, setSelectedRows] = useState([]);
+
   const data = React.useMemo(
     () => [
       {
@@ -57,6 +59,14 @@ const ProductsList = ({ onAddProductClick }) => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data: augmentedData });
 
+  const toggleRowSelection = (code) => {
+    if (selectedRows.includes(code)) {
+      setSelectedRows(selectedRows.filter((rowCode) => rowCode !== code));
+    } else {
+      setSelectedRows([...selectedRows, code]);
+    }
+  };
+
   return (
     <>
       <div className="flex flex-row justify-between mb-4">
@@ -94,10 +104,15 @@ const ProductsList = ({ onAddProductClick }) => {
         <tbody {...getTableBodyProps()}>
           {rows.map((row) => {
             prepareRow(row);
+            const isRowSelected = selectedRows.includes(row.original.code);
             return (
-              <tr {...row.getRowProps()}>
+              <tr
+                {...row.getRowProps()}
+                className={isRowSelected ? "bg-highlight" : ""}
+                onClick={() => toggleRowSelection(row.original.code)}
+              >
                 <td className="p-2 border border-gray-300">
-                  <input type="checkbox" />
+                  <input type="checkbox" checked={isRowSelected} readOnly />
                 </td>
                 {row.cells.map((cell) => (
                   <td

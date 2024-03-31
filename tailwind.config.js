@@ -82,9 +82,9 @@ module.exports = {
         "gray-dark": "#202020",
         darkWhite: "#F7F9FB",
         lightGray: "#EBEFF2",
+        highlight: '#D8D8D8',
       },
       fontFamily: {
-        // inter: ["Inter", "sans"],
         raleway: ["Raleway", "sans"],
       },
       fontWeight: {
