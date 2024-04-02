@@ -12,7 +12,8 @@
   align-items: center;
 }
 
-.popup, .popupNewsLetter {
+.popup,
+.popupNewsLetter {
   background-color: rgb(255, 255, 255);
   padding: 20px;
   border-radius: 15px;
@@ -27,7 +28,8 @@
   width: auto;
 }
 
-.title, .titleNews {
+.title,
+.titleNews {
   color: black;
   font-size: 20px;
   text-align: center;
@@ -40,22 +42,22 @@
   text-align: left;
 }
 
-.titleWrap, .titleWrapNews {
+.titleWrap,
+.titleWrapNews {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
 }
 
-.textNews{
+.textNews {
   text-align: left;
 }
 
 .closeIcon {
   position: absolute;
-  right: 0;
-  margin-right: 20px;
-  margin-top: -3px;
+  top: 20px;
+  right: 20px;
   cursor: pointer;
 }
 
@@ -66,7 +68,6 @@
   align-items: center;
 }
 
-
 .input {
   padding: 10px;
   /* margin-bottom: 16px; */
@@ -76,8 +77,6 @@
   width: 100%;
   color: #202020;
 }
-
-
 
 .remindPas {
   color: #202020;
@@ -119,15 +118,25 @@
   width: 50px;
   cursor: pointer;
 }
-
+.alternative {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 86%;
+}
+.alternative p {
+  flex: 0 0 auto;
+  line-height: 1;
+}
 .line {
-  width: 80px;
+  width: 100%;
   color: gray;
   height: 1px;
-  margin-top: 13px;
+  align-self: center;
 }
 
-.btnWrap, .btnWrapNews {
+.btnWrap,
+.btnWrapNews {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -141,7 +150,6 @@
   align-items: start;
   text-align: start;
 }
-
 
 .container {
   display: flex;
@@ -167,12 +175,15 @@
   justify-content: center;
 }
 
+.error + input {
+  border-color: red;
+}
+
 .error {
   /* margin-right: 30%; */
   color: red;
   font-size: 13px;
   margin-bottom: 16px;
-  max-width: 50%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -185,12 +196,13 @@
   border-radius: 5px 5px 0px 5px;
 }
 
-.attantion {
+.attention {
   position: absolute;
   width: 16px;
   height: 16px;
   right: 16px;
-  top: 16px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .passwordContainer {
@@ -212,7 +224,6 @@
   cursor: pointer;
 }
 
-
 /* for password recovery */
 .wrap {
   display: flex;
@@ -223,6 +234,3 @@
   width: 30%;
   margin: auto;
 }
-
-
-
