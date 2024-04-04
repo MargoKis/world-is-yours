@@ -60,7 +60,7 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
         setNameError("Ім'я обов'язкове");
         return false;
       } else if (/^\s/.test(name)) {
-        setNameError('Пароль не може починатися з пробілу');
+        setNameError("Ім'я  не може починатися з пробілу");
       } else if (name.length < 2 || name.length > 32) {
         setNameError("Ім'я повинно бути від 2 до 32 символів");
         return false;
@@ -81,7 +81,7 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
         setSurnameError("Прізвище обов'язкове");
         return false;
       } else if (/^\s/.test(surname)) {
-        setSurnameError('Пароль не може починатися з пробілу');
+        setSurnameError('Прізвище не може починатися з пробілу');
         return false;
       } else if (surname.length < 2 || surname.length > 32) {
         setSurnameError('Прізвище повинно бути від 2 до 32 символів');
@@ -104,7 +104,7 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
         return false;
         // empty
       } else if (/^\s/.test(email)) {
-        setEmailError('Пароль не може починатися з пробілу');
+        setEmailError('Емейл не може починатися з пробілу');
         return false;
       } else if (email.length < 5 || email.length > 32) {
         setEmailError('Не вірно введений емейл');
@@ -143,7 +143,7 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
         setPasswordError('Пароль не може починатися з пробілу');
         return false;
       } else if (password.length < 6 || password.length > 32) {
-        setPasswordError('Пароль повиннен бути від 2 до 32 символів');
+        setPasswordError('Пароль повиннен бути від 6 до 32 символів');
         return false;
       } else if (!/^[a-zA-Z0-9@#$%^&_+]+$/.test(password)) {
         setPasswordError('Пароль містить не припустимі символи');
@@ -400,13 +400,13 @@ const SignUp = ({ onClose, openLogin, openRemindPass, openSuccess }) => {
               <p className='text-center text-gray'>або за допомогою</p>
               <hr className={styles.line} />
             </div>
-            <div className='flex flex-row gap-6 mt-6 mb-6'>
+            <div className='flex flex-row gap-8 mt-8 mb-16 justify-center'>
               <img src={Facebook} className={styles.mediaIcons} alt='icon facebook' onClick={() => handleOnClick(facebookProvider)} />
               <img src={Google} className={styles.mediaIcons} alt='icon google' onClick={() => handleOnClick(googleProvider)} />
               <img src={Apple} className={styles.mediaIcons} alt='icon apple' />
             </div>
 
-            <p style={{ color: '#202020' }}>
+            <p style={{ color: '#202020' }} className='text-center'>
               Вже є акаунт?{' '}
               <span
                 style={{

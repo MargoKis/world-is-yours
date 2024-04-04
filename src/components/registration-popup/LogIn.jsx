@@ -36,6 +36,8 @@ const LogIn = ({ onClose, openSignUp, openRemindPass, openSuccess }) => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
+  const [userError, setUserError] = useState('');
+
   // states
 
   // password visible
@@ -50,7 +52,7 @@ const LogIn = ({ onClose, openSignUp, openRemindPass, openSuccess }) => {
         setEmailError("Емейл обов'язковий");
         // empty
       } else if (/^\s/.test(email)) {
-        setEmailError('Пароль не може починатися з пробілу');
+        setEmailError('Емейл не може починатися з пробілу');
       } else if (email.length < 5 || email.length > 32) {
         setEmailError('Не вірно введений емейл');
         // leght
@@ -135,6 +137,7 @@ const LogIn = ({ onClose, openSignUp, openRemindPass, openSuccess }) => {
           break;
         case 400:
           console.log('incorect');
+          setUserError('Невірна адреса пошти або пароль');
           break;
 
         default:
@@ -176,6 +179,7 @@ const LogIn = ({ onClose, openSignUp, openRemindPass, openSuccess }) => {
             <h2 className={styles.title}>Вхід</h2>
             <img className={styles.closeIcon} src={closeIcon} alt='close icon' onClick={onClose} />
           </div>
+          {userError && <div className={styles.errorUser}>{userError}</div>}
           <form noValidate className={styles.form} onSubmit={(e) => submit(e)}>
             {/* email */}
             <div className={styles.container}>
@@ -242,12 +246,12 @@ const LogIn = ({ onClose, openSignUp, openRemindPass, openSuccess }) => {
               <p className='text-center text-gray'>або за допомогою</p>
               <hr className={styles.line} />
             </div>
-            <div className='flex flex-row gap-6 mt-6 mb-6'>
+            <div className='flex flex-row gap-8 mt-5 mb-16 justify-center'>
               <img src={Facebook} className={styles.mediaIcons} alt='icon facebook' onClick={() => handleOnClick(facebookProvider)} />
               <img src={Google} className={styles.mediaIcons} alt='icon google' onClick={() => handleOnClick(googleProvider)} />
               <img src={Apple} className={styles.mediaIcons} alt='icon apple' />
             </div>
-            <p style={{ color: '#202020' }}>
+            <p style={{ color: '#202020' }} className='text-center'>
               Ще немає акаунту?{' '}
               <span style={{ textDecoration: 'underline', color: '#888888', cursor: 'pointer' }} onClick={openSignUp}>
                 Зареєструйтесь

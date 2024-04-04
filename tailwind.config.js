@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx}"],
+  content: ['./src/**/*.{js,jsx}'],
   theme: {
     extend: {
       spacing: {
-        '170': '170px',
-        '150': '150px',
-        '285': '285px',
-        '70': '70px',
+        170: '170px',
+        150: '150px',
+        285: '285px',
+        70: '70px',
       },
       flexBasis: {
         '1/7': '14.2857143%',
@@ -21,38 +21,37 @@ module.exports = {
         '3/5': '60%',
         '4/5': '80%',
         '5/5': '100%',
-
       },
       margin: {
-        '50': '50px',
+        50: '50px',
       },
       dropShadow: {
-        "5xl": "0 4px 4px rgba(0, 0, 0, 0.25)",
+        '5xl': '0 4px 4px rgba(0, 0, 0, 0.25)',
       },
       colors: {
         custom: {
-          black: "#202020",
+          black: '#202020',
           blue: '#135CFB',
         },
-        grayLight: "#C2C1C1",
-        grayDark: "#202020",
+        grayLight: '#C2C1C1',
+        grayDark: '#202020',
         gray: '#888888',
         blue: '#135CFB',
         textLight: '#515151',
         darkGrey: '#515151',
       },
       borderColor: {
-        'black': "#202020",
+        black: '#202020',
       },
       width: {
-        '49': '49%',
-        '21': '21rem',
-        '22': '22rem',
-        '100': '26rem',
-        '30': '30rem',
-        '75': '7.5rem',
+        49: '49%',
+        21: '21rem',
+        22: '22rem',
+        100: '26rem',
+        30: '30rem',
+        75: '7.5rem',
         '9r': '9rem',
-        '500': '500px',        
+        500: '500px',
         '1/5': '20%',
         '2/5': '40%',
         '3/5': '60%',
@@ -66,24 +65,24 @@ module.exports = {
         '6/7': '85.7142857%',
       },
       height: {
-        '504': '504px',
-        '75': '7.5rem',
-        '100': '26rem',
+        504: '504px',
+        75: '7.5rem',
+        100: '26rem',
       },
       minWidth: {
-        '235': '235px',
-        '500': '500px',
+        235: '235px',
+        500: '500px',
       },
       backgroundImage: {
         header: "url('./assets/img/bg-header.png')",
-        page404: "url('./assets/icons/notFound404.png')"
+        page404: "url('./assets/icons/notFound404.png')",
       },
       backgroundColor: {
-        "gray-dark": "#202020",
+        'gray-dark': '#202020',
       },
       fontFamily: {
         // inter: ["Inter", "sans"],
-        raleway: ["Raleway", "sans"],
+        raleway: ['Raleway', 'sans'],
       },
       fontWeight: {
         light: 300,
@@ -124,7 +123,7 @@ module.exports = {
         },
       },
       maxHeight: {
-        '52': '520px',
+        52: '520px',
       },
       overflowY: {
         auto: 'auto',

@@ -15,10 +15,10 @@
 .popup,
 .popupNewsLetter {
   background-color: rgb(255, 255, 255);
-  padding: 20px;
+  padding: 40px 50px;
   border-radius: 15px;
   position: relative;
-  width: 400px;
+  width: min(500px, 100%);
 }
 
 .popupNewsLetter {
@@ -35,7 +35,7 @@
   text-align: center;
   font-family: Raleway;
   font-weight: 600;
-  margin-bottom: 10%;
+  margin: 0 0 40px 0;
 }
 .titleNews {
   margin-bottom: 6%;
@@ -44,10 +44,7 @@
 
 .titleWrap,
 .titleWrapNews {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
+  text-align: center;
 }
 
 .textNews {
@@ -56,8 +53,8 @@
 
 .closeIcon {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 40px;
+  right: 50px;
   cursor: pointer;
 }
 
@@ -65,12 +62,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 .input {
   padding: 10px;
-  /* margin-bottom: 16px; */
   box-sizing: border-box;
   border: 1px solid #202020;
   border-radius: 10px;
@@ -78,12 +73,16 @@
   color: #202020;
 }
 
+/* .input:focus {
+  border: 1px solid aqua;
+} */
+
 .remindPas {
   color: #202020;
-  font-size: 16px;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
-  position: relative;
-  left: 90px;
+  margin-left: auto;
 }
 
 .btn,
@@ -95,13 +94,11 @@
   border-radius: 10px;
   padding: 10px 30px;
   background-color: #202020;
-  font-size: 19px;
+  font-size: 1.25rem;
   text-align: center;
   font-family: Raleway;
   font-weight: 700;
-  width: 86%;
-  margin-bottom: 10%;
-  margin-top: 30px;
+  margin: 30px 0 40px 0;
 }
 
 .btnNews {
@@ -122,15 +119,16 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  width: 86%;
 }
 .alternative p {
   flex: 0 0 auto;
   line-height: 1;
 }
 .line {
+  position: relative;
+  top: 2px;
   width: 100%;
-  color: gray;
+  color: grey;
   height: 1px;
   align-self: center;
 }
@@ -156,7 +154,6 @@
   flex-direction: column;
   width: 100%;
   justify-content: center;
-  align-items: center;
   margin-bottom: 10px;
 }
 
@@ -164,15 +161,14 @@
   color: #515151;
   display: flex;
   justify-content: flex-start;
-  width: 86%;
   margin-bottom: 10px;
 }
 
 .inputContainer {
   display: flex;
   position: relative;
-  width: 86%;
   justify-content: center;
+  flex: 1 1 auto;
 }
 
 .error + input {
@@ -180,20 +176,24 @@
 }
 
 .error {
-  /* margin-right: 30%; */
   color: red;
   font-size: 13px;
-  margin-bottom: 16px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   position: absolute;
-  right: 16px;
-  top: -14px;
+  right: 32px;
+  bottom: calc(100% - 14px);
   background-color: white;
   border: solid 1px red;
   padding: 3px 5px;
   border-radius: 5px 5px 0px 5px;
+}
+
+.errorUser {
+  color: red;
+  font-size: 13px;
+  border: solid 1px red;
+  padding: 3px 5px;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .attention {
@@ -208,7 +208,6 @@
 .passwordContainer {
   display: flex;
   position: relative;
-  width: 86%;
   justify-content: space-between;
 }
 
