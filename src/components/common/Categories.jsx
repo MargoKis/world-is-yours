@@ -1,13 +1,52 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import globalStyle from './globalStyles.module.css';
 
+import { $api } from '../../api/api';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setCategory, setSubcategory } from '../../redux/categoryParamsSlice';
+
 function Categories({ onClose }) {
+  const [categories, setCategories] = useState([]);
+  const [subCategories, setSubCategories] = useState([]);
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
+
+  const fetchCategories = async () => {
+    try {
+      const response = await $api.get('/api/products/category/');
+      setCategories(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchSubCategories = async () => {
+    const response = await $api.get('/api/products/subcategory/');
+    const filteredProducts = response.data;
+    setSubCategories(filteredProducts);
+  };
+  console.log(subCategories);
+  useEffect(() => {
+    fetchCategories();
+    fetchSubCategories();
+  }, []);
+
+  useEffect(() => {
+    fetchSubCategories();
+  }, [categories]);
+
+  const handleSubCategoryClick = (id) => {
+    dispatch(setSubcategory(id));
+    navigate('/categories');
+    onClose();
+  };
+
   const handleDocumentClick = (e) => {
     if (!e.target.closest('.Catalog') && !e.target.closest('.catalogue')) {
       onClose();
     }
   };
-
   useEffect(() => {
     document.addEventListener('click', handleDocumentClick);
 
@@ -20,37 +59,43 @@ function Categories({ onClose }) {
     <div className={globalStyle.categories}>
       <div className='Catalog bg-white pt-8 px-12 pb-12 text-xl text-custom-black font-semibold rounded-b-2xl'>
         <div className='mb-10'>
-          <p className='text-base font-light pb-2'>Для вас</p>
+          <p className='text-base font-medium pb-2'>{categories[0]?.name}</p>
           <ul className='flex gap-10'>
-            <li>Одяг</li>
-            <li>Взуття</li>
-            <li>Аксесуари</li>
+            {subCategories
+              .filter((item) => item.category == 1)
+              .map((item) => (
+                <li key={item.id} className='cursor-pointer' onClick={() => handleSubCategoryClick(item.id)}>
+                  {item.name}
+                </li>
+              ))}
           </ul>
         </div>
         <div className='flex justify-between items-baseline mb-8 gap-4'>
           <div>
-            <p className='text-base font-light pb-2'>Для автодому</p>
-            <ul className='flex flex-col gap-5'>
-              <li>Технічна підтримка автодому</li>
-              <li>Устаткування для кемпінгу</li>
-              <li>Кухонне обладнання</li>
+            <p className='text-base font-medium pb-2'>{categories[1]?.name}</p>
+            <ul className={`flex flex-col gap-5 separated-list ${globalStyle.separatedList}`}>
+              {subCategories
+                .filter((item) => item.category == 2)
+                .map((item) => (
+                  <li key={item.id} className='cursor-pointer' onClick={() => handleSubCategoryClick(item.id)}>
+                    {item.name}
+                  </li>
+                ))}
             </ul>
           </div>
           <div>
-            <p className='text-base font-light pb-2'>Додаткове</p>
+            <p className='text-base font-medium pb-2'>{categories[2]?.name}</p>
             <ul className='flex flex-col gap-5'>
-              <li>Подорожні товари</li>
-              <li>Активний відпочинок</li>
+              {subCategories
+                .filter((item) => item.category == 3)
+                .map((item) => (
+                  <li key={item.id} className='cursor-pointer' onClick={() => handleSubCategoryClick(item.id)}>
+                    {item.name}
+                  </li>
+                ))}
             </ul>
           </div>
         </div>
-        <svg className='mb-8' width='287' height='1' viewBox='0 0 287 1' fill='none' xmlns='http://www.w3.org/2000/svg'>
-          <line y1='0.75' x2='287' y2='0.75' stroke='#646464' strokeWidth='0.5' />
-        </svg>
-        <ul className='flex flex-col gap-5'>
-          <li>Автодомові аксесуари</li>
-          <li>Комфорт та зручності</li>
-        </ul>
       </div>
     </div>
   );
