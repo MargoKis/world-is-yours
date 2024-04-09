@@ -19,6 +19,8 @@
   border-radius: 15px;
   position: relative;
   width: min(500px, 100%);
+  overflow-y: scroll;
+  max-height: 90svh;
 }
 
 .popupNewsLetter {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LogoWorldIsYoursDark from '../../assets/icons/dark/logo-dark.svg';
 import SearchIconDark from '../../assets/icons/dark/icon-search-dark.svg';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -9,6 +9,7 @@ import ArrowDown from '../../assets/icons/arrow-up.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLocale } from '../../redux/localeSlice';
 // import { setIsCategoriesOpen } from "../../redux/headerSlice";
+import DonateBanner from '../common/DonateBanner';
 import useTranslation from '../../locale/locales';
 import Categories from './Categories';
 import SignUp from '../registration-popup/SignUp';
@@ -16,6 +17,8 @@ import RemindPas from '../registration-popup/RemindPas';
 import LogIn from '../registration-popup/LogIn';
 import SuccessMes from '../registration-popup/SuccessMes';
 import LoginStatus from '../feature/header/loginStatus';
+
+import globalStyle from './globalStyles.module.css';
 
 function Header() {
   const dispatch = useDispatch();
@@ -33,9 +36,7 @@ function Header() {
 
   // toggle isOpen state
   const toggleCategories = () => {
-    console.log(isCategoriesOpen, 'before');
     setCategoriesOpen(!isCategoriesOpen);
-    console.log(isCategoriesOpen, 'after');
   };
 
   // scroll lock
@@ -46,7 +47,8 @@ function Header() {
   }
 
   return (
-    <>
+    <header>
+      <DonateBanner />
       <div className='relative z-10'>
         <div className='flex justify-between items-center px-10 bg-white text-custom-black drop-shadow-5xl '>
           <div className='flex justify-between items-center'>
@@ -163,7 +165,7 @@ function Header() {
           }}
         />
       )}
-    </>
+    </header>
   );
 }
 
@@ -181,10 +183,25 @@ const Search = () => {
     }
   };
 
+  const documentClickCheck = (e) => {
+    if (!e.target.closest('.StateClicked')) {
+      console.log('state clicked');
+      setSearchOpen(false);
+    } else {
+      console.log('!isOpen');
+    }
+  };
+  useEffect(() => {
+    document.addEventListener('click', documentClickCheck);
+    return () => {
+      document.removeEventListener('click', documentClickCheck);
+    };
+  }, []);
+
   return (
     <div>
       {isSearchOpen ? (
-        <div className='StateClicked w-[400px] h-10 px-2.5 border-b border-neutral-800 inline-flex items-center gap-[15px]'>
+        <div className={'StateClicked max-w-[400px] h-10 border-b border-neutral-800 inline-flex items-center gap-[15px]'} data-isOpen={`${isSearchOpen ? 'true' : 'false'}`}>
           <img onClick={() => navigate(`/categories?${searchValue}`)} className='cursor-pointer w-6 h-6' src={SearchIconDark} alt='Search' />
           <span className="text-neutral-800 text-lg font-medium font-['Raleway']">|</span>
           <input
@@ -197,7 +214,7 @@ const Search = () => {
           />
         </div>
       ) : (
-        <img onClick={() => setSearchOpen(!isSearchOpen)} className='cursor-pointer w-6 h-6' src={SearchIconDark} alt='Search' />
+        <img onClick={() => setSearchOpen(true)} className='StateClicked cursor-pointer w-6 h-6' src={SearchIconDark} alt='Search' aria-haspopup='true' />
       )}
     </div>
   );
