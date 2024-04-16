@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
-import CategoryList from "../components/category-page/CategoryList";
-import FilterPopup from "../components/category-page/FilterPopup";
-import Card from "../components/common/Card";
-import { $api } from "../api/api";
-import { useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import CategoryList from '../components/category-page/CategoryList';
+import FilterPopup from '../components/category-page/FilterPopup';
+import Card from '../components/common/Card';
+import { $api } from '../api/api';
+import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import { motion as m } from 'framer-motion';
 
 const CategoryPage = () => {
   const location = useLocation();
@@ -21,27 +23,25 @@ const CategoryPage = () => {
   const [arrivals, setArrivals] = useState([]);
 
   const [page, setPage] = useState(1);
-  const [next, setNext] = useState("true");
+  const [next, setNext] = useState('true');
 
   // fetch product
   const fetchData = async (page_size, page) => {
     try {
       if (filters.category) {
-        query.category = "&category=" + filters.category;
+        query.category = '&category=' + filters.category;
       }
 
       if (filters.subcategory) {
-        query.subcategory = "&subcategory=" + filters.subcategory;
+        query.subcategory = '&subcategory=' + filters.subcategory;
       }
       if (query.subcategory) {
         delete query.category;
       }
 
-      let queryString = Object.values(query).join("");
+      let queryString = Object.values(query).join('');
       console.log(queryString);
-      const response = await $api.get(
-        `/api/products/?page_size=${page_size}&page=${page}${queryString}`
-      );
+      const response = await $api.get(`/api/products/?page_size=${page_size}&page=${page}${queryString}`);
       setNext(response.data.next);
       // setArrivals((currentArrivals) => [...currentArrivals, ...response.data.results]);
       setArrivals(response.data.results);
@@ -55,15 +55,15 @@ const CategoryPage = () => {
   }, [page, filters]);
 
   return (
-    <div>
+    <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
       <CategoryList />
       {isPopupOpen && <FilterPopup onClose={handleTogglePopup} />}
-      <div className="grid grid-flow-row-dense grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center">
+      <div className='grid grid-flow-row-dense grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center'>
         {arrivals.map((item) => (
           <Card data={item} key={item.id} />
         ))}
       </div>
-    </div>
+    </m.div>
   );
 };
 

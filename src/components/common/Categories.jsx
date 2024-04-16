@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setCategory, setSubcategory } from '../../redux/categoryParamsSlice';
 
+import { motion as m } from 'framer-motion';
+
 function Categories({ onClose }) {
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
@@ -56,7 +58,7 @@ function Categories({ onClose }) {
   });
 
   return (
-    <div className={globalStyle.categories}>
+    <m.div className={globalStyle.categories} initial={{ x: '-50%', y: -10, opacity: 0 }} animate={{ x: '-50%', y: 0, opacity: 1 }} transition={{ duration: 0.4 }}>
       <div className='Catalog bg-white pt-8 px-12 pb-12 text-xl text-custom-black font-semibold rounded-b-2xl'>
         <div className='mb-10'>
           <p className='text-base font-medium pb-2'>{categories[0]?.name}</p>
@@ -64,7 +66,7 @@ function Categories({ onClose }) {
             {subCategories
               .filter((item) => item.category == 1)
               .map((item) => (
-                <li key={item.id} className='cursor-pointer' onClick={() => handleSubCategoryClick(item.id)}>
+                <li key={item.id} className='cursor-pointer hover:underline focus:underline focus:outline-0' onClick={() => handleSubCategoryClick(item.id)} tabIndex='0'>
                   {item.name}
                 </li>
               ))}
@@ -77,7 +79,7 @@ function Categories({ onClose }) {
               {subCategories
                 .filter((item) => item.category == 2)
                 .map((item) => (
-                  <li key={item.id} className='cursor-pointer' onClick={() => handleSubCategoryClick(item.id)}>
+                  <li key={item.id} className='cursor-pointer hover:underline focus:underline focus:outline-0' onClick={() => handleSubCategoryClick(item.id)} tabIndex='0'>
                     {item.name}
                   </li>
                 ))}
@@ -89,7 +91,7 @@ function Categories({ onClose }) {
               {subCategories
                 .filter((item) => item.category == 3)
                 .map((item) => (
-                  <li key={item.id} className='cursor-pointer' onClick={() => handleSubCategoryClick(item.id)}>
+                  <li key={item.id} className='cursor-pointer hover:underline focus:underline focus:outline-0' onClick={() => handleSubCategoryClick(item.id)} tabIndex='0'>
                     {item.name}
                   </li>
                 ))}
@@ -97,7 +99,7 @@ function Categories({ onClose }) {
           </div>
         </div>
       </div>
-    </div>
+    </m.div>
   );
 }
 

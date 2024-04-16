@@ -72,3 +72,40 @@ a {
 ::selection {
   background-color: #00000018;
 }
+/* Hide number input defaul arrows */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #135cfb;
+  outline: unset;
+}
+
+input,
+textarea {
+  transition: border 0.3s ease;
+}
+
+a:focus,
+img:focus,
+p:focus {
+  outline: unset;
+  text-decoration: underline;
+}
+button:focus {
+  outline: 1px solid #202020;
+}
+::placeholder {
+  font-weight: 300;
+  font-size: 1rem;
+  color: #515151;
+}

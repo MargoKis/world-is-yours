@@ -8,6 +8,7 @@ import { setCategory, setSubcategory } from '../../redux/categoryParamsSlice';
 
 const CategoryList = () => {
   const [selectedFilter, setSelectedFilter] = useState('');
+  const [selectedSubCategory, setSelectedSubCategory] = useState(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
@@ -31,55 +32,63 @@ const CategoryList = () => {
     setSubCategories(filteredProducts);
     console.log(response.data);
   };
+
   useEffect(() => {
     fetchCategories();
     fetchSubCategories();
   }, []);
+
   useEffect(() => {
     fetchSubCategories();
   }, [categories, selectedFilter]);
-
   // set category
   const handleCategoryClick = (id) => {
     dispatch(setCategory(id));
     dispatch(setSubcategory(null));
     setSelectedFilter(id);
+    setSelectedSubCategory(null);
   };
 
   // set sub category
   const handleSubCategoryClick = (id) => {
     dispatch(setSubcategory(id));
+    setSelectedSubCategory(id);
   };
 
   const togglePopup = () => {
     setIsPopupOpen(!isPopupOpen);
   };
-
+  console.log(categories);
   const changeCategory = (category) => {
     navigate(`?category=${category}`);
   };
   return (
     <div className='flex flex-col m-10'>
       <h1 className='text-blue text-xl mb-4 font-semibold'>Категорії</h1>
-      <div className='flex flex-row justify-between'>
+      <div className='flex flex-row justify-between items-end'>
         <div className='flex flex-row gap-6 font-medium '>
           {/* categories */}
-          <p className='cursor-pointer' onClick={() => handleCategoryClick(null)}>
+          <p className='cursor-pointer duration-300 hover:text-neutral-600 focus:text-neutral-600' onClick={() => handleCategoryClick(null)} tabIndex='0' aria-label='Clickable filter disable'>
             Все
           </p>
           {categories.map((item) => (
-            <p key={item.id} className='cursor-pointer' onClick={() => handleCategoryClick(item.id)}>
+            <p
+              key={item.id}
+              className={`text-custom-black cursor-pointer duration-300 hover:text-neutral-600 focus:text-neutral-600 ${selectedFilter === item.id ? 'underline hover:text-custom-black' : ''}`}
+              onClick={() => handleCategoryClick(item.id)}
+              tabIndex='0'
+              aria-label={`${item.name} tab`}>
               {item.name}
             </p>
           ))}
         </div>
-        <img src={Filter} alt='filter icon' className='cursor-pointer' onClick={togglePopup} />
+        <img src={Filter} alt='filter icon' className='cursor-pointer p-1 rounded-sm outline-slate-400 focus:outline focus:outline-1' onClick={togglePopup} tabIndex='0' />
       </div>
       <hr className='text-blue my-2' />
-      <div className='flex flex-row gap-6 text-sm text-gray font-medium'>
+      <div className='flex flex-row gap-6'>
         {/* sub categories */}
         {subCategories.map((item) => (
-          <p key={item.id} className='cursor-pointer' onClick={() => handleSubCategoryClick(item.id)}>
+          <p key={item.id} className={`text-sm text-gray font-medium cursor-pointer hover:text-neutral-600 focus:text-neutral-600 ${selectedSubCategory === item.id ? 'underline hover:text-gray' : ''}`} onClick={() => handleSubCategoryClick(item.id)} tabIndex='0'>
             {item.name}
           </p>
         ))}

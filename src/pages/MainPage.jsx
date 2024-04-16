@@ -14,6 +14,8 @@ import Slider from '../components/main-page/Slider';
 import useTranslation from '../locale/locales';
 import MoveUp from '../components/common/MoveUp';
 
+import { motion as m } from 'framer-motion';
+
 const MainPage = () => {
   const t = useTranslation();
 
@@ -23,7 +25,7 @@ const MainPage = () => {
     setIsChatPopupOpen(!isChatPopupOpen);
   };
   return (
-    <>
+    <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
       <div className='bg-header bg-cover bg-no-repeat bg-bottom text-white' style={{ height: 'calc(100svh - 140px)' }}>
         {/* minus header and DonnateBanner height*/}
 
@@ -49,7 +51,7 @@ const MainPage = () => {
       <NewArrivalsCardList />
       <WhyUs />
       <MoveUp />
-    </>
+    </m.div>
   );
 };
 
