@@ -58,7 +58,7 @@ const CategoryPage = () => {
     <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
       <CategoryList />
       {isPopupOpen && <FilterPopup onClose={handleTogglePopup} />}
-      <div className='grid grid-flow-row-dense grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center'>
+      <div className='grid grid-flow-row-dense gap-4 mx-10 mb-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center'>
         {arrivals.map((item) => (
           <Card data={item} key={item.id} />
         ))}

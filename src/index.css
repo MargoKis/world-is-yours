@@ -97,13 +97,13 @@ textarea {
 
 a:focus,
 img:focus,
-p:focus {
-  outline: unset;
-  text-decoration: underline;
-}
+p:focus,
 button:focus {
-  outline: 1px solid #202020;
+  outline: unset;
 }
+/* button:focus {
+  outline: 1px solid #202020;
+} */
 ::placeholder {
   font-weight: 300;
   font-size: 1rem;

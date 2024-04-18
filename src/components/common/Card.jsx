@@ -65,13 +65,13 @@ const Card = ({ data }) => {
   };
   return (
     <>
-      <div className=' m-3 border-2 border-gray-light rounded-lg relative w-90 items-center'>
-        <div className='flex justify-center px-1'>
-          <img src={data.image_1} alt='product img' className='w-80 h-96 object-cover max-w-200 rounded-lg' />
+      <div className='border-2 border-gray-light rounded-2xl overflow-hidden relative w-90 items-center'>
+        <div className='flex justify-center'>
+          <img src={data.image_1} alt='product img' className='w-full h-96 object-cover' />
         </div>
 
         <div className='absolute top-3 right-3 m-2' onClick={() => toggleWishList()}>
-          <img src={isLiked ? HeartIconRed : HeartIcon} alt='heart icon' width='26' className='cursor-pointer' />
+          <img src={isLiked ? HeartIconRed : HeartIcon} alt='heart icon' width='36' className='cursor-pointer' />
         </div>
 
         <div className='flex flex-row justify-between items-center'>
@@ -79,7 +79,7 @@ const Card = ({ data }) => {
             <p className='text-custom-black font-semibold'>{data.name}</p>
             <p className='text-custom-black '>{data.price}</p>
           </div>
-          <Button classNameBtn={`flex border rounded-md py-3 px-3 mr-4 ${isCart ? ' bg-black' : ''}`} onClickBtn={() => toggleCart()}>
+          <Button classNameBtn={`flex border rounded-md py-3 px-3 mr-4 duration-300 hover:border-blue ${isCart ? ' bg-black' : ''}`} onClickBtn={() => toggleCart()}>
             <img src={isCart ? CartFull : Cart} alt='cart' />
           </Button>
         </div>

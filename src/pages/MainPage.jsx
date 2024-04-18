@@ -26,7 +26,7 @@ const MainPage = () => {
   };
   return (
     <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
-      <div className='bg-header bg-cover bg-no-repeat bg-bottom text-white' style={{ height: 'calc(100svh - 140px)' }}>
+      <div className='bg-header bg-cover bg-no-repeat bg-bottom text-white' style={{ height: 'calc(100svh - 100px)' }}>
         {/* minus header and DonnateBanner height*/}
 
         {/* main page nav text */}

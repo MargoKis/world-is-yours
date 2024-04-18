@@ -87,17 +87,17 @@ const Footer = () => {
           <p className='text-white font-raleway font-600 text-20px'>Довідка</p>
           <ul className='reference flex flex-col gap-3 mt-4'>
             <li>
-              <NavLink to='/info-help?component=payment' className='text-white font-raleway font-400 text-16px hover:underline'>
+              <NavLink to='/info-help?component=payment' className='text-white font-raleway font-400 text-16px hover:underline focus:underline'>
                 Оплата
               </NavLink>
             </li>
             <li>
-              <NavLink to='/info-help?component=delivery' className='text-white font-raleway font-400 text-16px hover:underline'>
+              <NavLink to='/info-help?component=delivery' className='text-white font-raleway font-400 text-16px hover:underline focus:underline'>
                 Доставка
               </NavLink>
             </li>
             <li>
-              <NavLink to='/info-help?component=return' className='text-white font-raleway font-400 text-16px hover:underline'>
+              <NavLink to='/info-help?component=return' className='text-white font-raleway font-400 text-16px hover:underline focus:underline'>
                 Повернення та обмін
               </NavLink>
             </li>

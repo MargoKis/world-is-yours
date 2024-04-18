@@ -64,17 +64,17 @@ const CategoryList = () => {
   };
   return (
     <div className='flex flex-col m-10'>
-      <h1 className='text-blue text-xl mb-4 font-semibold'>Категорії</h1>
+      <h1 className='text-blue text-2xl mb-4 font-semibold'>Категорії</h1>
       <div className='flex flex-row justify-between items-end'>
-        <div className='flex flex-row gap-6 font-medium '>
+        <div className='flex flex-row gap-6 font-medium items-center'>
           {/* categories */}
-          <p className='cursor-pointer duration-300 hover:text-neutral-600 focus:text-neutral-600' onClick={() => handleCategoryClick(null)} tabIndex='0' aria-label='Clickable filter disable'>
+          <p className='text-xl cursor-pointer duration-300 hover:text-neutral-600 focus:underline' onClick={() => handleCategoryClick(null)} tabIndex='0' aria-label='Clickable filter disable'>
             Все
           </p>
           {categories.map((item) => (
             <p
               key={item.id}
-              className={`text-custom-black cursor-pointer duration-300 hover:text-neutral-600 focus:text-neutral-600 ${selectedFilter === item.id ? 'underline hover:text-custom-black' : ''}`}
+              className={`text-xl text-custom-black cursor-pointer duration-300 hover:text-neutral-500 focus:underline ${selectedFilter === item.id ? 'underline hover:text-gray focus:text-gray' : ''}`}
               onClick={() => handleCategoryClick(item.id)}
               tabIndex='0'
               aria-label={`${item.name} tab`}>
@@ -88,7 +88,7 @@ const CategoryList = () => {
       <div className='flex flex-row gap-6'>
         {/* sub categories */}
         {subCategories.map((item) => (
-          <p key={item.id} className={`text-sm text-gray font-medium cursor-pointer hover:text-neutral-600 focus:text-neutral-600 ${selectedSubCategory === item.id ? 'underline hover:text-gray' : ''}`} onClick={() => handleSubCategoryClick(item.id)} tabIndex='0'>
+          <p key={item.id} className={`text-base text-gray font-medium cursor-pointer duration-300 hover:text-neutral-600 focus:underline ${selectedSubCategory === item.id ? 'underline text-custom-black' : ''}`} onClick={() => handleSubCategoryClick(item.id)} tabIndex='0'>
             {item.name}
           </p>
         ))}

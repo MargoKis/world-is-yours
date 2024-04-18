@@ -19,7 +19,7 @@ const ClothingSizePicker = () => {
   return (
     <div className='flex flex-row flex-wrap gap-5'>
       {clothingSizes.map((size) => (
-        <div key={`clothing-${size}`} className={`relative w-8 h-8 rounded-full cursor-pointer border border-gray ${selectedSize.includes(size) ? 'bg-blue-500' : ''}`} style={{}} onClick={() => handleSizeToggle(size)}>
+        <div key={`clothing-${size}`} className={`relative w-10 h-10 rounded-full cursor-pointer duration-300 border border-gray ${selectedSize.includes(size) ? 'bg-blue border-white' : ''}`} style={{}} onClick={() => handleSizeToggle(size)}>
           <span className={`text-gray text-sm flex justify-center items-center absolute inset-0 ${selectedSize.includes(size) ? 'text-white' : ''}`}>{size}</span>
         </div>
       ))}

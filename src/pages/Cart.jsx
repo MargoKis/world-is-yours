@@ -32,7 +32,7 @@ const Cart = () => {
       size: 'none',
       color: 'Grey',
       quantity: 2,
-      discount: 0,
+      discount: 'Немає',
     },
     {
       id: 4,
@@ -49,8 +49,12 @@ const Cart = () => {
   const calculateTotalAmount = (cartItems) => {
     let total = 0;
     cartItems.forEach((item) => {
-      const discountedPrice = item.price * (1 - item.discount / 100);
-      total += discountedPrice * item.quantity;
+      if (typeof item.discount === 'number') {
+        const discountedPrice = item.price * (1 - item.discount / 100);
+        total += discountedPrice * item.quantity;
+      } else {
+        total += item.price * item.quantity;
+      }
     });
     return total;
   };
@@ -111,7 +115,7 @@ const Cart = () => {
       <div className='w-8/12 mx-auto mt-16 mb-10'>
         <div className='flex justify-between items-center mb-4'>
           <p className='font-raleway font-semibold text-4xl mx-auto'>Кошик</p>
-          <p className='font-raleway font-normal text-lg cursor-pointer' onClick={handleRemoveAllItems}>
+          <p className='font-raleway font-normal text-lg cursor-pointer hover:underline focus:underline' onClick={handleRemoveAllItems} tabIndex='0'>
             Видалити все
           </p>
         </div>
@@ -126,7 +130,7 @@ const Cart = () => {
         <hr className='text-gray' />
 
         <div className='flex flex-row text-center items-center my-10'>
-          <Button classNameBtn='w-9/12 bg-transparent border-blue border-dashed text-blue p-4 border rounded-xl font-normal text-18px hover:border-solid' nameBtn='submitForm' valueBtn='submit' type='submit'>
+          <Button classNameBtn='w-9/12 bg-transparent border-blue border-dashed text-blue duration-300 p-4 border rounded-xl font-normal text-18px hover:text-white hover:bg-blue focus:text-white focus:bg-blue' nameBtn='submitForm' valueBtn='submit' type='submit'>
             Промокод для знижки
           </Button>
           <p className='w-full items-center font-semibold text-xl'>Всього: {totalAmount} грн</p>

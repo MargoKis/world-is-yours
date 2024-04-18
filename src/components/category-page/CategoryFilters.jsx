@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import ClothingSizePicker from '../product/ClothingSizePicker';
+import CloseIcon from '../../assets/icons/icon-close.svg';
+
+import { motion as m } from 'framer-motion';
 
 const CategoryFilters = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -24,34 +27,30 @@ const CategoryFilters = () => {
   };
 
   return (
-    <div className="flex flex-col py-2 px-8">
+    <div className='flex flex-col py-2 px-8'>
       {data.map((item) => (
-        <div key={item.id} className="border-b-2 border-gray py-1">
-          <div
-            className="flex justify-between items-center py-4 cursor-pointer transition-colors duration-300 ease-in-out"
-            onClick={() => toggleAccordion(item.id)}
-          >
-            <p className="text-base">{item.title}</p>
-            <span className="text-2xl">{openIndex === item.id ? '−' : '+'}</span>
+        <div key={item.id} className='border-b border-gray py-1'>
+          <div className='flex justify-between items-center py-4 cursor-pointer transition-colors duration-300 ease-in-out' onClick={() => toggleAccordion(item.id)}>
+            <p className='text-base'>{item.title}</p>
+            <img src={CloseIcon} alt='close icon' className={`cursor-pointer rotate-45 scale-[0.6] duration-300 ${openIndex === item.id ? 'rotate-[0]' : ''}`} />
           </div>
           {openIndex === item.id && item.title === 'Розмір' && (
-            <div className="mt-3 my-5">
+            <div className='mt-3 my-5'>
               <ClothingSizePicker />
             </div>
           )}
           {openIndex === item.id && item.btn && item.title !== 'Розмір' && (
-            <div className="flex flex-wrap my-5">
+            <m.div className='flex flex-wrap my-5' initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
               {item.btn.map((btnText, id) => (
                 <button
                   key={id}
-                  className={`px-4 py-1 font-medium font-Raleway text-base border border-gray rounded-lg mr-2 mb-2 
+                  className={`px-4 py-1 font-medium font-Raleway text-base border border-gray rounded-lg mr-2 mb-2 duration-300
                   ${activeButtons[btnText] ? 'bg-black text-white' : ''}`}
-                  onClick={() => toggleButton(btnText)}
-                >
+                  onClick={() => toggleButton(btnText)}>
                   {btnText}
                 </button>
               ))}
-            </div>
+            </m.div>
           )}
         </div>
       ))}
