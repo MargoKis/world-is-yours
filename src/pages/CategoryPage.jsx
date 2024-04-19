@@ -8,10 +8,16 @@ import { useSelector } from 'react-redux';
 
 import { motion as m } from 'framer-motion';
 
+import MoveUp from '../components/common/MoveUp';
+import Button from '../components/common/Button';
+
+import arrowUp from '../assets/icons/arrow-up.svg';
+
 const CategoryPage = () => {
   const location = useLocation();
   const [categoryId, setCategoryId] = useState(null);
   const filters = useSelector((state) => state.categryFilter);
+
   let query = {};
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -54,6 +60,17 @@ const CategoryPage = () => {
     fetchData(8, page);
   }, [page, filters]);
 
+  // Pagination
+  const pages = [1, 2, 3, 4, 5];
+
+  const setNewPage = (direction) => {
+    if (page !== 1 && direction === -1) {
+      setPage(page + direction);
+    } else if (page !== pages.length && direction === +1) {
+      setPage(page + direction);
+    }
+  };
+
   return (
     <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
       <CategoryList />
@@ -63,6 +80,35 @@ const CategoryPage = () => {
           <Card data={item} key={item.id} />
         ))}
       </div>
+      {arrivals.length > 0 ? (
+        <>
+          <div className='pagination flex justify-center items-center py-10 my-12'>
+            <Button onClickBtn={() => setNewPage(-1)}>
+              <img src={arrowUp} alt='previous page button' className={`rotate-[270deg] ${page === 1 ? 'invert cursor-default' : ''}`} />
+            </Button>
+            <ul className='flex gap-5 mx-[100px]'>
+              {pages.map((pageBtn) => {
+                return (
+                  <li>
+                    <Button key={pageBtn.id} classNameBtn={`text-xl ${pageBtn === page ? 'text-black' : 'text-gray'}`} onClickBtn={() => setPage(pageBtn)}>
+                      {pageBtn}
+                    </Button>
+                  </li>
+                );
+              })}
+            </ul>
+            <Button onClickBtn={() => setNewPage(+1)}>
+              <img src={arrowUp} alt='next page button' className={`rotate-90 ${page === pages.length ? 'invert cursor-default' : ''}`} />
+            </Button>
+          </div>
+
+          <hr className='text-gray w-[95%] mx-auto' />
+
+          <MoveUp />
+        </>
+      ) : (
+        <p>No DATA</p>
+      )}
     </m.div>
   );
 };

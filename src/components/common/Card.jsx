@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addItem, removeItem } from '../../redux/wishlistSlice';
 import { addItemCart, removeItemCart } from '../../redux/cartSlice';
 
+import { motion as m } from 'framer-motion';
+
 const Card = ({ data }) => {
   const dispatch = useDispatch();
   const [isLiked, setLike] = useState(false);
@@ -64,8 +66,8 @@ const Card = ({ data }) => {
     }
   };
   return (
-    <>
-      <div className='border-2 border-gray-light rounded-2xl overflow-hidden relative w-90 items-center'>
+    <m.div initial={{ opacity: 0.5 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
+      <div className='border border-[#888888] rounded-2xl overflow-hidden relative w-90 items-center'>
         <div className='flex justify-center'>
           <img src={data.image_1} alt='product img' className='w-full h-96 object-cover' />
         </div>
@@ -77,14 +79,14 @@ const Card = ({ data }) => {
         <div className='flex flex-row justify-between items-center'>
           <div className='p-5 flex-col'>
             <p className='text-custom-black font-semibold'>{data.name}</p>
-            <p className='text-custom-black '>{data.price}</p>
+            <p className='text-custom-black'>{data.price}</p>
           </div>
           <Button classNameBtn={`flex border rounded-md py-3 px-3 mr-4 duration-300 hover:border-blue ${isCart ? ' bg-black' : ''}`} onClickBtn={() => toggleCart()}>
             <img src={isCart ? CartFull : Cart} alt='cart' />
           </Button>
         </div>
       </div>
-    </>
+    </m.div>
   );
 };
 
