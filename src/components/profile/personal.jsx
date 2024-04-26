@@ -5,6 +5,8 @@ import { updateUser } from '../../redux/userSlice';
 import eyeOff from '../../assets/icons/icon-Eye-off.svg';
 import eyeOn from '../../assets/icons/icon-openEye.svg';
 
+import { motion as m } from 'framer-motion';
+
 const Personal = () => {
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
@@ -44,7 +46,7 @@ const Personal = () => {
   console.log('userDataOnProfile');
   console.log(userData);
   return (
-    <>
+    <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
       <h3 className='text-blue font-raleway lining-nums proportional-nums  font-semibold mb-10 text-2xl'>Контактна інформація</h3>
       <div className='flex justify-start gap-x-32   flex-col xxl:flex-row'>
         {/* profile setting */}
@@ -75,11 +77,14 @@ const Personal = () => {
             </label>
           </div>
           <div className='flex gap-5 justify-between mt-5'>
-            <label htmlFor='userDate' className='w-2/7 text-darkGrey font-raleway text-4 font-medium'>
-              День Народження
+            <label htmlFor='userDate' className='w-3/7 text-darkGrey font-raleway text-4 font-medium'>
+              Дата Народження
               <input id='userDate' type='text' name='B_day' placeholder='dd/mm/yy' value={userData.B_day} onChange={handleChange} className='flex mt-2 w-5/5 p-3 items-center self-stretch rounded-xl border border-black focus:border-blue-500 outline-none' />
             </label>
           </div>
+          <Button onClick={handleSubmit} classNameBtn='w-full mt-7 bg-gray-dark p-4 border rounded-xl font-bold text-18px text-white duration-300 hover:bg-transparent hover:text-black focus:bg-transparent focus:text-black'>
+            Зберегти
+          </Button>
         </form>
 
         {/* change password */}
@@ -114,10 +119,7 @@ const Personal = () => {
           </div>
         </form>
       </div>
-      <Button onClick={handleSubmit} classNameBtn='flex w-500 justify-center items-center rounded-xl bg-custom-black p-5 text-white mt-8'>
-        Зберегти
-      </Button>
-    </>
+    </m.div>
   );
 };
 

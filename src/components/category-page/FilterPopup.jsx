@@ -10,13 +10,14 @@ const FilterPopup = ({ onClose }) => {
   const popupRef = useRef(null);
 
   const handleOutsideClick = (e) => {
+    console.log(popupRef);
     if (popupRef.current && !popupRef.current.contains(e.target)) {
       onClose();
     }
   };
 
   return (
-    <div className='fixed inset-0 flex items-center justify-end bg-black bg-opacity-50 z-50' onClick={handleOutsideClick}>
+    <m.div className='fixed inset-0 flex items-center justify-end bg-black bg-opacity-50 z-50' onClick={handleOutsideClick} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
       <m.div ref={popupRef} className='flex flex-col justify-between bg-white rounded-l-lg w-1/3 h-full pb-12' initial={{ x: '100%' }} animate={{ x: 0 }} transition={{ duration: 0.4 }}>
         <div className='flex flex-col'>
           <div className='flex items-center mx-6 my-6'>
@@ -30,7 +31,7 @@ const FilterPopup = ({ onClose }) => {
           Переглянути результати
         </Button>
       </m.div>
-    </div>
+    </m.div>
   );
 };
 

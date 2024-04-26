@@ -79,9 +79,6 @@ const Footer = () => {
                 Зв’яжись з нами
               </p>
             </a>
-            <a href='#payment'>
-              <p className='text-white text-opacity-30 text-16px'>не працює</p>
-            </a>
           </div>
           <hr className='mb-4 text-white' />
           <p className='text-white font-raleway font-600 text-20px'>Довідка</p>

@@ -81,7 +81,7 @@ const Card = ({ data }) => {
             <p className='text-custom-black font-semibold'>{data.name}</p>
             <p className='text-custom-black'>{data.price}</p>
           </div>
-          <Button classNameBtn={`flex border rounded-md py-3 px-3 mr-4 duration-300 hover:border-blue ${isCart ? ' bg-black' : ''}`} onClickBtn={() => toggleCart()}>
+          <Button classNameBtn={`flex border rounded-md py-3 px-3 mr-4 duration-300 hover:border-blue focus:border-blue ${isCart ? ' bg-black' : ''}`} onClickBtn={() => toggleCart()}>
             <img src={isCart ? CartFull : Cart} alt='cart' />
           </Button>
         </div>

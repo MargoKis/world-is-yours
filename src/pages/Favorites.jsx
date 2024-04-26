@@ -48,20 +48,22 @@ const Favorites = () => {
     return <NotFound404 />;
   }
   return (
-    <m.Container className='justify-center text-grayLight my-[70px]' id='sectionFav' initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
-      <div className='flex justify-center gap-2.5 mb-[50px]'>
-        <h1 className="text-5xl font-semibold text-neutral-800 font-['Raleway']">Обрані</h1>
-        <div className='flex justify-center items-center w-6 h-6 bg-blue rounded-full'>
-          <span className="text-sm font-normal text-white font-['Raleway']">{count}</span>
+    <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
+      <Container className='justify-center text-grayLight my-[70px]' id='sectionFav'>
+        <div className='flex justify-center gap-2.5 mb-[50px]'>
+          <h1 className="text-40px font-semibold text-neutral-800 font-['Raleway']">Обрані</h1>
+          <div className='flex justify-center items-center w-6 h-6 bg-blue rounded-full'>
+            <span className="text-sm font-normal text-white font-['Raleway']">{count}</span>
+          </div>
         </div>
-      </div>
 
-      <div className='grid grid-flow-row-dense grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center'>
-        {products.map((product) => (
-          <Card key={product.id} data={product} />
-        ))}
-      </div>
-    </m.Container>
+        <div className='grid grid-flow-row-dense gap-x-5 gap-y-[50px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center'>
+          {products.map((product) => (
+            <Card key={product.id} data={product} />
+          ))}
+        </div>
+      </Container>
+    </m.div>
   );
 };
 

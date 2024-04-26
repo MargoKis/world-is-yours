@@ -4,6 +4,9 @@ import CityDropdown from '../payment-page/CityDropDown';
 import TrashIcon from '../../assets/icons/icon-trash.svg';
 import LocationIcon from '../../assets/icons/icon-location.svg';
 
+import { motion as m } from 'framer-motion';
+import Button from '../common/Button';
+
 const Adress = () => {
   const [address, setAddress] = useState('');
   const [apartment, setApartment] = useState('');
@@ -52,7 +55,7 @@ const Adress = () => {
   };
   const handleSubmit = () => {};
   return (
-    <>
+    <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
       <h1 className=" text-blue text-2xl font-semibold font-['Raleway'] mb-10">Адресна книга</h1>
       <div className='flex justify-between gap-8'>
         <div className='w-1/2 max-w-md'>
@@ -62,8 +65,8 @@ const Adress = () => {
           {selectedCountryError && <p className='text-red-500 text-xs mb-3 ml-2'>{selectedCountryError}</p>}
           <CityDropdown onSelectCity={handleCitySelect} selectedCountry={selectedCountry} />
 
-          <div className='flex flex-row gap-4 w-full  justify-between'>
-            <div className='flex flex-col w-5/7 '>
+          <div className='flex flex-row gap-4 w-full justify-between'>
+            <div className='flex flex-col w-5/7 mb-4'>
               <label htmlFor='text' className='mb-1 ml-1 text-textLight font-medium font-raleway text-sm'>
                 Адреса
               </label>
@@ -81,9 +84,7 @@ const Adress = () => {
               {apartmentError && <p className='text-red-500 text-xs mb-3 ml-2'>{apartmentError}</p>}
             </div>
           </div>
-          <div className='mt-7 h-[60px] px-5 py-2.5  bg-black  rounded-[10px] justify-center items-center gap-2.5 inline-flex w-full'>
-            <div className="text-center text-white text-xl font-bold font-['Raleway']">Додати нову адресу</div>
-          </div>
+          <Button classNameBtn='w-full mt-4 bg-gray-dark p-4 border rounded-xl font-bold text-18px text-white duration-300 hover:bg-transparent hover:text-black focus:bg-transparent focus:text-black'>Додати нову адресу</Button>
         </div>
 
         <div className='w-1/2'>
@@ -96,16 +97,16 @@ const Adress = () => {
                   <div className="w-[145px] text-black text-lg font-medium font-['Raleway']">Україна, Київ</div>
                   <div className="w-[145px] text-black  text-sm font-light font-['Raleway']">вул. Ярославская, 10</div>
                 </div>
-                <div className="text-zinc-500 text-sm font-light font-['Raleway']">Змінити</div>
+                <div className="text-zinc-500 text-sm font-light font-['Raleway'] cursor-pointer">Змінити</div>
               </div>
-              <div className='Trash w-10 h-10 p-2 rounded-[10px] justify-center items-center flex'>
+              <div className='Trash w-10 h-10 p-2 rounded-[10px] justify-center items-center flex cursor-pointer border border-transparent rounded-lg duration-100 hover:border-slate-400 focus:border-slate-400'>
                 <img src={TrashIcon} alt='TrashIcon' />
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </m.div>
   );
 };
 

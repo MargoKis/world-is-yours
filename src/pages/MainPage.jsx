@@ -32,7 +32,7 @@ const MainPage = () => {
         {/* main page nav text */}
         <div className={`flex flex-col h-4/5 justify-center items-center px-10 `}>
           <p className='text-center text-5xl mb-10'>{t('Your adventure starts here')}</p>
-          <a href='#sectionFav'>
+          <a href='#sectionFav' className='duration-300 focus:scale-125'>
             <img className='cursor-pointer' src={ArrowIcon} alt='Arrow Down' />
           </a>
         </div>

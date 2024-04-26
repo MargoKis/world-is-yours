@@ -69,6 +69,7 @@ function Header() {
 
             <Search />
           </div>
+
           <ul className='flex justify-center items-center gap-10 justify-self-center'>
             <li>
               <NavLink
@@ -236,10 +237,10 @@ const Search = () => {
   }, []);
 
   return (
-    <div>
+    <div className='max-h-[32px]'>
       {isSearchOpen ? (
-        <div className={'StateClicked max-w-[400px]  border-b border-neutral-800 inline-flex items-center gap-[15px]'} data-isOpen={`${isSearchOpen ? 'true' : 'false'}`}>
-          <img onClick={() => navigate(`/categories?${searchValue}`)} className='cursor-pointer w-10 h-10 p-2 border border-transparent rounded-lg duration-100 hover:scale-105 focus:border-slate-400' src={SearchIconDark} alt='Search' />
+        <div className={'StateClicked max-w-[400px] border-b border-slate-700 inline-flex items-center gap-[15px]'} data-isOpen={`${isSearchOpen ? 'true' : 'false'}`}>
+          <img onClick={() => navigate(`/categories?${searchValue}`)} className='cursor-pointer w-8 h-8 p-1 border border-transparent rounded-lg duration-100 hover:scale-105 focus:border-slate-400' src={SearchIconDark} alt='Search' />
           <span className="text-neutral-800 text-lg font-medium font-['Raleway']">|</span>
           <input
             type='text'
@@ -253,7 +254,7 @@ const Search = () => {
       ) : (
         <img
           onClick={() => setSearchOpen(true)}
-          className='StateClicked cursor-pointer w-10 h-10 p-2 border border-transparent rounded-lg duration-100 hover:border-slate-400 focus:border-slate-400'
+          className='StateClicked cursor-pointer w-8 h-8 p-1 border border-transparent rounded-lg duration-100 hover:border-slate-400 focus:border-slate-400'
           src={SearchIconDark}
           alt='Search'
           tabIndex='0'

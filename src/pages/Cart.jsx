@@ -113,9 +113,9 @@ const Cart = () => {
   return (
     <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
       <div className='w-8/12 mx-auto mt-16 mb-10'>
-        <div className='flex justify-between items-center mb-4'>
-          <p className='font-raleway font-semibold text-4xl mx-auto'>Кошик</p>
-          <p className='font-raleway font-normal text-lg cursor-pointer hover:underline focus:underline' onClick={handleRemoveAllItems} tabIndex='0'>
+        <div className='flex justify-between items-center relative'>
+          <p className='font-raleway font-semibold text-40px mx-auto'>Кошик</p>
+          <p className='absolute end-0 font-raleway font-normal text-lg cursor-pointer hover:underline focus:underline' onClick={handleRemoveAllItems} tabIndex='0'>
             Видалити все
           </p>
         </div>
