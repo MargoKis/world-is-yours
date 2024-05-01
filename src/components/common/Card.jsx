@@ -9,13 +9,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addItem, removeItem } from '../../redux/wishlistSlice';
 import { addItemCart, removeItemCart } from '../../redux/cartSlice';
 
+import { useNavigate } from 'react-router-dom';
+
 import { motion as m } from 'framer-motion';
 
 const Card = ({ data }) => {
   const dispatch = useDispatch();
   const [isLiked, setLike] = useState(false);
   const [isCart, setCart] = useState('');
-
+  let navigate = useNavigate();
   // console.log(data);
 
   const wishlist = useSelector((state) => state.wishlist.items);
@@ -68,8 +70,8 @@ const Card = ({ data }) => {
   return (
     <m.div initial={{ opacity: 0.5 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
       <div className='border border-[#888888] rounded-2xl overflow-hidden relative w-90 items-center'>
-        <div className='flex justify-center'>
-          <img src={data.image_1} alt='product img' className='w-full h-96 object-cover' />
+        <div className='flex justify-center' onClick={() => navigate('/product')}>
+          <img src={data.image_1} alt='product img' className='w-full h-96 object-cover cursor-pointer' />
         </div>
 
         <div className='absolute top-3 right-3 m-2' onClick={() => toggleWishList()}>

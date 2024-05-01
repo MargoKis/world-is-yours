@@ -53,7 +53,7 @@ function Header() {
     <header>
       <div className='relative z-10'>
         <div className='flex justify-between items-center gap-4 px-10 bg-white text-custom-black drop-shadow-5xl '>
-          <div className='flex justify-start items-center'>
+          <div className='flex justify-start items-center grow-0 basis-[30%]'>
             <NavLink to={'/'} className='px-1 focus:outline focus:outline-1'>
               <img src={LogoWorldIsYoursDark} alt='World Is Yours' />
             </NavLink>
@@ -110,7 +110,7 @@ function Header() {
             </li>
           </ul>
 
-          <div className='flex justify-end items-center gap-5'>
+          <div className='flex justify-end items-center gap-5 grow-0 basis-[30%]'>
             <NavLink to={'/cart'} className={({ isActive }) => (isActive ? currentPage : notCurrentPage)}>
               <svg className='w-10 h-10 stroke-current' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'>
                 <path d='M15 30C15.5523 30 16 29.5523 16 29C16 28.4477 15.5523 28 15 28C14.4477 28 14 28.4477 14 29C14 29.5523 14.4477 30 15 30Z' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />

@@ -134,7 +134,7 @@ const Cart = () => {
           <Button classNameBtn='w-9/12 bg-transparent border-blue border-dashed text-blue duration-300 p-4 border rounded-xl font-normal text-18px hover:text-white hover:bg-blue focus:text-white focus:bg-blue' nameBtn='submitForm' valueBtn='submit' type='submit'>
             Промокод для знижки
           </Button>
-          <p className='w-full items-center font-semibold text-xl'>Всього: {total} грн</p>
+          <p className='w-full items-center font-semibold text-xl font-sans'>Всього: {total} грн</p>
           <Button classNameBtn='w-9/12 bg-gray-dark p-4 border rounded-xl font-bold text-18px text-white duration-300 hover:bg-transparent hover:text-black focus:bg-transparent focus:text-black' nameBtn='submitForm' valueBtn='submit' type='submit'>
             Оплатити
           </Button>

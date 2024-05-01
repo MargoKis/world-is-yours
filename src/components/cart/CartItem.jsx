@@ -36,7 +36,7 @@ const CartItem = ({ product, handleQuantityChange, handleRemoveItem }) => {
   return (
     <div className='flex flex-row justify-between items-end border-b border-gray p-4'>
       <div className='flex flex-row items-center'>
-        <img src={product.image_1} alt={product.name} className='w-36 h-36 rounded-lg mr-4' />
+        <img src={product.image_1} alt={product.name} className='w-36 h-36 rounded-lg mr-4 object-cover' />
         <div className='flex flex-col gap-2'>
           <p className='font-medium text-xl'>{product.name}</p>
           <div className='text-gray gap-2'>
@@ -51,7 +51,7 @@ const CartItem = ({ product, handleQuantityChange, handleRemoveItem }) => {
                 onClick={() => handleQuantityChange(product.basketId, 'decrement')}
                 tabIndex='0'
               />
-              <span className='text-black'>{product.quantity}</span>
+              <span className='text-black font-sans'>{product.quantity}</span>
               <img className='w-3 mr-2 duration-300 rotate-0 ml-4 cursor-pointer focus:scale-150' src={ArrowDown} alt='arrow up(add one new item)' onClick={() => handleQuantityChange(product.basketId, 'increment')} tabIndex='0' />{' '}
             </p>
           </div>
@@ -61,16 +61,16 @@ const CartItem = ({ product, handleQuantityChange, handleRemoveItem }) => {
         <p className=''></p>
         <div className=''>
           <p className='text-gray mt-3 font-normal text-xl'>
-            Ціна: <span className='text-black'>{product.price} грн</span>
+            Ціна: <span className='text-black font-sans'>{product.price} грн</span>
           </p>
           <p className='text-gray mt-3 font-normal text-xl'>
             Знижка:{' '}
-            <span className='text-black'>
+            <span className='text-black fonst-sans'>
               {/* {product.discount === "Немає" ? product.discount : product.discount + "%"} */}
               {calculateDiscountPercentage(product.old_price, product.price)}
             </span>
           </p>
-          <p className='text-gray mt-3 font-semibold text-grayDark text-xl'>Всього: {product.price} грн</p>
+          <p className='text-gray mt-3 font-semibold text-grayDark text-xl font-sans'>Всього: {product.price} грн</p>
         </div>
       </div>
       <div>
