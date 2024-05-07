@@ -102,6 +102,7 @@ module.exports = {
         '50px': '50px',
       },
       screens: {
+        min: '320px',
         sm: '480px',
         md: '768px',
         xl: '1280px',
